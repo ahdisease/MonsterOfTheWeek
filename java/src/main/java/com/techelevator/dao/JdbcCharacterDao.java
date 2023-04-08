@@ -39,6 +39,9 @@ public class JdbcCharacterDao implements CharacterDao{
 
     @Override
     public Character createCharacter(Character character) {
+        String sql = "INSERT INTO character (name, race, description, char_class) Values (?,?,?,?) RETURNING id;";
+
+
         return null;
     }
 

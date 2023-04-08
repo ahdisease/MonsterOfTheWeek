@@ -21,7 +21,7 @@
         />
       </div>
       <div class="form-group">
-        <label for="race">City:</label>
+        <label for="race">Race:</label>
         <input
           id="race"
           type="text"
@@ -30,10 +30,10 @@
         />
       </div>
       <div class="form-group">
-        <label for="description">State:</label>
+        <label for="description">Description:</label>
         <input
           id="description"
-          type="text"
+          type="textarea"
           class="form-control"
           v-model="newCharacter.description"
         />
@@ -88,6 +88,9 @@ export default {
         },
         submitForm() {
 
+        },
+        cancelForm() {
+            
         }
     }
 };
@@ -134,6 +137,7 @@ select.form-control {
 }
 button {
     border-radius: 6px;
+    margin: 0 10px 0 0 ;
 }
 .btn-submit {
   color: #fff;

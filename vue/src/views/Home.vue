@@ -8,13 +8,15 @@
 
 <script>
 import CharacterCard from '../components/CharacterCard.vue';
+
 import CharacterCreationForm from '../components/CharacterCreationForm.vue';
 
 export default {
   name: "home",
   components: {
-    CharacterCard,
+
     CharacterCreationForm,
+    CharacterCard,
 
   }
 };
