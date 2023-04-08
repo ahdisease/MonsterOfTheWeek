@@ -1,0 +1,53 @@
+Get Monster
+url: "/monsters/?date
+http method: get
+status: 200 ok
+	404 not found
+
+Post Monster
+url: "/monsters/"
+http method: post
+status: 201 created
+
+Get List of Characters
+url: "/characters/?date"
+http method: get
+status: 200 ok
+	[], 
+
+Get Character Details
+url: "/characters/{id}"
+http method: get
+status: 200 ok
+	404 not found
+
+Create Character
+url: "/characters/"
+http method: post
+status: 201 created
+
+Get Party 
+url: "/party/{id}"
+http method: get
+status: 200
+
+Create Party
+url: "/party/"
+http method: post
+status: 201 create
+
+Update Party
+url: "/party/"
+http method: put
+status: 200 ok
+
+Get List of Votes
+url: "/party/{party.vote}"
+http method: get
+status: 200
+
+Update Vote
+url: "/votes/{partyId}"
+status: 200 
+
+

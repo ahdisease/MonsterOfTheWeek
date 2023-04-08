@@ -1,9 +1,3 @@
-BEGIN TRANSACTION;
-
-INSERT INTO users (username,password_hash,role) VALUES ('user1','user1','ROLE_USER');
-INSERT INTO users (username,password_hash,role) VALUES ('user2','user2','ROLE_USER');
-INSERT INTO users (username,password_hash,role) VALUES ('user3','user3','ROLE_USER');
-
 DROP TABLE IF EXISTS character;
 CREATE TABLE character(
 id serial,
@@ -18,7 +12,7 @@ constraint pk_character primary key (id)
 );
 
 INSERT INTO character (name, race, description, char_class) VALUES ('b', 'c', 'd', 'e');
+SELECT * FROM character;
 
-COMMIT TRANSACTION;
-
-
+SELECT character.id, character.name, character.race, character.description
+FROM character
