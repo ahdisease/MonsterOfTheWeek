@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -12,9 +14,89 @@ public class Character {
     @NotBlank
     private String name;
     @NotBlank
-    private String desc;
+    private String description;
     @NotBlank
     private String charClass;
+    @Min(1) @Max(30)
+    private int strength;
+    @Min(1) @Max(30)
+    private int dexterity;
+    @Min(1) @Max(30)
+    private int constitution;
+    @Min(1) @Max(30)
+    private int intelligence;
+    @Min(1) @Max(30)
+    private int wisdom;
+    @Min(1) @Max(30)
+    private int charisma;
+    @NotNull
+    private int monsterId;
+    @NotNull
+    private int userId;
+
+    public int getMonsterId() {
+        return monsterId;
+    }
+
+    public void setMonsterId(int monsterId) {
+        this.monsterId = monsterId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getDexterity() {
+        return dexterity;
+    }
+
+    public void setDexterity(int dexterity) {
+        this.dexterity = dexterity;
+    }
+
+    public int getConstitution() {
+        return constitution;
+    }
+
+    public void setConstitution(int constitution) {
+        this.constitution = constitution;
+    }
+
+    public int getIntelligence() {
+        return intelligence;
+    }
+
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
+    }
+
+    public int getWisdom() {
+        return wisdom;
+    }
+
+    public void setWisdom(int wisdom) {
+        this.wisdom = wisdom;
+    }
+
+    public int getCharisma() {
+        return charisma;
+    }
+
+    public void setCharisma(int charisma) {
+        this.charisma = charisma;
+    }
 
     public String getCharClass() {
         return charClass;
@@ -48,12 +130,12 @@ public class Character {
         this.name = name;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 

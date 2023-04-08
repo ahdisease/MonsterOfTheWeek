@@ -1,7 +1,7 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS character;
+DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS monster;
 
 CREATE TABLE users (
@@ -15,6 +15,8 @@ CREATE TABLE users (
 CREATE TABLE monster (
 	id SERIAL,
 	name_index varchar(200) NOT NULL,
+	start_date date NOT NULL,
+	end_date date NOT NULL,
 	
 	CONSTRAINT PK_monster PRIMARY KEY (id)
 );
@@ -35,11 +37,11 @@ CREATE TABLE character(
 	charisma int,
 	
 	monster_id int not null,
-
+	user_id int not null,
 
 	constraint pk_character primary key (id),
-	constraint fk_character_monster foreign key (monster_id) references monster (id)
-
+	constraint fk_character_monster foreign key (monster_id) references monster (id),
+	constraint fk_character_users foreign key (user_id) references users (user_id)
 );
 
 COMMIT TRANSACTION;
