@@ -5,6 +5,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
+import CharacterCreator from '../views/CharacterCreator.vue'
 
 Vue.use(Router)
 
@@ -25,6 +26,14 @@ const router = new Router({
       path: '/',
       name: 'home',
       component: Home,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/character-creator',
+      name: 'character-creator',
+      component: CharacterCreator,
       meta: {
         requiresAuth: false
       }
