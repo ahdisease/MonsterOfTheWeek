@@ -17,3 +17,9 @@ export default {
   },
 }
 </script>
+
+<style>
+body {
+  font-size: 14px;
+}
+</style>

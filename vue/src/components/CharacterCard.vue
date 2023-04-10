@@ -4,7 +4,7 @@
           <div>{{character.name}}</div>
           <div>{{character.charClass}}</div>
           <div>{{character.race}}</div>
-          <div>{{character.desc}}</div>
+          <div>{{character.description}}</div>
       </div>
   </article>
 </template>
