@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.CharacterDao;
+import com.techelevator.dao.PartyDao;
 import com.techelevator.model.Character;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -21,6 +22,8 @@ public class CharacterController {
 
     @Autowired
     private CharacterDao dao;
+    @Autowired
+    private PartyDao partyDao;
 
 
 
