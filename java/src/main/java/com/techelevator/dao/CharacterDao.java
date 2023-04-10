@@ -2,6 +2,8 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Character;
 
+import java.security.Principal;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface CharacterDao {
@@ -12,7 +14,7 @@ public interface CharacterDao {
 //    status: 200 ok
 //            [],
 
-    List<Character> getAllCharacters();
+    List<Character> getAllCharacters(String username, LocalDate date);
 
 //    Get Character Details
 //    url: "/characters/{id}"
