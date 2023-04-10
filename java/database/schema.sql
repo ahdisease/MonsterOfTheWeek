@@ -1,8 +1,11 @@
 BEGIN TRANSACTION;
 
+DROP TABLE IF EXISTS party;
 DROP TABLE IF EXISTS character;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS monster;
+
+
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -42,6 +45,33 @@ CREATE TABLE character(
 	constraint pk_character primary key (id),
 	constraint fk_character_monster foreign key (monster_id) references monster (id),
 	constraint fk_character_users foreign key (user_id) references users (user_id)
+);
+
+CREATE TABLE party (
+	id serial,
+	character_1 int NOT NULL,
+	character_2 int NOT NULL,
+	character_3 int NOT NULL,
+	character_4 int NOT NULL,
+	
+	CHECK (character_1 != character_2),
+	CHECK (character_1 != character_3),
+	CHECK (character_1 != character_4),
+	CHECK (character_2 != character_3),
+	CHECK (character_2 != character_4),
+	CHECK (character_3 != character_4),
+	
+	constraint fk_party_character_1 foreign key (character_1) references character (id),
+	constraint fk_party_character_2 foreign key (character_2) references character (id),
+	constraint fk_party_character_3 foreign key (character_3) references character (id),
+	constraint fk_party_character_4 foreign key (character_4) references character (id),
+	
+	PRIMARY KEY (id)
+);
+
+CREATE UNIQUE INDEX ON party (
+	greatest(character_1,character_2,character_3,character_4),
+	least(character_4,character_3,character_2,character_1)
 );
 
 COMMIT TRANSACTION;

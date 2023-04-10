@@ -5,7 +5,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-public class Character {
+public class Character implements Comparable<Character> {
 
     @NotNull
     private int id;
@@ -138,6 +138,9 @@ public class Character {
         this.description = description;
     }
 
-
-
+    //used to sort an array of Character objects by name to avoid duplicate parties in database
+    @Override
+    public int compareTo(Character o) {
+        return this.name.compareTo(o.getName());
+    }
 }
