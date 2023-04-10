@@ -5,6 +5,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.security.Principal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,24 +18,46 @@ public class JdbcCharacterDao implements CharacterDao{
     public JdbcCharacterDao (JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate =  jdbcTemplate;
     }
-    //TODO character table needs a monster foreign key
+
 
     @Override
-    public List<Character> getAllCharacters() {
+    public List<Character> getAllCharacters(String username, LocalDate date) {
         List<Character> characters = new ArrayList<>();
         String sql = "SELECT character.id, character.name, character.race, character.description, character.char_class, " +
                 "character.strength, character.dexterity, character.constitution, character.intelligence, character.wisdom, " +
-                "character.charisma, character.monster_id, character.user_id FROM character";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-        while (results.next()){
-            characters.add(mapRowToCharacter(results));
+                "character.charisma, character.monster_id, character.user_id FROM character WHERE ";
+
+        if(username != null){
+            sql += "character.user_id = (SELECT user_id FROM users WHERE username = ?) AND " +
+                    "character.monster_id = (SELECT id FROM monster WHERE ? BETWEEN start_date AND end_date)";
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username, date);
+            while (results.next()){
+                characters.add(mapRowToCharacter(results));
+            }
+        } else {
+            sql += "character.monster_id = (SELECT id FROM monster WHERE ? BETWEEN start_date AND end_date)";
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, date);
+            while (results.next()) {
+                characters.add(mapRowToCharacter(results));
+            }
         }
+
 
         return characters;
     }
 
     @Override
     public Character getCharacterById(int id) {
+//        Character character = null;
+//
+//        String sql = "UPDATE character SET character.name = ?, character.race, character.description, character.char_class, " +
+//                "character.strength, character.dexterity, character.constitution, character.intelligence, character.wisdom, " +
+//                "character.charisma, character.monster_id, character.user_id FROM character WHERE character.id = ?";
+//        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+//
+//        if(results.next()){
+//            character = mapRowToCharacter(results);
+//        }
         return null;
     }
 

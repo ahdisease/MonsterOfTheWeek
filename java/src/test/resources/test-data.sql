@@ -52,9 +52,13 @@ INSERT INTO users (username,password_hash,role) VALUES ('user2','user2','ROLE_US
 INSERT INTO users (username,password_hash,role) VALUES ('user3','user3','ROLE_USER');
 
 INSERT INTO character (name, race, description, char_class, strength, dexterity, constitution,
- intelligence, wisdom, charisma, monster_id, user_id) VALUES ('b', 'c', 'd', 'e', 1, 1, 1, 1, 1, 1, 1, 2);
+ intelligence, wisdom, charisma, monster_id, user_id) VALUES ('b', 'c', 'd', 'e', 1, 1, 1, 1, 1, 1, 1, 1);
 INSERT INTO character (name, race, description, char_class, strength, dexterity, constitution,
- intelligence, wisdom, charisma, monster_id, user_id) VALUES ('b', 'c', 'd', 'e', 1, 1, 1, 1, 1, 1, 2, 2);
+ intelligence, wisdom, charisma, monster_id, user_id) VALUES ('b', 'c', 'd', 'e', 1, 1, 1, 1, 1, 1, 2, 1);
+INSERT INTO character (name, race, description, char_class, strength, dexterity, constitution,
+  intelligence, wisdom, charisma, monster_id, user_id) VALUES ('b', 'c', 'd', 'e', 1, 1, 1, 1, 1, 1, 1, 2);
+INSERT INTO character (name, race, description, char_class, strength, dexterity, constitution,
+   intelligence, wisdom, charisma, monster_id, user_id) VALUES ('b', 'c', 'd', 'e', 1, 1, 1, 1, 1, 1, 2, 2);
 
 COMMIT TRANSACTION;
 
