@@ -41,8 +41,6 @@ public class JdbcCharacterDao implements CharacterDao{
                 characters.add(mapRowToCharacter(results));
             }
         }
-
-
         return characters;
     }
 
@@ -63,19 +61,32 @@ public class JdbcCharacterDao implements CharacterDao{
 
     @Override
     public Character createCharacter(Character character) {
+        int[] stats = diceRollStats();
         String sql = "INSERT INTO character (name, race, description, char_class, strength, dexterity," +
                 " constitution, intelligence, wisdom," +
                 " charisma, monster_id, user_id) Values (?,?,?,?,?,?,?,?,?,?,?,?) RETURNING id;";
 
         Integer id = jdbcTemplate.queryForObject(sql, Integer.class, character.getName(), character.getRace(), character.getDescription(),
-                character.getCharClass(), character.getStrength(), character.getDexterity(), character.getConstitution(),
-                character.getIntelligence(), character.getWisdom(), character.getCharisma(), character.getMonsterId(),
+                character.getCharClass(), stats[0], stats[1], stats[2], stats[3], stats[4], stats[5], character.getMonsterId(),
                 character.getUserId()
         );
 
         character.setId(id);
 
         return character;
+    }
+
+    private int[] diceRollStats() {
+        int[] stats = new int[6];
+
+        for(int i = 0; i < stats.length; i++) {
+            int dice1=(int)(Math.random()*6+1);
+            int dice2=(int)(Math.random()*6+1);
+            int dice3=(int)(Math.random()*6+1);
+            stats[i]= dice1 + dice2 + dice3;
+        }
+
+        return stats;
     }
 
 
