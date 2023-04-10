@@ -27,7 +27,7 @@ public class JdbcCharacterDaoTests extends BaseDaoTests{
     public void retrieve_character_list (){
 
         Assert.assertEquals(1, jdbcCharacterDao.getAllCharacters(USER_1.getUsername(), LocalDate.parse("2020-01-02")).size());
-        Assert.assertEquals(2, jdbcCharacterDao.getAllCharacters(null, LocalDate.parse("2020-01-02")).size());
+        Assert.assertEquals(4, jdbcCharacterDao.getAllCharacters(null, LocalDate.parse("2020-01-02")).size());
     }
 
     @Test
