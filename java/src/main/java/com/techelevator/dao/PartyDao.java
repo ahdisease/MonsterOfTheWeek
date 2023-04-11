@@ -2,13 +2,15 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Party;
 
+import java.security.Principal;
+import java.util.List;
+
 public interface PartyDao {
 
-    Party createParty(Character character);
+    Party createParty(Party partyCharacters, String username);
 
     Party getPartyByUsername(String username);
 
-    Party updateParty();
 
 
 }

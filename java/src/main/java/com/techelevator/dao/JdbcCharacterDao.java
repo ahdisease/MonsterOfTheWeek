@@ -46,17 +46,17 @@ public class JdbcCharacterDao implements CharacterDao{
 
     @Override
     public Character getCharacterById(int id) {
-//        Character character = null;
-//
-//        String sql = "UPDATE character SET character.name = ?, character.race, character.description, character.char_class, " +
-//                "character.strength, character.dexterity, character.constitution, character.intelligence, character.wisdom, " +
-//                "character.charisma, character.monster_id, character.user_id FROM character WHERE character.id = ?";
-//        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
-//
-//        if(results.next()){
-//            character = mapRowToCharacter(results);
-//        }
-        return null;
+        Character character = null;
+
+        String sql = "SELECT character.id, character.name, character.race, character.description, character.char_class, " +
+                "character.strength, character.dexterity, character.constitution, character.intelligence, character.wisdom, " +
+                "character.charisma, character.monster_id, character.user_id FROM character WHERE character.id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+
+        if(results.next()){
+            character = mapRowToCharacter(results);
+        }
+        return character;
     }
 
     @Override
