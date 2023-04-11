@@ -8,7 +8,7 @@ public interface MonsterDao {
 
     Monster getMonsterByDate(LocalDate date);
 
-    Monster addMonster();
+    Monster addMonster(Monster monster);
 
 
 }

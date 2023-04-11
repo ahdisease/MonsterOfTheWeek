@@ -27,9 +27,6 @@ public class CharacterController {
     @Autowired
     private CharacterDao dao;
 
-    @Autowired
-    private MonsterDao monsterDao;
-
 
 
     @RequestMapping(path = "/characters",method = RequestMethod.GET)
