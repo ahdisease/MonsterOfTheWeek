@@ -1,6 +1,6 @@
 <template>
   <div class ="">
-      <h1>Pick Your Party</h1>
+      <h1>Select Your Party Members</h1>
       <character-list ></character-list>
   </div>
 </template>

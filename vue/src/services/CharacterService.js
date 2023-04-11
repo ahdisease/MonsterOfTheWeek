@@ -7,11 +7,11 @@ export default {
     },
 
     addNewCharacter(character) {
-        return axios.post('/characters', character);
+        return axios.post('/characters/', character);
     },
 
     addNewParty(party) {
-        return axios.post ('/party', party);
+        return axios.post ('/party/', party);
     }
 
 }

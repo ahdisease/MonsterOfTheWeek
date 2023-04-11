@@ -1,28 +1,19 @@
 <template>
   <div>
     <h3>This is the Character List, Character Lovers!!!</h3>
-    <form class="homeForm" v-on:submit.prevent="submitForm">
-      <div class="newPartyMember">
-
-      </div>
-      <div class="newPartyMember">
-
-      </div>
-      <div class="newPartyMember">
-
-      </div>
-      <div class="newPartyMember">
+    
+      <div class="newPartyMember card" v-bind:key="character.id3" v-for="character in party">
+        <character-card v-bind:character="character"></character-card>
 
       </div>
       <div class="buttons" id="buttons">
-            <button class="btn btn-submit">Submit</button>
+            <button class="btn btn-submit" @click="submitForm">Submit</button>
             <button class="btn btn-cancel" type="cancel" v-on:click="cancelForm">
               Cancel
             </button>
           </div>
-    </form>
     <p>the character cards will show up here:</p>
-    <div v-for="character in currentCharacters" v-bind:key="character.id">
+    <div class="card" v-for="character in currentCharacters" v-bind:key="character.id4" @click="addPartyMember(character)">
       <character-card v-bind:character="character"></character-card>
     </div>
     <div></div>
@@ -114,23 +105,24 @@ export default {
 
   methods: {
     submitForm() {
-      CharacterService.addNewParty(this.newParty)
+      CharacterService.addNewParty(this.party)
         .then((response) => {
           if (response.status === 201) {
-            /* TODO ******** set this to go to the party screen probably */
-            this.$router.push("home");
+            this.$router.push('home');
           }
         })
         .catch((error) => {
-          // TODO ********* check this
           this.handleErrorResponse(error);
         });
     },
     cancelForm() {
-      this.$router.push("character-list");
+      this.party = [];
     },
-    addPartyMember() {
-
+    addPartyMember(character) {
+      if (this.party.length < 4 && !this.party.includes(character)) {
+        this.party.push(character);
+      }
+      
     }
     // startDrag(evt, item) {
     //   console.log("inside start drag" + item.name);
@@ -191,7 +183,10 @@ export default {
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  width: 25%;
+  height: 300px;
+  width: 17%;
+  margin: 1%;
+  display: inline-block;
 }
 .card img {
   width: 35%;
@@ -217,5 +212,9 @@ export default {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+}
+
+.unselectable {
+  background-color: gray;
 }
 </style>
