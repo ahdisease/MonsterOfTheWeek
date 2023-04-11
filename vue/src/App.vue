@@ -28,6 +28,6 @@ body {
   width: 100%;
 }
 #the-header {
-  width: 100%;
+  width: 100vw;
 } */
 </style>
