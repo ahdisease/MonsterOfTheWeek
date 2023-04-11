@@ -1,7 +1,5 @@
 package com.techelevator.model;
 
-import org.springframework.security.web.PortResolverImpl;
-
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -60,7 +58,7 @@ public class Party {
         this.characterFour = characterFour;
     }
 
-    public List<Integer> getCharacterIdOrdered(){
+    public List<Integer> retrieveCharacterIdOrdered(){
         List<Integer> allCharIds = new ArrayList<>();
         allCharIds.add(characterOne);
         allCharIds.add(characterTwo);

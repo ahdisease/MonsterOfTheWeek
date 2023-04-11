@@ -21,7 +21,7 @@ CREATE TABLE users (
 CREATE TABLE monster (
 	id SERIAL,
 	name_index varchar(200) NOT NULL,
-	start_date date NOT NULL,
+	start_date date NOT NULL UNIQUE,
 	end_date date NOT NULL,
 	
 	CONSTRAINT PK_monster PRIMARY KEY (id)
@@ -82,9 +82,9 @@ CREATE TABLE users_party (
 );
 
 CREATE UNIQUE INDEX ON party (
-	greatest(character_1,character_2,character_3,character_4),
-	least(character_4,character_3,character_2,character_1)
-);
+greatest(character_1,character_2,character_3,character_4),
+least(character_4,character_3,character_2,character_1)
+ );
 
 
 

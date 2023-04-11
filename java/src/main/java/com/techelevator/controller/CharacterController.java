@@ -26,10 +26,6 @@ public class CharacterController {
 
     @Autowired
     private CharacterDao dao;
-    @Autowired
-    private PartyDao partyDao;
-    @Autowired
-    private MonsterDao monsterDao;
 
 
 
@@ -66,6 +62,7 @@ public class CharacterController {
             return character;
         }
     }
+
 
 }
 
