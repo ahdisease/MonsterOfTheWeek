@@ -21,7 +21,7 @@ CREATE TABLE users (
 CREATE TABLE monster (
 	id SERIAL,
 	name_index varchar(200) NOT NULL,
-	start_date date NOT NULL,
+	start_date date NOT NULL UNIQUE,
 	end_date date NOT NULL,
 	
 	CONSTRAINT PK_monster PRIMARY KEY (id)
