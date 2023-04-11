@@ -3,7 +3,7 @@ import axios from 'axios';
 export default {
 
     getAllCharacters(date) {
-        return axios.get(`/characters/${date}`);
+        return axios.get(`/characters?date=${date}`);
     },
 
     addNewCharacter(character) {

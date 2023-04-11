@@ -1,7 +1,7 @@
 <template>
   <div id="addHomeform">
     <div id="title">
-      <h1 >Character Creator</h1>
+      <h1>Character Creator</h1>
     </div>
     <!-- TODO ********* this error message needs to display correctly? -->
     <!-- <p class="status-message error" v-show="errorMessage != ''">{{errorMessage}}</p> -->
@@ -17,73 +17,81 @@
       </div>
 
       <!-- <div id="race-class"> -->
-        <div class="race-class-group" id="race">
-          <label for="race">Race</label>
-          <select
-            id="race-selection"
-            class="form-control"
-            >
-            <option 
-              v-for="race in dropdownRace" 
-              v-bind:key="race.id"
-              v-bind:value="race.name"
-            > {{race.name}}
-            </option>
-          </select>
-            
-            <!-- v-model="newCharacter.race" -->
-        </div>
+      <div class="race-class-group" id="race">
+        <label for="race">Race</label>
+        <select
+          id="race-selection"
+          class="form-control"
+          v-model="newCharacter.race"
+        >
+          <option
+            v-for="race in dropdownRace"
+            v-bind:key="race.id"
+            v-bind:value="race.name"
+          >
+            {{ race.name }}
+          </option>
+        </select>
 
-        <div class="race-class-group" id="class">
-          <label for="charClass">Class</label>
-          <select
-            id="class-selection"
-            class="form-control"
-            >
-            <option
-              v-for="charClass in dropdownClass"
-              v-bind:key="charClass.id"
-              v-bind:value="charClass.name"
-              >{{charClass.name}}
-            </option>
-          </select>
-        </div>
+        <!-- v-model="newCharacter.race" -->
+      </div>
+
+      <div class="race-class-group" id="class">
+        <label for="charClass">Class</label>
+        <select
+          id="class-selection"
+          class="form-control"
+          v-model="newCharacter.charClass"
+        >
+          <option
+            v-for="charClass in dropdownClass"
+            v-bind:key="charClass.id"
+            v-bind:value="charClass.name"
+          >
+            {{ charClass.name }}
+          </option>
+        </select>
+      </div>
       <!-- </div> -->
 
       <!-- <div class="stats-picture"> -->
-        <div class="stats-column" id="lcol">
-          <div class="stats-box">
-            <div class="stats-name">STRENGTH</div>
-            <div class="stats-value" id="str-value">5</div>
-          </div>
-          <div class="stats-box">
-            <div class="stats-name">DEXTERITY</div>
-            <div class="stats-value" id="dex-value">5</div>
-          </div>
-          <div class="stats-box">
-            <div class="stats-name">CONSTITUTION</div>
-            <div class="stats-value" id="con-value">5</div>
-          </div>
+      <div class="stats-column" id="lcol">
+        <div class="stats-box">
+          <div class="stats-name">STRENGTH</div>
+          <div class="stats-value" id="str-value">5</div>
         </div>
+        <div class="stats-box">
+          <div class="stats-name">DEXTERITY</div>
+          <div class="stats-value" id="dex-value">5</div>
+        </div>
+        <div class="stats-box">
+          <div class="stats-name">CONSTITUTION</div>
+          <div class="stats-value" id="con-value">5</div>
+        </div>
+      </div>
 
-        <div id="picture">
-          <img src="https://cdna.artstation.com/p/assets/images/images/010/077/400/large/maja-weber-sun-wukong-colour.jpg?1522433552" class="char-pic" id="char-pic">
+      <div id="picture">
+        <img
+          src="https://cdna.artstation.com/p/assets/images/images/010/077/400/large/maja-weber-sun-wukong-colour.jpg?1522433552"
+          class="char-pic"
+          id="char-pic"
+        />
+      </div>
+
+      <div class="stats-column" id="rcol">
+        <div class="stats-box">
+          <div class="stats-name">INTELLIGENCE</div>
+          <div class="stats-value" id="int-value">5</div>
         </div>
-        
-        <div class="stats-column" id="rcol">
-          <div class="stats-box">
-            <div class="stats-name">INTELLIGENCE</div>
-            <div class="stats-value" id="int-value">5</div>
-          </div>
-          <div class="stats-box">
-            <div class="stats-name">WISDOM</div>
-            <div class="stats-value" id="wis-value">5</div>
-          </div>
-          <div class="stats-box">
-            <div class="stats-name">CHARISMA</div>
-            <div class="stats-value" id="int-value">5</div>
-          </div>
+        <div class="stats-box">
+          <div class="stats-name">WISDOM</div>
+          <div class="stats-value" id="wis-value">5</div>
         </div>
+        <div class="stats-box">
+          <div class="stats-name">CHARISMA</div>
+          <div class="stats-value" id="int-value">5</div>
+        </div>
+      </div>
       <!-- </div> -->
 
       <div id="desc">
@@ -106,8 +114,8 @@
 </template>
 
 <script>
-import CharacterService from '../services/CharacterService.js';
-// TODO ********** get this api working 
+import CharacterService from "../services/CharacterService.js";
+// TODO ********** get this api working
 // import races from 'https://api.open5e.com/races/';
 
 export default {
@@ -115,44 +123,45 @@ export default {
   data() {
     return {
       newCharacter: {
+        id: -1,
         name: "",
         charClass: "",
         race: "",
         description: "",
-        stats: {
-          str: 1,
-          dex: 1,
-          con: 1,
-          int: 1,
-          wis: 1,
-          cha: 1,
-        },
+
+        strength: 3,
+        dexterity: 3,
+        constitution: 3,
+        intelligence: 3,
+        wisdom: 3,
+        charisma: 3,
+
+        monsterId: 1,
+        userId: 1,
       },
       dropdownRace: [
         {
-          name: 'Dwarf'
+          name: "Dwarf",
         },
         {
-          name: 'Elf'
+          name: "Elf",
         },
         {
-          name: 'Halfling'
-        }
+          name: "Halfling",
+        },
       ],
       dropdownClass: [
         {
-          name: 'Barbarian'
+          name: "Barbarian",
         },
         {
-          name: 'Bard'
-        }
-      ]
+          name: "Bard",
+        },
+      ],
     };
   },
 
-  created (){
-
-  },
+  created() {},
   methods: {
     resetCharacter() {
       this.newCharacter = {
@@ -168,30 +177,36 @@ export default {
           wis: 1,
           cha: 1,
         },
+        monsterId: 1,
+        userId: 1,
       };
     },
     submitForm() {
-      CharacterService.addNewCharacter(this.newCharacter).then(response => {
-        if (response.status === 201) {
-          /* TODO ******** set this to go to the party screen probably */
-          this.$router.push('party-view');
-        }
-      }).catch(error => {
-        // TODO ********* check this 
-        this.handleErrorResponse(error);
-      })
+      CharacterService.addNewCharacter(this.newCharacter)
+        .then((response) => {
+          if (response.status === 201) {
+            /* TODO ******** set this to go to the party screen probably */
+            //this.$router.push('party-view');
+          }
+        })
+        .catch((error) => {
+          // TODO ********* check this
+          // this.handleErrorResponse(error);
+          console.log(error);
+        });
     },
     cancelForm() {
-      this.$router.push('character-creator')
-    }
+      this.$router.push("character-creator");
+    },
   },
 };
 </script>
 
 <style scoped>
+
+
 #addHomeform {
-  
-  margin: -39px auto 0 auto;
+  margin: 100px auto 0 auto;
   width: 90%;
   background-color: lightgray;
   /* padding: 1% 2%; */
@@ -203,7 +218,6 @@ export default {
 #title h1 {
   text-align: center;
   font-size: 4em;
- 
 }
 
 .homeForm {
@@ -221,8 +235,7 @@ export default {
     "race     picture   class"
     "lcol     picture   rcol"
     "desc     desc      desc"
-    ".        buttons   ."
-    ;
+    ".        buttons   .";
   gap: 10px;
   justify-content: center;
   align-content: center;
@@ -251,7 +264,7 @@ export default {
 #name-box {
   margin: 10px auto;
   grid-area: name-box;
-   /* margin: 10px 0; */
+  /* margin: 10px 0; */
   text-align: center;
   color: #38b412;
   font-size: 2rem;
@@ -273,13 +286,12 @@ export default {
 #race-selection {
   width: 150px;
   margin: 5px auto;
-
+  
   /* this is the dropdown area for race */
 }
 
 #picture {
   grid-area: picture;
-
 }
 
 #char-pic {
@@ -303,9 +315,8 @@ export default {
 
 #class-selection {
   width: 150px;
-  margin: 3px  auto;
+  margin: 3px auto;
 
-  
   /* this is the drop down for class */
 }
 
@@ -323,6 +334,7 @@ export default {
   text-align: center;
   color: #38b412;
   font-size: 2rem;
+  
 }
 
 #buttons {
@@ -415,54 +427,41 @@ button {
   background-color: #f08080;
 }
 
-
-
-
 @media screen and (max-width: 768px) {
-  
-
   #addHomeform {
-  
-  margin: 0 auto;
-  width: 95%;
-  background-color: lightgray;
-  padding: 1% 2%;
-}
-  
+    margin: 0 auto;
+    width: 95%;
+    background-color: lightgray;
+    padding: 1% 2%;
+  }
+
   .homeForm {
-  padding: 10px;
-  margin-bottom: 10px;
-  display: grid;
-  grid-template-columns: 1fr 1fr ;
-  grid-template-areas:  
-                        "name-box name-box"
-                        "race class"
-                        "picture picture"   
-                        "lcol rcol" 
-                        "desc desc"
-                        "buttons buttons"
-                        ;
-  gap: 2px;
-}
-#title h1 {
-  text-align: center;
-  font-size: 3em;
-  
-}
-#picture {
-  margin: 0 auto;
-}
-#picture img {
-  width: 60%;
-  margin: 0 auto;
-}
-/* #race {
+    padding: 10px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "name-box name-box"
+      "race class"
+      "picture picture"
+      "lcol rcol"
+      "desc desc"
+      "buttons buttons";
+    gap: 2px;
+  }
+  #title h1 {
+    text-align: center;
+    font-size: 3em;
+  }
+  #picture {
+    margin: 0 auto;
+  }
+  #picture img {
+    width: 60%;
+    margin: 0 auto;
+  }
+  /* #race {
   font: ;
 } */
-
-  
 }
-
-
-
 </style>

@@ -6,7 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import CharacterCreator from '../views/CharacterCreator.vue'
-import PartyView from '../views/PartyView.vue'
+import PartyCreator from '../views/PartyCreator.vue'
 
 Vue.use(Router)
 
@@ -41,8 +41,8 @@ const router = new Router({
     },
     {
       path: '/party',
-      name: 'party-view',
-      component: PartyView,
+      name: 'party',
+      component: PartyCreator,
       meta: {
           requiresAuth: false
       }

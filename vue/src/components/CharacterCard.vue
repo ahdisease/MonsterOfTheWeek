@@ -14,7 +14,7 @@
 
 export default {
     name: 'character-card',
-    // props: ["character"],
+    props: ["character"],
     data() {
         return {
             
