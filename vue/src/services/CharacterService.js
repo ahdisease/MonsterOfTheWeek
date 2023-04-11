@@ -2,12 +2,16 @@ import axios from 'axios';
 
 export default {
 
-    getAllCharacters() {
-        return axios.get('/characters');
+    getAllCharacters(date) {
+        return axios.get(`/characters/${date}`);
     },
 
     addNewCharacter(character) {
         return axios.post('/characters', character);
+    },
+
+    addNewParty(party) {
+        return axios.post ('/party', party);
     }
 
 }

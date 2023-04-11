@@ -174,7 +174,7 @@ export default {
       CharacterService.addNewCharacter(this.newCharacter).then(response => {
         if (response.status === 201) {
           /* TODO ******** set this to go to the party screen probably */
-          this.$router.push('home');
+          this.$router.push('party-view');
         }
       }).catch(error => {
         // TODO ********* check this 
@@ -426,7 +426,7 @@ button {
   margin: 0 auto;
   width: 95%;
   background-color: lightgray;
-  /* padding: 1% 2%; */
+  padding: 1% 2%;
 }
   
   .homeForm {

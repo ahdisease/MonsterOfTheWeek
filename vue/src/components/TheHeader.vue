@@ -2,8 +2,9 @@
   <div id="title-block">
     <h2>Monster of the Week LOGOHERE</h2>
     <nav id="nav">
-        <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-       <router-link v-bind:to="{ name: 'character-creator' }">Character Creator</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'character-creator' }">Character Creator</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'party-view' }">Party Creator</router-link>&nbsp;|&nbsp;
 
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </nav>
