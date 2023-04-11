@@ -49,4 +49,5 @@ public class JdbcPartyDaoTests extends BaseDaoTests {
         //assert
         Assert.assertEquals(1,newParty.getId());
     }
+
 }

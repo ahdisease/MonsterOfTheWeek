@@ -3,6 +3,9 @@ package com.techelevator.model;
 import org.springframework.security.web.PortResolverImpl;
 
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Party {
 
@@ -55,5 +58,17 @@ public class Party {
 
     public void setCharacterFour(int characterFour) {
         this.characterFour = characterFour;
+    }
+
+    public List<Integer> getCharacterIdOrdered(){
+        List<Integer> allCharIds = new ArrayList<>();
+        allCharIds.add(characterOne);
+        allCharIds.add(characterTwo);
+        allCharIds.add(characterThree);
+        allCharIds.add(characterFour);
+
+        Collections.sort(allCharIds);
+
+        return allCharIds;
     }
 }

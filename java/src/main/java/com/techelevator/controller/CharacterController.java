@@ -10,13 +10,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.support.CustomSQLErrorCodesTranslation;
 import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.print.attribute.standard.PrinterName;
+import javax.validation.Valid;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
 
 //todo add preauthorize tag
+
 @CrossOrigin
 @RestController
 public class CharacterController {
@@ -37,10 +40,31 @@ public class CharacterController {
         if(date == null) {
             date = LocalDate.now();
         }
-
-        //TODO CHECK LOCAL DATE WORKS
-
         return dao.getAllCharacters(username, date);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/characters", method = RequestMethod.POST)
+    public Character createNewCharacter(@Valid @RequestBody Character character) {
+        Character character1 = dao.createCharacter(character);
+
+        if(character1 == null){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        } else {
+            return character1;
+        }
+    }
+
+
+    @RequestMapping(path = "/characters/{id}", method = RequestMethod.GET)
+    public Character getCharacterById(@PathVariable int id){
+        Character character = dao.getCharacterById(id);
+
+        if(character == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            return character;
+        }
     }
 
 }
