@@ -1,5 +1,6 @@
 BEGIN TRANSACTION;
 
+DROP TABLE IF EXISTS users_party;
 DROP TABLE IF EXISTS party;
 DROP TABLE IF EXISTS character;
 DROP TABLE IF EXISTS users;
@@ -12,6 +13,8 @@ CREATE TABLE users (
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL,
+
+	
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
@@ -69,9 +72,20 @@ CREATE TABLE party (
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE users_party (
+	user_id int NOT NULL,
+	party_id int NOT NULL,
+	
+	PRIMARY KEY (user_id, party_id),
+	constraint fk_users_party_user foreign key (user_id) references users (user_id),
+	constraint fk_users_party_party foreign key (party_id) references party (id)
+);
+
 CREATE UNIQUE INDEX ON party (
 	greatest(character_1,character_2,character_3,character_4),
 	least(character_4,character_3,character_2,character_1)
 );
+
+
 
 COMMIT TRANSACTION;

@@ -15,6 +15,9 @@ public class Monster {
     @NotNull
     private LocalDate endDate;
 
+
+
+
     public int getId() {
         return id;
     }
