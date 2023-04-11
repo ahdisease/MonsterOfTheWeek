@@ -24,7 +24,7 @@ public class PartyTest {
         expectedList.add(4);
 
 
-        Assert.assertArrayEquals(expectedList.toArray(), party.getCharacterIdOrdered().toArray());
+        Assert.assertArrayEquals(expectedList.toArray(), party.retrieveCharacterIdOrdered().toArray());
 
     }
 

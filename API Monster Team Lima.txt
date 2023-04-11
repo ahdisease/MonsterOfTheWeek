@@ -15,7 +15,7 @@ http method: get
 status: 200 ok
 	[], 
 
-Get Character Details
+Get Character By Id
 url: "/characters/{id}"
 http method: get
 status: 200 ok
@@ -36,6 +36,7 @@ url: "/party/"
 http method: post
 status: 201 create
 
+-----not yet -------
 Update Party
 url: "/party/"
 http method: put
