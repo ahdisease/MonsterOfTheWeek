@@ -3,6 +3,7 @@
     <div id="title">
       <h1 >Character Creator</h1>
     </div>
+    <!-- TODO ********* this error message needs to display correctly? -->
     <!-- <p class="status-message error" v-show="errorMessage != ''">{{errorMessage}}</p> -->
     <form class="homeForm" v-on:submit.prevent="submitForm">
       <div class="name-group" id="name-box">
@@ -43,7 +44,7 @@
               v-for="charClass in dropdownClass"
               v-bind:key="charClass.id"
               v-bind:value="charClass.name"
-              > {{charClass.name}}
+              >{{charClass.name}}
             </option>
           </select>
         </div>
@@ -105,7 +106,10 @@
 </template>
 
 <script>
-// import CharacterService from '../services/CharacterService.js'
+import CharacterService from '../services/CharacterService.js';
+// TODO ********** get this api working 
+// import races from 'https://api.open5e.com/races/';
+
 export default {
   name: "character-creation-form",
   data() {
@@ -145,6 +149,10 @@ export default {
       ]
     };
   },
+
+  created (){
+
+  },
   methods: {
     resetCharacter() {
       this.newCharacter = {
@@ -162,8 +170,20 @@ export default {
         },
       };
     },
-    submitForm() {},
-    cancelForm() {}
+    submitForm() {
+      CharacterService.addNewCharacter(this.newCharacter).then(response => {
+        if (response.status === 201) {
+          /* TODO ******** set this to go to the party screen probably */
+          this.$router.push('home');
+        }
+      }).catch(error => {
+        // TODO ********* check this 
+        this.handleErrorResponse(error);
+      })
+    },
+    cancelForm() {
+      this.$router.push('character-creator')
+    }
   },
 };
 </script>
@@ -171,43 +191,50 @@ export default {
 <style scoped>
 #addHomeform {
   
-  margin: 0 auto;
-  width: 80%;
+  margin: -39px auto 0 auto;
+  width: 90%;
   background-color: lightgray;
-  padding: 1% 2%;
+  /* padding: 1% 2%; */
 }
 
-#title {
+/* #title {
  grid-area: h1; 
-}
+} */
 #title h1 {
   text-align: center;
-  font-size: 4rem;
-  
+  font-size: 4em;
+ 
 }
 
 .homeForm {
-  padding: 10px;
-  margin-bottom: 10px;
+  width: 100%;
+  /* TODO ******* THE GRID IS STILL OFF CENTER */
+  /* padding: 10px; */
+  margin: 0 auto;
+  margin-left: 0px;
+  margin-right: 0px;
   display: grid;
-  grid-template-columns: 1fr 10fr 1fr;
-  grid-template-areas:  "title    title     title"
-                        ".        name-box      ."
-                        "race     picture   class"
-                        "lcol     picture   rcol"
-                        "desc     desc      desc"
-                        ".        buttons   ."
-                        ;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-areas:  
+    /* "title    title     title" */
+    ".        name-box      ."
+    "race     picture   class"
+    "lcol     picture   rcol"
+    "desc     desc      desc"
+    ".        buttons   ."
+    ;
   gap: 10px;
+  justify-content: center;
+  align-content: center;
 }
 
-.name-group {
+/* .name-group {
   margin: 10px 0;
   text-align: center;
   color: #38b412;
   font-size: 2rem;
   
-}
+} */
 
 .form-control {
   width: 90%;
@@ -222,9 +249,12 @@ export default {
 }
 
 #name-box {
-  /* width: 50%; */
-  margin: 0 auto;
+  margin: 10px auto;
   grid-area: name-box;
+   /* margin: 10px 0; */
+  text-align: center;
+  color: #38b412;
+  font-size: 2rem;
 }
 
 #race-class {
@@ -240,12 +270,24 @@ export default {
   font-size: 2rem;
 }
 
-#race label {
+#race-selection {
+  width: 150px;
+  margin: 5px auto;
 
+  /* this is the dropdown area for race */
 }
 
 #picture {
   grid-area: picture;
+
+}
+
+#char-pic {
+  background-color: aliceblue;
+  width: 90%;
+  /* max-width: 100%; */
+  height: auto;
+  margin: 50px 0 0 0;
 }
 
 #class {
@@ -255,6 +297,14 @@ export default {
   align-items: center;
   color: #38b412;
   font-size: 2rem;
+}
+
+#class-selection {
+  width: 150px;
+  margin: 3px  auto;
+
+  
+  /* this is the drop down for class */
 }
 
 #lcol {
@@ -289,28 +339,19 @@ select.form-control {
   margin: 10px 20px 10px 10px;
 }
 
-.stats-picture {
-  margin: 2rem 0;
-}
-
-#char-pic {
-  background-color: aliceblue;
-  max-width: 100%;
-  height: auto;
-  margin: 50px 0 0 0;
-}
-
 .stats-column {
   background-color: bisque;
   border-radius: 3px;
-  padding: 1rem;
+  padding: 0.1em;
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  /* width: 90%; */
 }
 
 .stats-box {
   text-align: center;
-  margin: 1rem;
+  /*TODO ******** check this one again */
+  /* margin: 0.5em; */
 }
 
 .stats-name {
@@ -319,7 +360,7 @@ select.form-control {
 }
 
 .stats-value {
-  font-size: 2rem;
+  font-size: 2em;
   background-color: rgb(252, 247, 240);
   width: 50%;
   margin: 0 auto;
@@ -370,6 +411,54 @@ button {
 }
 .status-message.error {
   background-color: #f08080;
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+  
+
+  #addHomeform {
+  
+  margin: 0 auto;
+  width: 95%;
+  background-color: lightgray;
+  /* padding: 1% 2%; */
+}
+  
+  .homeForm {
+  padding: 10px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  grid-template-areas:  
+                        "name-box name-box"
+                        "race class"
+                        "picture picture"   
+                        "lcol rcol" 
+                        "desc desc"
+                        "buttons buttons"
+                        ;
+  gap: 2px;
+}
+#title h1 {
+  text-align: center;
+  font-size: 3em;
+  
+}
+#picture {
+  margin: 0 auto;
+}
+#picture img {
+  width: 60%;
+  margin: 0 auto;
+}
+/* #race {
+  font: ;
+} */
+
+  
 }
 
 
