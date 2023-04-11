@@ -46,38 +46,37 @@ public class JdbcPartyDao implements PartyDao {
         if(result.next()) {
             return partyCharacters;
         } else {
-            String insertUserSql = "INSERT INTO users_party(user_id, party_id) Values ((SELECT users.user_id FROM users WHERE username = ?), ?)";
-            jdbcTemplate.queryForRowSet(insertUserSql,username,id);
-
+            String insertUserSql = "INSERT INTO users_party(user_id, party_id) Values ((SELECT users.user_id FROM users WHERE username = ?), ?) RETURNING party_id;";
+            jdbcTemplate.queryForObject(insertUserSql,Integer.class,username,id);
+            return partyCharacters;
         }
-        return partyCharacters;
+
 
     }
 
     private Integer getPartyId(List<Integer> orderedCharacters) {
         String createPartySQL = "INSERT INTO party (character_1, character_2, character_3, character_4) VALUES (?,?,?,?) RETURNING id;";
         Integer id =null;
-        try {
+
+        //if party exists, get id that matches existing party
+        String sql = "SELECT id FROM party WHERE character_1 = ? AND character_2 = ? AND character_3 = ? AND character_4 = ?;";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, orderedCharacters.get(0), orderedCharacters.get(1), orderedCharacters.get(2), orderedCharacters.get(3));
+
+        if(result.next()){
+            id = result.getInt("id");
+        } else {
             id = jdbcTemplate.queryForObject(createPartySQL, Integer.class,
                     orderedCharacters.get(0), orderedCharacters.get(1), orderedCharacters.get(2), orderedCharacters.get(3));
-
-        } catch (DuplicateKeyException e) {
-            //if party exists, get id that matches existing party
-            String sql = "SELECT id FROM party WHERE character_1 = ? AND character_2 = ? AND character_3 = ? AND character_4 = ?";
-            SqlRowSet result = jdbcTemplate.queryForRowSet(sql, orderedCharacters.get(0), orderedCharacters.get(1), orderedCharacters.get(2), orderedCharacters.get(3));
-
-            if(result.next()){
-                id = result.getInt("id");
-            }
         }
+
         return id;
     }
 
     @Override
-    public Party getPartyById(int id) {
+    public Party retrievePartyById(int id) {
         Party party = null;
         String sql = "SELECT character_1, character_2, character_3, character_4 " +
-                "FROM party WHERE id = ?";
+                "FROM party WHERE id = ?;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
 
         if(result.next()){

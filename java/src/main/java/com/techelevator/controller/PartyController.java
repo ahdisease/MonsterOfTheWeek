@@ -30,7 +30,7 @@ public class PartyController {
 
     @RequestMapping(path = "/party/{id}", method = RequestMethod.GET)
     public Party getPartyById(@PathVariable int id){
-        return partyDao.getPartyById(id);
+        return partyDao.retrievePartyById(id);
 
     }
 

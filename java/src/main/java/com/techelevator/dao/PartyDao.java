@@ -9,7 +9,7 @@ public interface PartyDao {
 
     Party createParty(Party partyCharacters, String username);
 
-    Party getPartyById(int id);
+    Party retrievePartyById(int id);
 
 
 
