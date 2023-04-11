@@ -46,7 +46,7 @@ public class JdbcPartyDao implements PartyDao {
         if(result.next()) {
             return partyCharacters;
         } else {
-            String insertUserSql = "INSERT INTO users_party(user_id, party_id) Values (?, ?)";
+            String insertUserSql = "INSERT INTO users_party(user_id, party_id) Values ((SELECT users.user_id FROM users WHERE username = ?), ?)";
             jdbcTemplate.queryForRowSet(insertUserSql,username,id);
 
         }
