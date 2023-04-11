@@ -284,10 +284,12 @@ export default {
 
 #char-pic {
   background-color: aliceblue;
-  width: 90%;
+  width: 100%;
   /* max-width: 100%; */
   height: auto;
   margin: 50px 0 0 0;
+  align-content: center;
+  justify-content: center;
 }
 
 #class {
