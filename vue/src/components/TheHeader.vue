@@ -25,11 +25,14 @@ export default {
   background-color: rgb(243, 200, 176);
   margin-top: 0;
   width: 100%;
+  border: 8px ridge darkred;
 }
 h2 {
   font-size: 2.5rem;
   text-align: center;
   color: rgb(218, 31, 6);
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: black;
   padding: 2rem 0 0 0;
   text-shadow: 2px 2px 6px rgb(54, 2, 2);
 }
@@ -57,8 +60,6 @@ nav a:hover {
   color: rgb(180, 131, 39);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  width: 10%;
-  padding: 0 4px;
 }
 
 

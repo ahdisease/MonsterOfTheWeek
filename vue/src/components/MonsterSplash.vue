@@ -3,8 +3,7 @@
     <div
       class="monster-card-front"
       v-show="!showDetails"
-      v-on:click="turnMonsterCard"
-    >
+      v-on:click="turnMonsterCard">
       <img
         v-bind:src="'https://www.dnd5eapi.co' + monster.image"
         alt="image of monster"
@@ -56,10 +55,6 @@ import MonsterService from "../services/MonsterService.js";
 export default {
   name: "monster-splash",
   data() {
-<<<<<<< HEAD
-=======
-    
->>>>>>> 1c106770f364010b72652afc61499abb5f1e6655
     return {
       monster: {},
       showDetails: false,

@@ -30,7 +30,7 @@ export default {
 }
 
 .monster-space {
-  max-width: 200px;
+  
 }
 
 .versus {
