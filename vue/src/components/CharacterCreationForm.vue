@@ -89,7 +89,7 @@
         </div>
         <div class="stats-box">
           <div class="stats-name">CHARISMA</div>
-          <div class="stats-value" id="int-value">5</div>
+          <div class="stats-value" id="cha-value">5</div>
         </div>
       </div>
       <!-- </div> -->
