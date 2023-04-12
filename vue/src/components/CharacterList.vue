@@ -1,25 +1,71 @@
 <template>
   <div>
     <h3>This is the Character List, Character Lovers!!!</h3>
-    
-      <div class="newPartyMember card" v-bind:key="character.id3" v-for="character in party">
-        <character-card v-bind:character="character"></character-card>
 
-      </div>
-      <div class="buttons" id="buttons" >
-            <button class="btn btn-submit" v-on:click="submitForm">Submit</button>
-            <button class="btn btn-cancel" type="cancel" v-on:click="cancelForm">
-              Cancel
-            </button>
-          </div>
-    <p>the character cards will show up here:</p>
-    <div class="card" v-for="character in currentCharacters" v-bind:key="character.id4" @click="addPartyMember(character)">
+    <div
+      class="newPartyMember card"
+      v-bind:key="character.id3"
+      v-for="character in party"
+    >
       <character-card v-bind:character="character"></character-card>
     </div>
-    
+    <div class="buttons" id="buttons">
+      <button class="btn btn-submit" v-on:click="submitForm">Submit</button>
+      <button class="btn btn-cancel" type="cancel" v-on:click="cancelForm">
+        Cancel
+      </button>
+    </div>
+
+    <!-- This is the filtered buttons -->
+
+    <!-- <div class="race-class-group" id="class">
+      <label for="charClass">Class</label>
+      <select
+        id="class-selection"
+        class="form-control"
+        v-model="newCharacter.charClass"
+        v-on:change="changeDescription"
+      >
+        <option
+          v-for="charClass in dropdownClass"
+          v-bind:key="charClass.id"
+          v-bind:value="charClass.name"
+        >
+          {{ charClass.name }}
+        </option>
+      </select>
+    </div> -->
+
+    <div class="race-class-group" id="race">
+      <label for="race">Race</label>
+      <select
+        id="race-selection"
+        class="form-control"
+        v-model="newCharacter.race"
+      >
+        <option
+          v-for="race in dropdownRace"
+          v-bind:key="race.id"
+          v-bind:value="race.name">
+         -->
+          {{ race.name }}
+         </option>
+      </select>
+    </div>
+
+    <!-- This ends the filtered buttons -->
+    <p>the character cards will show up here:</p>
+    <div
+      class="card"
+      v-for="character in currentCharacters"
+      v-bind:key="character.id4"
+      @click="addPartyMember(character)"
+    >
+      <character-card v-bind:character="character"></character-card>
+    </div>
 
     <!-- <div class="center-panel"> -->
-      <!-- <h1>Drag and Drop example</h1>
+    <!-- <h1>Drag and Drop example</h1>
       <div class="row">
         <div
           class="column1"
@@ -76,6 +122,7 @@
 <script>
 import CharacterCard from "./CharacterCard.vue";
 import CharacterService from "../services/CharacterService.js";
+import DnDApiService from "../services/DndApiService.js";
 
 export default {
   name: "character-list",
@@ -86,47 +133,64 @@ export default {
 
   data() {
     return {
+      charClass: "",
+      race: "",
+      newCharacter: {
+        race: '',
+        class: ''
+      },
+      
+
       currentCharacters: {},
       newPartyMember: {},
       party: [],
       checked: true,
-      
-
+      filter: {
+        race: "",
+        class: "",
+        strength: "",
+        dexterity: "",
+        constitution: "",
+        intelligence: "",
+        wisdom: "",
+        charisma: "",
+      },
 
       // showModal: false,
     };
   },
 
   created() {
-    CharacterService.getAllCharacters("2020-01-01").then((response) => {
+    CharacterService.getAllCharacters(new Date().toJSON().slice(0, 10)).then((response) => {
       this.currentCharacters = response.data;
     });
+
+    DnDApiService.getAllRaces().then((response) => {
+      this.dropdownRace = response.data.results;
+    });
+    DnDApiService.getAllClasses().then((response) => {
+      this.dropdownClass = response.data.results;
+    });
+    
+    
   },
 
   methods: {
-    submitForm() {    
+    submitForm() {
       let submitParty = this.party.map((character) => {
-        
-          return character.id;
-        
-
-      })
+        return character.id;
+      });
       let submitPartyObject = {
         characterOne: submitParty[0],
         characterTwo: submitParty[1],
         characterThree: submitParty[2],
-        characterFour: submitParty[3]
-        }
-
-
+        characterFour: submitParty[3],
+      };
 
       CharacterService.addNewParty(submitPartyObject)
         .then((response) => {
-
-          
-          
           if (response.status === 201) {
-            this.$router.push({name: 'home'});
+            this.$router.push({ name: "home" });
           }
         })
         // TODO ********* THIS ERROR needs work
@@ -141,8 +205,7 @@ export default {
       if (this.party.length < 4 && !this.party.includes(character)) {
         this.party.push(character);
       }
-      
-    }
+    },
     // startDrag(evt, item) {
     //   console.log("inside start drag" + item.name);
     //   evt.dataTransfer.dropEffect = "move";
@@ -158,16 +221,21 @@ export default {
   },
 
   computed: {
+    filteredList() {
+      let filteredCharacters = this.currentCharacters;
+      if (this.filteredCharacters.race != "") {
+        filteredCharacters = filteredCharacters.filter((character) => {
+          character.race.includes(this.filter.race);
+        });
+      }
 
-
-
+      return filteredCharacters;
+    },
 
     // filteredCharacters() {
-    //   let newPartyMember = this.currentCharacters;
+    //   let filteredCharacters = this.currentCharacters;
     //   if(this.newPartyMember.)
     // }
-
-
 
     // listOne() {
     //   console.log("inside listOne");
