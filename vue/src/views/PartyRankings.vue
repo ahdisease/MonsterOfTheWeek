@@ -1,6 +1,6 @@
 <template>
-  <div>
-      
+  <div>    <!-- method below needs finished-->
+      <party-component v-bind:parties="parties"/>
     </div>
 </template>
 
