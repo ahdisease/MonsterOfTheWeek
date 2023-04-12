@@ -16,9 +16,9 @@
     <div class="card" v-for="character in currentCharacters" v-bind:key="character.id4" @click="addPartyMember(character)">
       <character-card v-bind:character="character"></character-card>
     </div>
-    <div></div>
+    
 
-    <div class="center-panel">
+    <!-- <div class="center-panel"> -->
       <!-- <h1>Drag and Drop example</h1>
       <div class="row">
         <div
@@ -69,7 +69,7 @@
           </div>
         </div>
       </div> -->
-    </div>
+    <!-- </div> -->
   </div>
 </template>
 
@@ -118,8 +118,6 @@ export default {
         characterFour: submitParty[3]
         }
 
-
-console.log(submitPartyObject)
 
 
       CharacterService.addNewParty(submitPartyObject)
