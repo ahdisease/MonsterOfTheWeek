@@ -6,8 +6,8 @@
         <character-card v-bind:character="character"></character-card>
 
       </div>
-      <div class="buttons" id="buttons">
-            <button class="btn btn-submit" @click="submitForm">Submit</button>
+      <div class="buttons" id="buttons" >
+            <button class="btn btn-submit" v-on:click="submitForm">Submit</button>
             <button class="btn btn-cancel" type="cancel" v-on:click="cancelForm">
               Cancel
             </button>
@@ -118,8 +118,14 @@ export default {
         characterFour: submitParty[3]
         }
 
+
+console.log(submitPartyObject)
+
+
       CharacterService.addNewParty(submitPartyObject)
         .then((response) => {
+
+          
           
           if (response.status === 201) {
             this.$router.push('home');

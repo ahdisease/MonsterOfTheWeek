@@ -43,15 +43,19 @@ public class JdbcPartyDao implements PartyDao {
         //if user already submitted a party, they dont create another one
         //else it is submitted
 
-        if(result.next()) {
-            return partyCharacters;
-        } else {
-            String insertUserSql = "INSERT INTO users_party(user_id, party_id) Values ((SELECT users.user_id FROM users WHERE username = ?), ?) RETURNING party_id;";
-            jdbcTemplate.queryForObject(insertUserSql,Integer.class,username,id);
-            return partyCharacters;
+        try {
+            if (result.next()) {
+                return partyCharacters;
+            } else {
+                String insertUserSql = "INSERT INTO users_party(user_id, party_id) Values ((SELECT users.user_id FROM users WHERE username = ?), ?) RETURNING party_id;";
+                jdbcTemplate.queryForObject(insertUserSql, Integer.class, username, id);
+                return partyCharacters;
+        }
+        } catch (Exception e){
+            System.out.println(e);
         }
 
-
+        return partyCharacters;
     }
 
     private Integer getPartyId(List<Integer> orderedCharacters) {
