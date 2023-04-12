@@ -3,6 +3,7 @@ package com.techelevator.dao;
 import com.techelevator.model.Party;
 
 import java.security.Principal;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface PartyDao {
@@ -11,7 +12,7 @@ public interface PartyDao {
 
     Party retrievePartyById(int id);
 
-    Party retrievePartyByUsername(String username);
+    Party retrievePartyByUsername(String username, LocalDate date);
 
 
 

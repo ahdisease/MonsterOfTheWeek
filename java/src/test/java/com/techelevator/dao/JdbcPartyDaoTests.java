@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.time.LocalDate;
+
 public class JdbcPartyDaoTests extends BaseDaoTests {
 
     private JdbcPartyDao jdbcPartyDao;
@@ -49,5 +51,22 @@ public class JdbcPartyDaoTests extends BaseDaoTests {
         //assert
         Assert.assertEquals(1,newParty.getId());
     }
+
+    @Test
+    public void getPartyByUsername_returns_correct_party() {
+        //arrange
+        Party party = new Party();
+        party.setCharacterOne(1);
+        party.setCharacterTwo(2);
+        party.setCharacterThree(3);
+        party.setCharacterFour(4);
+        //act
+        Party newParty = jdbcPartyDao.retrievePartyByUsername(USER_1.getUsername(), LocalDate.parse("2020-01-02"));
+
+        //assert
+        Assert.assertEquals(1,newParty.getId());
+    }
+
+
 
 }
