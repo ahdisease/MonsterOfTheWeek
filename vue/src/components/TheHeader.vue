@@ -1,10 +1,10 @@
 <template>
   <div id="title-block">
-    <h2>Monster of the Week LOGOHERE</h2>
+    <h2>Monster of the Week MotW</h2>
     <nav id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;
-      <router-link v-bind:to="{ name: 'character-creator' }">Character Creator</router-link>&nbsp;
-      <router-link v-bind:to="{ name: 'party' }">Party Creator</router-link>&nbsp;
+      <router-link class="nav-options" v-bind:to="{ name: 'home' }">Home</router-link>
+      <router-link class="nav-options" v-bind:to="{ name: 'character-creator' }">Character Creator</router-link>
+      <router-link class="nav-options" v-bind:to="{ name: 'party' }">Party Creator</router-link>
 
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </nav>
@@ -22,22 +22,29 @@ export default {
 <style scoped>
 
 #title-block {
-  background-color: rgb(41, 40, 40);
-  margin-top: -25px;
+  background-color: rgb(243, 200, 176);
+  margin-top: 0;
   width: 100%;
 }
 h2 {
-  font-size: 2em;
+  font-size: 2.5rem;
   text-align: center;
-  color: gold;
-  padding: 15px 0 0 0;
+  color: rgb(243, 63, 8);
+  padding: 2rem 0 0 0;
+  text-shadow: 2px 2px 6px rgb(54, 2, 2);
 }
 
 nav {
    /* background-color: rgb(218, 124, 36); */
    text-align: center;
-   padding: 10px 0;
+   padding: 10px 0 20px;
    color: whitesmoke;
+}
+
+.nav-options {
+  font-size: 1.2rem;
+  margin: 15px 20px;
+  color: rgb(138, 91, 3);
 }
 
 nav a {
@@ -47,7 +54,11 @@ nav a {
   
 }
 nav a:hover {
-  color: rgb(235, 238, 67);
+  color: rgb(180, 131, 39);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 10%;
+  padding: 0 4px;
 }
 
 

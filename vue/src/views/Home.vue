@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-
-      <monster-splash />
-    <party-component/>
+    <monster-splash class="monster-space" />
+    <div class="versus">VS</div>
+    <party-component class="party-space" />
   </div>
 </template>
 
@@ -21,3 +21,25 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+
+.home {
+  display: flex;
+  
+}
+
+.monster-space {
+
+}
+
+.versus {
+
+}
+
+.party-space {
+  width: 80%;
+  height: auto;
+  border: 10px black solid;
+}
+</style>
