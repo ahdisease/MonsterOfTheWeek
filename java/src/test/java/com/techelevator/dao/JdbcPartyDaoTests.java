@@ -40,11 +40,7 @@ public class JdbcPartyDaoTests extends BaseDaoTests {
     @Test
     public void createParty_assigns_id_of_previously_created_party_if_duplicate() {
         //arrange
-        Party party = new Party();
-        party.setCharacterOne(1);
-        party.setCharacterTwo(2);
-        party.setCharacterThree(3);
-        party.setCharacterFour(4);
+        Party party = fakeConstructorParty(1,2,3,4);
         //act
         Party newParty = jdbcPartyDao.createParty(party,USER_1.getUsername());
 
@@ -55,18 +51,29 @@ public class JdbcPartyDaoTests extends BaseDaoTests {
     @Test
     public void getPartyByUsername_returns_correct_party() {
         //arrange
-        Party party = new Party();
-        party.setCharacterOne(1);
-        party.setCharacterTwo(2);
-        party.setCharacterThree(3);
-        party.setCharacterFour(4);
+        Party partyOne = fakeConstructorParty(1,2,3,4);
+        Party partyTwo = fakeConstructorParty(5,6,7,8);
+
         //act
-        Party newParty = jdbcPartyDao.retrievePartyByUsername(USER_1.getUsername(), LocalDate.parse("2020-01-02"));
+        Party retrievedPartyOne = jdbcPartyDao.retrievePartyByUsername(USER_1.getUsername(), LocalDate.parse("2020-01-02"));
+        Party retrievedPartyTwo = jdbcPartyDao.retrievePartyByUsername(USER_1.getUsername(), LocalDate.parse("2020-01-08"));
+        Party retrievedPartyTwoUserTwo = jdbcPartyDao.retrievePartyByUsername(USER_2.getUsername(), LocalDate.parse("2020-01-08"));
 
         //assert
-        Assert.assertEquals(1,newParty.getId());
+        Assert.assertEquals(1,retrievedPartyOne.getId());
+        Assert.assertEquals(2,retrievedPartyTwo.getId());
+        Assert.assertEquals(2,retrievedPartyTwoUserTwo.getId());
+
     }
 
+    private Party fakeConstructorParty(int char_one,int char_two,int char_three,int char_four) {
+        Party party = new Party();
+        party.setCharacterOne(char_one);
+        party.setCharacterTwo(char_two);
+        party.setCharacterThree(char_three);
+        party.setCharacterFour(char_four);
 
+        return party;
+    }
 
 }
