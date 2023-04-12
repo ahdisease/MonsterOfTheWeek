@@ -90,7 +90,7 @@ export default {
       newPartyMember: {},
       party: [],
       checked: true,
-
+      
 
 
       // showModal: false,
@@ -104,13 +104,28 @@ export default {
   },
 
   methods: {
-    submitForm() {
-      CharacterService.addNewParty(this.party)
+    submitForm() {    
+      let submitParty = this.party.map((character) => {
+        
+          return character.id;
+        
+
+      })
+      let submitPartyObject = {
+        characterOne: submitParty[0],
+        characterTwo: submitParty[1],
+        characterThree: submitParty[2],
+        characterFour: submitParty[3]
+        }
+
+      CharacterService.addNewParty(submitPartyObject)
         .then((response) => {
+          
           if (response.status === 201) {
             this.$router.push('home');
           }
         })
+        // TODO ********* THIS ERROR needs work
         .catch((error) => {
           this.handleErrorResponse(error);
         });
@@ -139,6 +154,10 @@ export default {
   },
 
   computed: {
+
+
+
+
     // filteredCharacters() {
     //   let newPartyMember = this.currentCharacters;
     //   if(this.newPartyMember.)
