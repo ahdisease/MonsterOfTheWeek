@@ -8,6 +8,7 @@ import store from '../store/index'
 import CharacterCreator from '../views/CharacterCreator.vue'
 import PartyCreator from '../views/PartyCreator.vue'
 import CharacterView from '../views/CharacterView.vue'
+import PartyRankings from '../views/PartyRankings.vue'
 
 Vue.use(Router)
 
@@ -79,7 +80,15 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    }
+    },
+    {
+      path: '/party/?date',
+      name: 'party-rankings',
+      component: PartyRankings,
+      meta: {
+        requiresAuth: true
+      }
+    },
   ]
 })
 
