@@ -203,7 +203,7 @@ export default {
         .then((response) => {
           if (response.status === 201) {
             /* TODO ******** set this to go to the party screen probably */
-            //this.$router.push('party-view');
+            this.$router.push({name: 'party' });
           }
         })
         .catch((error) => {
@@ -213,7 +213,7 @@ export default {
         });
     },
     cancelForm() {
-      this.$router.push("character-creator");
+      this.$router.push({name: "character-creator"});
     },
   },
 };
