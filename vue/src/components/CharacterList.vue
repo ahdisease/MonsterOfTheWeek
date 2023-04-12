@@ -6,8 +6,8 @@
         <character-card v-bind:character="character"></character-card>
 
       </div>
-      <div class="buttons" id="buttons">
-            <button class="btn btn-submit" @click="submitForm">Submit</button>
+      <div class="buttons" id="buttons" >
+            <button class="btn btn-submit" v-on:click="submitForm">Submit</button>
             <button class="btn btn-cancel" type="cancel" v-on:click="cancelForm">
               Cancel
             </button>
@@ -16,9 +16,9 @@
     <div class="card" v-for="character in currentCharacters" v-bind:key="character.id4" @click="addPartyMember(character)">
       <character-card v-bind:character="character"></character-card>
     </div>
-    <div></div>
+    
 
-    <div class="center-panel">
+    <!-- <div class="center-panel"> -->
       <!-- <h1>Drag and Drop example</h1>
       <div class="row">
         <div
@@ -69,7 +69,7 @@
           </div>
         </div>
       </div> -->
-    </div>
+    <!-- </div> -->
   </div>
 </template>
 
@@ -118,10 +118,14 @@ export default {
         characterFour: submitParty[3]
         }
 
+
+
       CharacterService.addNewParty(submitPartyObject)
         .then((response) => {
+
           
-          if (response.status === 201) {
+          
+          if (response.status === 200) {
             this.$router.push('home');
           }
         })

@@ -114,7 +114,11 @@ INSERT INTO character (name, race, description, char_class, strength, dexterity,
 INSERT INTO character (name, race, description, char_class, strength, dexterity, constitution,
    intelligence, wisdom, charisma, monster_id, user_id) VALUES ('b', 'c', 'd', 'e', 1, 1, 1, 1, 1, 1, 2, 4);--id = 8
 
-INSERT INTO party (character_1, character_2, character_3, character_4) VALUES (1,2,3,4);
+INSERT INTO party (character_1, character_2, character_3, character_4) VALUES (1,2,3,4); --id = 1
+INSERT INTO party (character_1, character_2, character_3, character_4) VALUES (5,6,7,8); --id = 2
+
+INSERT INTO users_party (user_id, party_id) VALUES (1,1); 
+INSERT INTO users_party (user_id, party_id) VALUES (1,2); 
 
 COMMIT TRANSACTION;
 

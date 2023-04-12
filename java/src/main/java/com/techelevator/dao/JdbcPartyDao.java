@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Component
@@ -43,15 +44,19 @@ public class JdbcPartyDao implements PartyDao {
         //if user already submitted a party, they dont create another one
         //else it is submitted
 
-        if(result.next()) {
-            return partyCharacters;
-        } else {
-            String insertUserSql = "INSERT INTO users_party(user_id, party_id) Values ((SELECT users.user_id FROM users WHERE username = ?), ?) RETURNING party_id;";
-            jdbcTemplate.queryForObject(insertUserSql,Integer.class,username,id);
-            return partyCharacters;
+        try {
+            if (result.next()) {
+                return partyCharacters;
+            } else {
+                String insertUserSql = "INSERT INTO users_party(user_id, party_id) Values ((SELECT users.user_id FROM users WHERE username = ?), ?) RETURNING party_id;";
+                jdbcTemplate.queryForObject(insertUserSql, Integer.class, username, id);
+                return partyCharacters;
+        }
+        } catch (Exception e){
+            System.out.println(e);
         }
 
-
+        return partyCharacters;
     }
 
     private Integer getPartyId(List<Integer> orderedCharacters) {
@@ -93,11 +98,16 @@ public class JdbcPartyDao implements PartyDao {
     }
 
     @Override
-    public Party retrievePartyByUsername(String username) {
+    public Party retrievePartyByUsername(String username, LocalDate date) {
         Party party = null;
-        String sql = "SELECT id, character_1, character_2, character_3, character_4 " +
-                "FROM party WHERE id = (SELECT users.user_id FROM users WHERE username = ?);";
-        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, username);
+        String sql = "SELECT id, character_1, character_2, character_3, character_4" +
+                " FROM party WHERE id = (SELECT party_id FROM users_party" +
+                " JOIN party ON users_party.party_id = party.id" +
+                " JOIN character On party.character_1 = character.id" +
+                " WHERE users_party.user_id = (SELECT users.user_id FROM users WHERE username = ?)" +
+                " AND character.monster_id = (SELECT id FROM monster WHERE ? between start_date and end_date ));";
+
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, username,date);
 
         if(result.next()){
             party = new Party();

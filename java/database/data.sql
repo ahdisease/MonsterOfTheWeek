@@ -14,6 +14,12 @@ INSERT INTO character (name, char_class, race, description, strength, dexterity,
 	VALUES ('Lyfet', 'Rouge', 'Elf', 'Do not trust him', 10,10,10,10,10,10, 1,1);
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
 	VALUES ('Keen', 'Fighter', 'Dragon Born', 'Friendly but scary', 10,10,10,10,10,10, 1,2);
+INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
+	VALUES ('Teg', 'Fighter', 'Elf', 'Floats', 10,10,10,10,10,10, 1,2);
+INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
+	VALUES ('Zic', 'Fighter', 'Dwarf', 'Unicorn Blood', 10,10,10,10,10,10, 1,1);
+INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
+	VALUES ('Fig', 'Fighter', 'Elf', 'Loves eating', 10,10,10,10,10,10, 1,2);
 	
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
 	VALUES ('Toblerone', 'Rogue', 'Dwarf', 'Builds machines to fight for him', 10,10,10,10,10,10, 2,1);
