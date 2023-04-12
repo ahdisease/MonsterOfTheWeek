@@ -34,5 +34,13 @@ public class PartyController {
 
     }
 
+    @RequestMapping(path = "/party", method = RequestMethod.GET)
+    public Party getPartyById(@RequestParam String username){
+
+
+        return partyDao.retrievePartyByUsername(username);
+
+    }
+
 
 }

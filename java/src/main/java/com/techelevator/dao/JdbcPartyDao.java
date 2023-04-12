@@ -96,4 +96,24 @@ public class JdbcPartyDao implements PartyDao {
         return party;
     }
 
+    @Override
+    public Party retrievePartyByUsername(String username) {
+        Party party = null;
+        String sql = "SELECT id, character_1, character_2, character_3, character_4 " +
+                "FROM party WHERE id = (SELECT users.user_id FROM users WHERE username = ?);";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, username);
+
+        if(result.next()){
+            party = new Party();
+            party.setCharacterOne(result.getInt("character_1"));
+            party.setCharacterTwo(result.getInt("character_2"));
+            party.setCharacterThree(result.getInt("character_3"));
+            party.setCharacterFour(result.getInt("character_4"));
+            party.setId(result.getInt("id"));
+        }
+
+
+        return party;
+    }
+
 }

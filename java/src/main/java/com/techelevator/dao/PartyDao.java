@@ -11,6 +11,8 @@ public interface PartyDao {
 
     Party retrievePartyById(int id);
 
+    Party retrievePartyByUsername(String username);
+
 
 
 }
