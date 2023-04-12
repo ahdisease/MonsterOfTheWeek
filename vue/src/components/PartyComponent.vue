@@ -31,9 +31,10 @@ export default {
       }
     },
     created() {
-      CharacterService.getPartyByUsername(this.$store.state.currentUser)
+      CharacterService.getPartyByUsername( this.$store.state.user.username)
         .then( response => {
           if (response.data){
+            console.log(response.data);
           const partyObject = response.data;
           CharacterService.getCharacterById(partyObject.characterOne)
             .then(response => {

@@ -43,8 +43,8 @@ public class PartyController {
     }
 
     @RequestMapping(path = "/party", method = RequestMethod.GET)
-    public Party getPartyById(@RequestParam String username,
-                              @RequestParam(value = "date", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date){
+    public Party getPartyByUsername(@RequestParam String username,
+                                    @RequestParam(value = "date", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date){
         if(date == null) {
             date = LocalDate.now();
         }
