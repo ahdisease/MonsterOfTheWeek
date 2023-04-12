@@ -118,7 +118,8 @@ INSERT INTO party (character_1, character_2, character_3, character_4) VALUES (1
 INSERT INTO party (character_1, character_2, character_3, character_4) VALUES (5,6,7,8); --id = 2
 
 INSERT INTO users_party (user_id, party_id) VALUES (1,1); 
-INSERT INTO users_party (user_id, party_id) VALUES (1,2); 
+INSERT INTO users_party (user_id, party_id) VALUES (1,2);
+INSERT INTO users_party (user_id, party_id) VALUES (2,2);
 
 COMMIT TRANSACTION;
 
