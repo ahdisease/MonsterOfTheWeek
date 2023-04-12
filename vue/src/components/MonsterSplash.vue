@@ -56,6 +56,10 @@ import MonsterService from "../services/MonsterService.js";
 export default {
   name: "monster-splash",
   data() {
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 1c106770f364010b72652afc61499abb5f1e6655
     return {
       monster: {},
       showDetails: false,

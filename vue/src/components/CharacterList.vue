@@ -125,7 +125,7 @@ export default {
 
           
           
-          if (response.status === 200) {
+          if (response.status === 201) {
             this.$router.push('home');
           }
         })

@@ -5,6 +5,7 @@ INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpUL
 
 INSERT INTO monster (name_index, start_date, end_date) VALUES ('monster','2020-01-01','2020-01-07');
 INSERT INTO monster (name_index, start_date, end_date) VALUES ('monstar','2020-01-08','2020-01-14');
+INSERT INTO monster (name_index, start_date, end_date) VALUES ('aboleth','2023-04-09','2023-04-15');
 
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
 	VALUES ('Jet', 'Fighter', 'Elf', 'Swims and fights', 10,10,10,10,10,10, 1,1);
