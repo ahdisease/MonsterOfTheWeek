@@ -5,14 +5,17 @@ import com.techelevator.model.Monster;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
 
+
 @CrossOrigin
 @RestController
+@PreAuthorize("isAuthenticated()")
 public class MonsterController {
 
     @Autowired
@@ -26,7 +29,7 @@ public class MonsterController {
         return monsterDao.addMonster(monster);
     }
 
-
+    @PreAuthorize("permitAll")
     @RequestMapping(path = "/monsters", method = RequestMethod.GET)
     public Monster retrieveMonsterByDate(@RequestParam(value = "date", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
 

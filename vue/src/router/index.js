@@ -37,7 +37,7 @@ const router = new Router({
       name: 'character-creator',
       component: CharacterCreator,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -53,7 +53,7 @@ const router = new Router({
       name: 'party',
       component: PartyCreator,
       meta: {
-          requiresAuth: false
+          requiresAuth: true
       }
     },
     {
