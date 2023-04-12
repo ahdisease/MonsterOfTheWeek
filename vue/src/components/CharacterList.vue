@@ -126,7 +126,7 @@ export default {
           
           
           if (response.status === 201) {
-            this.$router.push('home');
+            this.$router.push({name: 'home'});
           }
         })
         // TODO ********* THIS ERROR needs work
