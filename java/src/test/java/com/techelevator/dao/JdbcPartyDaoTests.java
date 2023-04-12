@@ -40,7 +40,7 @@ public class JdbcPartyDaoTests extends BaseDaoTests {
     @Test
     public void createParty_assigns_id_of_previously_created_party_if_duplicate() {
         //arrange
-        Party party = fakeConstructorParty(1,2,3,4);
+        Party party = fakeConstructorParty(4,2,3,1);
         //act
         Party newParty = jdbcPartyDao.createParty(party,USER_1.getUsername());
 
