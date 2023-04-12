@@ -45,8 +45,6 @@
       </div>
     </div>
 
-    <h1>VS</h1>
-
     <party-component/>
 
   </main>
