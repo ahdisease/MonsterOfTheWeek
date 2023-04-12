@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.CharacterDao;
 import com.techelevator.dao.MonsterDao;
 import com.techelevator.dao.PartyDao;
+import com.techelevator.dao.UserDao;
 import com.techelevator.model.Character;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -26,6 +27,8 @@ public class CharacterController {
 
     @Autowired
     private CharacterDao dao;
+    @Autowired
+    private UserDao userDao;
 
 
 
@@ -41,7 +44,13 @@ public class CharacterController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/characters", method = RequestMethod.POST)
-    public Character createNewCharacter(@Valid @RequestBody Character character) {
+    public Character createNewCharacter(@Valid @RequestBody Character character, Principal user) {
+        if(user == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        } else {
+            character.setId(userDao.findIdByUsername(user.getName()));
+        }
+
         Character character1 = dao.createCharacter(character);
 
         if(character1 == null){

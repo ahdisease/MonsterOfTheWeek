@@ -42,6 +42,7 @@
           id="class-selection"
           class="form-control"
           v-model="newCharacter.charClass"
+          v-on:change="changeDescription"
         >
           <option
             v-for="charClass in dropdownClass"
@@ -58,15 +59,15 @@
       <div class="stats-column" id="lcol">
         <div class="stats-box">
           <div class="stats-name">STRENGTH</div>
-          <div class="stats-value" id="str-value">5</div>
+          <div class="stats-value" id="str-value">?</div>
         </div>
         <div class="stats-box">
           <div class="stats-name">DEXTERITY</div>
-          <div class="stats-value" id="dex-value">5</div>
+          <div class="stats-value" id="dex-value">?</div>
         </div>
         <div class="stats-box">
           <div class="stats-name">CONSTITUTION</div>
-          <div class="stats-value" id="con-value">5</div>
+          <div class="stats-value" id="con-value">?</div>
         </div>
       </div>
 
@@ -81,15 +82,15 @@
       <div class="stats-column" id="rcol">
         <div class="stats-box">
           <div class="stats-name">INTELLIGENCE</div>
-          <div class="stats-value" id="int-value">5</div>
+          <div class="stats-value" id="int-value">?</div>
         </div>
         <div class="stats-box">
           <div class="stats-name">WISDOM</div>
-          <div class="stats-value" id="wis-value">5</div>
+          <div class="stats-value" id="wis-value">?</div>
         </div>
         <div class="stats-box">
           <div class="stats-name">CHARISMA</div>
-          <div class="stats-value" id="cha-value">5</div>
+          <div class="stats-value" id="cha-value">?</div>
         </div>
       </div>
       <!-- </div> -->
@@ -115,8 +116,8 @@
 
 <script>
 import CharacterService from "../services/CharacterService.js";
-// TODO ********** get this api working
-// import races from 'https://api.open5e.com/races/';
+import DnDApiService from "../services/DndApiService.js";
+import MonsterService from "../services/MonsterService.js";
 
 export default {
   name: "character-creation-form",
@@ -161,8 +162,23 @@ export default {
     };
   },
 
-  created() {},
+  created() {
+    DnDApiService.getAllRaces().then(response => {
+      this.dropdownRace = response.data.results
+    });
+    DnDApiService.getAllClasses().then(response => {
+      this.dropdownClass = response.data.results
+    });
+    console.log(new Date().toJSON().slice(0, 10));
+    
+  },
   methods: {
+    setMonsterId() {
+      MonsterService.getMonsterByDate(new Date().toJSON().slice(0, 10))
+      .then(response => {
+        this.newCharacter.monsterId = response.data.id;
+      });
+    },
     resetCharacter() {
       this.newCharacter = {
         name: "",
@@ -182,6 +198,7 @@ export default {
       };
     },
     submitForm() {
+
       CharacterService.addNewCharacter(this.newCharacter)
         .then((response) => {
           if (response.status === 201) {
