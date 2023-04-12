@@ -303,7 +303,8 @@ export default {
 #race-selection {
   width: 150px;
   margin: 5px auto;
-  
+  height: 40px;
+
   /* this is the dropdown area for race */
 }
 
@@ -333,7 +334,7 @@ export default {
 #class-selection {
   width: 150px;
   margin: 3px auto;
-
+  height: 40px;
   /* this is the drop down for class */
 }
 
