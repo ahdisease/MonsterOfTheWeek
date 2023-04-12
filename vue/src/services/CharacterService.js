@@ -24,6 +24,9 @@ export default {
 
     getPartyByUsername(username) {
         return axios.get(`/party?username=${username}`)
-    }
+    },
+    getAllParties(date) {
+        return axios.get(`/party?date=${date}`);
+    },
 
 }
