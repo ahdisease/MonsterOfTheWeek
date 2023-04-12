@@ -45,7 +45,6 @@
       </div>
     </div>
 
-    <party-component/>
 
   </main>
 </template>
@@ -53,12 +52,10 @@
 <script>
 import DndApiService from "../services/DndApiService.js";
 import MonsterService from "../services/MonsterService.js";
-import PartyComponent from '../components/PartyComponent.vue';
 
 export default {
   name: "monster-splash",
   data() {
-    PartyComponent
     return {
       monster: {},
       showDetails: false,

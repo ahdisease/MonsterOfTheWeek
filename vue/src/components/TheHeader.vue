@@ -29,7 +29,7 @@ export default {
 h2 {
   font-size: 2.5rem;
   text-align: center;
-  color: rgb(243, 63, 8);
+  color: rgb(218, 31, 6);
   padding: 2rem 0 0 0;
   text-shadow: 2px 2px 6px rgb(54, 2, 2);
 }

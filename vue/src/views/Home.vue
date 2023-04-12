@@ -30,7 +30,7 @@ export default {
 }
 
 .monster-space {
-
+  max-width: 200px;
 }
 
 .versus {
@@ -38,8 +38,6 @@ export default {
 }
 
 .party-space {
-  width: 80%;
-  height: auto;
   border: 10px black solid;
 }
 </style>
