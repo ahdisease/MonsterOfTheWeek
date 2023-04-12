@@ -8,7 +8,7 @@
 
 <script>
 import MonsterSplash from '../components/MonsterSplash.vue'
-import PartyComponent from '../components/PartyComponent.vue';
+import PartyComponent from '../components/PartyComponent.vue'
 
 
 
@@ -38,6 +38,7 @@ export default {
 }
 
 .party-space {
-  border: 10px black solid;
+  background-color: black;
+  width: 20px;
 }
 </style>
