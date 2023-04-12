@@ -6,6 +6,10 @@ export default {
         return axios.get(`/characters?date=${date}`);
     },
 
+    getCharacterByUsername(username) {
+        return axios.get(`/characters?username=${username}`);
+    },
+
     getCharacterById(id) {
         return axios.get(`/characters/${id}`);
     },

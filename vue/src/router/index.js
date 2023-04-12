@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import CharacterCreator from '../views/CharacterCreator.vue'
 import PartyCreator from '../views/PartyCreator.vue'
+import CharacterView from '../views/CharacterView.vue'
 
 Vue.use(Router)
 
@@ -37,6 +38,14 @@ const router = new Router({
       component: CharacterCreator,
       meta: {
         requiresAuth: false
+      }
+    },
+    {
+      path: '/character-view',
+      name: 'character-view',
+      component: CharacterView,
+      meta: {
+        requiresAuth: true
       }
     },
     {
