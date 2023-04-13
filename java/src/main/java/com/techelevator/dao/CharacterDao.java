@@ -31,4 +31,12 @@ public interface CharacterDao {
 //    status: 201 created
     Character createCharacter (Character character);
 
+//    Flag inappropriate content
+//    url: "/flag/characters/{id}"
+//    http method: put
+//    status 200 OK
+//	    403 Forbidden
+//	    404 Not Found
+    boolean flagCharacterInappropriate (int id);
+
 }

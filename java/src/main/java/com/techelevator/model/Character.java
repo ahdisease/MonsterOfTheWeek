@@ -33,6 +33,20 @@ public class Character implements Comparable<Character> {
     private int monsterId;
     @NotNull
     private int userId;
+    @NotBlank
+    private String flaggedInappropriate;
+
+    public Character() {
+        flaggedInappropriate = "not_flagged";
+    }
+
+    public String getFlaggedInappropriate() {
+        return flaggedInappropriate;
+    }
+
+    public void setFlaggedInappropriate(String flaggedInappropriate) {
+        this.flaggedInappropriate = flaggedInappropriate;
+    }
 
     public int getMonsterId() {
         return monsterId;

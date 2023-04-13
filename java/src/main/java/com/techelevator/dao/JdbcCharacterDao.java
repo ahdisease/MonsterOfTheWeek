@@ -76,6 +76,21 @@ public class JdbcCharacterDao implements CharacterDao{
         return character;
     }
 
+    @Override
+    public boolean flagCharacterInappropriate(int id) {
+        String sql = "UPDATE character SET flagged_inappropriate = 'flagged' WHERE id = ? AND flagged_inappropriate = 'not_flagged';";
+
+        try {
+            jdbcTemplate.update(sql,id);
+        } catch (Exception e) {
+            return false;
+        }
+
+
+
+        return true;
+    }
+
     private int[] diceRollStats() {
         int[] stats = new int[6];
 

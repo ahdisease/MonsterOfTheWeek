@@ -74,6 +74,11 @@ public class CharacterController {
         }
     }
 
+    @RequestMapping(path = "/flag/characters/{id}", method = RequestMethod.PUT)
+    public boolean flagCharacterById(@PathVariable int id) {
+        return dao.flagCharacterInappropriate(id);
+    }
+
 
 }
 
