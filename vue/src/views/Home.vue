@@ -42,12 +42,11 @@ export default {
 }
 
 .versus {
-  font-size: 2.5rem;
+  font-size: 3rem;
   text-align: center;
   color: rgb(218, 31, 6);
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
-  padding: 2rem 0 0 0;
   text-shadow: 2px 2px 6px rgb(54, 2, 2);
 }
 
