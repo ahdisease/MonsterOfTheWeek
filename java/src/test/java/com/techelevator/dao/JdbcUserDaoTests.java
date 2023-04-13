@@ -15,6 +15,10 @@ public class JdbcUserDaoTests extends BaseDaoTests {
     protected static final User USER_2 = new User(2, "user2", "user2", "ROLE_USER");
     private static final User USER_3 = new User(3, "user3", "user3", "ROLE_USER");
     private static final User USER_4 = new User(4, "user4", "user4", "ROLE_USER");
+    private static final User USER_5 = new User(4, "user5", "user5", "ROLE_USER");
+    private static final User USER_6 = new User(4, "user6", "user6", "ROLE_USER");
+    private static final User USER_7 = new User(4, "user7", "user7", "ROLE_USER");
+    private static final User USER_8 = new User(4, "user8", "user8", "ROLE_USER");
 
 
     private JdbcUserDao sut;
@@ -78,7 +82,7 @@ public class JdbcUserDaoTests extends BaseDaoTests {
         List<User> users = sut.findAll();
 
         Assert.assertNotNull(users);
-        Assert.assertEquals(4, users.size());
+        Assert.assertEquals(8, users.size());
         Assert.assertEquals(USER_1, users.get(0));
         Assert.assertEquals(USER_2, users.get(1));
         Assert.assertEquals(USER_3, users.get(2));

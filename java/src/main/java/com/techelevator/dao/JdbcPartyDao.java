@@ -4,6 +4,7 @@ import com.techelevator.model.Party;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -85,11 +86,7 @@ public class JdbcPartyDao implements PartyDao {
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
 
         if(result.next()){
-            party = new Party();
-            party.setCharacterOne(result.getInt("character_1"));
-            party.setCharacterTwo(result.getInt("character_2"));
-            party.setCharacterThree(result.getInt("character_3"));
-            party.setCharacterFour(result.getInt("character_4"));
+            party = mapRowToParty(result);
             party.setId(id);
         }
 
@@ -110,11 +107,7 @@ public class JdbcPartyDao implements PartyDao {
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, username,date);
 
         if(result.next()){
-            party = new Party();
-            party.setCharacterOne(result.getInt("character_1"));
-            party.setCharacterTwo(result.getInt("character_2"));
-            party.setCharacterThree(result.getInt("character_3"));
-            party.setCharacterFour(result.getInt("character_4"));
+            party = mapRowToParty(result);
             party.setId(result.getInt("id"));
         }
 
@@ -122,4 +115,34 @@ public class JdbcPartyDao implements PartyDao {
         return party;
     }
 
+    @Override
+    public Party retrieveWinningPartyForDate(LocalDate date) {
+        Party party = null;
+        String sql = "select party_id, count(users_party.user_id) as votes\n" +
+                "from users_party\n" +
+                "join party on users_party.party_id = party.id\n" +
+                "join character on character_1 = character.id\n" +
+                "where character.monster_id = (SELECT id FROM monster WHERE ? between start_date and end_date )\n" +
+                "group by party_id\n" +
+                "order by votes desc\n" +
+                "limit 1;";
+
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, date);
+
+        if(result.next()){
+            party = retrievePartyById(result.getInt("party_id"));
+        }
+
+
+        return party;
+    }
+
+    private Party mapRowToParty(SqlRowSet result) {
+        Party party = new Party();
+        party.setCharacterOne(result.getInt("character_1"));
+        party.setCharacterTwo(result.getInt("character_2"));
+        party.setCharacterThree(result.getInt("character_3"));
+        party.setCharacterFour(result.getInt("character_4"));
+        return party;
+    }
 }
