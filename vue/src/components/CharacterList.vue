@@ -1,22 +1,27 @@
 <template>
   <div>
-    <div class="current-party">
+    <div class="party-container">
+      <div class="current-party">
       <div
       v-bind:key="character.id3"
       v-for="character in party"
-      @dblclick.prevent="addPartyMember(character)"
+      @dblclick.prevent="removePartyMember(character)"
         style="-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;"
       >
       <character-card v-bind:character="character"></character-card>
       </div>
     </div>
+    </div>
     
-    <div class="buttons" id="buttons">
+    <div class="button-container">
+      <div class="buttons">
       <button class="btn btn-submit" v-on:click="submitForm">Submit</button>
       <button class="btn btn-cancel" type="cancel" v-on:click="cancelForm">
         Cancel
       </button>
+      </div>
     </div>
+    
 
     <!-- This is the filtered buttons -->
 
@@ -441,6 +446,12 @@ export default {
 
 <style scoped>
 
+.party-container {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 300px;
+}
+
 .current-party {
   display: flex;
   flex-wrap: wrap;
@@ -472,6 +483,11 @@ export default {
   align-content: space-between;
 }
 
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
 .buttons {
   margin: 8px;
   border-radius: 3px;
@@ -479,8 +495,27 @@ export default {
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  display: flex;
+  gap: 20px;
   font-size: 16px;
+}
+
+.btn-submit {
+  background-color: lightgreen;
+}
+
+.btn-submit:hover {
+  background-color: lightgreen;
+  border: 1px solid black;
+}
+
+.btn-cancel {
+  background-color: lightpink;
+}
+
+.btn-cancel:hover {
+  background-color: lightpink;
+  border: 1px solid black;
 }
 
 .unselectable {

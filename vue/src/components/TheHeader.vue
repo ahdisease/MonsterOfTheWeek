@@ -3,7 +3,7 @@
     <h2>Monster of the Week MotW</h2>
     <nav id="nav">
       <router-link class="nav-options" v-bind:to="{ name: 'home' }">Home</router-link>
-      <router-link class="nav-options" v-bind:to="{ name: 'character-creator' }">Character Creator</router-link>
+      <router-link class="nav-options" v-bind:to="{ name: 'character-view' }">Character</router-link>
       <router-link class="nav-options" v-bind:to="{ name: 'party' }">Party Creator</router-link>
       <router-link class="nav-options" v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login</router-link>
       <router-link class="nav-options" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
