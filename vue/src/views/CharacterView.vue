@@ -1,31 +1,20 @@
 <template>
     <div class="">
-        <character-card v-bind:character="character"/>
+        <character-view-detailed/>
     </div>
 </template>
 
 <script>
-import CharacterCard from '../components/CharacterCard.vue'
-import CharacterService from '../services/CharacterService.js'
+import CharacterViewDetailed from '../components/CharacterViewDetailed.vue'
+
 export default {
   name: "character-view",
   
   components: { 
-        CharacterCard 
+
+    CharacterViewDetailed 
     },
 
-    data() {
-        return {
-            character: {}
-        }
-    },
-
-    created() {
-        CharacterService.getCharacterByUsername(this.$store.state.currentUser)
-            .then(response => {
-                this.character = response.data;
-            });
-    }
 
 }
 </script>
