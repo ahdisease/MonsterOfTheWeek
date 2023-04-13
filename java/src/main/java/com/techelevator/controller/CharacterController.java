@@ -49,7 +49,14 @@ public class CharacterController {
         if(user == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         } else {
-            character.setId(userDao.findIdByUsername(user.getName()));
+            List<Character> checkCharacter = dao.getAllCharacters(user.getName(), LocalDate.now());
+            if (checkCharacter.size() == 0){
+                character.setUserId(userDao.findIdByUsername(user.getName()));
+            }
+            else {
+                throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+            }
+
         }
 
         Character character1 = dao.createCharacter(character);
