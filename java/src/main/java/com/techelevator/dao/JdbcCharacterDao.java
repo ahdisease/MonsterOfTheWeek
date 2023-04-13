@@ -77,6 +77,16 @@ public class JdbcCharacterDao implements CharacterDao{
     }
 
     @Override
+    public boolean deleteCharacterById(int id) {
+        //todo dependency from party/users_party tables prevents this from working. Please correct
+        String sql = "DELETE FROM character WHERE id = ?";
+
+        jdbcTemplate.update(sql,id);
+
+        return true;
+    }
+
+    @Override
     public boolean flagCharacterInappropriate(int id) {
         String sql = "UPDATE character SET flagged_inappropriate = 'flagged' WHERE id = ? AND flagged_inappropriate = 'not_flagged';";
 

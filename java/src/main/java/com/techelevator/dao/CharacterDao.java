@@ -23,13 +23,15 @@ public interface CharacterDao {
 //	404 not found
 
     Character getCharacterById (int id);
-    //TODO throw an exception for not found
+
 
 //    Create Character
 //    url: "/characters/"
 //    http method: post
 //    status: 201 created
     Character createCharacter (Character character);
+
+    boolean deleteCharacterById(int id);
 
 //    Flag inappropriate content
 //    url: "/flag/characters/{id}"

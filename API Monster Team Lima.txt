@@ -36,6 +36,34 @@ url: "/party/"
 http method: post
 status: 201 create
 
+Get Winning Party
+usl: "/top-vote
+http method: get
+status 200
+	404 not found
+
+Flag inappropriate content
+url: "/flag/characters/{id}"
+http method: put
+status 200 OK
+	404 Not Found
+
+Delete character
+url: "moderator/characters/{id}
+http method: delete
+status 201 NO CONTENT
+	404 not found?
+
+Delete character
+url: "/characters/{id}
+http method: delete
+status 201 NO CONTENT
+	403 Forbidden
+	404 not found?
+	
+
+
+
 -----not yet -------
 Get list of Parties
 url: "/party/?date"

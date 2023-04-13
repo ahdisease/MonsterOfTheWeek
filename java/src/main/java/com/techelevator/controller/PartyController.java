@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -23,15 +24,9 @@ public class PartyController {
     private PartyDao partyDao;
 
 
-//TODO FIX IF STATEMENT
-
-
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/party/", method = RequestMethod.POST)
     public Party createParty(@Valid @RequestBody Party party, Principal user){
-        if(user == null) {
-            return partyDao.createParty(party, user.getName());
-        }
         return partyDao.createParty(party, user.getName());
     }
 
