@@ -17,163 +17,168 @@
     </div>
 
     <!-- This is the filtered buttons -->
+
+    div id=""
     <div class="race-class-group" id="class">
       <label for="charClass">Class</label>
       <select
         id="charClass-selection"
         class="form-control"
-        v-model="filter.charClass">
-         <option value>Any Class</option>
-         <option value='Barbarian'>Barbarian</option>
-         <option value='Bard'>Bard</option>
-         <option value='Cleric'>Cleric</option>
-          <option value='Druid'>Druid</option>
-         <option value='Fighter'>Fighter</option>
-         <option value='Monk'>Monk</option>
-         <option value='Paladin'>Paladin</option>
-         <option value='Ranger'>Ranger</option>
-         <option value='Rogue'>Rogue</option>
-         <option value='Sorceror'>Sorceror</option>
-          <option value='Warlock'>Warlock</option>
-         <option value='Wizard'>Wizard</option>
-
+        v-model="filter.charClass"
+      >
+        <option value>Any Class</option>
+        <option value="Barbarian">Barbarian</option>
+        <option value="Bard">Bard</option>
+        <option value="Cleric">Cleric</option>
+        <option value="Druid">Druid</option>
+        <option value="Fighter">Fighter</option>
+        <option value="Monk">Monk</option>
+        <option value="Paladin">Paladin</option>
+        <option value="Ranger">Ranger</option>
+        <option value="Rogue">Rogue</option>
+        <option value="Sorceror">Sorceror</option>
+        <option value="Warlock">Warlock</option>
+        <option value="Wizard">Wizard</option>
       </select>
     </div>
-  <div class="race-class-group" id="race">
+    <div class="race-class-group" id="race">
       <label for="race">Race</label>
-      <select
-        id="race-selection"
-        class="form-control"
-        v-model="filter.race">
-         <option value>Any Race</option>
-         <option value='Dragonborn'>Dragonborn</option>
-         <option value='Dwarf'>Dwarf</option>
-         <option value='Elf'>Elf</option>
-         <option value='Gnome'>Gnome</option>
-         <option value='Half-Elf'>Half-Elf</option>
-         <option value='Half-Orc'>Half-Orc</option>
-         <option value='Halfling'>Halfling</option>
-         <option value='Human'>Human</option>
-         <option value='Tiefling'>Tiefling</option>
+      <select id="race-selection" class="form-control" v-model="filter.race">
+        <option value>Any Race</option>
+        <option value="Dragonborn">Dragonborn</option>
+        <option value="Dwarf">Dwarf</option>
+        <option value="Elf">Elf</option>
+        <option value="Gnome">Gnome</option>
+        <option value="Half-Elf">Half-Elf</option>
+        <option value="Half-Orc">Half-Orc</option>
+        <option value="Halfling">Halfling</option>
+        <option value="Human">Human</option>
+        <option value="Tiefling">Tiefling</option>
       </select>
     </div>
 
-    <div class="att-group" id="strength">
-      <label for="strength">Strength</label>
-      <select
-        id="strength-selection"
-        class="form-control"
-        v-model="filter.strength">
-         <option value>Any Strength</option>
-         <option value='12'>12 or higher</option>
-         <option value='13'>13 or higher</option>
-         <option value='14'>14 or higher</option>
-         <option value='15'>15 or higher</option>
-         <option value='16'>16 or higher</option>
-         <option value='17'>17 or higher</option>
-         <option value='18'>18 or higher</option>
-         <option value='19'>19 or higher</option>
-         <option value='20'>20 or higher</option>
-      </select>
+    <div id="attGroupWrapper">
+      <div class="att-group" id="strength">
+        <label for="strength">Strength</label>
+        <select
+          id="strength-selection"
+          class="form-control"
+          v-model="filter.strength"
+        >
+          <option value>Any Strength</option>
+          <option value="12">12 or higher</option>
+          <option value="13">13 or higher</option>
+          <option value="14">14 or higher</option>
+          <option value="15">15 or higher</option>
+          <option value="16">16 or higher</option>
+          <option value="17">17 or higher</option>
+          <option value="18">18 or higher</option>
+          <option value="19">19 or higher</option>
+          <option value="20">20 or higher</option>
+        </select>
+      </div>
+
+      <div class="att-group" id="dexterity">
+        <label for="dexterity">Dexterity</label>
+        <select
+          id="dexterity-selection"
+          class="form-control"
+          v-model="filter.dexterity"
+        >
+          <option value>Any Dexterity</option>
+          <option value="12">12 or higher</option>
+          <option value="13">13 or higher</option>
+          <option value="14">14 or higher</option>
+          <option value="15">15 or higher</option>
+          <option value="16">16 or higher</option>
+          <option value="17">17 or higher</option>
+          <option value="18">18 or higher</option>
+          <option value="19">19 or higher</option>
+          <option value="20">20 or higher</option>
+        </select>
+      </div>
+
+      <div class="att-group" id="constitution">
+        <label for="constitution">Constitution</label>
+        <select
+          id="constitution-selection"
+          class="form-control"
+          v-model="filter.constitution"
+        >
+          <option value>Any Constitution</option>
+          <option value="12">12 or higher</option>
+          <option value="13">13 or higher</option>
+          <option value="14">14 or higher</option>
+          <option value="15">15 or higher</option>
+          <option value="16">16 or higher</option>
+          <option value="17">17 or higher</option>
+          <option value="18">18 or higher</option>
+          <option value="19">19 or higher</option>
+          <option value="20">20 or higher</option>
+        </select>
+      </div>
+
+      <div class="att-group" id="intelligence">
+        <label for="intelligence">Intelligence</label>
+        <select
+          id="intelligence-selection"
+          class="form-control"
+          v-model="filter.intelligence"
+        >
+          <option value>Any Intelligence</option>
+          <option value="12">12 or higher</option>
+          <option value="13">13 or higher</option>
+          <option value="14">14 or higher</option>
+          <option value="15">15 or higher</option>
+          <option value="16">16 or higher</option>
+          <option value="17">17 or higher</option>
+          <option value="18">18 or higher</option>
+          <option value="19">19 or higher</option>
+          <option value="20">20 or higher</option>
+        </select>
+      </div>
+
+      <div class="att-group" id="wisdom">
+        <label for="wisdom">Wisdom</label>
+        <select
+          id="wisdom-selection"
+          class="form-control"
+          v-model="filter.wisdom"
+        >
+          <option value>Any Wisdom</option>
+          <option value="12">12 or higher</option>
+          <option value="13">13 or higher</option>
+          <option value="14">14 or higher</option>
+          <option value="15">15 or higher</option>
+          <option value="16">16 or higher</option>
+          <option value="17">17 or higher</option>
+          <option value="18">18 or higher</option>
+          <option value="19">19 or higher</option>
+          <option value="20">20 or higher</option>
+        </select>
+      </div>
+
+      <div class="att-group" id="charisma">
+        <label for="charisma">Charisma</label>
+        <select
+          id="charisma-selection"
+          class="form-control"
+          v-model="filter.charisma"
+        >
+          <option value>Any Charisma</option>
+          <option value="12">12 or higher</option>
+          <option value="13">13 or higher</option>
+          <option value="14">14 or higher</option>
+          <option value="15">15 or higher</option>
+          <option value="16">16 or higher</option>
+          <option value="17">17 or higher</option>
+          <option value="18">18 or higher</option>
+          <option value="19">19 or higher</option>
+          <option value="20">20 or higher</option>
+        </select>
+      </div>
     </div>
 
-    <div class="att-group" id="dexterity">
-      <label for="dexterity">Dexterity</label>
-      <select
-        id="dexterity-selection"
-        class="form-control"
-        v-model="filter.dexterity">
-         <option value>Any Dexterity</option>
-         <option value='12'>12 or higher</option>
-         <option value='13'>13 or higher</option>
-         <option value='14'>14 or higher</option>
-         <option value='15'>15 or higher</option>
-         <option value='16'>16 or higher</option>
-         <option value='17'>17 or higher</option>
-         <option value='18'>18 or higher</option>
-         <option value='19'>19 or higher</option>
-         <option value='20'>20 or higher</option>
-      </select>
-    </div>
-
-    <div class="att-group" id="constitution">
-      <label for="constitution">Constitution</label>
-      <select
-        id="constitution-selection"
-        class="form-control"
-        v-model="filter.constitution">
-         <option value>Any Constitution</option>
-         <option value='12'>12 or higher</option>
-         <option value='13'>13 or higher</option>
-         <option value='14'>14 or higher</option>
-         <option value='15'>15 or higher</option>
-         <option value='16'>16 or higher</option>
-         <option value='17'>17 or higher</option>
-         <option value='18'>18 or higher</option>
-         <option value='19'>19 or higher</option>
-         <option value='20'>20 or higher</option>
-      </select>
-    </div>
-
-    <div class="att-group" id="intelligence">
-      <label for="intelligence">Intelligence</label>
-      <select
-        id="intelligence-selection"
-        class="form-control"
-        v-model="filter.intelligence">
-         <option value>Any Intelligence</option>
-         <option value='12'>12 or higher</option>
-         <option value='13'>13 or higher</option>
-         <option value='14'>14 or higher</option>
-         <option value='15'>15 or higher</option>
-         <option value='16'>16 or higher</option>
-         <option value='17'>17 or higher</option>
-         <option value='18'>18 or higher</option>
-         <option value='19'>19 or higher</option>
-         <option value='20'>20 or higher</option>
-      </select>
-    </div>
-
-    <div class="att-group" id="wisdom">
-      <label for="wisdom">Wisdom</label>
-      <select
-        id="wisdom-selection"
-        class="form-control"
-        v-model="filter.wisdom">
-         <option value>Any Wisdom</option>
-         <option value='12'>12 or higher</option>
-         <option value='13'>13 or higher</option>
-         <option value='14'>14 or higher</option>
-         <option value='15'>15 or higher</option>
-         <option value='16'>16 or higher</option>
-         <option value='17'>17 or higher</option>
-         <option value='18'>18 or higher</option>
-         <option value='19'>19 or higher</option>
-         <option value='20'>20 or higher</option>
-      </select>
-    </div>
-
-    <div class="att-group" id="charisma">
-      <label for="charisma">Charisma</label>
-      <select
-        id="charisma-selection"
-        class="form-control"
-        v-model="filter.charisma">
-         <option value>Any Charisma</option>
-         <option value='12'>12 or higher</option>
-         <option value='13'>13 or higher</option>
-         <option value='14'>14 or higher</option>
-         <option value='15'>15 or higher</option>
-         <option value='16'>16 or higher</option>
-         <option value='17'>17 or higher</option>
-         <option value='18'>18 or higher</option>
-         <option value='19'>19 or higher</option>
-         <option value='20'>20 or higher</option>
-      </select>
-    </div>
-
-
-  
     <!-- This ends the filtered buttons -->
     <p>the character cards will show up here:</p>
 
@@ -192,7 +197,6 @@
       v-bind:key="character.id4"
       @click="addPartyMember(character)"
     >
-    
       <character-card v-bind:character="character">
         {{ character.race }}
         {{ character.charClass }}
@@ -280,10 +284,9 @@ export default {
       charClass: "",
       race: "",
       newCharacter: {
-        race: '',
-        class: ''
+        race: "",
+        class: "",
       },
-      
 
       currentCharacters: [],
       newPartyMember: {},
@@ -308,12 +311,13 @@ export default {
   },
 
   created() {
-    // This is the working method 
-    CharacterService.getAllCharacters(new Date().toJSON().slice(0, 10)).then((response) => {
-     
-     this.currentCharacters = response.data;
-    //  console.log(this.currentCharacters)
-    });
+    // This is the working method
+    CharacterService.getAllCharacters(new Date().toJSON().slice(0, 10)).then(
+      (response) => {
+        this.currentCharacters = response.data;
+        //  console.log(this.currentCharacters)
+      }
+    );
 
     // this was the method being tested ***************
     //  CharacterService.getAllCharacters(new Date().toJSON().slice(0, 10)).then((response) => {
@@ -326,8 +330,6 @@ export default {
     DnDApiService.getAllClasses().then((response) => {
       this.dropdownClass = response.data.results;
     });
-    
-    
   },
 
   methods: {
@@ -362,7 +364,7 @@ export default {
       }
     },
 
-    //  This is the Drag and Drop methods 
+    //  This is the Drag and Drop methods
     // startDrag(evt, item) {
     //   console.log("inside start drag" + item.name);
     //   evt.dataTransfer.dropEffect = "move";
@@ -381,50 +383,48 @@ export default {
     filteredList() {
       let filteredCharacters = this.currentCharacters;
       // console.log(filteredCharacters)
-      if(this.filter.race != ''){
-        filteredCharacters = filteredCharacters.filter((character) => 
-            character.race === this.filter.race
-          );
-        }
-      if (this.filter.charClass != ''){  
-      filteredCharacters = filteredCharacters.filter((character) => 
-        character.charClass === this.filter.charClass
-      );
+      if (this.filter.race != "") {
+        filteredCharacters = filteredCharacters.filter(
+          (character) => character.race === this.filter.race
+        );
       }
-      if (this.filter.strength != ''){  
-      filteredCharacters = filteredCharacters.filter((character) => 
-        character.strength >= this.filter.strength
-      );
+      if (this.filter.charClass != "") {
+        filteredCharacters = filteredCharacters.filter(
+          (character) => character.charClass === this.filter.charClass
+        );
       }
-      if (this.filter.constitution != ''){  
-      filteredCharacters = filteredCharacters.filter((character) => 
-        character.dexterity >= this.filter.dexterity
-      );
+      if (this.filter.strength != "") {
+        filteredCharacters = filteredCharacters.filter(
+          (character) => character.strength >= this.filter.strength
+        );
       }
-      if (this.filter.constitution != ''){  
-      filteredCharacters = filteredCharacters.filter((character) => 
-        character.constitution >= this.filter.constitution
-      );
+      if (this.filter.constitution != "") {
+        filteredCharacters = filteredCharacters.filter(
+          (character) => character.dexterity >= this.filter.dexterity
+        );
       }
-      if (this.filter.intelligence != ''){  
-      filteredCharacters = filteredCharacters.filter((character) => 
-        character.intelligence >= this.filter.intelligence
-      );
+      if (this.filter.constitution != "") {
+        filteredCharacters = filteredCharacters.filter(
+          (character) => character.constitution >= this.filter.constitution
+        );
       }
-      if (this.filter.wisdom != ''){  
-      filteredCharacters = filteredCharacters.filter((character) => 
-        character.wisdom >= this.filter.wisdom
-      );
+      if (this.filter.intelligence != "") {
+        filteredCharacters = filteredCharacters.filter(
+          (character) => character.intelligence >= this.filter.intelligence
+        );
       }
-      if (this.filter.charisma != ''){  
-      filteredCharacters = filteredCharacters.filter((character) => 
-        character.charisma >= this.filter.charisma
-        
-      );
+      if (this.filter.wisdom != "") {
+        filteredCharacters = filteredCharacters.filter(
+          (character) => character.wisdom >= this.filter.wisdom
+        );
+      }
+      if (this.filter.charisma != "") {
+        filteredCharacters = filteredCharacters.filter(
+          (character) => character.charisma >= this.filter.charisma
+        );
       }
 
-        return filteredCharacters;
-      
+      return filteredCharacters;
     },
 
     // filteredCharacters() {
@@ -446,6 +446,17 @@ export default {
 </script>
 
 <style scoped>
+#attGroupWrapper {
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+/* .att-group{
+
+} */
+
 .row {
   width: 50%;
   margin: auto;
