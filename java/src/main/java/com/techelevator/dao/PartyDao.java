@@ -14,6 +14,6 @@ public interface PartyDao {
 
     Party retrievePartyByUsername(String username, LocalDate date);
 
-
+    Party retrieveWinningPartyForDate(LocalDate date);
 
 }

@@ -94,32 +94,53 @@ INSERT INTO users (username,password_hash,role) VALUES ('user1','user1','ROLE_US
 INSERT INTO users (username,password_hash,role) VALUES ('user2','user2','ROLE_USER');--id = 2
 INSERT INTO users (username,password_hash,role) VALUES ('user3','user3','ROLE_USER');--id = 3
 INSERT INTO users (username,password_hash,role) VALUES ('user4','user4','ROLE_USER');--id = 4
+INSERT INTO users (username,password_hash,role) VALUES ('user5','user5','ROLE_USER');--id = 5
+INSERT INTO users (username,password_hash,role) VALUES ('user6','user6','ROLE_USER');--id = 6
+INSERT INTO users (username,password_hash,role) VALUES ('user7','user7','ROLE_USER');--id = 7
+INSERT INTO users (username,password_hash,role) VALUES ('user8','user8','ROLE_USER');--id = 8
 
 --insert four characters for monster a
 INSERT INTO character (name, race, description, char_class, strength, dexterity, constitution,
- intelligence, wisdom, charisma, monster_id, user_id) VALUES ('b', 'c', 'd', 'e', 1, 1, 1, 1, 1, 1, 1, 1);--id = 1
+ intelligence, wisdom, charisma, monster_id, user_id) VALUES ('a', 'a', 'a', 'a', 1, 1, 1, 1, 1, 1, 1, 1);--id = 1
 INSERT INTO character (name, race, description, char_class, strength, dexterity, constitution,
- intelligence, wisdom, charisma, monster_id, user_id) VALUES ('b', 'c', 'd', 'e', 1, 1, 1, 1, 1, 1, 1, 2);--id = 2
+ intelligence, wisdom, charisma, monster_id, user_id) VALUES ('b', 'b', 'b', 'b', 1, 1, 1, 1, 1, 1, 1, 2);--id = 2
 INSERT INTO character (name, race, description, char_class, strength, dexterity, constitution,
- intelligence, wisdom, charisma, monster_id, user_id) VALUES ('b', 'c', 'd', 'e', 1, 1, 1, 1, 1, 1, 1, 3);--id = 3
+ intelligence, wisdom, charisma, monster_id, user_id) VALUES ('c', 'c', 'c', 'c', 1, 1, 1, 1, 1, 1, 1, 3);--id = 3
 INSERT INTO character (name, race, description, char_class, strength, dexterity, constitution,
- intelligence, wisdom, charisma, monster_id, user_id) VALUES ('b', 'c', 'd', 'e', 1, 1, 1, 1, 1, 1, 1, 4);--id = 4
+ intelligence, wisdom, charisma, monster_id, user_id) VALUES ('d', 'd', 'd', 'd', 1, 1, 1, 1, 1, 1, 1, 4);--id = 4
+INSERT INTO character (name, race, description, char_class, strength, dexterity, constitution,
+  intelligence, wisdom, charisma, monster_id, user_id) VALUES ('e', 'e', 'e', 'e', 1, 1, 1, 1, 1, 1, 1, 5);--id = 5
+INSERT INTO character (name, race, description, char_class, strength, dexterity, constitution,
+   intelligence, wisdom, charisma, monster_id, user_id) VALUES ('f', 'f', 'f', 'f', 1, 1, 1, 1, 1, 1, 1, 6);--id = 6
+INSERT INTO character (name, race, description, char_class, strength, dexterity, constitution,
+  intelligence, wisdom, charisma, monster_id, user_id) VALUES ('g', 'g', 'g', 'g', 1, 1, 1, 1, 1, 1, 1, 7);--id = 7
+INSERT INTO character (name, race, description, char_class, strength, dexterity, constitution,
+   intelligence, wisdom, charisma, monster_id, user_id) VALUES ('h', 'h', 'h', 'h', 1, 1, 1, 1, 1, 1, 1, 8);--id = 8
 
 INSERT INTO character (name, race, description, char_class, strength, dexterity, constitution,
-  intelligence, wisdom, charisma, monster_id, user_id) VALUES ('b', 'c', 'd', 'e', 1, 1, 1, 1, 1, 1, 2, 1);--id = 5
+ intelligence, wisdom, charisma, monster_id, user_id) VALUES ('i', 'i', 'i', 'i', 1, 1, 1, 1, 1, 1, 2, 1);--id = 9
 INSERT INTO character (name, race, description, char_class, strength, dexterity, constitution,
-   intelligence, wisdom, charisma, monster_id, user_id) VALUES ('b', 'c', 'd', 'e', 1, 1, 1, 1, 1, 1, 2, 2);--id = 6
+ intelligence, wisdom, charisma, monster_id, user_id) VALUES ('j', 'j', 'j', 'j', 1, 1, 1, 1, 1, 1, 2, 2);--id = 10
 INSERT INTO character (name, race, description, char_class, strength, dexterity, constitution,
-  intelligence, wisdom, charisma, monster_id, user_id) VALUES ('b', 'c', 'd', 'e', 1, 1, 1, 1, 1, 1, 2, 3);--id = 7
+ intelligence, wisdom, charisma, monster_id, user_id) VALUES ('k', 'k', 'k', 'k', 1, 1, 1, 1, 1, 1, 2, 3);--id = 11
 INSERT INTO character (name, race, description, char_class, strength, dexterity, constitution,
-   intelligence, wisdom, charisma, monster_id, user_id) VALUES ('b', 'c', 'd', 'e', 1, 1, 1, 1, 1, 1, 2, 4);--id = 8
+ intelligence, wisdom, charisma, monster_id, user_id) VALUES ('l', 'l', 'l', 'l', 1, 1, 1, 1, 1, 1, 2, 4);--id = 12
 
 INSERT INTO party (character_1, character_2, character_3, character_4) VALUES (1,2,3,4); --id = 1
-INSERT INTO party (character_1, character_2, character_3, character_4) VALUES (5,6,7,8); --id = 2
+INSERT INTO party (character_1, character_2, character_3, character_4) VALUES (9,10,11,12); --id = 2
+INSERT INTO party (character_1, character_2, character_3, character_4) VALUES (1,2,3,5); --id = 3
+INSERT INTO party (character_1, character_2, character_3, character_4) VALUES (1,2,5,7); --id = 4
 
-INSERT INTO users_party (user_id, party_id) VALUES (1,1); 
-INSERT INTO users_party (user_id, party_id) VALUES (1,2);
-INSERT INTO users_party (user_id, party_id) VALUES (2,2);
+INSERT INTO users_party (user_id, party_id) VALUES (1,1); --monster 1
+INSERT INTO users_party (user_id, party_id) VALUES (1,2); --monster 2
+INSERT INTO users_party (user_id, party_id) VALUES (2,2); --monster 2
+INSERT INTO users_party (user_id, party_id) VALUES (3,1); --monster 1
+INSERT INTO users_party (user_id, party_id) VALUES (4,3); --monster 1
+INSERT INTO users_party (user_id, party_id) VALUES (5,4); --monster 1
+INSERT INTO users_party (user_id, party_id) VALUES (6,1); --monster 1
+INSERT INTO users_party (user_id, party_id) VALUES (7,1); --monster 1
+INSERT INTO users_party (user_id, party_id) VALUES (8,4); --monster 1
+
 
 COMMIT TRANSACTION;
 

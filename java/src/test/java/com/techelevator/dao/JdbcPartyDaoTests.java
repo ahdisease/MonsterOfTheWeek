@@ -34,13 +34,13 @@ public class JdbcPartyDaoTests extends BaseDaoTests {
         Party newParty = jdbcPartyDao.createParty(party,USER_1.getUsername());
 
         //assert
-        Assert.assertEquals(2,newParty.getId());
+        Assert.assertEquals(5,newParty.getId());
     }
 
     @Test
     public void createParty_assigns_id_of_previously_created_party_if_duplicate() {
         //arrange
-        Party party = fakeConstructorParty(4,2,3,1);
+        Party party = generateParty(4,2,3,1);
         //act
         Party newParty = jdbcPartyDao.createParty(party,USER_1.getUsername());
 
@@ -49,13 +49,13 @@ public class JdbcPartyDaoTests extends BaseDaoTests {
     }
 
     @Test
-    public void getPartyByUsername_returns_correct_party() {
+    public void retrievePartyByUsername_returns_correct_party() {
         //arrange
-        Party partyOne = fakeConstructorParty(1,2,3,4);
-        Party partyTwo = fakeConstructorParty(5,6,7,8);
+        Party partyOne = generateParty(1,2,3,4);
+        Party partyTwo = generateParty(5,6,7,8);
 
         //act
-        Party retrievedPartyOne = jdbcPartyDao.retrievePartyByUsername(USER_1.getUsername(), LocalDate.parse("2020-01-02"));
+        Party retrievedPartyOne = jdbcPartyDao.retrievePartyByUsername(USER_1.getUsername(), LocalDate.parse("2020-01-01"));
         Party retrievedPartyTwo = jdbcPartyDao.retrievePartyByUsername(USER_1.getUsername(), LocalDate.parse("2020-01-08"));
         Party retrievedPartyTwoUserTwo = jdbcPartyDao.retrievePartyByUsername(USER_2.getUsername(), LocalDate.parse("2020-01-08"));
 
@@ -66,7 +66,23 @@ public class JdbcPartyDaoTests extends BaseDaoTests {
 
     }
 
-    private Party fakeConstructorParty(int char_one,int char_two,int char_three,int char_four) {
+    @Test
+    public void retrieveWinningPartyForDate_returns_most_voted_party_for_one_monster() {
+        //arrange
+        Party partyOne = generateParty(1,2,3,4);
+        Party partyTwo = generateParty(9,10,11,12);
+
+        //act
+        Party retrievedPartyOne = jdbcPartyDao.retrieveWinningPartyForDate(LocalDate.parse("2020-01-01"));
+        Party retrievedPartyTwo = jdbcPartyDao.retrieveWinningPartyForDate(LocalDate.parse("2020-01-08"));
+
+        //assert
+        Assert.assertEquals(1,retrievedPartyOne.getId());
+        Assert.assertEquals(2,retrievedPartyTwo.getId());
+
+    }
+
+    private Party generateParty(int char_one, int char_two, int char_three, int char_four) {
         Party party = new Party();
         party.setCharacterOne(char_one);
         party.setCharacterTwo(char_two);
