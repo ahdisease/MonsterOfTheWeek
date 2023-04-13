@@ -1,67 +1,42 @@
 <template>
   <div id="addHomeform">
     <div id="title">
-      <h1>Character Creator</h1>
+      <h1>This Week's Character</h1>
     </div>
-    <!-- TODO ********* this error message needs to display correctly? -->
-    <!-- <p class="status-message error" v-show="errorMessage != ''">{{errorMessage}}</p> -->
-    <form class="homeForm" v-on:submit.prevent="submitForm">
+    <form class="homeForm">
       <div class="name-group" id="name-box">
         <label for="name">Name</label>
-        <input
-          id="name"
-          type="text"
-          class="form-control"
-          v-model="newCharacter.name"
-        />
+         <div class="character-details">
+              {{character.name}} 
+         </div>
       </div>
 
-     <div class="race-class-group" id="race">
+      <div class="race-class-group" id="race">
         <label for="race">Race</label>
-        <select
-          id="race-selection"
-          class="form-control"
-          v-model="newCharacter.race"
-        >
-          <option
-            v-for="race in dropdownRace"
-            v-bind:key="race.id"
-            v-bind:value="race.name"
-          >
-            {{ race.name }}
-          </option>
-        </select>
+         <div class="character-details">
+              {{character.race}} 
+         </div>
       </div>
 
       <div class="race-class-group" id="class">
         <label for="charClass">Class</label>
-        <select
-          id="class-selection"
-          class="form-control"
-          v-model="newCharacter.charClass"
-        >
-          <option
-            v-for="charClass in dropdownClass"
-            v-bind:key="charClass.id"
-            v-bind:value="charClass.name"
-          >
-            {{ charClass.name }}
-          </option>
-        </select>
+         <div class="character-details">
+              {{character.charClass}} 
+         </div>
       </div>
 
       <div class="stats-column" id="lcol">
         <div class="stats-box">
           <div class="stats-name">STRENGTH</div>
-          <div class="stats-value" id="str-value">?</div>
+          <div class="stats-value" id="str-value"> {{character.strength}} </div>
         </div>
         <div class="stats-box">
           <div class="stats-name">DEXTERITY</div>
-          <div class="stats-value" id="dex-value">?</div>
+          <div class="stats-value" id="dex-value"> {{character.dexterity}} </div>
         </div>
         <div class="stats-box">
           <div class="stats-name">CONSTITUTION</div>
-          <div class="stats-value" id="con-value">?</div>
+          <div class="stats-value" id="con-value"> {{character.constitution}} </div>
         </div>
       </div>
 
@@ -76,32 +51,28 @@
       <div class="stats-column" id="rcol">
         <div class="stats-box">
           <div class="stats-name">INTELLIGENCE</div>
-          <div class="stats-value" id="int-value">?</div>
+          <div class="stats-value" id="int-value"> {{character.intelligence}} </div>
         </div>
         <div class="stats-box">
           <div class="stats-name">WISDOM</div>
-          <div class="stats-value" id="wis-value">?</div>
+          <div class="stats-value" id="wis-value"> {{character.wisdom}} </div>
         </div>
         <div class="stats-box">
           <div class="stats-name">CHARISMA</div>
-          <div class="stats-value" id="cha-value">?</div>
+          <div class="stats-value" id="cha-value"> {{character.charisma}} </div>
         </div>
       </div>
-      <!-- </div> -->
 
       <div id="desc">
         <label for="description">Description</label>
-        <input
-          id="description"
-          type="textarea"
-          class="form-control"
-          v-model="newCharacter.description"
-        />
+        <p class="description-box">
+             {{character.description}} 
+        </p>
       </div>
       <div class="buttons" id="buttons">
-        <button class="btn btn-submit">Submit</button>
-        <button class="btn btn-cancel" type="cancel" v-on:click="cancelForm">
-          Cancel
+        <button class="btn btn-submit">Update</button>
+        <button class="btn btn-cancel" type="cancel">
+          Delete
         </button>
       </div>
     </form>
@@ -110,107 +81,30 @@
 
 <script>
 import CharacterService from "../services/CharacterService.js";
-import DnDApiService from "../services/DndApiService.js";
-import MonsterService from "../services/MonsterService.js";
 
 export default {
-  name: "character-creation-form",
+    
+name: "character-view-detailed",
   data() {
     return {
-      newCharacter: {
-        id: -1,
-        name: "",
-        charClass: "",
-        race: "",
-        description: "",
+      character: {},
 
-        strength: 3,
-        dexterity: 3,
-        constitution: 3,
-        intelligence: 3,
-        wisdom: 3,
-        charisma: 3,
-
-        monsterId: 1,
-        userId: 1,
-      },
-      dropdownRace: [
-        {
-          name: "Dwarf",
-        },
-        {
-          name: "Elf",
-        },
-        {
-          name: "Halfling",
-        },
-      ],
-      dropdownClass: [
-        {
-          name: "Barbarian",
-        },
-        {
-          name: "Bard",
-        },
-      ],
     };
   },
 
   created() {
-    DnDApiService.getAllRaces().then(response => {
-      this.dropdownRace = response.data.results
-    });
-    DnDApiService.getAllClasses().then(response => {
-      this.dropdownClass = response.data.results
-    });
-    this.setMonsterId();
+    this.setCharacter();
   },
   methods: {
-    setMonsterId() {
-      MonsterService.getMonsterByDate(new Date().toJSON().slice(0, 10))
-      .then(response => {
-        this.newCharacter.monsterId = response.data.id;
-      });
-    },
-    resetCharacter() {
-      this.newCharacter = {
-        name: "",
-        race: "",
-        class: "",
-        description: "",
-        stats: {
-          str: 1,
-          dex: 1,
-          con: 1,
-          int: 1,
-          wis: 1,
-          cha: 1,
-        },
-        monsterId: 1,
-        userId: 1,
-      };
-      this.setMonsterId();
-    },
-    submitForm() {
-
-      CharacterService.addNewCharacter(this.newCharacter)
-        .then((response) => {
-          if (response.status === 201) {
-            /* TODO ******** set this to go to the party screen probably */
-            this.$router.push({name: 'party' });
-          }
-        })
-        .catch((error) => {
-          // TODO ********* check this
-          // this.handleErrorResponse(error);
-          console.log(error);
+    setCharacter() {
+      CharacterService.getCharacterByUsername(this.$store.state.user.username)
+        .then(response => {
+            this.character = response.data[0];
         });
-    },
-    cancelForm() {
-      this.$router.push({name: "character-creator"});
     },
   },
 };
+
 </script>
 
 <style scoped>
@@ -223,6 +117,9 @@ export default {
   /* padding: 1% 2%; */
 }
 
+/* #title {
+ grid-area: h1; 
+} */
 #title h1 {
   text-align: center;
   font-size: 4em;
@@ -282,13 +179,6 @@ export default {
   font-size: 2rem;
 }
 
-#race-selection {
-  width: 150px;
-  margin: 5px auto;
-  height: 40px;
-
-  /* this is the dropdown area for race */
-}
 
 #picture {
   grid-area: picture;
@@ -297,6 +187,7 @@ export default {
 #char-pic {
   background-color: aliceblue;
   width: 100%;
+  /* max-width: 100%; */
   height: auto;
   margin: 50px 0 0 0;
   align-content: center;
@@ -312,12 +203,6 @@ export default {
   font-size: 2rem;
 }
 
-#class-selection {
-  width: 150px;
-  margin: 3px auto;
-  height: 40px;
-  /* this is the drop down for class */
-}
 
 #lcol {
   grid-area: lcol;
@@ -341,16 +226,6 @@ export default {
   margin: auto;
 }
 
-textarea.form-control {
-  height: 75px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-select.form-control {
-  width: 20%;
-  display: inline-block;
-  margin: 10px 20px 10px 10px;
-}
 
 .stats-column {
   background-color: bisque;
@@ -358,12 +233,10 @@ select.form-control {
   padding: 0.1em;
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
-
 }
 
 .stats-box {
   text-align: center;
-
 }
 
 .stats-name {
@@ -410,7 +283,14 @@ button {
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
+.character-details {
+    color: black
+}
 
+.description-box {
+    color: black;
+    font-size: .5em;
+}
 
 @media screen and (max-width: 768px) {
   #addHomeform {
@@ -445,6 +325,5 @@ button {
     width: 60%;
     margin: 0 auto;
   }
-
 }
 </style>
