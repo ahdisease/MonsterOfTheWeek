@@ -118,13 +118,13 @@ public class JdbcPartyDao implements PartyDao {
     @Override
     public Party retrieveWinningPartyForDate(LocalDate date) {
         Party party = null;
-        String sql = "select party_id, count(users_party.user_id) as votes\n" +
-                "from users_party\n" +
-                "join party on users_party.party_id = party.id\n" +
-                "join character on character_1 = character.id\n" +
-                "where character.monster_id = (SELECT id FROM monster WHERE ? between start_date and end_date )\n" +
-                "group by party_id\n" +
-                "order by votes desc\n" +
+        String sql = "select party_id, count(users_party.user_id) as votes " +
+                "from users_party " +
+                "join party on users_party.party_id = party.id " +
+                "join character on character_1 = character.id " +
+                "where character.monster_id = (SELECT id FROM monster WHERE ? between start_date and end_date ) " +
+                "group by party_id " +
+                "order by votes desc " +
                 "limit 1;";
 
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, date);
