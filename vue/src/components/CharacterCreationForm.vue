@@ -197,7 +197,7 @@ export default {
         .then((response) => {
           if (response.status === 201) {
             /* TODO ******** set this to go to the party screen probably */
-            this.$router.push({name: 'party' });
+            this.$store.commit("SET_USER_CHARACTER", response.data);
           }
         })
         .catch((error) => {
