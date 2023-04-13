@@ -195,7 +195,6 @@
 
     <!-- This method is the working one -->
     <div
-      class="card"
       v-for="character in filteredList"
       v-bind:key="character.id4"
       @click="addPartyMember(character)"

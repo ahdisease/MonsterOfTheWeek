@@ -67,8 +67,8 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  flex-wrap: wrap;
   width: 100%;
-  border: 1px black solid;
 }
 
 #firstChar {
