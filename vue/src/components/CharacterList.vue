@@ -18,7 +18,7 @@
 
     <!-- This is the filtered buttons -->
 
-    div id=""
+    <div id="raceClassDropdown">
     <div class="race-class-group" id="class">
       <label for="charClass">Class</label>
       <select
@@ -55,6 +55,7 @@
         <option value="Human">Human</option>
         <option value="Tiefling">Tiefling</option>
       </select>
+    </div>
     </div>
 
     <div id="attGroupWrapper">
@@ -446,65 +447,33 @@ export default {
 </script>
 
 <style scoped>
-#attGroupWrapper {
+#raceClassDropdown {
   padding: 15px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
 }
-/* .att-group{
-
-} */
-
-.row {
-  width: 50%;
-  margin: auto;
-  display: flex;
+.race-class-group {
+  width: 30%;
 }
-.inner-row {
+#attGroupWrapper {
+  /* margin: 15px; */
+  padding: 15px;
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-between;
 }
-.column1 {
-  flex: 45%;
-  background-color: bisque;
-  /* height: 90vh; */
-}
-.column2 {
-  flex: 45%;
-  background-color: rgb(238, 194, 141);
-  /* height: 90vh; */
-}
-.card {
-  /* Add shadows to create the "card" effect */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  height: 300px;
-  width: 17%;
-  margin: 1%;
-  display: inline-block;
-}
-.card img {
-  width: 35%;
-  height: auto;
-}
-/* On mouse-over, add a deeper shadow */
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-/* Add some padding inside the card container */
-.container {
-  padding: 2px 10px;
-  margin: 5%;
-}
-.button {
+.att-group{
   margin: 10px;
+}
+
+.buttons {
+  margin: 8px;
   border-radius: 3px;
-  background-color: #4caf50; /* Green */
   border: none;
-  color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -515,4 +484,53 @@ export default {
 .unselectable {
   background-color: gray;
 }
+
+
+
+
+@media screen and (max-width: 1000px ) {
+  
+ #raceClassDropdown {
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.race-class-group {
+  width: 30%;
+}
+#attGroupWrapper {
+  /* margin: 15px; */
+  padding: 15px;
+  display: flex;
+  /* flex-direction: row; */
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-between;
+}
+.att-group{
+  margin: 5px;
+}
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 </style>
