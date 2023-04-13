@@ -28,5 +28,8 @@ export default {
     getAllParties(date) {
         return axios.get(`/party?date=${date}`);
     },
+    getWinningParty(date) {
+        return axios.get(`/top-vote?date=${date}`);
+    }
 
 }
