@@ -15,8 +15,8 @@
       v-on:click="turnMonsterCard"
     >
       <h3>{{ monster.name }}</h3>
-      <div>HP: {{ monster.hit_points }}</div>
-      <div>
+      <div class="hit-points">HP: {{ monster.hit_points }}</div>
+      <div class="all-stats">
         <div class="stats-box">
           <div class="stats-name">STRENGTH</div>
           <div class="stats-value" id="str-value"> {{monster.strength}} </div>
@@ -80,8 +80,12 @@ export default {
 </script>
 
 <style scoped>
-h1 {
+.h3 {
   text-align: center;
+}
+
+.hit-points {
+  
 }
 
 main {
@@ -90,16 +94,16 @@ main {
 
 .monster-card-front,
 .monster-card-back {
-  text-align: center;
-  width: 85vw;
-  height: 90vh;
+  
+  width: auto;
+  height: auto;
   border-radius: 10px;
   background-color: grey;
   
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .stats-box {
@@ -122,7 +126,8 @@ main {
 }
 
 .monster-card-front img {
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 100%;
+  max-height: auto;
+  border-radius: 10px;
 }
 </style>
