@@ -3,14 +3,13 @@
     <div class="character-card-front" v-bind:key="character.id123"
       v-show="!showDetails" v-on:click="turnCharacterCard">
       <div id="char-name">{{ character.name }}</div>
-      <div class="race-class" id="race">{{ character.race }}</div>
-      <div class="race-class" id="class">{{ character.charClass }}</div>
+      <div class="race-class">{{ character.race }} {{ character.charClass }}</div>
       <div id="description">{{ character.description }}</div>
       
     </div>
     <div class="character-card-back" v-bind:key="character.id124"
       v-show="showDetails" v-on:click="turnCharacterCard">
-      <div class="race-class">{{ character.race }} {{ character.charClass }}</div>
+      <div class="race-class" id="race-class-back">{{ character.race }} {{ character.charClass }}</div>
       <div class="attributes" id="str">Strength: {{ character.strength }}</div>
       <div class="attributes" id="dex">Dexterity: {{ character.dexterity }}</div>
       <div class="attributes" id="con">Constitution: {{ character.constitution }}</div>
@@ -51,30 +50,22 @@ export default {
 }
 
 .character-card-front {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas:  ".    name    ."
-                        "race .    class"
-                        "desc desc desc"
-                        "desc desc desc"
-                        "desc desc desc"
-                        "desc desc desc";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
 }
 
 .character-card-back {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas:  
-                        "race-class race-class race-class"
-                        ". . ."
-                        "str str str"
-                        "dex dex dex"
-                        "con con con"
-                        "int int int"
-                        "wis wis wis"
-                        "cha cha cha";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+
+}
+
+#race-class-back {
+  margin-top: 10px;
 }
 
 .card img {
@@ -88,43 +79,26 @@ export default {
 }
 
 #char-name {
-  grid-area: name;
-}
-
-.race-class {
-  grid-area: race-class;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: 800;
 }
 
 #description {
-  grid-area: desc;
+  align-self: flex-start;
+  font-style: italic;
+}
+
+.race-class {
+  margin-bottom: 30px;
+  font-weight: 500;
+  font-style: oblique;
 }
 
 .attributes {
-  grid-area: attr;
+  align-self: flex-start;
 }
 
-#str {
-  grid-area: str;
-}
 
-#dex {
-  grid-area: dex;
-}
-
-#con {
-  grid-area: con;
-}
-
-#int {
-  grid-area: int;
-}
-
-#wis {
-  grid-area: wis;
-}
-
-#cha {
-  grid-area: cha;
-}
 
 </style>

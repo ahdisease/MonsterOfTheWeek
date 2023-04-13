@@ -1,14 +1,16 @@
 <template>
   <div>
-    <h3>This is the Character List, Character Lovers!!!</h3>
-
-    <div
-      class="newPartyMember card"
+    <div class="current-party">
+      <div
       v-bind:key="character.id3"
       v-for="character in party"
-    >
+      @dblclick.prevent="addPartyMember(character)"
+        style="-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;"
+      >
       <character-card v-bind:character="character"></character-card>
+      </div>
     </div>
+    
     <div class="buttons" id="buttons">
       <button class="btn btn-submit" v-on:click="submitForm">Submit</button>
       <button class="btn btn-cancel" type="cancel" v-on:click="cancelForm">
@@ -182,36 +184,25 @@
       </div>
     </div>
 
-    <!-- This ends the filtered buttons -->
-    <p>the character cards will show up here:</p>
-
-    <!-- testing this method  -->
-    <!-- <div
-      class="card"
-      v-for="character in filteredCharacters"
-      v-bind:key="character.id4"
-      @click="addPartyMember(character)"
-    > -->
-
-    <!-- This method is the working one -->
-    <div
-      v-for="character in filteredList"
-      v-bind:key="character.id4"
-      @click="addPartyMember(character)"
-    >
-      <character-card v-bind:character="character">
-        {{ character.race }}
-        {{ character.charClass }}
-        {{ character.strength }}
-        {{ character.dexterity }}
-        {{ character.constitution }}
-        {{ character.intelligence }}
-        {{ character.wisdom }}
-        {{ character.charisma }}
-      </character-card>
+    <div class="character-list">
+      <div v-for="character in filteredList"
+        v-bind:key="character.id4"
+        @dblclick.prevent="addPartyMember(character)"
+        style="-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;"
+        >
+        <character-card v-bind:character="character">
+          {{ character.race }}
+          {{ character.charClass }}
+          {{ character.strength }}
+          {{ character.dexterity }}
+          {{ character.constitution }}
+          {{ character.intelligence }}
+          {{ character.wisdom }}
+          {{ character.charisma }}
+        </character-card>
+      </div>
     </div>
-    <!-- This shows what it was doing {{filter.race}} -->
-
+    
     <!-- This is the Drag and Drop  -->
 
     <!-- <div class="center-panel"> -->
@@ -293,8 +284,6 @@ export default {
       currentCharacters: [],
       newPartyMember: {},
       party: [],
-      // this retrievedCharacters is a test *****
-      // filteredCharacters:[],
 
       checked: true,
       filter: {
@@ -346,12 +335,12 @@ export default {
         characterFour: submitParty[3],
       };
 
-      CharacterService.addNewParty(submitPartyObject)
-        .then((response) => {
-          if (response.status === 201) {
-            this.$router.push({ name: "home" });
-          }
-        })
+    CharacterService.addNewParty(submitPartyObject)
+      .then((response) => {
+        if (response.status === 201) {
+          this.$router.push({ name: "home" });
+        }
+      })
         // TODO ********* THIS ERROR needs work
         .catch((error) => {
           this.handleErrorResponse(error);
@@ -365,6 +354,9 @@ export default {
         this.party.push(character);
       }
     },
+    removePartyMember(character) {
+      this.party.pop(character);
+    }
 
     //  This is the Drag and Drop methods
     // startDrag(evt, item) {
@@ -448,6 +440,18 @@ export default {
 </script>
 
 <style scoped>
+
+.current-party {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.character-list {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
 #raceClassDropdown {
   padding: 15px;
   display: flex;
