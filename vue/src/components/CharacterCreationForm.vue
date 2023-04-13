@@ -16,8 +16,7 @@
         />
       </div>
 
-      <!-- <div id="race-class"> -->
-      <div class="race-class-group" id="race">
+     <div class="race-class-group" id="race">
         <label for="race">Race</label>
         <select
           id="race-selection"
@@ -32,8 +31,6 @@
             {{ race.name }}
           </option>
         </select>
-
-        <!-- v-model="newCharacter.race" -->
       </div>
 
       <div class="race-class-group" id="class">
@@ -53,9 +50,7 @@
           </option>
         </select>
       </div>
-      <!-- </div> -->
 
-      <!-- <div class="stats-picture"> -->
       <div class="stats-column" id="lcol">
         <div class="stats-box">
           <div class="stats-name">STRENGTH</div>

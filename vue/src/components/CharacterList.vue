@@ -24,36 +24,20 @@
       <select
         id="charClass-selection"
         class="form-control"
-        v-model="filter.charClass"
-      >
-        <option value>Any Class</option>
-        <option value="Barbarian">Barbarian</option>
-        <option value="Bard">Bard</option>
-        <option value="Cleric">Cleric</option>
-        <option value="Druid">Druid</option>
-        <option value="Fighter">Fighter</option>
-        <option value="Monk">Monk</option>
-        <option value="Paladin">Paladin</option>
-        <option value="Ranger">Ranger</option>
-        <option value="Rogue">Rogue</option>
-        <option value="Sorceror">Sorceror</option>
-        <option value="Warlock">Warlock</option>
-        <option value="Wizard">Wizard</option>
-      </select>
-    </div>
-    <div class="race-class-group" id="race">
-      <label for="race">Race</label>
-      <select id="race-selection" class="form-control" v-model="filter.race">
-        <option value>Any Race</option>
-        <option value="Dragonborn">Dragonborn</option>
-        <option value="Dwarf">Dwarf</option>
-        <option value="Elf">Elf</option>
-        <option value="Gnome">Gnome</option>
-        <option value="Half-Elf">Half-Elf</option>
-        <option value="Half-Orc">Half-Orc</option>
-        <option value="Halfling">Halfling</option>
-        <option value="Human">Human</option>
-        <option value="Tiefling">Tiefling</option>
+        v-model="filter.charClass">
+         <option value>Any Class</option>
+         <option value='Barbarian'>Barbarian</option>
+         <option value='Bard'>Bard</option>
+         <option value='Cleric'>Cleric</option>
+          <option value='Druid'>Druid</option>
+         <option value='Fighter'>Fighter</option>
+         <option value='Monk'>Monk</option>
+         <option value='Paladin'>Paladin</option>
+         <option value='Ranger'>Ranger</option>
+         <option value='Rogue'>Rogue</option>
+         <option value='Sorceror'>Sorceror</option>
+          <option value='Warlock'>Warlock</option>
+         <option value='Wizard'>Wizard</option>
       </select>
     </div>
     </div>
