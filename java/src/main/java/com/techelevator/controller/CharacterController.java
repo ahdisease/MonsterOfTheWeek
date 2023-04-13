@@ -10,6 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.support.CustomSQLErrorCodesTranslation;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -19,8 +20,6 @@ import javax.validation.Valid;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
-
-//todo add preauthorize tag
 
 @CrossOrigin
 @RestController
@@ -76,7 +75,32 @@ public class CharacterController {
 
     @RequestMapping(path = "/flag/characters/{id}", method = RequestMethod.PUT)
     public boolean flagCharacterById(@PathVariable int id) {
+        //todo find a way to indicate if content already flagged?
         return dao.flagCharacterInappropriate(id);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "/characters/{id}", method = RequestMethod.DELETE)
+    public void deleteCharacterById(@PathVariable int id, Principal user) {
+        //todo fix dao
+        //get character by id and confirm character is owned by user
+        if(dao.getCharacterById(id).getUserId() != userDao.findIdByUsername(user.getName())) {
+            //response 403 forbidden if they do not match
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+        }
+
+        //delete character
+        dao.deleteCharacterById(id);
+    }
+
+    //moderator services
+    @PreAuthorize("hasAnyRole('MODERATOR','ADMIN')")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "/moderator/characters/{id}", method = RequestMethod.DELETE)
+    public void deleteCharacterById(@PathVariable int id) {
+        //todo fix dao
+        dao.deleteCharacterById(id);
+
     }
 
 

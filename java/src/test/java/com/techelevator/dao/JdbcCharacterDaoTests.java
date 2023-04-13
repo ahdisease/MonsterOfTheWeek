@@ -81,6 +81,7 @@ public class JdbcCharacterDaoTests extends BaseDaoTests{
 
         Assert.assertEquals(newId, character.getId());
     }
+    //todo test flag function
 
     private void character_details_should_match(Character expected, Character actualCharacter) {
         Assert.assertEquals(expected.getId(), actualCharacter.getId());
