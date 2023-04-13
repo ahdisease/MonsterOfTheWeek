@@ -178,14 +178,14 @@ export default {
         race: "",
         class: "",
         description: "",
-        stats: {
-          str: 1,
-          dex: 1,
-          con: 1,
-          int: 1,
-          wis: 1,
-          cha: 1,
-        },
+
+        strength: 3,
+        dexterity: 3,
+        constitution: 3,
+        intelligence: 3,
+        wisdom: 3,
+        charisma: 3,
+        
         monsterId: 1,
         userId: 1,
       };
@@ -197,7 +197,7 @@ export default {
         .then((response) => {
           if (response.status === 201) {
             /* TODO ******** set this to go to the party screen probably */
-            this.$router.push({name: 'party' });
+            this.$store.commit("SET_USER_CHARACTER", response.data);
           }
         })
         .catch((error) => {
