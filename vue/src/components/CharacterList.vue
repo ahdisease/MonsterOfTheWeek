@@ -450,24 +450,6 @@ export default {
   justify-content: center;
   align-content: space-between;
 }
-<<<<<<< HEAD
-.column1 {
-  flex: 45%;
-  background-color: bisque;
-  /* height: 90vh; */
-}
-.column2 {
-  flex: 45%;
-  background-color: rgb(238, 194, 141);
-  /* height: 90vh; */
-}
-
-.button {
-=======
-.att-group{
->>>>>>> 4b158bd5bfdad19459717df79bf3cd544d387d5e
-  margin: 10px;
-}
 
 .buttons {
   margin: 8px;
