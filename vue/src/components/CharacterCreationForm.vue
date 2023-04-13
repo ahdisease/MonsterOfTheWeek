@@ -169,8 +169,7 @@ export default {
     DnDApiService.getAllClasses().then(response => {
       this.dropdownClass = response.data.results
     });
-    console.log(new Date().toJSON().slice(0, 10));
-    
+    this.setMonsterId();
   },
   methods: {
     setMonsterId() {
@@ -196,6 +195,7 @@ export default {
         monsterId: 1,
         userId: 1,
       };
+      this.setMonsterId();
     },
     submitForm() {
 

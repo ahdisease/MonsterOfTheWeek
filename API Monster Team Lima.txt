@@ -37,6 +37,11 @@ http method: post
 status: 201 create
 
 -----not yet -------
+Get list of Parties
+url: "/party/?date"
+http method: get
+status: 200 ok
+
 Update Party
 url: "/party/"
 http method: put
