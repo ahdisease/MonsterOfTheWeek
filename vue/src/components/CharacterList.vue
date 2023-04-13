@@ -17,6 +17,25 @@
     </div>
 
     <!-- This is the filtered buttons -->
+    <div class="race-class-group" id="race">
+      <label for="race">Race</label>
+      <select
+        id="race-selection"
+        class="form-control"
+        v-model="filter.race">
+         <option value>Any Race</option>
+         <option value='Dragonborn'>Dragonborn</option>
+         <option value='Dwarf'>Dwarf</option>
+         <option value='Elf'>Elf</option>
+         <option value='Gnome'>Gnome</option>
+         <option value='Half-Elf'>Half-Elf</option>
+         <option value='Half-Orc'>Half-Orc</option>
+         <option value='Halfling'>Halfling</option>
+         <option value='Human'>Human</option>
+         <option value='Tiefling'>Tiefling</option>
+      </select>
+    </div>
+    
     <div class="race-class-group" id="class">
       <label for="charClass">Class</label>
       <select
@@ -36,25 +55,6 @@
          <option value='Sorceror'>Sorceror</option>
           <option value='Warlock'>Warlock</option>
          <option value='Wizard'>Wizard</option>
-
-      </select>
-    </div>
-  <div class="race-class-group" id="race">
-      <label for="race">Race</label>
-      <select
-        id="race-selection"
-        class="form-control"
-        v-model="filter.race">
-         <option value>Any Race</option>
-         <option value='Dragonborn'>Dragonborn</option>
-         <option value='Dwarf'>Dwarf</option>
-         <option value='Elf'>Elf</option>
-         <option value='Gnome'>Gnome</option>
-         <option value='Half-Elf'>Half-Elf</option>
-         <option value='Half-Orc'>Half-Orc</option>
-         <option value='Halfling'>Halfling</option>
-         <option value='Human'>Human</option>
-         <option value='Tiefling'>Tiefling</option>
       </select>
     </div>
 

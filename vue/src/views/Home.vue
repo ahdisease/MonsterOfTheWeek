@@ -30,6 +30,7 @@ export default {
 
 .home {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   
@@ -37,11 +38,10 @@ export default {
 }
 
 .monster-space {
-  max-width: 60%;
+  width: 90%;
 }
 
 .versus {
-  border: 1px solid blue;
   font-size: 2.5rem;
   text-align: center;
   color: rgb(218, 31, 6);
@@ -52,8 +52,6 @@ export default {
 }
 
 .party-space {
-  background-color: black;
-  width: 100px;
-  height: 600px;
+  
 }
 </style>

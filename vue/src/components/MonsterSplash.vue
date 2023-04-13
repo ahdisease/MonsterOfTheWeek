@@ -95,7 +95,7 @@ main {
 .monster-card-front,
 .monster-card-back {
   
-  width: auto;
+  width: 100%;
   height: auto;
   border-radius: 10px;
   background-color: grey;
