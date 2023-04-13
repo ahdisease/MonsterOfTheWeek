@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div id="party-cards">
+    <div class="party-cards">
+      <div class="your-party">Your Party</div>
       <character-card
         v-for="character in currentParty"
         v-bind:key="character.id"
@@ -59,28 +60,15 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-  text-align: center;
-}
 
-#party-cards {
+.party-cards {
   display: flex;
-  flex-direction: row;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  width: 100%;
 }
 
-#firstChar {
-  background-color: blueviolet;
+.your-party {
+  
 }
-#secondChar {
-  background-color: rgb(145, 59, 224);
-}
-#thirdChar {
-  background-color: blueviolet;
-}
-#fourthChar {
-  background-color: rgb(145, 59, 224);
-}
+
 </style>
