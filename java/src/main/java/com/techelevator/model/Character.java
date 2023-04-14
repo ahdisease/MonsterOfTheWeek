@@ -35,6 +35,15 @@ public class Character implements Comparable<Character> {
     private int userId;
     @NotBlank
     private String flaggedInappropriate;
+    private boolean active;
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
     public Character() {
         flaggedInappropriate = "not_flagged";
