@@ -77,8 +77,8 @@ export default {
   border-radius: 6px;
   width: 100%;
   background-image: linear-gradient(
-    rgba(0, 60, 255, 0.945),
-    rgba(255, 0, 0, 0)
+    darkred,
+    rgb(218, 22, 22)
   );
 }
 #winner-title {
@@ -88,8 +88,20 @@ export default {
   /* This is a temporary color to see where it is */
 }
 #winner-title h3 {
-  color: whitesmoke;
-  text-align: center;
+  background-image: linear-gradient(
+    to right,
+   #462523 0,
+          #cb9b51 22%, 
+   #f6e27a 45%,
+   #f6f2c0 50%,
+   #f6e27a 55%,
+   #cb9b51 78%,
+   #462523 100%
+   );
+   color:transparent;
+   -webkit-background-clip:text;
+   font-size: 2em;
+   text-align: center;
 }
 .party-display {
   display: flex;

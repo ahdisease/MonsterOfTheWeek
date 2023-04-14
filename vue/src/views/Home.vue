@@ -33,17 +33,31 @@ export default {
 
 <style scoped>
 
+body {
+    display: grid;
+    grid-template-areas: "home"
+                         "monster-space"
+                         "party-space"
+                         "winner-space";
+    margin: 0;
+    padding: 0;
+    grid-template-rows: 1fr 1fr 3fr 1fr;
+    width: 100%;
+    height: auto;
+}
+
 .home {
+  grid-area: home;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   
-  
 }
 
 .monster-space {
-  width: 90%;
+  width: auto;
+  grid-area: monster-space;
 }
 
 .versus {
@@ -57,11 +71,13 @@ export default {
 
 .party-space {
   /* added this because it was empty */
-  background-color: cadetblue;
+  background-color: rgb(243, 200, 176);
+  grid-area: party-space;
 }
 
 #winner-space {
   margin: 10px 0;
+  grid-area: winner-space;
 }
 
 
