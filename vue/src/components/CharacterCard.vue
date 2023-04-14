@@ -86,8 +86,14 @@ export default {
 }
 
 #flag:hover {
-  background-color: rgb(155, 21, 21);
+  background-color: rgb(146, 28, 28);
 
+}
+
+#flag {
+  width: 40px;
+  position: relative;
+  left: 120px;
 }
 
 .flag-button {
