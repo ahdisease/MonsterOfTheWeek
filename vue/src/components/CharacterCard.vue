@@ -23,29 +23,33 @@
       </div>
 
       <div class="character-card-back">
-        <div class="attributes">
-          <div class="back-attribute">Strength</div>
-          <div class="attribute-value left-column">{{ character.strength }}</div>
+        <div class="left-stats">
+          <div class="attributes">
+            <div class="back-attribute">Strength</div>
+            <div class="attribute-value left-column">{{ character.strength }}</div>
+          </div>
+          <div class="attributes">
+            <div class="back-attribute">Dexterity</div>
+            <div class="attribute-value right-column">{{ character.dexterity }}</div>
+          </div>
+          <div class="attributes">
+            <div class="back-attribute">Constitution</div>
+            <div class="attribute-value left-column">{{ character.constitution }}</div>
+          </div>
         </div>
-        <div class="attributes">
-          <div class="back-attribute">Dexterity</div>
-          <div class="attribute-value right-column">{{ character.dexterity }}</div>
-        </div>
-        <div class="attributes">
-          <div class="back-attribute">Constitution</div>
-          <div class="attribute-value left-column">{{ character.constitution }}</div>
-        </div>
-        <div class="attributes">
-          <div class="back-attribute">Intelligence</div>
-          <div class="attribute-value right-column">{{ character.intelligence }}</div>
-        </div>
-        <div class="attributes">
-          <div class="back-attribute">Wisdom</div>
-          <div class="attribute-value left-column">{{ character.wisdom }}</div>
-        </div>
-        <div class="attributes">
-          <div class="back-attribute">Charisma</div>
-          <div class="attribute-value right-column">{{ character.charisma }}</div>
+        <div class="right-stats">
+          <div class="attributes">
+            <div class="back-attribute">Intelligence</div>
+            <div class="attribute-value right-column">{{ character.intelligence }}</div>
+          </div>
+          <div class="attributes">
+            <div class="back-attribute">Wisdom</div>
+            <div class="attribute-value left-column">{{ character.wisdom }}</div>
+          </div>
+          <div class="attributes">
+            <div class="back-attribute">Charisma</div>
+            <div class="attribute-value right-column">{{ character.charisma }}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -144,6 +148,16 @@ export default {
   margin-bottom: 6px;
 }
 
+.left-stats {
+  justify-content: center;
+
+}
+
+.right-stats {
+  justify-content: center;
+
+}
+
 .race-class {
   margin: 1rem;
   font-weight: 500;
@@ -168,14 +182,18 @@ export default {
   background-color: rgb(214, 233, 245);
   border-radius: 20%;
   width: 30px;
+  align-content: center;
 }
 
 .left-column {
+  align-items: center;
+  justify-content: center;
 
 }
 
 .right-column {
-
+  align-items: center;
+  justify-content: center;
 }
 /* .int-align {
   margin-right: 11px;
