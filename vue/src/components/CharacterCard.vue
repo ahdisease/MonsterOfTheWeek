@@ -49,12 +49,15 @@
         </div>
       </div>
     </div>
+    <button class="delete" v-on:click.prevent="deleteCharacterMod" v-if="confirmModeratorPermissions">
+      &#128465;
+    </button>
     <button
       id="flag"
       v-on:click.prevent="markFlagged" 
       v-bind:class="isFlagged"
       v-show="isFlaggable"
-    >{{character.flaggedInappropriate === 'not_flagged' ? 'not_flagged' : 'flagged'}}
+    >{{character.flaggedInappropriate === 'not_flagged' ? '' : 'flagged'}}
       &#128681;
     </button>
   </div>
@@ -80,6 +83,17 @@ export default {
       }
       return "";
     },
+    confirmModeratorPermissions() {
+      let allowed = false;
+
+      this.$store.state.user.authorities.forEach(authority => {
+        if(authority.name === 'ROLE_MOD') {
+          allowed = this.character.flaggedInappropriate === "flagged";
+        }
+      })
+
+      return allowed;
+    }
   },
   methods: {
     turnCharacterCard() {
@@ -90,6 +104,11 @@ export default {
         this.$emit('newFlag')
       });
     },
+    deleteCharacterMod() {
+      CharacterService.deleteCharacterMod(this.character.id).then(() => {
+        this.$emit('newFlag')
+      });
+    }
   },
 };
 </script>
@@ -160,8 +179,8 @@ export default {
 } */
 
 #flag:hover {
-  background-color: rgba(146, 28, 28, 0.3);
-  box-shadow: 0 0 6px 6px rgba(146, 28, 28, 0.3);
+  background-color: rgba(255, 80, 80, 0.1);
+  box-shadow: 0 0 6px 6px rgba(255, 80, 80, 0.1);
   border-radius: 50%;
 }
 

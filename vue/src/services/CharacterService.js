@@ -35,6 +35,10 @@ export default {
     flaggedInappropriate(id) {
         return axios.put(`/flag/characters/${id}`)
 
+    },
+
+    deleteCharacterMod(id) {
+        return axios.delete(`/moderator/characters/${id}`)
     }
 
 }
