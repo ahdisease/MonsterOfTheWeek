@@ -29,7 +29,7 @@
           </div>
           <div class="attributes">
             <div class="back-attribute">Dexterity</div>
-            <div class="attribute-value right-column">{{ character.dexterity }}</div>
+            <div class="attribute-value left-column">{{ character.dexterity }}</div>
           </div>
           <div class="attributes">
             <div class="back-attribute">Constitution</div>
@@ -43,7 +43,7 @@
           </div>
           <div class="attributes">
             <div class="back-attribute">Wisdom</div>
-            <div class="attribute-value left-column">{{ character.wisdom }}</div>
+            <div class="attribute-value right-column">{{ character.wisdom }}</div>
           </div>
           <div class="attributes">
             <div class="back-attribute">Charisma</div>
@@ -205,14 +205,11 @@ export default {
 }
 
 .left-column {
-  align-items: center;
-  justify-content: center;
-
+  margin: 0 0 0 20px;
 }
 
 .right-column {
-  align-items: center;
-  justify-content: center;
+    margin: 0 0 0 20px;
 }
 /* .int-align {
   margin-right: 11px;
