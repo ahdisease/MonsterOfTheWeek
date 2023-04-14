@@ -38,33 +38,34 @@ export default {
     };
   },
 
+// change hard coded date
+
   created() {
-    CharacterService.getWinningParty("2023-04-09").then(
-      (response) => {
-        if (response.data) {
-          
-          const partyObject = response.data;
-          CharacterService.getCharacterById(partyObject.characterOne).then(
-            (response) => {
-              this.currentParty.push(response.data);
-            }
-          );
-          CharacterService.getCharacterById(partyObject.characterTwo).then(
-            (response) => {
-              this.currentParty.push(response.data);
-            }
-          );
-          CharacterService.getCharacterById(partyObject.characterThree).then(
-            (response) => {
-              this.currentParty.push(response.data);
-            }
-          );
-          CharacterService.getCharacterById(partyObject.characterFour).then(
-            (response) => {
-              this.currentParty.push(response.data);
-            })}
+    CharacterService.getWinningParty("2023-04-09").then((response) => {
+      if (response.data) {
+        const partyObject = response.data;
+        CharacterService.getCharacterById(partyObject.characterOne).then(
+          (response) => {
+            this.winningParty.push(response.data);
+          }
+        );
+        CharacterService.getCharacterById(partyObject.characterTwo).then(
+          (response) => {
+            this.winningParty.push(response.data);
+          }
+        );
+        CharacterService.getCharacterById(partyObject.characterThree).then(
+          (response) => {
+            this.winningParty.push(response.data);
+          }
+        );
+        CharacterService.getCharacterById(partyObject.characterFour).then(
+          (response) => {
+            this.winningParty.push(response.data);
+          }
+        );
       }
-    );
+    });
   },
 };
 </script>
