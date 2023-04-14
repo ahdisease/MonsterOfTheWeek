@@ -97,17 +97,19 @@ public class CharacterController {
         }
 
         //delete character
-        dao.deleteCharacterById(id);
+        if(!dao.deleteCharacterById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
     }
 
     //moderator services
-    @PreAuthorize("hasAnyRole('MODERATOR','ADMIN')")
+    @PreAuthorize("hasAnyRole('MOD','ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path = "/moderator/characters/{id}", method = RequestMethod.DELETE)
     public void deleteCharacterById(@PathVariable int id) {
-        //todo fix dao
-        dao.deleteCharacterById(id);
-
+        if(!dao.deleteCharacterById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
     }
 
 
