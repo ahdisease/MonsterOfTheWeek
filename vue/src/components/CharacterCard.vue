@@ -86,14 +86,16 @@ export default {
 }
 
 #flag:hover {
-  background-color: rgb(146, 28, 28);
-
+  background-color: rgba(146, 28, 28, 0.3);
+  box-shadow: 0 0 6px 6px rgba(146, 28, 28, 0.3);
 }
 
 #flag {
-  width: 40px;
   position: relative;
-  left: 120px;
+  margin: 0 0 0 auto;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid rgba(0, 0, 0, 0);
+  padding: 0;
 }
 
 .flag-button {
@@ -119,6 +121,7 @@ export default {
 #description {
   align-self: flex-start;
   font-style: italic;
+  font-size: 0.9rem;
 }
 
 .race-class {
