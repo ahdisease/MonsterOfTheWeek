@@ -7,8 +7,8 @@
       v-on:click="turnCharacterCard"
     >
       <div id="char-name">{{ character.name }}</div>
-      <div class="race"> {{ character.race }} </div>
-      <div class="class"> {{ character.charClass }} </div>
+      <div class="race"> <strong>Race:</strong> {{ character.race }} </div>
+      <div class="class"> <strong>Class:</strong> {{ character.charClass }} </div>
       <div id="description">{{ character.description }}</div>
     </div>
     <div
@@ -18,8 +18,8 @@
       v-on:click="turnCharacterCard"
     >
       <div id="char-name">{{ character.name }}</div>
-      <div class="race"> {{ character.race }} </div>
-      <div class="class"> {{ character.charClass }} </div>
+      <div class="race"> <strong>Race:</strong> {{ character.race }} </div>
+      <div class="class"> <strong>Class:</strong> {{ character.charClass }} </div>
 
       <div class="character-card-back">
         <div class="left-stats">
@@ -135,7 +135,8 @@ export default {
 .character-card-front {
   display: grid;
   grid-template-areas: "char-name char-name"
-                         "race class"
+                         "race race"
+                         "class class"
                          "description description";
     margin: 0;
     padding: 0;
@@ -146,33 +147,50 @@ export default {
 }
 
 #char-name {
+  text-align: center;
   grid-area: char-name;
 }
 
 .race {
+  text-align: center;
   grid-area: race;
 
 }
 
 .class {
+  text-align: center;
   grid-area: class;
 
 }
 
 .character-card-back {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 6px;
+  display: grid;
+  grid-template-areas: "char-name char-name"
+                         "race race" 
+                         "class class"
+                         "description description"
+                         "left-stats right-stats";
+    margin: 0;
+    padding: 0;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 2px;
+    column-gap: 10%;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
 }
 
 .left-stats {
+  grid-area: left-stats;
   justify-content: center;
+  align-items: center;
+
 
 }
 
 .right-stats {
+  grid-area: right-stats;
   justify-content: center;
 
 }
@@ -265,6 +283,7 @@ export default {
   align-self: flex-start;
   font-style: italic;
   font-size: 0.9rem;
+  text-align: center;
 }
 
 </style>
