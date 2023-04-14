@@ -49,17 +49,20 @@
         </div>
       </div>
     </div>
-    <button class="delete" v-on:click.prevent="deleteCharacterMod" v-if="confirmModeratorPermissions">
-      &#128465;
-    </button>
-    <button
-      id="flag"
-      v-on:click.prevent="markFlagged" 
-      v-bind:class="isFlagged"
-      v-show="isFlaggable"
-    >{{character.flaggedInappropriate === 'not_flagged' ? '' : 'flagged'}}
-      &#128681;
-    </button>
+    <div id="button-group">
+      <button
+        id="flag"
+        v-on:click.prevent="markFlagged" 
+        v-bind:class="isFlagged"
+        v-show="isFlaggable"
+      >
+        &#128681;
+      </button>
+      <button class="delete" v-on:click.prevent="deleteCharacterMod" v-if="confirmModeratorPermissions">
+        &#128465;
+      </button>
+    </div>
+    
   </div>
 </template>
 
@@ -186,15 +189,26 @@ export default {
 
 #flag {
   position: relative;
-  margin: 0 0 0 auto;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.delete {
+  position: relative;
   background-color: rgba(0, 0, 0, 0);
   border: 1px solid rgba(0, 0, 0, 0);
   padding: 0;
 }
 
-.is-flagged {
-  background-color: rgb(146, 28, 28);
+#button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+#flag.is-flagged {
+  background-color: rgb(146, 28, 28, 0.2);
   border-radius: 50%;
+  padding: 0;
 }
 
 .card img {
