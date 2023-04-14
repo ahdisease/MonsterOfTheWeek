@@ -17,7 +17,7 @@
       <div class="attributes" id="wis">Wisdom: {{ character.wisdom }}</div>
       <div class="attributes" id="cha">Charisma: {{ character.charisma }}</div>
     </div>
-    <button v-on:click.prevent="markFlagged" v-bind:class="isFlagged"  v-show="isFlaggable">&#128681;</button>
+    <button id="flag" v-on:click.prevent="markFlagged" v-bind:class="isFlagged"  v-show="isFlaggable">&#128681;</button>
   </div>
 </template>
 
@@ -83,6 +83,11 @@ export default {
 
 #race-class-back {
   margin-top: 10px;
+}
+
+#flag:hover {
+  background-color: rgb(155, 21, 21);
+
 }
 
 .flag-button {
