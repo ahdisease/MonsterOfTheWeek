@@ -44,8 +44,8 @@ CREATE TABLE character(
 
 	monster_id int not null,
 	user_id int not null,
-	flagged_inappropriate varchar(15) DEFAULT 'not_flagged',
-    active boolean DEFAULT true,
+	flagged_inappropriate varchar(15) DEFAULT 'not_flagged' NOT NULL,
+    active boolean DEFAULT true NOT NULL,
 
 	constraint pk_character primary key (id),
 	constraint fk_character_monster foreign key (monster_id) references monster (id),
