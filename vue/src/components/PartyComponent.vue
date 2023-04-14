@@ -2,11 +2,14 @@
   <div>
     <div class="party-cards">
       <div class="your-party">Your Party</div>
+      <div 
+      v-for="character in currentParty"
+        v-bind:key="character.id">
       <character-card
-        v-for="character in currentParty"
-        v-bind:key="character.id"
         v-bind:character="character"
+        v-if="character.active"
       />
+      </div>
     </div>
   </div>
 </template>
@@ -67,8 +70,8 @@ export default {
   flex-wrap: wrap;
 }
 
-.your-party {
+/* .your-party {
   
-}
+} */
 
 </style>
