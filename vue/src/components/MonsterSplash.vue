@@ -80,6 +80,11 @@ export default {
 </script>
 
 <style scoped>
+body {
+  background: #096660;
+
+}
+
 .h3 {
   text-align: center;
 }

@@ -22,15 +22,15 @@ export default {
 <style scoped>
 
 #title-block {
-  background-color: rgb(243, 200, 176);
+  background-color: #00201E;
   margin-top: 0;
   width: 100%;
-  border: 8px ridge darkred;
+  border: 8px ridge #3A5268;
 }
 h2 {
   font-size: 2.5rem;
   text-align: center;
-  color: rgb(218, 31, 6);
+  color: #00E88A;
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
   padding: 2rem 0 0 0;

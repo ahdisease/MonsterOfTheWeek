@@ -329,7 +329,7 @@ export default {
 
 #rcol {
   grid-area: rcol;
-  justify-content: center;
+  justify-content: stretch;
   align-content: center;
   
 }

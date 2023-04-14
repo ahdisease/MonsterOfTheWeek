@@ -35,6 +35,7 @@ export default {
 
 body {
     display: grid;
+    background: #096660;
     grid-template-areas: "home"
                          "monster-space"
                          "versus"
@@ -64,7 +65,7 @@ body {
   grid-area: versus;
   font-size: 3rem;
   text-align: center;
-  color: rgb(218, 31, 6);
+  color: #00E88A;
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
   text-shadow: 2px 2px 6px rgb(54, 2, 2);

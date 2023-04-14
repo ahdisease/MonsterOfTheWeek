@@ -77,8 +77,8 @@ export default {
   border-radius: 6px;
   width: 100%;
   background-image: linear-gradient(
-    darkred,
-    rgb(218, 22, 22)
+    #00201E,
+    #035a54
   );
 }
 #winner-title {

@@ -121,12 +121,12 @@ export default {
   height: 280px;
   width: 220px;
   margin: 10px;
-  background-color: rgb(207, 225, 243);
+  background-color: #00E88A;
   color: black;
   padding: 10px;
   /* Add shadows to create the "card" effect */
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
-  border: 4px double darkblue;
+  border: 4px double #007F5F;
 }
 
 .character-card-front {
