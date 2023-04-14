@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="party-cards">
-      <div class="your-party">Your Party</div>
+      <button class="your-party">Create Your Party</button>
       <div 
       v-for="character in currentParty"
         v-bind:key="character.id">
@@ -70,8 +70,5 @@ export default {
   flex-wrap: wrap;
 }
 
-/* .your-party {
-  
-} */
 
 </style>
