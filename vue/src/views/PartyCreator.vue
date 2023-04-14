@@ -1,6 +1,6 @@
 <template>
-  <div class ="">
-      <h1>Select Your Party Members</h1>
+  <div class="">
+      <h1>Select 4 Party Members</h1>
       <character-list ></character-list>
   </div>
 </template>
@@ -18,7 +18,8 @@ name: "party-view",
 </script>
 
 <style scoped>
-h1 { 
+h1 {
+  margin-top: 2rem;
   text-align: center;
 }
 </style>

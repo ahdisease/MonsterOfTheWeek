@@ -23,59 +23,56 @@
     </div>
     
 
-    <!-- This is the filtered buttons -->
-
-    <div id="raceClassDropdown">
-      <div class="race-class-group" id="race">
-      <label for="race">Race</label>
-      <select id="race-selection" class="form-control" v-model="filter.race">
-        <option value>Any Race</option>
-        <option value="Dragonborn">Dragonborn</option>
-        <option value="Dwarf">Dwarf</option>
-        <option value="Elf">Elf</option>
-        <option value="Gnome">Gnome</option>
-        <option value="Half-Elf">Half-Elf</option>
-        <option value="Half-Orc">Half-Orc</option>
-        <option value="Halfling">Halfling</option>
-        <option value="Human">Human</option>
-        <option value="Tiefling">Tiefling</option>
-      </select>
-      </div>
-
-
-
-    <div class="race-class-group" id="class">
-      <label for="charClass">Class</label>
-      <select
-        id="charClass-selection"
-        class="form-control"
-        v-model="filter.charClass">
-         <option value>Any Class</option>
-         <option value='Barbarian'>Barbarian</option>
-         <option value='Bard'>Bard</option>
-         <option value='Cleric'>Cleric</option>
+    <!-- These are the filtered buttons -->
+    <div class="race-class-group">
+        <div class="att-group" id="race">
+          <label class="label" for="race">Race</label>
+          <select id="race-selection" class="form-control" v-model="filter.race">
+            <option value>Any</option>
+            <option value="Dragonborn">Dragonborn</option>
+            <option value="Dwarf">Dwarf</option>
+            <option value="Elf">Elf</option>
+            <option value="Gnome">Gnome</option>
+            <option value="Half-Elf">Half-Elf</option>
+            <option value="Half-Orc">Half-Orc</option>
+            <option value="Halfling">Halfling</option>
+            <option value="Human">Human</option>
+            <option value="Tiefling">Tiefling</option>
+          </select>
+        </div>
+    
+      <div class="att-group" id="charClass">
+        <label class="label" for="charClass">Class</label>
+        <select
+          id="charClass-selection"
+          class="form-control"
+          v-model="filter.charClass">
+          <option value>Any</option>
+          <option value='Barbarian'>Barbarian</option>
+          <option value='Bard'>Bard</option>
+          <option value='Cleric'>Cleric</option>
           <option value='Druid'>Druid</option>
-         <option value='Fighter'>Fighter</option>
-         <option value='Monk'>Monk</option>
-         <option value='Paladin'>Paladin</option>
-         <option value='Ranger'>Ranger</option>
-         <option value='Rogue'>Rogue</option>
-         <option value='Sorceror'>Sorceror</option>
+          <option value='Fighter'>Fighter</option>
+          <option value='Monk'>Monk</option>
+          <option value='Paladin'>Paladin</option>
+          <option value='Ranger'>Ranger</option>
+          <option value='Rogue'>Rogue</option>
+          <option value='Sorceror'>Sorceror</option>
           <option value='Warlock'>Warlock</option>
-         <option value='Wizard'>Wizard</option>
-      </select>
-    </div>
+          <option value='Wizard'>Wizard</option>
+        </select>
+      </div>
     </div>
 
     <div id="attGroupWrapper">
       <div class="att-group" id="strength">
-        <label for="strength">Strength</label>
+        <label class="label" for="strength">Strength</label>
         <select
           id="strength-selection"
           class="form-control"
           v-model="filter.strength"
         >
-          <option value>Any Strength</option>
+          <option value>Any</option>
           <option value="12">12 or higher</option>
           <option value="13">13 or higher</option>
           <option value="14">14 or higher</option>
@@ -89,13 +86,13 @@
       </div>
 
       <div class="att-group" id="dexterity">
-        <label for="dexterity">Dexterity</label>
+        <label class="label" for="dexterity">Dexterity</label>
         <select
           id="dexterity-selection"
           class="form-control"
           v-model="filter.dexterity"
         >
-          <option value>Any Dexterity</option>
+          <option value>Any</option>
           <option value="12">12 or higher</option>
           <option value="13">13 or higher</option>
           <option value="14">14 or higher</option>
@@ -109,13 +106,13 @@
       </div>
 
       <div class="att-group" id="constitution">
-        <label for="constitution">Constitution</label>
+        <label class="label" for="constitution">Constitution</label>
         <select
           id="constitution-selection"
           class="form-control"
           v-model="filter.constitution"
         >
-          <option value>Any Constitution</option>
+          <option value>Any</option>
           <option value="12">12 or higher</option>
           <option value="13">13 or higher</option>
           <option value="14">14 or higher</option>
@@ -129,13 +126,13 @@
       </div>
 
       <div class="att-group" id="intelligence">
-        <label for="intelligence">Intelligence</label>
+        <label class="label" for="intelligence">Intelligence</label>
         <select
           id="intelligence-selection"
           class="form-control"
           v-model="filter.intelligence"
         >
-          <option value>Any Intelligence</option>
+          <option value>Any</option>
           <option value="12">12 or higher</option>
           <option value="13">13 or higher</option>
           <option value="14">14 or higher</option>
@@ -149,13 +146,13 @@
       </div>
 
       <div class="att-group" id="wisdom">
-        <label for="wisdom">Wisdom</label>
+        <label class="label" for="wisdom">Wisdom</label>
         <select
           id="wisdom-selection"
           class="form-control"
           v-model="filter.wisdom"
         >
-          <option value>Any Wisdom</option>
+          <option value>Any</option>
           <option value="12">12 or higher</option>
           <option value="13">13 or higher</option>
           <option value="14">14 or higher</option>
@@ -169,13 +166,13 @@
       </div>
 
       <div class="att-group" id="charisma">
-        <label for="charisma">Charisma</label>
+        <label class="label" for="charisma">Charisma</label>
         <select
           id="charisma-selection"
           class="form-control"
           v-model="filter.charisma"
         >
-          <option value>Any Charisma</option>
+          <option value>Any</option>
           <option value="12">12 or higher</option>
           <option value="13">13 or higher</option>
           <option value="14">14 or higher</option>
@@ -455,32 +452,41 @@ export default {
 .current-party {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: auto;
 }
 
 .character-list {
   display: flex;
   flex-wrap: wrap;
-
+  justify-content: space-evenly;
 }
 
-#raceClassDropdown {
-  padding: 15px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
 .race-class-group {
-  width: 30%;
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem auto;
+  gap: 7rem;
 }
+
+.label {
+  font-weight: 700;
+}
+
+.form-control {
+  width: 7rem;
+  text-align: center;
+}
+
+.att-group {
+  text-align: center;
+}
+
 #attGroupWrapper {
-  /* margin: 15px; */
   padding: 15px;
   display: flex;
-  /* flex-direction: row; */
   flex-wrap: wrap;
-  justify-content: center;
-  align-content: space-between;
+  justify-content: space-evenly;
 }
 
 .button-container {
@@ -489,7 +495,6 @@ export default {
 }
 
 .buttons {
-  margin: 8px;
   border-radius: 3px;
   border: none;
   padding: 15px 32px;
