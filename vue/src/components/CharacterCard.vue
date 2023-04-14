@@ -51,10 +51,10 @@
     </div>
     <button
       id="flag"
-      v-on:click.prevent="markFlagged"
+      v-on:click.prevent="markFlagged" 
       v-bind:class="isFlagged"
       v-show="isFlaggable"
-    >
+    >{{character.flaggedInappropriate === 'not flagged' ? 'flagged' : 'not flagged'}}
       &#128681;
     </button>
   </div>
@@ -62,6 +62,7 @@
 
 <script>
 import CharacterService from "../services/CharacterService.js";
+
 
 export default {
   name: "character-card",
@@ -75,7 +76,7 @@ export default {
   computed: {
     isFlagged() {
       if (this.character.flaggedInappropriate == "flagged") {
-        return "flag-button";
+        return "is-flagged";
       }
       return "";
     },
@@ -85,7 +86,9 @@ export default {
       this.showDetails = !this.showDetails;
     },
     markFlagged() {
-      CharacterService.flaggedInappropriate(this.character.id).then();
+      CharacterService.flaggedInappropriate(this.character.id).then(() => {
+        
+      });
     },
   },
 };
@@ -94,7 +97,7 @@ export default {
 <style scoped>
 .card {
   height: 280px;
-  width: 200px;
+  width: 220px;
   margin: 10px;
   background-color: rgb(207, 225, 243);
   color: black;
@@ -170,8 +173,9 @@ export default {
   padding: 0;
 }
 
-.flag-button {
+.is-flagged {
   background-color: rgb(146, 28, 28);
+  border-radius: 50%;
 }
 
 .card img {
