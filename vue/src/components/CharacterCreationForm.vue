@@ -230,15 +230,13 @@ export default {
 
 .homeForm {
   width: 100%;
+  margin: 0;
   /* TODO ******* THE GRID IS STILL OFF CENTER */
   /* padding: 10px; */
-  margin: 0 auto;
-  margin-left: 0px;
-  margin-right: 0px;
+
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-areas:  
-    /* "title    title     title" */
     ".        name-box      ."
     "race     picture   class"
     "lcol     picture   rcol"
@@ -264,6 +262,8 @@ export default {
 #name-box {
   margin: 10px auto;
   grid-area: name-box;
+  justify-content: center;
+  align-content: center;
   text-align: center;
   color: #38b412;
   font-size: 2rem;

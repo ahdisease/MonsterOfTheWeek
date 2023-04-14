@@ -37,13 +37,13 @@ body {
     display: grid;
     grid-template-areas: "home"
                          "monster-space"
+                         "versus"
                          "party-space"
                          "winner-space";
     margin: 0;
     padding: 0;
-    grid-template-rows: 1fr 1fr 3fr 1fr;
-    width: 100%;
-    height: auto;
+    grid-template-rows: 1fr 1fr 4fr 4fr 1fr;
+    
 }
 
 .home {
@@ -61,6 +61,7 @@ body {
 }
 
 .versus {
+  grid-area: versus;
   font-size: 3rem;
   text-align: center;
   color: rgb(218, 31, 6);
