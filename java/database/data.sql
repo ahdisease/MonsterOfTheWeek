@@ -43,6 +43,12 @@ INSERT INTO character (name, char_class, race, description, strength, dexterity,
 	VALUES ('Bee', 'Fighter', 'Dwarf', 'He stabs people.', 10,10,10,10,10,10, 5,3); --id 12
 	INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
 	VALUES ('Al', 'Wizard', 'Dragon Born', 'He curses people.', 10,10,10,10,10,10, 5,2); --id 13
+	INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, flagged_inappropriate, active)
+	VALUES ('Tim', 'Wizard', 'Human', 'He does magic against people.', 10,10,10,10,10,10, 3,7, 'not_flagged', true); --id 14
+	INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, flagged_inappropriate, active)
+	VALUES ('George', 'Bard', 'Halfling', 'His music is awful.', 10,10,10,10,10,10, 3,6, 'flagged', false); --id 15
+	
+	
 	
 INSERT INTO party (character_1, character_2, character_3, character_4) VALUES (1,2,3,4); --id 1 monster 3
 INSERT INTO party (character_1, character_2, character_3, character_4) VALUES (2,4,5,7); --id 2 monster 3

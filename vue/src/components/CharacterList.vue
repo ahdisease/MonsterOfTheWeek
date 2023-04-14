@@ -208,7 +208,7 @@
         @dblclick.prevent="addPartyMember(character)"
         style="-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;"
         >
-        <character-card v-bind:isFlaggable="true" v-bind:character="character">
+        <character-card v-bind:isFlaggable="true" v-bind:character="character" v-if="character.active">
           {{ character.race }}
           {{ character.charClass }}
           {{ character.strength }}
