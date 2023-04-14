@@ -68,7 +68,7 @@ public class CharacterController {
         }
     }
 
-
+    @PreAuthorize("permitAll()")
     @RequestMapping(path = "/characters/{id}", method = RequestMethod.GET)
     public Character getCharacterById(@PathVariable int id){
         Character character = dao.getCharacterById(id);

@@ -48,6 +48,7 @@ public class PartyController {
 
     }
 
+    @PreAuthorize("permitAll()")
     @RequestMapping(path = "/top-vote", method = RequestMethod.GET)
     public Party getWinningPartyForDate(@RequestParam(value = "date", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date){
         if(date == null) {
