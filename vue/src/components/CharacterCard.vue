@@ -17,24 +17,40 @@
       <div class="attributes" id="wis">Wisdom: {{ character.wisdom }}</div>
       <div class="attributes" id="cha">Charisma: {{ character.charisma }}</div>
     </div>
-    <button>flag</button>
+    <button id="flag" v-on:click.prevent="markFlagged" v-bind:class="isFlagged"  v-show="isFlaggable">&#128681;</button>
   </div>
 </template>
 
 <script>
+import CharacterService from '../services/CharacterService.js'
+
 export default {
   name: "character-card",
-  props: ["character"],
+  props: ["character", "isFlaggable"],
+
   data() {
     return {
       showDetails: true,
     };
   },
+  computed: {
+    isFlagged() {
+      if(this.character.flaggedInappropriate == "flagged") { 
+        return 'flag-button'
+      } 
+      return ""
+    
+    },
+
+  },
   methods: {
     turnCharacterCard() {
       this.showDetails = !this.showDetails;
     },
-  }
+    markFlagged() {
+      CharacterService.flaggedInappropriate(this.character.id).then()
+    }
+  },
 };
 </script>
 
@@ -67,6 +83,21 @@ export default {
 
 #race-class-back {
   margin-top: 10px;
+}
+
+#flag:hover {
+  background-color: rgb(146, 28, 28);
+
+}
+
+#flag {
+  width: 40px;
+  position: relative;
+  left: 120px;
+}
+
+.flag-button {
+  background-color: rgb(146, 28, 28);
 }
 
 .card img {
