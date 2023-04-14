@@ -10,7 +10,7 @@
         v-for="character in winningParty"
         v-bind:key="character.id700"
       >
-        <character-card v-bind:character="character">
+        <character-card v-bind:character="character" v-if="character.active">
           {{ character.race }}
           {{ character.charClass }}
           {{ character.strength }}
