@@ -72,6 +72,7 @@ export default {
 /* putting this in so it's a remind and so it's not empty  */
 
 #winner-space {
+  width: 75%;
   margin: 10px 0;
 }
 

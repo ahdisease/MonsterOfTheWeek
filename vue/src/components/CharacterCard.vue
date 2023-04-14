@@ -17,6 +17,7 @@
       <div class="attributes" id="wis">Wisdom: {{ character.wisdom }}</div>
       <div class="attributes" id="cha">Charisma: {{ character.charisma }}</div>
     </div>
+    <button>flag</button>
   </div>
 </template>
 
