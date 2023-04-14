@@ -184,7 +184,23 @@
           <option value="20">20 or higher</option>
         </select>
       </div>
+
+      <div class="att-group" id="content" v-if="confirmModeratorPermissions">
+        <label class="label" for="flaggedInappropriate">Content</label>
+        <select
+          id="content-selection"
+          class="form-control"
+          v-model="filter.flaggedInappropriate"
+        >
+          <option value>Any</option>
+          <option value="flagged">Flagged Content</option>
+          <option value="not_flagged">Unflagged Content</option>
+          
+        </select>
+      </div>
     </div>
+
+    
 
     <div class="character-list">
       <div v-for="character in filteredList"
@@ -297,6 +313,7 @@ export default {
         intelligence: "",
         wisdom: "",
         charisma: "",
+        flaggedInappropriate: ""
       },
 
       // showModal: false,
@@ -419,9 +436,25 @@ export default {
           (character) => character.charisma >= this.filter.charisma
         );
       }
+      if (this.filter.flaggedInappropriate != "") {
+        filteredCharacters = filteredCharacters.filter(
+          (character) => character.flaggedInappropriate === this.filter.flaggedInappropriate
+        );
+      }
 
       return filteredCharacters;
     },
+    confirmModeratorPermissions() {
+      let allowed = false;
+
+      this.$store.state.user.authorities.forEach(authority => {
+        if(authority.name === 'ROLE_MOD') {
+          allowed = true;
+        }
+      })
+
+      return allowed;
+    }
 
     // filteredCharacters() {
     //   let filteredCharacters = this.currentCharacters;
