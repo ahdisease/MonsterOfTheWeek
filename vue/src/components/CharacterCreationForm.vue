@@ -237,8 +237,8 @@ export default {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-areas:  
-    ".        name-box      ."
-    "race     picture   class"
+    "race        name-box      class"
+    "lcol     picture   rcol"
     "lcol     picture   rcol"
     "desc     desc      desc"
     ".        buttons   .";
@@ -248,8 +248,8 @@ export default {
 }
 
 .form-control {
-  width: 90%;
-  height: 30px;
+  width: auto;
+  height: auto;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
@@ -292,13 +292,14 @@ export default {
 
 #picture {
   grid-area: picture;
+  justify-content: center;
+  align-content: center;
 }
 
 #char-pic {
   background-color: aliceblue;
   width: 100%;
   height: auto;
-  margin: 50px 0 0 0;
   align-content: center;
   justify-content: center;
 }
@@ -321,18 +322,32 @@ export default {
 
 #lcol {
   grid-area: lcol;
+  justify-content: center;
+  align-content: center;
+  
 }
 
 #rcol {
   grid-area: rcol;
+  justify-content: center;
+  align-content: center;
+  
 }
 
 #desc {
   grid-area: desc;
   margin: 10px 0;
   text-align: center;
+  justify-content: center;
+  align-self: center;
   color: #38b412;
   font-size: 2rem;
+  
+}
+
+#description {
+  width: 90%;
+  margin-left: 5%;
   
 }
 
