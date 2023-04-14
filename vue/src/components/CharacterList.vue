@@ -206,10 +206,10 @@
       <div v-for="character in filteredList"
         v-bind:key="character.id4"
         @dblclick.prevent="addPartyMember(character)"
-        @newFlag="generateCharacterList"
+        
         style="-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;"
         >
-        <character-card v-bind:isFlaggable="true" v-bind:character="character">
+        <character-card v-bind:isFlaggable="true" v-bind:character="character" @newFlag="generateCharacterList">
           {{ character.race }}
           {{ character.charClass }}
           {{ character.strength }}
