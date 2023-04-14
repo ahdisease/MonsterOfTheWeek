@@ -7,12 +7,16 @@
     <div class="party-space">
       <party-component />
     </div>
+    <div id="winner-space">
+      <party-winner />
+    </div>
   </div>
 </template>
 
 <script>
 import MonsterSplash from '../components/MonsterSplash.vue'
 import PartyComponent from '../components/PartyComponent.vue'
+import PartyWinner from '../components/PartyWinner.vue';
 
 
 
@@ -20,7 +24,8 @@ export default {
   name: "home",
   components: {
     MonsterSplash,
-    PartyComponent
+    PartyComponent,
+    PartyWinner
 
   }
 };
@@ -51,6 +56,30 @@ export default {
 }
 
 .party-space {
-  
+  /* added this because it was empty */
+  background-color: cadetblue;
 }
+
+#winner-space {
+  margin: 10px 0;
+}
+
+
+
+
+@media screen and (max-width: 1000px) {
+  
+/* putting this in so it's a remind and so it's not empty  */
+
+#winner-space {
+  margin: 10px 0;
+}
+
+
+
+
+
+}
+
+
 </style>
