@@ -54,7 +54,7 @@
       v-on:click.prevent="markFlagged" 
       v-bind:class="isFlagged"
       v-show="isFlaggable"
-    >{{character.flaggedInappropriate === 'not flagged' ? 'flagged' : 'not flagged'}}
+    >{{character.flaggedInappropriate === 'not_flagged' ? 'not_flagged' : 'flagged'}}
       &#128681;
     </button>
   </div>
@@ -87,7 +87,7 @@ export default {
     },
     markFlagged() {
       CharacterService.flaggedInappropriate(this.character.id).then(() => {
-        
+        this.$emit('newFlag')
       });
     },
   },
