@@ -25,7 +25,7 @@ public class JdbcCharacterDao implements CharacterDao{
         List<Character> characters = new ArrayList<>();
         String sql = "SELECT character.id, character.name, character.race, character.description, character.char_class, " +
                 "character.strength, character.dexterity, character.constitution, character.intelligence, character.wisdom, " +
-                "character.charisma, character.monster_id, character.user_id FROM character WHERE ";
+                "character.charisma, character.monster_id, character.user_id, character.flagged_inappropriate FROM character WHERE ";
 
         if(username != null){
             sql += "character.user_id = (SELECT user_id FROM users WHERE username = ?) AND " +
@@ -50,7 +50,7 @@ public class JdbcCharacterDao implements CharacterDao{
 
         String sql = "SELECT character.id, character.name, character.race, character.description, character.char_class, " +
                 "character.strength, character.dexterity, character.constitution, character.intelligence, character.wisdom, " +
-                "character.charisma, character.monster_id, character.user_id FROM character WHERE character.id = ?";
+                "character.charisma, character.monster_id, character.user_id, character.flagged_inappropriate FROM character WHERE character.id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
 
         if(results.next()){
@@ -120,6 +120,11 @@ public class JdbcCharacterDao implements CharacterDao{
 
     private Character mapRowToCharacter(SqlRowSet result){
         Character character = new Character();
+        //check if character is inactive
+        //boolean active =
+
+
+
         character.setId(result.getInt("id"));
         character.setName(result.getString("name"));
         character.setRace(result.getString("race"));
@@ -133,6 +138,7 @@ public class JdbcCharacterDao implements CharacterDao{
         character.setCharisma(result.getInt("charisma"));
         character.setMonsterId(result.getInt("monster_id"));
         character.setUserId(result.getInt("user_id"));
+        character.setFlaggedInappropriate(result.getString("flagged_inappropriate"));
         return character;
 
     }
