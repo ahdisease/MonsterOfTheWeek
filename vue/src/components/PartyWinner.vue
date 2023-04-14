@@ -11,6 +11,7 @@
         v-bind:key="character.id700"
       >
         <character-card v-bind:character="character" v-if="character.active">
+          {{ character.nameIndex }}
           {{ character.race }}
           {{ character.charClass }}
           {{ character.strength }}

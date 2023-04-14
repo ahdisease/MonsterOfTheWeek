@@ -7,9 +7,8 @@
       v-on:click="turnCharacterCard"
     >
       <div id="char-name">{{ character.name }}</div>
-      <div class="race-class">
-        {{ character.race }} {{ character.charClass }}
-      </div>
+      <div class="race"> {{ character.race }} </div>
+      <div class="class"> {{ character.charClass }} </div>
       <div id="description">{{ character.description }}</div>
     </div>
     <div
@@ -18,9 +17,9 @@
       v-show="showDetails"
       v-on:click="turnCharacterCard"
     >
-      <div class="race-class">
-        {{ character.race }} {{ character.charClass }}
-      </div>
+      <div id="char-name">{{ character.name }}</div>
+      <div class="race"> {{ character.race }} </div>
+      <div class="class"> {{ character.charClass }} </div>
 
       <div class="character-card-back">
         <div class="left-stats">
@@ -122,7 +121,7 @@ export default {
 
 <style scoped>
 .card {
-  height: 280px;
+  height: 290px;
   width: 220px;
   margin: 10px;
   background-color: #00E88A;
@@ -134,10 +133,30 @@ export default {
 }
 
 .character-card-front {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-areas: "char-name char-name"
+                         "race class"
+                         "description description";
+    margin: 0;
+    padding: 0;
+    grid-template-columns: 1fr 1fr;
+
   align-items: center;
   height: 100%;
+}
+
+#char-name {
+  grid-area: char-name;
+}
+
+.race {
+  grid-area: race;
+
+}
+
+.class {
+  grid-area: class;
+
 }
 
 .character-card-back {
@@ -245,6 +264,7 @@ export default {
 }
 
 #description {
+  grid-area: description;
   align-self: flex-start;
   font-style: italic;
   font-size: 0.9rem;
