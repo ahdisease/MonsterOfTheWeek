@@ -217,8 +217,7 @@ export default {
 }
 /* On mouse-over, add a deeper shadow */
 .card:hover {
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
-  border: 3px solid rgb(25, 55, 65);
+  opacity: .7;
 }
 
 #char-name {
