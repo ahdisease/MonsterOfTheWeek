@@ -89,10 +89,6 @@ export default {
       CharacterService.flaggedInappropriate(this.character.id).then(() => {
         
       });
-      CharacterService.getCharacterById(this.character.id)((response) => {
-          console.log(response)
-         this.$emit("update:character", response.data) 
-        })
     },
   },
 };
