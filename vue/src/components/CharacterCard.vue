@@ -94,7 +94,7 @@ export default {
 <style scoped>
 .card {
   height: 280px;
-  width: 200px;
+  width: 220px;
   margin: 10px;
   background-color: rgb(207, 225, 243);
   color: black;

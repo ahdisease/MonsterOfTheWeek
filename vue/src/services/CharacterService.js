@@ -31,6 +31,7 @@ export default {
     getWinningParty(date) {
         return axios.get(`/top-vote?date=${date}`);
     },
+    
     flaggedInappropriate(id) {
         return axios.put(`/flag/characters/${id}`)
 
