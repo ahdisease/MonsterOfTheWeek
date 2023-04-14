@@ -206,9 +206,10 @@
       <div v-for="character in filteredList"
         v-bind:key="character.id4"
         @dblclick.prevent="addPartyMember(character)"
+        
         style="-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;"
         >
-        <character-card v-bind:isFlaggable="true" v-bind:character="character" v-if="character.active">
+        <character-card v-bind:isFlaggable="true" v-bind:character="character" @newFlag="generateCharacterList" v-if="character.active">
           {{ character.race }}
           {{ character.charClass }}
           {{ character.strength }}
@@ -322,17 +323,9 @@ export default {
 
   created() {
     // This is the working method
-    CharacterService.getAllCharacters(new Date().toJSON().slice(0, 10)).then(
-      (response) => {
-        this.currentCharacters = response.data;
+    this.generateCharacterList();
         //  console.log(this.currentCharacters)
-      }
-    );
-
-    // this was the method being tested ***************
-    //  CharacterService.getAllCharacters(new Date().toJSON().slice(0, 10)).then((response) => {
-    //   this.retrievedCharacters = response.data;
-    // });
+      
 
     DnDApiService.getAllRaces().then((response) => {
       this.dropdownRace = response.data.results;
@@ -375,7 +368,13 @@ export default {
     },
     removePartyMember(character) {
       this.party.pop(character);
-    }
+    },
+    generateCharacterList() {
+      CharacterService.getAllCharacters(new Date().toJSON().slice(0, 10)).then(
+      (response) => {
+        this.currentCharacters = response.data;
+      })
+    },
 
     //  This is the Drag and Drop methods
     // startDrag(evt, item) {
