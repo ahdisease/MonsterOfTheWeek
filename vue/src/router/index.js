@@ -9,6 +9,8 @@ import CharacterCreator from '../views/CharacterCreator.vue'
 import PartyCreator from '../views/PartyCreator.vue'
 import CharacterView from '../views/CharacterView.vue'
 import PartyRankings from '../views/PartyRankings.vue'
+import CharacterCard from '../components/CharacterCard.vue'
+
 
 Vue.use(Router)
 
@@ -85,6 +87,14 @@ const router = new Router({
       path: '/party/?date',
       name: 'party-rankings',
       component: PartyRankings,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/flag/characters/{id}",
+      name: "flag-characters",
+      component: CharacterCard,
       meta: {
         requiresAuth: true
       }
