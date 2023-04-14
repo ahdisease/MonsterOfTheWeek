@@ -89,7 +89,7 @@ public class CharacterController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path = "/characters/{id}", method = RequestMethod.DELETE)
     public void deleteCharacterById(@PathVariable int id, Principal user) {
-        //todo fix dao
+
         //get character by id and confirm character is owned by user
         if(dao.getCharacterById(id).getUserId() != userDao.findIdByUsername(user.getName())) {
             //response 403 forbidden if they do not match
