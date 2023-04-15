@@ -3,7 +3,7 @@
     <div
       class="character-card-front"
       v-bind:key="character.id123"
-      v-show="!showDetails"
+      v-show="showDetails"
       v-on:click="turnCharacterCard"
     >
       <div id="char-name">{{ character.name }}</div>
@@ -14,7 +14,7 @@
     <div
       class="character-card-back"
       v-bind:key="character.id124"
-      v-show="showDetails"
+      v-show="!showDetails"
       v-on:click="turnCharacterCard"
     >
       <div id="char-name">{{ character.name }}</div>
