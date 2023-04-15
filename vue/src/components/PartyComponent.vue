@@ -1,15 +1,16 @@
 <template>
-  <div>
+  <div id="wrapper">
     <h1 id="partyName">Your Party</h1>
     <div class="party-cards">
-      <button class="your-party" v-show="showPartyButton" v-on:click="createYourParty">Create Your Party</button>
-      <div 
-      v-for="character in currentParty"
-        v-bind:key="character.id">
-      <character-card
-        v-bind:character="character"
-        v-if="character.active"
-      />
+      <button
+        class="your-party"
+        v-if="currentParty == []"
+        v-on:click="createYourParty"
+      >
+        Create Your Party
+      </button>
+      <div v-for="character in currentParty" v-bind:key="character.id">
+        <character-card v-bind:character="character" v-if="character.active" />
       </div>
     </div>
   </div>
@@ -27,9 +28,9 @@ export default {
   data() {
     return {
       currentParty: [],
-      showPartyButton: false,
     };
   },
+  
   created() {
     CharacterService.getPartyByUsername(this.$store.state.user.username).then(
       (response) => {
@@ -70,22 +71,27 @@ export default {
 </script>
 
 <style scoped>
-#partyName{
+#wrapper {
+  background-color: #00201e;
+  width: 400px;
+  border-radius: 6px;
+  padding-bottom: 10px;
+}
+#partyName {
   font-size: 3em;
   text-align: center;
+  color: #00e88a;
 }
 
 .party-cards {
   display: flex;
-  /* justify-content: space-evenly; */
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
 .your-party {
-  background-color: #00E88A;
+  background-color: #00e88a;
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
-
-
 </style>

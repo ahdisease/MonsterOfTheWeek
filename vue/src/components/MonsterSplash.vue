@@ -1,7 +1,8 @@
 <template>
   <main>
+    <div>
     <!-- The code below this works **** -->
-    <div class="container">
+    <div id="container">
       <h1 id="monsterName">{{ monster.name }}</h1>
 
       <div
@@ -13,7 +14,6 @@
           v-bind:src="'https://www.dnd5eapi.co' + monster.image"
           alt="image of monster"
         />
-        
       </div>
       <!-- The code above this works ***** -->
 
@@ -60,6 +60,7 @@
       </div>
       <!-- This is the end of the div that works *** -->
     </div>
+    </div>
   </main>
 </template>
 
@@ -91,26 +92,30 @@ export default {
     turnMonsterCard() {
       this.showDetails = !this.showDetails;
     },
-
   },
 };
 </script>
 
 <style scoped>
-body {
+/* body {
   background: #096660;
-}
+} */
 
 h3 {
   text-align: center;
 }
-
+#container {
+border-radius: 6px;
+ background-color:  #00201E;
+}
 /* main {
   margin: 5%;
 } */
 #monsterName {
   font-size: 3em;
   text-align: center;
+  color: #00e88a;
+  
 }
 
 .monster-card-front,
@@ -118,12 +123,15 @@ h3 {
   width: 100%;
   height: auto;
   border-radius: 10px;
-  background-color: #c52b1e;
+  background-color: #00201e;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+/* .monster-card-back{
+  min-height: 500px;
+} */
 
 .monster-card-back h3 {
   padding: 10px;
@@ -132,6 +140,8 @@ h3 {
 .hit-points {
   font-weight: bold;
   font-size: 1.25em;
+  color: #00e88a;
+
   /* padding: 5px; */
 }
 .all-stats {
@@ -141,6 +151,7 @@ h3 {
   gap: 10px;
   /* justify-content:space-around; */
   align-content: space-around;
+  color: #00e88a;
 }
 
 .stats-box {
@@ -155,7 +166,7 @@ h3 {
 
 .stats-value {
   font-size: 1em;
-  background-color: rgb(252, 247, 240);
+  background-color: #3a5268;
   width: 50%;
   margin: 0 auto;
   border-radius: 6px;

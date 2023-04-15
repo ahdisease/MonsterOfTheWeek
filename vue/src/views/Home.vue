@@ -3,10 +3,17 @@
     <p id="intro">
       Welcome to Monster of the Week, where you pick your party to battle
       against a monster every week. Start by
-      <b-btn class="callToAction">          <router-link class="nav-options" v-bind:to="{ name: 'character-view' }">Creating a Character</router-link>
- </b-btn>
-      or go straight to <b-btn class="callToAction">      <router-link class="nav-options" v-bind:to="{ name: 'party' }">Forming a Party</router-link>
- </b-btn>
+      <b-btn class="callToAction">
+        <router-link class="nav-options" v-bind:to="{ name: 'character-view' }"
+          >Creating a Character</router-link
+        >
+      </b-btn>
+      or go straight to
+      <b-btn class="callToAction">
+        <router-link class="nav-options" v-bind:to="{ name: 'party' }"
+          >Forming a Party</router-link
+        >
+      </b-btn>
     </p>
     <div id="main-battle">
       <div class="monster-space">
@@ -39,86 +46,118 @@ export default {
 </script>
 
 <style scoped>
-/* body {
-  display: grid;
-  background: #096660;
-  grid-template-areas:
+/* body { */
+/* display: grid; */
+/* background: #096660; */
+/* grid-template-areas:
     "home"
     "monster-space"
     "versus"
     "party-space"
-    "winner-space";
-  margin: 0;
-  padding: 0;
-  grid-template-rows: 1fr 1fr 4fr 4fr 1fr;
-} */
-
+    "winner-space"; */
+/* margin: 0;
+  padding: 0; */
+/* grid-template-rows: 1fr 1fr 4fr 4fr 1fr; */
+/* } */
 .home {
+  background-color: #3a5268;
   grid-area: home;
   display: flex;
   flex-direction: column;
   /* justify-content: space-between; */
   align-items: center;
 }
-#intro{
+#intro {
   text-align: center;
   font-weight: 500;
   padding: 10px 20px;
+  color: #15b771;
 }
 .callToAction {
   padding: 0px 4px;
+  color: #15b771;
+  background-color: #00201e;
+  border: none;
 }
-#intro .nav-options {
-  color: white;
+.callToAction .nav-options a {
+  color: #15b771;
+}
+.callToAction:hover {
+  background-color: #007f5f;
+  /* color: #00e88a; */
+}
+.callToAction a:hover {
+  color: #00e88a;
+}
+.callToAction .nav-options {
+  color: #15b771;
   text-decoration: none;
 }
 #intro .nav-options a:hover {
   /* color: rgb(180, 131, 39); */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.9);
+  /* transition: 0.3s; */
 }
 #main-battle {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
-
-
-
 .monster-space {
-  flex: 60%;
-  grid-area: monster-space;
+  /* flex: 50%; */
+  /* grid-area: monster-space; */
+  border-radius: 6px;
+  /* background-color: #00201e; */
+  margin: 10px;
 }
-
 .versus {
   /* align-self: center; */
-  grid-area: versus;
-  /* font-size: 3rem;
+  /* grid-area: versus; */
+  /* font-size: 3rem; */
   text-align: center;
-  color: #00e88a;
+  /*color: #00e88a;
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
   text-shadow: 2px 2px 6px rgb(54, 2, 2); */
 }
 .versus h1 {
-
   font-size: 5em;
   text-align: center;
-  color: #00e88a;
-  -webkit-text-stroke-width: 0.5px;
-  -webkit-text-stroke-color: black;
+  color: #007f5f;
+  -webkit-text-stroke-width: 4px;
+  -webkit-text-stroke-color: #00e88a;
+  font-weight: 900;
+  font-style: italic;
   text-shadow: 2px 2px 6px rgb(54, 2, 2);
-
 }
 
 .party-space {
+  border-radius: 6px;
+  margin: 0 10px;
   /* added this because it was empty */
-  background-color: rgb(243, 200, 176);
-  grid-area: party-space;
+  /* background-color: rgb(243, 200, 176); */
+  /* grid-area: party-space; */
+  /* flex: 40%; */
+  /* justify-self: flex-end; */
+  /* flex-shrink: 1; */
 }
 
 #winner-space {
+  background-color: #00201E;
+  width: 100%;
   margin: 10px 0;
-  grid-area: winner-space;
+  padding: 15px;
+  /* grid-area: winner-space; */
+}
+@media screen and (max-width: 1000px) {
+  #main-battle {
+    flex-direction: column;
+    align-items: center;
+  }
+  .party-space {
+    /* flex: 100%; */
+    justify-self: center;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -129,7 +168,7 @@ export default {
   }
 
   #winner-space {
-    width: 75%;
+    /* width: 75%; */
     margin: 10px 0;
   }
 }

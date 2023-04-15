@@ -45,10 +45,11 @@ nav {
    margin: 0 auto;
 }
 
+
 .nav-options {
   font-size: 1.2em;
   margin: 15px 20px;
-  color: rgb(138, 91, 3);
+  color: #15B771;
 }
 
 nav a {
@@ -58,19 +59,14 @@ nav a {
   
 }
 nav a:hover {
-  color: rgb(180, 131, 39);
+  color: #00E88A;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
 }
 
 
 @media screen and (max-width:1000px) {
-  #title-block {
-  background-color: #00201E;
-  margin-top: 0;
-  width: 100%;
-  border: 8px ridge #3A5268;
-}
+ 
 h2 {
   font-size: 2em;
   text-align: center;
@@ -79,6 +75,7 @@ h2 {
   -webkit-text-stroke-color: black;
   padding: 10px 0 0 0;
   text-shadow: 2px 2px 6px rgb(54, 2, 2);
+  color: #15B771;
 }
 nav {
    /* background-color: rgb(218, 124, 36); */
@@ -95,7 +92,6 @@ nav {
   font-size: 1.2em;
   padding: 5px 12px;
   margin:0 auto;
-  color: rgb(138, 91, 3);
 
 }
 
@@ -121,7 +117,6 @@ nav {
   font-size: 1.2em;
   padding: 1px 12px;
   margin:0 auto;
-  color: rgb(138, 91, 3);
 
 }
 

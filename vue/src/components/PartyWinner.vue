@@ -6,7 +6,6 @@
 
     <div class="party-display">
       <div
-        class="the-cards"
         v-for="character in winningParty"
         v-bind:key="character.id700"
       >
@@ -38,7 +37,7 @@ export default {
     };
   },
 
-// change hard coded date
+  // change hard coded date
 
   created() {
     CharacterService.getWinningParty("2023-04-09").then((response) => {
@@ -72,45 +71,45 @@ export default {
 
 <style scoped>
 #wrapper {
-  border: 10px solid linear-gradient(rgb(0, 0, 0), rgba(255, 0, 0, 0));
+  border: 4px solid #00E88A;
+  padding: 10px;
   /* border-width: 10px 1px 1px 0; */
   border-radius: 6px;
   width: 100%;
-  background-image: linear-gradient(
-    #15867f,
-    #035a54
-  );
+  background-color: #00201E;
+  /* background-image: linear-gradient(#15867f, #035a54); */
 }
 #winner-title {
   padding: 10px;
-  height: 50px;
+  /* height: 50px; */
   /* background-image: linear-gradient( rgba(255,0,0,1), rgba(255,0,0,0)); */
   /* This is a temporary color to see where it is */
 }
 #winner-title h3 {
   background-image: linear-gradient(
     to right,
-   #462523 0,
-          #cb9b51 22%, 
-   #f6e27a 45%,
-   #f6f2c0 50%,
-   #f6e27a 55%,
-   #cb9b51 78%,
-   #462523 100%
-   );
-   color:transparent;
-   -webkit-background-clip:text;
-   font-size: 2em;
-   text-align: center;
+    #462523 0,
+    #cb9b51 22%,
+    #f6e27a 45%,
+    #f6f2c0 50%,
+    #f6e27a 55%,
+    #cb9b51 78%,
+    #462523 100%
+  );
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-size: 2em;
+  text-align: center;
 }
 .party-display {
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 768px) {
   /* #wrapper {
     width: 50%;
   } */
