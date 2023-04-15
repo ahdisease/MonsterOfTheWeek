@@ -137,6 +137,22 @@ public class JdbcPartyDao implements PartyDao {
         return party;
     }
 
+    @Override
+    public Party updateUserParty(Party newParty, String username) {
+        //users can't update old parties
+        Party currentParty = this.retrievePartyByUsername(username, LocalDate.now());
+
+        //users without parties should use the create method call
+        if (currentParty == null) {
+            return null;
+        } else {
+
+            String deleteSql = "SELECT * FROM users_party WHERE party_id = ? and user_id = (SELECT users.user_id FROM users WHERE username = ?);";
+            jdbcTemplate.update(deleteSql,currentParty.getId(),username);
+            return this.createParty(newParty,username);
+        }
+    }
+
     private Party mapRowToParty(SqlRowSet result) {
         Party party = new Party();
         party.setCharacterOne(result.getInt("character_1"));
