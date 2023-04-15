@@ -77,7 +77,7 @@ export default {
   border-radius: 6px;
   width: 100%;
   background-image: linear-gradient(
-    #00201E,
+    #15867f,
     #035a54
   );
 }

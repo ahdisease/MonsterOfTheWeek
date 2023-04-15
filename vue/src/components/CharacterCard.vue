@@ -7,9 +7,8 @@
       v-on:click="turnCharacterCard"
     >
       <div id="char-name">{{ character.name }}</div>
-      <div class="race-class">
-        {{ character.race }} {{ character.charClass }}
-      </div>
+      <div class="race"> <strong>Race:</strong> {{ character.race }} </div>
+      <div class="class"> <strong>Class:</strong> {{ character.charClass }} </div>
       <div id="description">{{ character.description }}</div>
     </div>
     <div
@@ -18,34 +17,38 @@
       v-show="showDetails"
       v-on:click="turnCharacterCard"
     >
-      <div class="race-class">
-        {{ character.race }} {{ character.charClass }}
-      </div>
+      <div id="char-name">{{ character.name }}</div>
+      <div class="race"> <strong>Race:</strong> {{ character.race }} </div>
+      <div class="class"> <strong>Class:</strong> {{ character.charClass }} </div>
 
       <div class="character-card-back">
-        <div class="attributes">
-          <div class="back-attribute">Strength</div>
-          <div class="attribute-value left-column">{{ character.strength }}</div>
+        <div class="left-stats">
+          <div class="attributes">
+            <div class="back-attribute">Strength</div>
+            <div class="attribute-value left-column">{{ character.strength }}</div>
+          </div>
+          <div class="attributes">
+            <div class="back-attribute">Dexterity</div>
+            <div class="attribute-value left-column">{{ character.dexterity }}</div>
+          </div>
+          <div class="attributes">
+            <div class="back-attribute">Constitution</div>
+            <div class="attribute-value left-column">{{ character.constitution }}</div>
+          </div>
         </div>
-        <div class="attributes">
-          <div class="back-attribute">Dexterity</div>
-          <div class="attribute-value right-column">{{ character.dexterity }}</div>
-        </div>
-        <div class="attributes">
-          <div class="back-attribute">Constitution</div>
-          <div class="attribute-value left-column">{{ character.constitution }}</div>
-        </div>
-        <div class="attributes">
-          <div class="back-attribute">Intelligence</div>
-          <div class="attribute-value right-column">{{ character.intelligence }}</div>
-        </div>
-        <div class="attributes">
-          <div class="back-attribute">Wisdom</div>
-          <div class="attribute-value left-column">{{ character.wisdom }}</div>
-        </div>
-        <div class="attributes">
-          <div class="back-attribute">Charisma</div>
-          <div class="attribute-value right-column">{{ character.charisma }}</div>
+        <div class="right-stats">
+          <div class="attributes">
+            <div class="back-attribute">Intelligence</div>
+            <div class="attribute-value right-column">{{ character.intelligence }}</div>
+          </div>
+          <div class="attributes">
+            <div class="back-attribute">Wisdom</div>
+            <div class="attribute-value right-column">{{ character.wisdom }}</div>
+          </div>
+          <div class="attributes">
+            <div class="back-attribute">Charisma</div>
+            <div class="attribute-value right-column">{{ character.charisma }}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -118,7 +121,7 @@ export default {
 
 <style scoped>
 .card {
-  height: 280px;
+  height: 290px;
   width: 220px;
   margin: 10px;
   background-color: #00E88A;
@@ -130,18 +133,66 @@ export default {
 }
 
 .character-card-front {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-areas: "char-name char-name"
+                         "race race"
+                         "class class"
+                         "description description";
+    margin: 0;
+    padding: 0;
+    grid-template-columns: 1fr 1fr;
+
   align-items: center;
   height: 100%;
 }
 
+#char-name {
+  text-align: center;
+  grid-area: char-name;
+}
+
+.race {
+  text-align: center;
+  grid-area: race;
+
+}
+
+.class {
+  text-align: center;
+  grid-area: class;
+
+}
+
 .character-card-back {
-  display: flex;
+  display: grid;
+  grid-template-areas: "char-name char-name"
+                         "race race" 
+                         "class class"
+                         "description description"
+                         "left-stats right-stats";
+    margin: 0;
+    padding: 0;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 2px;
+    column-gap: 10%;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+}
+
+.left-stats {
+  grid-area: left-stats;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 6px;
+  align-items: center;
+
+
+}
+
+.right-stats {
+  grid-area: right-stats;
+  justify-content: center;
+
 }
 
 .race-class {
@@ -168,14 +219,15 @@ export default {
   background-color: rgb(214, 233, 245);
   border-radius: 20%;
   width: 30px;
+  align-content: center;
 }
 
 .left-column {
-
+  margin: 0 0 0 20px;
 }
 
 .right-column {
-
+    margin: 0 0 0 20px;
 }
 /* .int-align {
   margin-right: 11px;
@@ -227,9 +279,11 @@ export default {
 }
 
 #description {
+  grid-area: description;
   align-self: flex-start;
   font-style: italic;
   font-size: 0.9rem;
+  text-align: center;
 }
 
 </style>

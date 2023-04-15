@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="party-cards">
-      <div class="your-party">Your Party</div>
+      <button class="your-party" v-on:click="createYourParty">Create Your Party</button>
       <div 
       v-for="character in currentParty"
         v-bind:key="character.id">
@@ -59,6 +59,11 @@ export default {
       }
     );
   },
+  methods: {
+    createYourParty() {
+      this.$router.push({name: "party"});
+    }
+  }
 };
 </script>
 
@@ -70,8 +75,11 @@ export default {
   flex-wrap: wrap;
 }
 
-/* .your-party {
-  
-} */
+.your-party {
+  background-color: #00E88A;
+  box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
 
 </style>
