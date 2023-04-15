@@ -66,7 +66,7 @@
       </div>
 
 
-      <div class="cloud">
+      <div id="cloud-btn" class="cloud">
       <cloudinary-image-upload />
       </div>
 
@@ -227,7 +227,7 @@ export default {
 
 
 #addHomeform {
-  margin: 100px auto 0 auto;
+  margin: 100px auto 20px auto;
   width: 90%;
   background-color: lightgray;
   /* padding: 1% 2%; */
@@ -413,6 +413,13 @@ select.form-control {
 button {
   border-radius: 6px;
   margin: 0 10px 0 0;
+}
+
+#cloud-btn {
+  color: #fff;
+  padding: 7px;
+  background-color: #38b412;
+  border-radius: 6px;
 }
 
 .btn-submit {
