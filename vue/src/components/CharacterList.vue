@@ -1,30 +1,58 @@
 <template>
   <div>
+    <div id="party-name">
+      <h2>Your Party</h2>
+    </div>
+
     <div class="party-container">
       <div class="current-party">
-      <div
-      v-bind:key="character.id3"
-      v-for="character in party"
-      @dblclick.prevent="removePartyMember(character)"
-        style="-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;"
-      >
-      <character-card v-bind:character="character"></character-card>
+        <div
+          v-bind:key="character.id3"
+          v-for="character in party"
+          @dblclick.prevent="removePartyMember(character)"
+          style="
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+          "
+        >
+          <character-card v-bind:character="character"></character-card>
+        </div>
       </div>
     </div>
-    </div>
-    
+
     <div class="button-container">
       <div class="buttons">
-      <button class="btn btn-submit" v-on:click="submitForm">Submit</button>
-      <button class="btn btn-cancel" type="cancel" v-on:click="cancelForm">
-        Cancel
-      </button>
+        <button class="btn btn-submit" v-on:click="submitForm">Submit</button>
+        <button class="btn btn-cancel" type="cancel" v-on:click="cancelForm">
+          Cancel
+        </button>
       </div>
     </div>
-    
 
     <!-- These are the filtered buttons -->
     <div class="race-class-group">
+      <div class="att-group" id="race">
+        <label class="label" for="race">Race</label>
+        <select id="race-selection" class="form-control" v-model="filter.race">
+          <option value>Any</option>
+          <option value="Dragonborn">Dragonborn</option>
+          <option value="Dwarf">Dwarf</option>
+          <option value="Elf">Elf</option>
+          <option value="Gnome">Gnome</option>
+          <option value="Half-Elf">Half-Elf</option>
+          <option value="Half-Orc">Half-Orc</option>
+          <option value="Halfling">Halfling</option>
+          <option value="Human">Human</option>
+          <option value="Tiefling">Tiefling</option>
+        </select>
+      </div>
+
+      <div id="clear-filters" class="buttons" v-on:click="clearFilters">
+        <b-btn>Reset Filters</b-btn>
+      </div>
+
         <div class="att-group" id="race">
           <label class="label" for="race">Race</label>
           <select id="race-selection" class="form-control" v-model="filter.race">
@@ -46,20 +74,21 @@
         <select
           id="charClass-selection"
           class="form-control"
-          v-model="filter.charClass">
+          v-model="filter.charClass"
+        >
           <option value>Any</option>
-          <option value='Barbarian'>Barbarian</option>
-          <option value='Bard'>Bard</option>
-          <option value='Cleric'>Cleric</option>
-          <option value='Druid'>Druid</option>
-          <option value='Fighter'>Fighter</option>
-          <option value='Monk'>Monk</option>
-          <option value='Paladin'>Paladin</option>
-          <option value='Ranger'>Ranger</option>
-          <option value='Rogue'>Rouge</option>
-          <option value='Sorceror'>Sorceror</option>
-          <option value='Warlock'>Warlock</option>
-          <option value='Wizard'>Wizard</option>
+          <option value="Barbarian">Barbarian</option>
+          <option value="Bard">Bard</option>
+          <option value="Cleric">Cleric</option>
+          <option value="Druid">Druid</option>
+          <option value="Fighter">Fighter</option>
+          <option value="Monk">Monk</option>
+          <option value="Paladin">Paladin</option>
+          <option value="Ranger">Ranger</option>
+          <option value="Rogue">Rogue</option>
+          <option value="Sorceror">Sorceror</option>
+          <option value="Warlock">Warlock</option>
+          <option value="Wizard">Wizard</option>
         </select>
       </div>
     </div>
@@ -195,21 +224,32 @@
           <option value>Any</option>
           <option value="flagged">Flagged Content</option>
           <option value="not_flagged">Unflagged Content</option>
-          
         </select>
       </div>
     </div>
-
-    
+    <div id="instruction">
+      <h2>Available Characters</h2>
+      <p>Click to see other side of card. Double-Click to add to party.</p>
+    </div>
 
     <div class="character-list">
-      <div v-for="character in filteredList"
+      <div
+        v-for="character in filteredList"
         v-bind:key="character.id4"
         @dblclick.prevent="addPartyMember(character)"
-        
-        style="-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;"
+        style="
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        "
+      >
+        <character-card
+          v-bind:isFlaggable="true"
+          v-bind:character="character"
+          @newFlag="generateCharacterList"
+          v-if="character.active"
         >
-        <character-card v-bind:isFlaggable="true" v-bind:character="character" @newFlag="generateCharacterList" v-if="character.active">
           {{ character.race }}
           {{ character.charClass }}
           {{ character.strength }}
@@ -221,7 +261,7 @@
         </character-card>
       </div>
     </div>
-    
+
     <!-- This is the Drag and Drop  -->
 
     <!-- <div class="center-panel"> -->
@@ -314,7 +354,7 @@ export default {
         intelligence: "",
         wisdom: "",
         charisma: "",
-        flaggedInappropriate: ""
+        flaggedInappropriate: "",
       },
 
       // showModal: false,
@@ -324,8 +364,7 @@ export default {
   created() {
     // This is the working method
     this.generateCharacterList();
-        //  console.log(this.currentCharacters)
-      
+    //  console.log(this.currentCharacters)
 
     DnDApiService.getAllRaces().then((response) => {
       this.dropdownRace = response.data.results;
@@ -347,12 +386,12 @@ export default {
         characterFour: submitParty[3],
       };
 
-    CharacterService.addNewParty(submitPartyObject)
-      .then((response) => {
-        if (response.status === 201) {
-          this.$router.push({ name: "home" });
-        }
-      })
+      CharacterService.addNewParty(submitPartyObject)
+        .then((response) => {
+          if (response.status === 201) {
+            this.$router.push({ name: "home" });
+          }
+        })
         // TODO ********* THIS ERROR needs work
         .catch((error) => {
           this.handleErrorResponse(error);
@@ -371,9 +410,20 @@ export default {
     },
     generateCharacterList() {
       CharacterService.getAllCharacters(new Date().toJSON().slice(0, 10)).then(
-      (response) => {
-        this.currentCharacters = response.data;
-      })
+        (response) => {
+          this.currentCharacters = response.data;
+        }
+      );
+    },
+    clearFilters() {
+      (this.filter.race = ""),
+        (this.filter.charClass = ""),
+        (this.filter.strength = ""),
+        (this.filter.dexterity = ""),
+        (this.filter.constitution = ""),
+        (this.filter.intelligence = ""),
+        (this.filter.wisdom = ""),
+        (this.filter.charisma = "");
     },
 
     //  This is the Drag and Drop methods
@@ -437,7 +487,8 @@ export default {
       }
       if (this.filter.flaggedInappropriate != "") {
         filteredCharacters = filteredCharacters.filter(
-          (character) => character.flaggedInappropriate === this.filter.flaggedInappropriate
+          (character) =>
+            character.flaggedInappropriate === this.filter.flaggedInappropriate
         );
       }
 
@@ -446,14 +497,14 @@ export default {
     confirmModeratorPermissions() {
       let allowed = false;
 
-      this.$store.state.user.authorities.forEach(authority => {
-        if(authority.name === 'ROLE_MOD') {
+      this.$store.state.user.authorities.forEach((authority) => {
+        if (authority.name === "ROLE_MOD") {
           allowed = true;
         }
-      })
+      });
 
       return allowed;
-    }
+    },
 
     // filteredCharacters() {
     //   let filteredCharacters = this.currentCharacters;
@@ -474,11 +525,17 @@ export default {
 </script>
 
 <style scoped>
-
+#party-name{
+  text-align: center;
+  margin: 0 auto;
+}
 .party-container {
   display: flex;
   flex-wrap: wrap;
-  min-height: 300px;
+  min-height: 310px;
+  background-color: black;
+  border: 5px outset gold;
+  border-radius: 6px;
 }
 
 .current-party {
@@ -487,31 +544,31 @@ export default {
   justify-content: space-evenly;
   margin: auto;
 }
-
 .character-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-
 .race-class-group {
   display: flex;
   justify-content: space-around;
-  margin: 2rem auto;
-  gap: 7rem;
+  margin: 0 auto;
+  /* gap: 7rem; */
 }
-
 .label {
   font-weight: 700;
 }
 
 .form-control {
-  width: 7rem;
   text-align: center;
+}
+.form-control option {
+  text-align: left;
 }
 
 .att-group {
   text-align: center;
+  /* margin: 0 auto; */
 }
 
 #attGroupWrapper {
@@ -558,6 +615,11 @@ export default {
 .unselectable {
   background-color: gray;
 }
+#instruction {
+  margin: 0 auto;
+  width: 70%;
+  text-align: center;
+}
 
 @media screen and (max-width: 1000px) {
   #raceClassDropdown {
@@ -568,7 +630,7 @@ export default {
     justify-content: space-around;
   }
   .race-class-group {
-    width: 30%;
+    width: 80%;
   }
   #attGroupWrapper {
     /* margin: 15px; */
@@ -581,6 +643,10 @@ export default {
   }
   .att-group {
     margin: 5px;
+  }
+  #instruction {
+    margin: 0 auto;
+    width: 50%;
   }
 }
 </style>

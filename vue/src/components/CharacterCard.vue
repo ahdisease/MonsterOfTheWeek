@@ -7,9 +7,14 @@
       v-on:click="turnCharacterCard"
     >
       <div id="char-name">{{ character.name }}</div>
+<<<<<<< HEAD
       <div class="race-class">
         {{ character.race }} {{ character.charClass }}
       </div>
+=======
+      <div class="race"><strong>Race:</strong> {{ character.race }}</div>
+      <div class="class"><strong>Class:</strong> {{ character.charClass }}</div>
+>>>>>>> e6bd7aad56419cdb8918439de95f2ea717ec1969
       <div id="description">{{ character.description }}</div>
     </div>
     <div
@@ -18,61 +23,85 @@
       v-show="showDetails"
       v-on:click="turnCharacterCard"
     >
+<<<<<<< HEAD
       <div class="race-class">
         {{ character.race }} {{ character.charClass }}
       </div>
+=======
+      <div id="char-name">{{ character.name }}</div>
+      <div class="race"><strong>Race:</strong> {{ character.race }}</div>
+      <div class="class"><strong>Class:</strong> {{ character.charClass }}</div>
+>>>>>>> e6bd7aad56419cdb8918439de95f2ea717ec1969
 
       <div class="character-card-back">
-        <div class="left-stats">
-          <div class="attributes">
-            <div class="back-attribute">Strength</div>
-            <div class="attribute-value left-column">{{ character.strength }}</div>
+        <div id="all-stats">
+          <div class="left-stats">
+            <div class="attributes">
+              <div class="back-attribute">Strength</div>
+              <div class="attribute-value left-column">
+                {{ character.strength }}
+              </div>
+            </div>
+            <div class="attributes">
+              <div class="back-attribute">Dexterity</div>
+              <div class="attribute-value left-column">
+                {{ character.dexterity }}
+              </div>
+            </div>
+            <div class="attributes">
+              <div class="back-attribute">Constitution</div>
+              <div class="attribute-value left-column">
+                {{ character.constitution }}
+              </div>
+            </div>
           </div>
-          <div class="attributes">
-            <div class="back-attribute">Dexterity</div>
-            <div class="attribute-value left-column">{{ character.dexterity }}</div>
-          </div>
-          <div class="attributes">
-            <div class="back-attribute">Constitution</div>
-            <div class="attribute-value left-column">{{ character.constitution }}</div>
-          </div>
-        </div>
-        <div class="right-stats">
-          <div class="attributes">
-            <div class="back-attribute">Intelligence</div>
-            <div class="attribute-value right-column">{{ character.intelligence }}</div>
-          </div>
-          <div class="attributes">
-            <div class="back-attribute">Wisdom</div>
-            <div class="attribute-value right-column">{{ character.wisdom }}</div>
-          </div>
-          <div class="attributes">
-            <div class="back-attribute">Charisma</div>
-            <div class="attribute-value right-column">{{ character.charisma }}</div>
+          <div class="right-stats">
+            <div class="attributes">
+              <div class="back-attribute">Intelligence</div>
+              <div class="attribute-value right-column">
+                {{ character.intelligence }}
+              </div>
+            </div>
+            <div class="attributes">
+              <div class="back-attribute">Wisdom</div>
+              <div class="attribute-value right-column">
+                {{ character.wisdom }}
+              </div>
+            </div>
+            <div class="attributes">
+              <div class="back-attribute">Charisma</div>
+              <div class="attribute-value right-column">
+                {{ character.charisma }}
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div id="button-group">
-      <button
+      <b-button
+        variant="danger"
         id="flag"
-        v-on:click.prevent="markFlagged" 
+        v-on:click.prevent="markFlagged"
         v-bind:class="isFlagged"
         v-show="isFlaggable"
       >
-        &#128681;
-      </button>
-      <button class="delete" v-on:click.prevent="deleteCharacterMod" v-if="confirmModeratorPermissions">
+        Flag
+        <!-- &#128681; -->
+      </b-button>
+      <button
+        class="delete"
+        v-on:click.prevent="deleteCharacterMod"
+        v-if="confirmModeratorPermissions"
+      >
         &#128465;
       </button>
     </div>
-    
   </div>
 </template>
 
 <script>
 import CharacterService from "../services/CharacterService.js";
-
 
 export default {
   name: "character-card",
@@ -93,14 +122,14 @@ export default {
     confirmModeratorPermissions() {
       let allowed = false;
 
-      this.$store.state.user.authorities.forEach(authority => {
-        if(authority.name === 'ROLE_MOD') {
+      this.$store.state.user.authorities.forEach((authority) => {
+        if (authority.name === "ROLE_MOD") {
           allowed = this.character.flaggedInappropriate === "flagged";
         }
-      })
+      });
 
       return allowed;
-    }
+    },
   },
   methods: {
     turnCharacterCard() {
@@ -108,14 +137,14 @@ export default {
     },
     markFlagged() {
       CharacterService.flaggedInappropriate(this.character.id).then(() => {
-        this.$emit('newFlag')
+        this.$emit("newFlag");
       });
     },
     deleteCharacterMod() {
       CharacterService.deleteCharacterMod(this.character.id).then(() => {
-        this.$emit('newFlag')
+        this.$emit("newFlag");
       });
-    }
+    },
   },
 };
 </script>
@@ -125,20 +154,38 @@ export default {
   height: 280px;
   width: 220px;
   margin: 10px;
-  background-color: #00E88A;
+  background-color: #00e88a;
   color: black;
   padding: 10px;
   /* Add shadows to create the "card" effect */
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
-  border: 4px double #007F5F;
+  border: 4px double #007f5f;
 }
 
 .character-card-front {
+<<<<<<< HEAD
   display: flex;
   flex-direction: column;
+=======
+  display: grid;
+  grid-template-areas:
+    "char-name char-name"
+    "race race"
+    "class class"
+    "description description"
+    "flag delete";
+
+  margin: 0;
+  padding: 0;
+  row-gap: 2px;
+  column-gap: 2px;
+  /* grid-template-columns: 1fr 1fr; */
+  grid-template-rows: 30px 15px 15px 140px 30px;
+>>>>>>> e6bd7aad56419cdb8918439de95f2ea717ec1969
   align-items: center;
-  height: 100%;
+  /* height: 100%; */
 }
+<<<<<<< HEAD
 
 .character-card-back {
   display: flex;
@@ -156,10 +203,62 @@ export default {
 .right-stats {
   justify-content: center;
 
+=======
+#char-name {
+  text-align: center;
+  grid-area: char-name;
+}
+.race {
+  text-align: center;
+  grid-area: race;
+}
+.class {
+  text-align: center;
+  grid-area: class;
+}
+.character-card-back {
+  display: grid;
+  grid-template-areas:
+    "char-name char-name"
+    "race race"
+    "class class"
+    "all-stats all-stats"
+    "button-group button-group";
+  margin: 0;
+  padding: 0;
+  /* the grid template columns was making it off-center */
+  /* grid-template-columns: 50px 50px; */
+  grid-template-rows: 30px 15px 15px 140px 30px;
+  row-gap: 2px;
+  column-gap: 2px;
+  justify-content: space-evenly;
+  align-items: center;
+  /* height: 100%; */
+}
+#all-stats{
+  justify-content: center;
+  display: grid;
+  grid-area: all-stats;
+  grid-template-areas: 
+  "left-stats right-stats"
+  ;
+  grid-template-columns: 80px 80px;
+}
+
+.left-stats {
+  grid-area: left-stats;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.right-stats {
+  grid-area: right-stats;
+  /* justify-content: center; */
+>>>>>>> e6bd7aad56419cdb8918439de95f2ea717ec1969
 }
 
 .race-class {
-  margin: 1rem;
+  /* margin: 1rem; */
   font-weight: 500;
   font-style: oblique;
   background-color: rgba(23, 64, 119, 0.1);
@@ -169,6 +268,7 @@ export default {
 
 .attributes {
   text-align: center;
+  /* margin: 0 auto; */
 }
 
 .back-attribute {
@@ -177,74 +277,85 @@ export default {
 }
 
 .attribute-value {
-  color:rgb(69, 70, 7);
+  color: rgb(69, 70, 7);
   font-weight: 600;
   background-color: rgb(214, 233, 245);
   border-radius: 20%;
   width: 30px;
   align-content: center;
 }
-
 .left-column {
-  margin: 0 0 0 20px;
+  margin: 0 auto;
 }
-
 .right-column {
+<<<<<<< HEAD
   margin: 0 0 0 20px;
+=======
+  margin: 0 auto;
+>>>>>>> e6bd7aad56419cdb8918439de95f2ea717ec1969
 }
 /* .int-align {
   margin-right: 11px;
 } */
-
-#flag:hover {
-  background-color: rgba(255, 80, 80, 0.1);
-  box-shadow: 0 0 6px 6px rgba(255, 80, 80, 0.1);
-  border-radius: 50%;
+#button-group {
+  grid-area: button-group;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-
 #flag {
-  position: relative;
-  background-color: rgba(0, 0, 0, 0);
-  border: 1px solid rgba(0, 0, 0, 0);
+  /* background-color: rgba(0, 0, 0); */
+  border: 1px solid black;
+  padding: 2px;
 }
-
+#flag:hover {
+  background-color: rgb(252, 10, 10);
+  box-shadow: 0 0 6px 6px rgba(255, 80, 80, 0.1);
+  border-radius: 6px;
+}
 .delete {
+  grid-area: delete;
   position: relative;
   background-color: rgba(0, 0, 0, 0);
   border: 1px solid rgba(0, 0, 0, 0);
   padding: 0;
 }
-
-#button-group {
-  display: flex;
-  justify-content: space-between;
-}
-
 #flag.is-flagged {
   background-color: rgb(146, 28, 28, 0.2);
   border-radius: 50%;
   padding: 0;
 }
-
 .card img {
   width: 35%;
   height: auto;
 }
 /* On mouse-over, add a deeper shadow */
 .card:hover {
+<<<<<<< HEAD
   border: 3px darkgreen solid;
+=======
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.9);
+  border: 4px double #03ad83;
+>>>>>>> e6bd7aad56419cdb8918439de95f2ea717ec1969
 }
-
 #char-name {
   margin-top: 10px;
   font-size: 1.2rem;
   font-weight: 800;
 }
-
 #description {
+<<<<<<< HEAD
   align-self: flex-start;
+=======
+  grid-area: description;
+  /* align-self: flex-start; */
+>>>>>>> e6bd7aad56419cdb8918439de95f2ea717ec1969
   font-style: italic;
   font-size: 0.9rem;
 }
+
+
+
+
 
 </style>
