@@ -7,14 +7,8 @@
       v-on:click="turnCharacterCard"
     >
       <div id="char-name">{{ character.name }}</div>
-<<<<<<< HEAD
-      <div class="race-class">
-        {{ character.race }} {{ character.charClass }}
-      </div>
-=======
       <div class="race"><strong>Race:</strong> {{ character.race }}</div>
       <div class="class"><strong>Class:</strong> {{ character.charClass }}</div>
->>>>>>> e6bd7aad56419cdb8918439de95f2ea717ec1969
       <div id="description">{{ character.description }}</div>
     </div>
     <div
@@ -23,15 +17,9 @@
       v-show="showDetails"
       v-on:click="turnCharacterCard"
     >
-<<<<<<< HEAD
-      <div class="race-class">
-        {{ character.race }} {{ character.charClass }}
-      </div>
-=======
       <div id="char-name">{{ character.name }}</div>
       <div class="race"><strong>Race:</strong> {{ character.race }}</div>
       <div class="class"><strong>Class:</strong> {{ character.charClass }}</div>
->>>>>>> e6bd7aad56419cdb8918439de95f2ea717ec1969
 
       <div class="character-card-back">
         <div id="all-stats">
@@ -163,10 +151,6 @@ export default {
 }
 
 .character-card-front {
-<<<<<<< HEAD
-  display: flex;
-  flex-direction: column;
-=======
   display: grid;
   grid-template-areas:
     "char-name char-name"
@@ -181,29 +165,9 @@ export default {
   column-gap: 2px;
   /* grid-template-columns: 1fr 1fr; */
   grid-template-rows: 30px 15px 15px 140px 30px;
->>>>>>> e6bd7aad56419cdb8918439de95f2ea717ec1969
   align-items: center;
   /* height: 100%; */
 }
-<<<<<<< HEAD
-
-.character-card-back {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 6px;
-}
-
-.left-stats {
-  justify-content: center;
-
-}
-
-.right-stats {
-  justify-content: center;
-
-=======
 #char-name {
   text-align: center;
   grid-area: char-name;
@@ -254,7 +218,6 @@ export default {
 .right-stats {
   grid-area: right-stats;
   /* justify-content: center; */
->>>>>>> e6bd7aad56419cdb8918439de95f2ea717ec1969
 }
 
 .race-class {
@@ -288,11 +251,7 @@ export default {
   margin: 0 auto;
 }
 .right-column {
-<<<<<<< HEAD
-  margin: 0 0 0 20px;
-=======
   margin: 0 auto;
->>>>>>> e6bd7aad56419cdb8918439de95f2ea717ec1969
 }
 /* .int-align {
   margin-right: 11px;
@@ -331,12 +290,8 @@ export default {
 }
 /* On mouse-over, add a deeper shadow */
 .card:hover {
-<<<<<<< HEAD
-  border: 3px darkgreen solid;
-=======
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.9);
   border: 4px double #03ad83;
->>>>>>> e6bd7aad56419cdb8918439de95f2ea717ec1969
 }
 #char-name {
   margin-top: 10px;
@@ -344,12 +299,8 @@ export default {
   font-weight: 800;
 }
 #description {
-<<<<<<< HEAD
-  align-self: flex-start;
-=======
   grid-area: description;
   /* align-self: flex-start; */
->>>>>>> e6bd7aad56419cdb8918439de95f2ea717ec1969
   font-style: italic;
   font-size: 0.9rem;
 }
