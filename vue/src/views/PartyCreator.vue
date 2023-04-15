@@ -3,7 +3,7 @@
     <div id="intro">
       <h1>Party</h1>
       <p>
-        View Your Party or create one with four (4) Characters. You are able to make one Party a week.
+        View Your Party or create one with four (4) Characters. You are able to make one Party per week.
       </p>
     </div>
     <character-list></character-list>

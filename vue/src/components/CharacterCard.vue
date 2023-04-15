@@ -138,10 +138,21 @@ export default {
 </script>
 
 <style scoped>
-.card {
+/* .card {
   height: 280px;
   width: 220px;
   margin: 10px;
+  background-color: #00e88a;
+  color: black;
+  padding: 10px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+  border: 4px double #007f5f;
+} */
+
+.card {
+  height: 280px;
+  width: 190px;
+  margin: 2px;
   background-color: #00e88a;
   color: black;
   padding: 10px;
@@ -192,7 +203,7 @@ export default {
   padding: 0;
   /* the grid template columns was making it off-center */
   /* grid-template-columns: 50px 50px; */
-  grid-template-rows: 30px 15px 15px 140px 30px;
+  grid-template-rows: 30px 15px 15px 130px 30px;
   row-gap: 2px;
   column-gap: 2px;
   justify-content: space-evenly;
@@ -294,7 +305,7 @@ export default {
   border: 4px double #03ad83;
 }
 #char-name {
-  margin-top: 10px;
+  margin-top: 10px 0 5px 0;
   font-size: 1.2rem;
   font-weight: 800;
 }
