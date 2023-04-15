@@ -29,7 +29,7 @@
           <label class="label" for="race">Race</label>
           <select id="race-selection" class="form-control" v-model="filter.race">
             <option value>Any</option>
-            <option value="Dragonborn">Dragonborn</option>
+            <option value="Dragonborn">Dragon Born</option>
             <option value="Dwarf">Dwarf</option>
             <option value="Elf">Elf</option>
             <option value="Gnome">Gnome</option>
@@ -56,7 +56,7 @@
           <option value='Monk'>Monk</option>
           <option value='Paladin'>Paladin</option>
           <option value='Ranger'>Ranger</option>
-          <option value='Rogue'>Rogue</option>
+          <option value='Rogue'>Rouge</option>
           <option value='Sorceror'>Sorceror</option>
           <option value='Warlock'>Warlock</option>
           <option value='Wizard'>Wizard</option>
