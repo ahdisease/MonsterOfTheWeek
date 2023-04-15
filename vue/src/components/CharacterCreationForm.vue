@@ -65,13 +65,14 @@
         </div>
       </div>
 
-      <div id="picture">
+      <cloudinary-image-upload />
+      <!-- <div id="picture">
         <img
           src="https://cdna.artstation.com/p/assets/images/images/010/077/400/large/maja-weber-sun-wukong-colour.jpg?1522433552"
           class="char-pic"
           id="char-pic"
         />
-      </div>
+      </div> -->
 
       <div class="stats-column" id="rcol">
         <div class="stats-box">
@@ -112,9 +113,13 @@
 import CharacterService from "../services/CharacterService.js";
 import DnDApiService from "../services/DndApiService.js";
 import MonsterService from "../services/MonsterService.js";
+import CloudinaryImageUpload from "./CloudinaryImageUpload.vue"
 
 export default {
   name: "character-creation-form",
+  components: {
+    CloudinaryImageUpload
+  },
   data() {
     return {
       newCharacter: {
