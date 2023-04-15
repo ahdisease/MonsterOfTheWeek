@@ -1,25 +1,41 @@
 <template>
   <div class="">
-      <h1>Select 4 Party Members</h1>
-      <character-list ></character-list>
+    <div id="intro">
+      <h1>Party</h1>
+      <p>
+        View Your Party or create one with four (4) Characters. You are able to make one Party per week.
+      </p>
+    </div>
+    <character-list></character-list>
   </div>
 </template>
 
 <script>
-import CharacterList from '../components/CharacterList.vue'
+import CharacterList from "../components/CharacterList.vue";
 
 export default {
-name: "party-view",
+  name: "party-view",
   components: {
-    CharacterList
+    CharacterList,
   },
-
-}
+};
 </script>
 
 <style scoped>
 h1 {
-  margin-top: 2rem;
   text-align: center;
 }
+#intro {
+  text-align: center;
+  margin: 0 auto;
+
+}
+
+
+
+
+
+
+
+
 </style>

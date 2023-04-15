@@ -23,7 +23,7 @@
         v-show="showDetails"
         v-on:click="turnMonsterCard"
       >
-        <h3>{{ monster.name }}</h3>
+        <!-- <h3>{{ monster.name }}</h3> -->
         <div class="hit-points">HP: {{ monster.hit_points }}</div>
         <div class="all-stats">
           <div class="stats-box">
