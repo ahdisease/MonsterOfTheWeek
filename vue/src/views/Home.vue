@@ -68,11 +68,11 @@ export default {
 .callToAction {
   padding: 0px 4px;
 }
-.nav-options {
+#intro .nav-options {
   color: white;
   text-decoration: none;
 }
-.nav-options a:hover {
+#intro .nav-options a:hover {
   /* color: rgb(180, 131, 39); */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;

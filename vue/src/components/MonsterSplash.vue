@@ -13,6 +13,7 @@
           v-bind:src="'https://www.dnd5eapi.co' + monster.image"
           alt="image of monster"
         />
+        
       </div>
       <!-- The code above this works ***** -->
 
@@ -86,19 +87,11 @@ export default {
     });
   },
   methods: {
+    //This method is the working one
     turnMonsterCard() {
       this.showDetails = !this.showDetails;
     },
-    // this is a testing method
-    // openMonsterModal() {
-    //   // this shows the modal
-    //   this.$refs["myMonster"].show();
-    // },
-    // closeMonsterModal() {
-    //   // this closes the modal
-    //   this.$refs["myMonster"].hide();
-    // },
-    // this ends the testing method
+
   },
 };
 </script>

@@ -1,7 +1,8 @@
 <template>
   <div>
+    <h1 id="partyName">Your Party</h1>
     <div class="party-cards">
-      <button class="your-party" v-on:click="createYourParty">Create Your Party</button>
+      <button class="your-party" v-show="showPartyButton" v-on:click="createYourParty">Create Your Party</button>
       <div 
       v-for="character in currentParty"
         v-bind:key="character.id">
@@ -26,6 +27,7 @@ export default {
   data() {
     return {
       currentParty: [],
+      showPartyButton: false,
     };
   },
   created() {
@@ -68,10 +70,14 @@ export default {
 </script>
 
 <style scoped>
+#partyName{
+  font-size: 3em;
+  text-align: center;
+}
 
 .party-cards {
   display: flex;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
   flex-wrap: wrap;
 }
 
