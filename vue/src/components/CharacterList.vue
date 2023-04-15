@@ -53,6 +53,22 @@
         <b-btn>Reset Filters</b-btn>
       </div>
 
+        <div class="att-group" id="race">
+          <label class="label" for="race">Race</label>
+          <select id="race-selection" class="form-control" v-model="filter.race">
+            <option value>Any</option>
+            <option value="Dragonborn">Dragon Born</option>
+            <option value="Dwarf">Dwarf</option>
+            <option value="Elf">Elf</option>
+            <option value="Gnome">Gnome</option>
+            <option value="Half-Elf">Half-Elf</option>
+            <option value="Half-Orc">Half-Orc</option>
+            <option value="Halfling">Halfling</option>
+            <option value="Human">Human</option>
+            <option value="Tiefling">Tiefling</option>
+          </select>
+        </div>
+    
       <div class="att-group" id="charClass">
         <label class="label" for="charClass">Class</label>
         <select
