@@ -7,8 +7,9 @@
       v-on:click="turnCharacterCard"
     >
       <div id="char-name">{{ character.name }}</div>
-      <div class="race"> <strong>Race:</strong> {{ character.race }} </div>
-      <div class="class"> <strong>Class:</strong> {{ character.charClass }} </div>
+      <div class="race-class">
+        {{ character.race }} {{ character.charClass }}
+      </div>
       <div id="description">{{ character.description }}</div>
     </div>
     <div
@@ -17,9 +18,9 @@
       v-show="showDetails"
       v-on:click="turnCharacterCard"
     >
-      <div id="char-name">{{ character.name }}</div>
-      <div class="race"> <strong>Race:</strong> {{ character.race }} </div>
-      <div class="class"> <strong>Class:</strong> {{ character.charClass }} </div>
+      <div class="race-class">
+        {{ character.race }} {{ character.charClass }}
+      </div>
 
       <div class="character-card-back">
         <div class="left-stats">
@@ -121,7 +122,7 @@ export default {
 
 <style scoped>
 .card {
-  height: 290px;
+  height: 280px;
   width: 220px;
   margin: 10px;
   background-color: #00E88A;
@@ -133,64 +134,26 @@ export default {
 }
 
 .character-card-front {
-  display: grid;
-  grid-template-areas: "char-name char-name"
-                         "race race"
-                         "class class"
-                         "description description";
-    margin: 0;
-    padding: 0;
-    grid-template-columns: 1fr 1fr;
-
+  display: flex;
+  flex-direction: column;
   align-items: center;
   height: 100%;
 }
 
-#char-name {
-  text-align: center;
-  grid-area: char-name;
-}
-
-.race {
-  text-align: center;
-  grid-area: race;
-
-}
-
-.class {
-  text-align: center;
-  grid-area: class;
-
-}
-
 .character-card-back {
-  display: grid;
-  grid-template-areas: "char-name char-name"
-                         "race race" 
-                         "class class"
-                         "description description"
-                         "left-stats right-stats";
-    margin: 0;
-    padding: 0;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 2px;
-    column-gap: 10%;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 6px;
 }
 
 .left-stats {
-  grid-area: left-stats;
   justify-content: center;
-  align-items: center;
-
 
 }
 
 .right-stats {
-  grid-area: right-stats;
   justify-content: center;
 
 }
@@ -227,7 +190,7 @@ export default {
 }
 
 .right-column {
-    margin: 0 0 0 20px;
+  margin: 0 0 0 20px;
 }
 /* .int-align {
   margin-right: 11px;
@@ -269,7 +232,7 @@ export default {
 }
 /* On mouse-over, add a deeper shadow */
 .card:hover {
-  opacity: .7;
+  border: 3px darkgreen solid;
 }
 
 #char-name {
@@ -279,11 +242,9 @@ export default {
 }
 
 #description {
-  grid-area: description;
   align-self: flex-start;
   font-style: italic;
   font-size: 0.9rem;
-  text-align: center;
 }
 
 </style>
