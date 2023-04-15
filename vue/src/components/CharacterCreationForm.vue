@@ -65,13 +65,19 @@
         </div>
       </div>
 
-      <div id="picture">
+
+      <div id="cloud-btn" class="cloud">
+      <cloudinary-image-upload />
+      </div>
+
+
+      <!-- <div id="picture">
         <img
           src="https://cdna.artstation.com/p/assets/images/images/010/077/400/large/maja-weber-sun-wukong-colour.jpg?1522433552"
           class="char-pic"
           id="char-pic"
         />
-      </div>
+      </div> -->
 
       <div class="stats-column" id="rcol">
         <div class="stats-box">
@@ -112,9 +118,13 @@
 import CharacterService from "../services/CharacterService.js";
 import DnDApiService from "../services/DndApiService.js";
 import MonsterService from "../services/MonsterService.js";
+import CloudinaryImageUpload from "./CloudinaryImageUpload.vue"
 
 export default {
   name: "character-creation-form",
+  components: {
+    CloudinaryImageUpload
+  },
   data() {
     return {
       newCharacter: {
@@ -217,7 +227,7 @@ export default {
 
 
 #addHomeform {
-  margin: 100px auto 0 auto;
+  margin: 100px auto 20px auto;
   width: 90%;
   background-color: lightgray;
   /* padding: 1% 2%; */
@@ -235,11 +245,11 @@ export default {
   /* padding: 10px; */
 
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas:  
-    "race        name-box      class"
-    "lcol     picture   rcol"
-    "lcol     picture   rcol"
+    "race   name-box   class"
+    "lcol     cloud   rcol"
+    "lcol     cloud   rcol"
     "desc     desc      desc"
     ".        buttons   .";
   gap: 10px;
@@ -290,10 +300,16 @@ export default {
   /* this is the dropdown area for race */
 }
 
-#picture {
+/* #picture {
   grid-area: picture;
   justify-content: center;
   align-content: center;
+} */
+
+.cloud {
+  grid-area: cloud;
+  justify-self: center;
+  align-self: center;
 }
 
 #char-pic {
@@ -397,6 +413,13 @@ select.form-control {
 button {
   border-radius: 6px;
   margin: 0 10px 0 0;
+}
+
+#cloud-btn {
+  color: #fff;
+  padding: 7px;
+  background-color: #38b412;
+  border-radius: 6px;
 }
 
 .btn-submit {
