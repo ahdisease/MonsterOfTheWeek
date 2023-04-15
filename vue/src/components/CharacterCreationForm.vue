@@ -65,7 +65,12 @@
         </div>
       </div>
 
+
+      <div class="cloud">
       <cloudinary-image-upload />
+      </div>
+
+
       <!-- <div id="picture">
         <img
           src="https://cdna.artstation.com/p/assets/images/images/010/077/400/large/maja-weber-sun-wukong-colour.jpg?1522433552"
@@ -240,11 +245,11 @@ export default {
   /* padding: 10px; */
 
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas:  
-    "race        name-box      class"
-    "lcol     picture   rcol"
-    "lcol     picture   rcol"
+    "race   name-box   class"
+    "lcol     cloud   rcol"
+    "lcol     cloud   rcol"
     "desc     desc      desc"
     ".        buttons   .";
   gap: 10px;
@@ -295,10 +300,16 @@ export default {
   /* this is the dropdown area for race */
 }
 
-#picture {
+/* #picture {
   grid-area: picture;
   justify-content: center;
   align-content: center;
+} */
+
+.cloud {
+  grid-area: cloud;
+  justify-self: center;
+  align-self: center;
 }
 
 #char-pic {
