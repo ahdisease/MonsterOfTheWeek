@@ -1,14 +1,14 @@
 <template>
   <div id="login">
     <form @submit.prevent="login">
-      <h1 >Please Sign In</h1>
+      <h1>Please Sign In</h1>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
       <div role="alert" v-if="this.$route.query.registration">
         Thank you for registering, please sign in.
       </div>
-      <div class="form-input-group">
+      <div class="form-input-group username">
         <label for="username">Username</label>
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
@@ -16,7 +16,7 @@
         <label for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
-      <button type="submit">Sign in</button>
+      <button type="submit" class="sign-in-btn">Sign in</button>
       <p>
       <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
@@ -62,10 +62,32 @@ export default {
 </script>
 
 <style scoped>
-.form-input-group {
-  margin-bottom: 1rem;
+h1 {
+  margin: 30px auto;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input-group {
+  margin: 0 auto 1rem;
+}
+
+.password {
+  margin-right: 60px;
+}
+
+.sign-in-btn {
+  margin: 10px auto;
+}
+
 label {
   margin-right: 0.5rem;
+}
+
+p {
+  margin: auto;
 }
 </style>

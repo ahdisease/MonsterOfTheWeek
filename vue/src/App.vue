@@ -21,13 +21,6 @@ export default {
 <style>
 body {
   font-size: 14px;
-  background-color: firebrick;
 }
-/* These don't do anything 
-#app {
-  width: 100%;
-}
-#the-header {
-  width: 100vw;
-} */
+
 </style>

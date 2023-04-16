@@ -79,7 +79,7 @@ h1 {
   margin: 30px auto;
 }
 
-.form-class {
+.form {
   display: flex;
   flex-direction: column;
 }
