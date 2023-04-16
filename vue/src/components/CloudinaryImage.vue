@@ -6,6 +6,8 @@
 <script>
 import { AdvancedImage } from '@cloudinary/vue'
 import { Cloudinary } from '@cloudinary/url-gen'
+
+
 export default {
   components: {
     AdvancedImage

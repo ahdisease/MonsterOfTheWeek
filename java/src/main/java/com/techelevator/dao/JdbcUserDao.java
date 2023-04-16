@@ -82,14 +82,6 @@ public class JdbcUserDao implements UserDao {
         return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole) == 1;
     }
 
-    @Override
-    public int banUser(int id) {
-        String sql = "UPDATE users SET role = 'ROLE_BAN' WHERE user_id = ?;";
-
-        return jdbcTemplate.update(sql, id);
-
-    }
-
 
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
