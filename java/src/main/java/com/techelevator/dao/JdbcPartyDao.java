@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 
+
 @Component
 public class JdbcPartyDao implements PartyDao {
 

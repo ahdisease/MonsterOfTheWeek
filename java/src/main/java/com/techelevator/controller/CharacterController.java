@@ -86,31 +86,21 @@ public class CharacterController {
         return dao.flagCharacterInappropriate(id);
     }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path = "/characters/{id}", method = RequestMethod.DELETE)
-    public void deleteCharacterById(@PathVariable int id, Principal user) {
-
-        //get character by id and confirm character is owned by user
-        if(dao.getCharacterById(id).getUserId() != userDao.findIdByUsername(user.getName())) {
-            //response 403 forbidden if they do not match
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
-        }
-
-        //delete character
-        if(!dao.deleteCharacterById(id)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    //moderator services
-    @PreAuthorize("hasAnyRole('MOD','ADMIN')")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path = "/moderator/characters/{id}", method = RequestMethod.DELETE)
-    public void deleteCharacterById(@PathVariable int id) {
-        if(!dao.deleteCharacterById(id)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
-    }
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    @RequestMapping(path = "/characters/{id}", method = RequestMethod.DELETE)
+//    public void deleteCharacterById(@PathVariable int id, Principal user) {
+//
+//        //get character by id and confirm character is owned by user
+//        if(dao.getCharacterById(id).getUserId() != userDao.findIdByUsername(user.getName())) {
+//            //response 403 forbidden if they do not match
+//            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+//        }
+//
+//        //delete character
+//        if(!dao.deleteCharacterById(id)) {
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+//        }
+//    }
 
 
 }

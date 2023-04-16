@@ -2,5 +2,7 @@ package com.techelevator.dao;
 
 public interface ModeratorDao {
 
-    int banUser(int id);
+    boolean banUser(int id);
+
+    boolean deleteCharacterById(int id);
 }

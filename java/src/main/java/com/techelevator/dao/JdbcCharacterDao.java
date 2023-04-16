@@ -1,17 +1,23 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Character;
+import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-//@PreAuthorize("hasRole('ADMIN', 'USER', 'MOD')")
+
 
 @Component
 public class JdbcCharacterDao implements CharacterDao{
@@ -80,6 +86,18 @@ public class JdbcCharacterDao implements CharacterDao{
     }
 
     @Override
+    public boolean flagCharacterInappropriate(int id) {
+        String sql = "UPDATE character SET flagged_inappropriate = 'flagged' WHERE id = ? AND flagged_inappropriate = 'not_flagged';";
+
+        try {
+            jdbcTemplate.update(sql,id);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public boolean deleteCharacterById(int id) {
         String sql = "UPDATE character SET active = false WHERE id = ?";
 
@@ -89,18 +107,6 @@ public class JdbcCharacterDao implements CharacterDao{
             return false;
         }
 
-        return true;
-    }
-
-    @Override
-    public boolean flagCharacterInappropriate(int id) {
-        String sql = "UPDATE character SET flagged_inappropriate = 'flagged' WHERE id = ? AND flagged_inappropriate = 'not_flagged';";
-
-        try {
-            jdbcTemplate.update(sql,id);
-        } catch (Exception e) {
-            return false;
-        }
         return true;
     }
 
