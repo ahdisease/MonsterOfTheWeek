@@ -60,6 +60,16 @@ http method: delete
 status 201 NO CONTENT
 	403 Forbidden
 	404 not found?
+
+Ban User
+url: "/moderator/ban/{id}"
+http method: PUT
+status 200 OK
+
+Mod Review Content
+url: "/moderator/review/{id}"
+http method: put
+status 200 ok
 	
 
 

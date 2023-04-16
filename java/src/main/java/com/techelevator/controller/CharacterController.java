@@ -23,7 +23,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@PreAuthorize("isAuthenticated()")
+@PreAuthorize("hasAnyRole('ADMIN', 'MOD', 'USER')")
 public class CharacterController {
 
     @Autowired

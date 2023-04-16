@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 
 
-//@PreAuthorize("hasRole('ADMIN', 'USER', 'MOD')")
+
 @Component
 public class JdbcMonsterDao implements MonsterDao{
 

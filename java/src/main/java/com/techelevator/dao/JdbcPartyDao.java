@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 
-@PreAuthorize("hasRole('ADMIN', 'USER', 'MOD')")
+
 
 @Component
 public class JdbcPartyDao implements PartyDao {

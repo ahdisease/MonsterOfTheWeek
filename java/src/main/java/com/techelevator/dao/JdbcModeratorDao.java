@@ -52,4 +52,17 @@ public class JdbcModeratorDao implements ModeratorDao {
     }
 
 
+
+    public boolean reviewFlaggedCharacter(int id) {
+        String sql = "UPDATE character SET flagged_inappropriate = 'reviewed' WHERE id = ? AND flagged_inappropriate = 'flagged';";
+
+        try {
+            jdbcTemplate.update(sql,id);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+
 }
