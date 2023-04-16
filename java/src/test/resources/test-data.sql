@@ -21,7 +21,7 @@ CREATE TABLE users (
 CREATE TABLE monster (
 	id SERIAL,
 	name_index varchar(200) NOT NULL,
-	start_date date NOT NULL,
+	start_date date NOT NULL UNIQUE,
 	end_date date NOT NULL,
 
 	CONSTRAINT PK_monster PRIMARY KEY (id)
@@ -45,7 +45,7 @@ CREATE TABLE character(
 	monster_id int not null,
 	user_id int not null,
 	flagged_inappropriate varchar(15) DEFAULT 'not_flagged' NOT NULL,
-    active boolean DEFAULT true NOT NULL,
+	active boolean DEFAULT true NOT NULL,
 
 	constraint pk_character primary key (id),
 	constraint fk_character_monster foreign key (monster_id) references monster (id),
@@ -71,22 +71,23 @@ CREATE TABLE party (
 	constraint fk_party_character_3 foreign key (character_3) references character (id),
 	constraint fk_party_character_4 foreign key (character_4) references character (id),
 
-	PRIMARY KEY (id)
+	CONSTRAINT pk_party PRIMARY KEY (id)
 );
 
 CREATE TABLE users_party (
 	user_id int NOT NULL,
 	party_id int NOT NULL,
 
-    PRIMARY KEY (user_id, party_id),
+	PRIMARY KEY (user_id, party_id),
 	constraint fk_users_party_user foreign key (user_id) references users (user_id),
 	constraint fk_users_party_party foreign key (party_id) references party (id)
 );
 
 CREATE UNIQUE INDEX ON party (
-	greatest(character_1,character_2,character_3,character_4),
-	least(character_4,character_3,character_2,character_1)
-);
+greatest(character_1,character_2,character_3,character_4),
+least(character_4,character_3,character_2,character_1)
+ );
+
 
 
 INSERT INTO monster (name_index, start_date, end_date) VALUES ('a', '2020-01-01', '2020-01-07'); --id = 1

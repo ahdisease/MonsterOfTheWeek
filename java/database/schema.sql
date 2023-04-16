@@ -71,7 +71,7 @@ CREATE TABLE party (
 	constraint fk_party_character_3 foreign key (character_3) references character (id),
 	constraint fk_party_character_4 foreign key (character_4) references character (id),
 	
-	PRIMARY KEY (id)
+	CONSTRAINT pk_party PRIMARY KEY (id)
 );
 
 CREATE TABLE users_party (

@@ -82,6 +82,31 @@ public class JdbcPartyDaoTests extends BaseDaoTests {
 
     }
 
+    @Test
+    public void updateParty_returns_null_if_no_users_party_entry_exists() {
+        //arrange
+        Party partyTwo = generateParty(9,10,11,12);
+
+        //act
+        Party retrievedNewParty = jdbcPartyDao.updateUserParty(partyTwo,USER_3.getUsername(),LocalDate.parse("2020-01-08"));
+
+        //assert
+        Assert.assertNull(retrievedNewParty);
+    }
+
+    @Test
+    public void updateParty_returns_new_Party_if_old_party_was_replaced() {
+        //arrange
+        Party partyOne = generateParty(1,2,3,5);
+
+        //act
+        Party retrievedNewParty = jdbcPartyDao.updateUserParty(partyOne,USER_1.getUsername(),LocalDate.parse("2020-01-06"));
+
+        //assert
+        assertPartiesAreEqual(partyOne,retrievedNewParty);
+    }
+
+    //acts as constructor
     private Party generateParty(int char_one, int char_two, int char_three, int char_four) {
         Party party = new Party();
         party.setCharacterOne(char_one);
@@ -90,6 +115,14 @@ public class JdbcPartyDaoTests extends BaseDaoTests {
         party.setCharacterFour(char_four);
 
         return party;
+    }
+
+    private void assertPartiesAreEqual(Party expected, Party actual) {
+        Assert.assertEquals(expected.getId(),actual.getId());
+        Assert.assertEquals(expected.getCharacterOne(),actual.getCharacterOne());
+        Assert.assertEquals(expected.getCharacterTwo(),actual.getCharacterTwo());
+        Assert.assertEquals(expected.getCharacterThree(),actual.getCharacterThree());
+        Assert.assertEquals(expected.getCharacterFour(),actual.getCharacterFour());
     }
 
 }

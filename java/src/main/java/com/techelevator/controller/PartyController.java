@@ -48,6 +48,18 @@ public class PartyController {
 
     }
 
+    @RequestMapping(path = "/party", method = RequestMethod.PUT)
+    public Party getPartyByUsername(@Valid @RequestBody Party newParty, Principal user){
+        newParty = partyDao.updateUserParty(newParty, user.getName(), LocalDate.now());
+
+        if (newParty == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
+        return newParty;
+    }
+
+
     @PreAuthorize("permitAll()")
     @RequestMapping(path = "/top-vote", method = RequestMethod.GET)
     public Party getWinningPartyForDate(@RequestParam(value = "date", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date){
