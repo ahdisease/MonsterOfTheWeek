@@ -227,15 +227,17 @@ export default {
 
 
 #addHomeform {
+  background: #3a5268;
   margin: 100px auto 20px auto;
   width: 90%;
-  background-color: lightgray;
+  background-color: #00201E;
   /* padding: 1% 2%; */
 }
 
 #title h1 {
   text-align: center;
   font-size: 4em;
+  color: #00E88A;
 }
 
 .homeForm {
@@ -264,8 +266,7 @@ export default {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #495057;
-  border: 1px solid #ced4da;
+  /* border: 1px solid #ced4da; */
   border-radius: 0.25rem;
 }
 
@@ -275,7 +276,7 @@ export default {
   justify-content: center;
   align-content: center;
   text-align: center;
-  color: #38b412;
+  color: #00E88A;
   font-size: 2rem;
 }
 
@@ -288,7 +289,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #38b412;
+  color: #00E88A;
   font-size: 2rem;
 }
 
@@ -313,7 +314,7 @@ export default {
 }
 
 #char-pic {
-  background-color: aliceblue;
+  
   width: 100%;
   height: auto;
   align-content: center;
@@ -325,7 +326,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #38b412;
+  color: #00E88A;
   font-size: 2rem;
 }
 
@@ -356,7 +357,7 @@ export default {
   text-align: center;
   justify-content: center;
   align-self: center;
-  color: #38b412;
+  color: #00E88A;
   font-size: 2rem;
   
 }
@@ -384,11 +385,12 @@ select.form-control {
 }
 
 .stats-column {
-  background-color: bisque;
+  background-color: #3a5268;
   border-radius: 3px;
   padding: 0.1em;
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  color: #00E88A;
 
 }
 
@@ -404,7 +406,7 @@ select.form-control {
 
 .stats-value {
   font-size: 2em;
-  background-color: rgb(252, 247, 240);
+  background-color: gray;
   width: 50%;
   margin: 0 auto;
   border-radius: 6px;
@@ -418,14 +420,14 @@ button {
 #cloud-btn {
   color: #fff;
   padding: 7px;
-  background-color: #38b412;
+  background-color: #00E88A;
   border-radius: 6px;
 }
 
 .btn-submit {
   color: #fff;
   padding: 10px 24px;
-  background-color: #38b412;
+  background-color: #00E88A;
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
@@ -437,13 +439,13 @@ button {
 .btn-submit:hover {
   color: #fff;
   padding: 10px 24px;
-  background-color: #65f307;
+  background-color: #00E88A;
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 .btn-cancel:hover {
   padding: 10px 24px;
-  background-color: #65f307;
+  background-color: #00E88A;
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
