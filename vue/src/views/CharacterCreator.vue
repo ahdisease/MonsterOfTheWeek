@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <div class="char-view">
         <character-creation-form />
     </div>
 </template>
@@ -17,6 +17,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.char-view {
+    background: #3a5268;
+}
 
 </style>
