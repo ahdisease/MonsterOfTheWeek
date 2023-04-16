@@ -65,43 +65,8 @@ nav a:hover {
 }
 
 
-@media screen and (max-width:1000px) {
- 
-h2 {
-  font-size: 2em;
-  text-align: center;
-  color: #00E88A;
-  -webkit-text-stroke-width: 0.5px;
-  -webkit-text-stroke-color: black;
-  padding: 10px 0 0 0;
-  text-shadow: 2px 2px 6px rgb(54, 2, 2);
-  color: #15B771;
-}
-nav {
-   /* background-color: rgb(218, 124, 36); */
-   text-align: center;
-   padding: 5px 10px;
-   margin: 0 auto;
-   color: whitesmoke;
-   /* width: 50%;
-   display: flex;
-   flex-direction: row; */
-}
 
-.nav-options {
-  font-size: 1.2em;
-  padding: 5px 12px;
-  margin:0 auto;
-
-}
-
-
-
-
-
-}
-
-@media screen and (max-width:768px) {
+@media screen and (max-width:430px) {
 
 nav {
    /* background-color: rgb(218, 124, 36); */
@@ -121,14 +86,6 @@ nav {
 }
 
 
-
-
-
-
-
 }
-
-
-
 
 </style>

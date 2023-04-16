@@ -1,11 +1,11 @@
 <template>
   <div id="register" class="text-center">
-    <form @submit.prevent="register">
+    <form @submit.prevent="register" class="form-class">
       <h1>Create Account</h1>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <div class="form-input-group">
+      <div class="form-input-group username">
         <label for="username">Username</label>
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
@@ -13,11 +13,11 @@
         <label for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
-      <div class="form-input-group">
+      <div class="form-input-group confirm">
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
-      <button type="submit">Create Account</button>
+      <button type="submit" class="create-btn">Create Account</button>
       <p><router-link :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
   </div>
@@ -74,9 +74,32 @@ export default {
 </script>
 
 <style scoped>
+
+h1 {
+  margin: 30px auto;
+}
+
+.form-class {
+  display: flex;
+  flex-direction: column;
+}
+
 .form-input-group {
   margin-bottom: 1rem;
 }
+
+.username {
+  margin-right: 4px;
+}
+
+.confirm {
+  margin-right: 60px;
+}
+
+.create-btn {
+  margin: 10px auto;
+}
+
 label {
   margin-right: 0.5rem;
 }
