@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-//@PreAuthorize("hasRole('ADMIN', 'USER', 'MOD')")
 
 @Component
 public class JdbcCharacterDao implements CharacterDao{
