@@ -15,7 +15,7 @@ import java.time.LocalDate;
 
 @CrossOrigin
 @RestController
-@PreAuthorize("isAuthenticated()")
+@PreAuthorize("hasAnyRole('ADMIN', 'MOD')")
 public class MonsterController {
 
     @Autowired

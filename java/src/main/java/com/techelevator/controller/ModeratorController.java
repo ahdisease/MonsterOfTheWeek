@@ -36,6 +36,15 @@ public class ModeratorController {
         }
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/moderator/review/{id}", method = RequestMethod.PUT)
+    public void reviewFlaggedCharacter(@PathVariable int id) {
+        if(!modDao.reviewFlaggedCharacter(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+
+    }
+
 
 
 

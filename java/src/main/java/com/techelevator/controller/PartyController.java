@@ -17,7 +17,7 @@ import java.time.LocalDate;
 
 @CrossOrigin
 @RestController
-@PreAuthorize("isAuthenticated()")
+@PreAuthorize("hasAnyRole('ADMIN', 'MOD', 'USER')")
 public class PartyController {
 
     @Autowired

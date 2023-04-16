@@ -19,6 +19,7 @@ import java.util.List;
 
 
 
+
 @Component
 public class JdbcCharacterDao implements CharacterDao{
 
