@@ -3,10 +3,14 @@ package com.techelevator.dao;
 import com.techelevator.model.Party;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.List;
+
+
+@PreAuthorize("hasRole('ADMIN', 'USER', 'MOD')")
 
 @Component
 public class JdbcPartyDao implements PartyDao {
