@@ -225,12 +225,15 @@ export default {
 
 <style scoped>
 
+body {
+  background: #3a5268;
+} 
 
 #addHomeform {
   background: #3a5268;
-  margin: 100px auto 20px auto;
+  margin: 10% auto 5% auto;
   width: 90%;
-  background-color: #00201E;
+  background-color: #607f9b;
   /* padding: 1% 2%; */
 }
 
@@ -238,6 +241,7 @@ export default {
   text-align: center;
   font-size: 4em;
   color: #00E88A;
+  background: #00201E
 }
 
 .homeForm {
@@ -266,6 +270,7 @@ export default {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
+
   /* border: 1px solid #ced4da; */
   border-radius: 0.25rem;
 }
@@ -385,7 +390,7 @@ select.form-control {
 }
 
 .stats-column {
-  background-color: #3a5268;
+  background-color: #00201E;
   border-radius: 3px;
   padding: 0.1em;
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
@@ -406,7 +411,7 @@ select.form-control {
 
 .stats-value {
   font-size: 2em;
-  background-color: gray;
+  background-color: rgb(252, 247, 240);
   width: 50%;
   margin: 0 auto;
   border-radius: 6px;

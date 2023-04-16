@@ -18,8 +18,9 @@ export default {
 }
 </script>
 
-<style>
+<style >
 body {
+  background: #3a5268;
   font-size: 14px;
 }
 
