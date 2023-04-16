@@ -31,6 +31,14 @@
       </div>
     </div>
 
+    <div>
+      <b-modal v-model="modalShow" hide-footer>
+      <div class="d-block text-center">
+        <h3>Your party has been created!</h3>
+      </div>
+      </b-modal>
+    </div>
+
     <!-- These are the filtered buttons -->
     <div class="race-class-group">
       <div class="att-group" id="race">
@@ -341,7 +349,7 @@ export default {
         flaggedInappropriate: "",
       },
 
-      // showModal: false,
+      modalShow: false,
     };
   },
 
@@ -373,7 +381,8 @@ export default {
       CharacterService.addNewParty(submitPartyObject)
         .then((response) => {
           if (response.status === 201) {
-            this.$router.push({ name: "home" });
+            this.modalShow = true;
+            // this.$router.push({ name: "home" });
           }
         })
         // TODO ********* THIS ERROR needs work

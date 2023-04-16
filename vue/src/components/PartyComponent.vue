@@ -2,13 +2,13 @@
   <div id="wrapper">
     <h1 id="partyName">Your Party</h1>
     <div class="party-cards">
-      <button
+      <b-button
         class="your-party"
-        v-if="currentParty == []"
+        v-if="currentParty.length == 0"
         v-on:click="createYourParty"
       >
         Create Your Party
-      </button>
+      </b-button>
       <div v-for="character in currentParty" v-bind:key="character.id">
         <character-card v-bind:character="character" v-if="character.active" />
       </div>
@@ -93,5 +93,11 @@ export default {
   background-color: #00e88a;
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  color:#00201e;
+}
+
+.your-party:hover {
+  background-color: #007f5f;
+  color: #00e88a;
 }
 </style>

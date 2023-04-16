@@ -18,35 +18,35 @@ INSERT INTO monster (name_index, start_date, end_date) VALUES ('adult-black-drag
 
 
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
-	VALUES ('Jet', 'Fighter', 'Elf', 'Swims and fights', 18,17,15,12,13,14, 3,1); --id 1
+	VALUES ('Jet', 'Fighter', 'Elf', 'Swims and fights', 18,17,15,12,13,14, 4,1); --id 1
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
-	VALUES ('Ba', 'Wizard', 'Dwarf', 'Tamed a basalisk once', 14,18,16,15,12,13, 3,2); --id 2
+	VALUES ('Ba', 'Wizard', 'Dwarf', 'Tamed a basalisk once', 14,18,16,15,12,13, 4,2); --id 2
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
-	VALUES ('Lyfet', 'Rouge', 'Elf', 'Do not trust him', 13,14,18,16,15,12, 3,3); --id 3
+	VALUES ('Lyfet', 'Rouge', 'Elf', 'Do not trust him', 13,14,18,16,15,12, 4,3); --id 3
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
-	VALUES ('Keen', 'Fighter', 'Dragon Born', 'Friendly but scary', 12,13,14,18,16,15, 3,4); --id 4
+	VALUES ('Keen', 'Fighter', 'Dragon Born', 'Friendly but scary', 12,13,14,18,16,15, 4,4); --id 4
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
-	VALUES ('Teg', 'Fighter', 'Elf', 'Floats', 15,12,13,14,18,16, 3,5); --id 5
+	VALUES ('Teg', 'Fighter', 'Elf', 'Floats', 15,12,13,14,18,16, 4,5); --id 5
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
-	VALUES ('Zic', 'Fighter', 'Dwarf', 'Unicorn Blood', 16,15,12,13,14,18, 3,6); --id 6
+	VALUES ('Zic', 'Fighter', 'Dwarf', 'Unicorn Blood', 16,15,12,13,14,18, 4,6); --id 6
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
-	VALUES ('Fig', 'Fighter', 'Elf', 'Loves eating', 10,10,10,10,10,10, 3,7); --id 7
+	VALUES ('Fig', 'Fighter', 'Elf', 'Loves eating', 10,10,10,10,10,10, 4,7); --id 7
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
-	VALUES ('Toblerone', 'Rogue', 'Dwarf', 'Builds machines to fight for him', 10,10,10,10,10,10, 3,8); --id 8
+	VALUES ('Toblerone', 'Rogue', 'Dwarf', 'Builds machines to fight for him', 10,10,10,10,10,10, 4,8); --id 8
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
-	VALUES ('Reinhardt', 'Monk', 'Elf', 'He stuns people.', 10,10,10,10,10,10, 3,9); --id 9
+	VALUES ('Reinhardt', 'Monk', 'Elf', 'He stuns people.', 10,10,10,10,10,10, 4,9); --id 9
 	INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
-	VALUES ('Kay', 'Monk', 'Human', 'She punches people.', 10,10,10,10,10,10, 5,9); --id 10
+	VALUES ('Kay', 'Monk', 'Human', 'She punches people.', 10,10,10,10,10,10, 3,9); --id 10
 	INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
-	VALUES ('Mil', 'Barbarian', 'Elf', 'He yells at people.', 10,10,10,10,10,10, 5,5); --id 11
+	VALUES ('Mil', 'Barbarian', 'Elf', 'He yells at people.', 10,10,10,10,10,10, 3,5); --id 11
 	INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
-	VALUES ('Bee', 'Fighter', 'Dwarf', 'He stabs people.', 10,10,10,10,10,10, 5,3); --id 12
+	VALUES ('Bee', 'Fighter', 'Dwarf', 'He stabs people.', 10,10,10,10,10,10, 3,3); --id 12
 	INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
-	VALUES ('Al', 'Wizard', 'Dragon Born', 'He curses people.', 10,10,10,10,10,10, 5,2); --id 13
+	VALUES ('Al', 'Wizard', 'Dragon Born', 'He curses people.', 10,10,10,10,10,10, 3,2); --id 13
 	INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, flagged_inappropriate, active)
-	VALUES ('Tim', 'Wizard', 'Human', 'He does magic against people.', 10,10,10,10,10,10, 3,7, 'not_flagged', true); --id 14
+	VALUES ('Tim', 'Wizard', 'Human', 'He does magic against people.', 10,10,10,10,10,10, 4,7, 'not_flagged', true); --id 14
 	INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, flagged_inappropriate, active)
-	VALUES ('George', 'Bard', 'Halfling', 'His music is awful.', 10,10,10,10,10,10, 3,6, 'flagged', false); --id 15
+	VALUES ('George', 'Bard', 'Halfling', 'His music is awful.', 10,10,10,10,10,10, 4,6, 'flagged', false); --id 15
 	
 	
 	

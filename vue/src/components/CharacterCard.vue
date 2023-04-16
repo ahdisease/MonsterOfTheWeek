@@ -175,7 +175,7 @@ export default {
   row-gap: 2px;
   column-gap: 2px;
   /* grid-template-columns: 1fr 1fr; */
-  grid-template-rows: 30px 15px 15px 140px 30px;
+  grid-template-rows: 25px 15px 15px 130px 30px;
   align-items: center;
   /* height: 100%; */
 }
@@ -203,7 +203,7 @@ export default {
   padding: 0;
   /* the grid template columns was making it off-center */
   /* grid-template-columns: 50px 50px; */
-  grid-template-rows: 30px 15px 15px 130px 30px;
+  grid-template-rows: 25px 15px 15px 130px 30px;
   row-gap: 2px;
   column-gap: 2px;
   justify-content: space-evenly;
