@@ -1,18 +1,16 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Party;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.List;
 
 
-//@PreAuthorize("hasRole('ADMIN', 'USER', 'MOD')")
+@PreAuthorize("hasRole('ADMIN', 'USER', 'MOD')")
 
 @Component
 public class JdbcPartyDao implements PartyDao {
@@ -27,34 +25,36 @@ public class JdbcPartyDao implements PartyDao {
 
     @Override
     public Party createParty(Party partyCharacters, String username) {
-        //don't allow anonymous users to create parties
 
+
+        //get an ordered list of character ids to store for consistency
         List<Integer> orderedCharacters = partyCharacters.retrieveCharacterIdOrdered();
 
+        //don't allow anonymous users to create parties
         if (username == null) {
             return null;
         }
 
         //attempt to create party in db
-        Integer id = getPartyId(orderedCharacters);
-        partyCharacters.setId(id);
+        Integer createdPartyId = createParty(orderedCharacters);
 
+        //set party characters to id returned by method above
+        partyCharacters.setId(createdPartyId);
+
+        //check if user has previously created a party in this voting period
         String selectPartySql = "SELECT party_id FROM users_party " +
                 "JOIN party ON users_party.party_id = party.id " +
                 "JOIN character On party.character_1 = character.id " +
                 "WHERE users_party.user_id = (SELECT users.user_id FROM users WHERE username = ?) " +
-                "AND character.monster_id = (SELECT character.monster_id FROM character WHERE id = ?)";
-        SqlRowSet result = jdbcTemplate.queryForRowSet(selectPartySql, username, id);
-
-        //if user already submitted a party, they dont create another one
-        //else it is submitted
+                "AND character.monster_id = (SELECT character.monster_id FROM character JOIN party on character.id = party.character_1 WHERE party.id = ?)";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(selectPartySql, username, createdPartyId);
 
         try {
             if (result.next()) {
                 return partyCharacters;
             } else {
                 String insertUserSql = "INSERT INTO users_party(user_id, party_id) Values ((SELECT users.user_id FROM users WHERE username = ?), ?) RETURNING party_id;";
-                jdbcTemplate.queryForObject(insertUserSql, Integer.class, username, id);
+                jdbcTemplate.queryForObject(insertUserSql, Integer.class, username, createdPartyId);
                 return partyCharacters;
         }
         } catch (Exception e){
@@ -64,7 +64,7 @@ public class JdbcPartyDao implements PartyDao {
         return partyCharacters;
     }
 
-    private Integer getPartyId(List<Integer> orderedCharacters) {
+    private Integer createParty(List<Integer> orderedCharacters) {
         String createPartySQL = "INSERT INTO party (character_1, character_2, character_3, character_4) VALUES (?,?,?,?) RETURNING id;";
         Integer id =null;
 
