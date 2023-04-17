@@ -5,8 +5,15 @@ DROP TABLE IF EXISTS party;
 DROP TABLE IF EXISTS character;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS monster;
+DROP TABLE IF EXISTS image;
 
+CREATE TABLE image (
+    id SERIAL,
+    url varchar(500) NOT NULL,
+    approved boolean DEFAULT false NOT NULL,
 
+	CONSTRAINT PK_image PRIMARY KEY (id)
+);
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -46,10 +53,12 @@ CREATE TABLE character(
 	user_id int not null,
 	flagged_inappropriate varchar(15) DEFAULT 'not_flagged' NOT NULL,
 	active boolean DEFAULT true NOT NULL,
+	image_id int,
 
 	constraint pk_character primary key (id),
 	constraint fk_character_monster foreign key (monster_id) references monster (id),
-	constraint fk_character_users foreign key (user_id) references users (user_id)
+	constraint fk_character_users foreign key (user_id) references users (user_id),
+	constraint fk_character_image foreign key (image_id) references image (id)
 );
 
 CREATE TABLE party (
@@ -90,6 +99,7 @@ least(character_4,character_3,character_2,character_1)
 
 
 
+
 INSERT INTO monster (name_index, start_date, end_date) VALUES ('a', '2020-01-01', '2020-01-07'); --id = 1
 INSERT INTO monster (name_index, start_date, end_date) VALUES ('b', '2020-01-08', '2020-01-14'); --id = 2
 
@@ -102,7 +112,11 @@ INSERT INTO users (username,password_hash,role) VALUES ('user6','user6','ROLE_US
 INSERT INTO users (username,password_hash,role) VALUES ('user7','user7','ROLE_USER');--id = 7
 INSERT INTO users (username,password_hash,role) VALUES ('user8','user8','ROLE_USER');--id = 8
 
---insert four characters for monster a
+INSERT INTO image (url, approved) VALUES ('fakeurl1',true);
+INSERT INTO image (url, approved) VALUES ('fakeurl2',true);
+INSERT INTO image (url) VALUES ('fakeurl3');
+INSERT INTO image (url) VALUES ('fakeurl4');
+
 INSERT INTO character (name, race, description, char_class, strength, dexterity, constitution,
  intelligence, wisdom, charisma, monster_id, user_id) VALUES ('a', 'a', 'a', 'a', 1, 1, 1, 1, 1, 1, 1, 1);--id = 1
 INSERT INTO character (name, race, description, char_class, strength, dexterity, constitution,

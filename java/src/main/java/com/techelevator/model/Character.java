@@ -37,6 +37,16 @@ public class Character implements Comparable<Character> {
     private String flaggedInappropriate;
     private boolean active;
 
+    CharacterImage image;
+
+    public CharacterImage getImage() {
+        return image;
+    }
+
+    public void setImage(CharacterImage image) {
+        this.image = image;
+    }
+
     public boolean isActive() {
         return active;
     }

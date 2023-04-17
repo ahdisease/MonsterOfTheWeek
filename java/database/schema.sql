@@ -5,8 +5,15 @@ DROP TABLE IF EXISTS party;
 DROP TABLE IF EXISTS character;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS monster;
+DROP TABLE IF EXISTS image;
 
-
+CREATE TABLE image (
+    id SERIAL,
+    url varchar(500) NOT NULL,
+    approved boolean DEFAULT false NOT NULL,
+	
+	CONSTRAINT PK_image PRIMARY KEY (id)
+);
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -46,10 +53,12 @@ CREATE TABLE character(
 	user_id int not null,
 	flagged_inappropriate varchar(15) DEFAULT 'not_flagged' NOT NULL,
 	active boolean DEFAULT true NOT NULL,
+	image_id int,
 
 	constraint pk_character primary key (id),
 	constraint fk_character_monster foreign key (monster_id) references monster (id),
-	constraint fk_character_users foreign key (user_id) references users (user_id)
+	constraint fk_character_users foreign key (user_id) references users (user_id),
+	constraint fk_character_image foreign key (image_id) references image (id)
 );
 
 CREATE TABLE party (
