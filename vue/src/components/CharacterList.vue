@@ -387,6 +387,8 @@ export default {
     DnDApiService.getAllClasses().then((response) => {
       this.dropdownClass = response.data.results;
     });
+    // this.checkUserParty();
+    // console.log(this.created)
   },
 
   methods: {
@@ -476,7 +478,10 @@ export default {
     //   return filteredPartyList;
     // },
     checkUserParty() {
+      console.log("hello")
       let created = Object.keys(this.$store.state.userParty).length != 0;
+      console.log(created)
+
       return created;
     },
 
@@ -587,7 +592,7 @@ h1 {
   background-color: #00201e;
   border: 5px outset goldenrod;
   border-radius: 6px;
-  width: 60%;
+  width: 920px;
   margin: 0 auto;
 }
 

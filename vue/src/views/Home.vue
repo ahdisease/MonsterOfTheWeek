@@ -21,7 +21,7 @@
       </div>
       <div class="versus"><h1>VS</h1></div>
       <div class="party-space">
-        <party-component />
+         <party-component v-if="!banContent" /><!-- // ban here  -->
       </div>
     </div>
     <div id="winner-space">
@@ -38,13 +38,31 @@ import CharacterService from '../services/CharacterService';
 
 export default {
   name: "home",
+
+  data () {
+    return {
+      banContent: false,
+    }
+  },
+  
   components: {
     MonsterSplash,
     PartyComponent,
     PartyWinner,
   },
 
+  methods: {
+    hideContent() {
+      if (this.$store.state.user.authorities[0].name === "ROLE_BAN") {
+        this.banContent = true;
+      }
+    },
+  },
+
   created() {
+    this.hideContent();
+
+
 //check for SET_VIEW_CHARAC in the future
     CharacterService.getCharacterByUsername(
       this.$store.state.user.username
@@ -61,7 +79,7 @@ export default {
 <style scoped>
 
 .home {
- display: grid;
+ /* display: grid;
  background: #096660;
  grid-template-areas:
     "intro intro intro"
@@ -76,11 +94,12 @@ export default {
   justify-content: center;
   align-items: center;
   background-color: #3a5268;
-  grid-area: home;
-  /* display: flex;
+  grid-area: home; */
+  display: flex;
   flex-direction: column;
   justify-content: space-between; 
-  align-items: center; */
+  align-items: center;
+  background-color: #3a5268;
 }
 #intro {
   grid-area: intro;
@@ -118,8 +137,8 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  height: 100%;
-  width: auto;
+  height: auto;
+  width: 100%;
 }
 .monster-space {
   /* flex: 50%; */
@@ -136,7 +155,6 @@ export default {
   align-self: center;
   /* font-size: 3rem; */
   text-align: center;
-  padding: 5%;
   /*color: #00e88a;
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;

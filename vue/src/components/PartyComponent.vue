@@ -71,12 +71,12 @@ export default {
 </script>
 
 <style scoped>
-#wrapper {
+/* #wrapper {
   background-color: #00201E;
   width: 400px;
   border-radius: 6px;
   padding-bottom: 10px;
-}
+} */
 #partyName {
   font-size: 3em;
   text-align: center;
@@ -99,5 +99,20 @@ export default {
 .your-party:hover {
   background-color: #007f5f;
   color: #00e88a;
+}
+
+@media screen and (max-width: 1000px) {
+  #wrapper {
+  background-color: #00201E;
+  width: 100%;
+  border-radius: 6px;
+  padding-bottom: 10px;
+}
+}
+
+@media screen and (max-width: 768px) {
+  #wrapper {
+    width: 400px;
+  }
 }
 </style>
