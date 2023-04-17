@@ -61,7 +61,7 @@ export default {
 <style scoped>
 
 .home {
- display: grid;
+ /* display: grid;
  background: #096660;
  grid-template-areas:
     "intro intro intro"
@@ -76,11 +76,12 @@ export default {
   justify-content: center;
   align-items: center;
   background-color: #3a5268;
-  grid-area: home;
-  /* display: flex;
+  grid-area: home; */
+  display: flex;
   flex-direction: column;
   justify-content: space-between; 
-  align-items: center; */
+  align-items: center;
+  background-color: #3a5268;
 }
 #intro {
   grid-area: intro;
@@ -118,8 +119,8 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  height: 100%;
-  width: auto;
+  height: auto;
+  width: 100%;
 }
 .monster-space {
   /* flex: 50%; */
@@ -136,7 +137,6 @@ export default {
   align-self: center;
   /* font-size: 3rem; */
   text-align: center;
-  padding: 5%;
   /*color: #00e88a;
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
