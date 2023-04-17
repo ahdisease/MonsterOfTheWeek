@@ -6,11 +6,12 @@
       v-show="showDetails"
       v-on:click="turnCharacterCard"
     >
-    
       <div id="char-name">{{ character.name }}</div>
       <div class="race"><strong>Race:</strong> {{ character.race }}</div>
       <div class="class"><strong>Class:</strong> {{ character.charClass }}</div>
-      <div id="description" class="overflow-auto">{{ character.description }}</div>
+      <div id="description" class="overflow-auto">
+        {{ character.description }}
+      </div>
     </div>
     <div
       class="character-card-back"
@@ -68,16 +69,19 @@
       </div>
     </div>
     <div id="button-group">
-      <b-button
-        variant="danger"
-        id="flag"
-        v-on:click.prevent="markFlagged"
-        v-bind:class="isFlagged"
-        v-show="isFlaggable"
-      >
-        Flag
-        <!-- &#128681; -->
-      </b-button>
+      <div id="flag-check">
+        <b-button
+          variant="danger"
+          id="flag"
+          v-on:click.prevent="markFlagged"
+          v-bind:class="isFlagged"
+          v-if="isFlaggable"
+        >
+          Flag
+        </b-button>
+        <div id="checkmark" v-if="approved">Approved</div>
+      </div>
+      <b-button id="approved-btn" v-if="confirmModeratorPermissions" v-on:click.prevent="markApproved">Approved</b-button>
       <button
         class="delete"
         v-on:click.prevent="deleteCharacterMod"
@@ -91,6 +95,7 @@
 
 <script>
 import CharacterService from "../services/CharacterService.js";
+import ModService from "../services/ModService.js"
 
 export default {
   name: "character-card",
@@ -99,6 +104,7 @@ export default {
   data() {
     return {
       showDetails: true,
+      approved: false,
     };
   },
   computed: {
@@ -108,6 +114,13 @@ export default {
       }
       return "";
     },
+    isApproved() {
+      if (this.character.flaggedInappropriate == "flagged") {
+        return "is-flagged";
+      }
+        return "";
+    },
+    
     confirmModeratorPermissions() {
       let allowed = false;
 
@@ -128,6 +141,12 @@ export default {
       CharacterService.flaggedInappropriate(this.character.id).then(() => {
         this.$emit("newFlag");
       });
+    },
+    markedApproved() {
+      ModService.markedApproved(this.character.id).then (() => {
+        this.$emit("newFlag")
+      })
+      
     },
     deleteCharacterMod() {
       CharacterService.deleteCharacterMod(this.character.id).then(() => {
@@ -211,13 +230,11 @@ export default {
   align-items: center;
   /* height: 100%; */
 }
-#all-stats{
+#all-stats {
   justify-content: center;
   display: grid;
   grid-area: all-stats;
-  grid-template-areas: 
-  "left-stats right-stats"
-  ;
+  grid-template-areas: "left-stats right-stats";
   grid-template-columns: 80px 80px;
 }
 
@@ -279,6 +296,9 @@ export default {
   border: 1px solid black;
   padding: 2px;
 }
+#checkmark {
+  /* \F26E */
+}
 #flag:hover {
   background-color: rgb(252, 10, 10);
   box-shadow: 0 0 6px 6px rgba(255, 80, 80, 0.1);
@@ -318,16 +338,11 @@ export default {
   font-style: italic;
   font-size: 0.9rem;
   overflow: auto;
-  
+
   -webkit-mask-image: linear-gradient(180deg, #000 88%, transparent);
 }
 
 #description::-webkit-scrollbar {
-  display:none;
+  display: none;
 }
-
-
-
-
-
 </style>
