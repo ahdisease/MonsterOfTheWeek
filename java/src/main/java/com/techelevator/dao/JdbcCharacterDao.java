@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Character;
+import com.techelevator.model.CharacterImage;
 import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -24,9 +25,11 @@ import java.util.List;
 public class JdbcCharacterDao implements CharacterDao{
 
     private JdbcTemplate jdbcTemplate;
+    private CharacterImageDao imageDao;
 
     public JdbcCharacterDao (JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate =  jdbcTemplate;
+        imageDao = new JdbcCharacterImageDao(jdbcTemplate);
     }
 
 
@@ -35,7 +38,7 @@ public class JdbcCharacterDao implements CharacterDao{
         List<Character> characters = new ArrayList<>();
         String sql = "SELECT character.id, character.name, character.race, character.description, character.char_class, " +
                 "character.strength, character.dexterity, character.constitution, character.intelligence, character.wisdom, " +
-                "character.charisma, character.monster_id, character.user_id, character.flagged_inappropriate, character.active FROM character WHERE ";
+                "character.charisma, character.monster_id, character.user_id, character.flagged_inappropriate, character.active, character.image_id FROM character WHERE ";
 
         if(username != null){
             sql += "character.user_id = (SELECT user_id FROM users WHERE username = ?) AND " +
@@ -60,7 +63,7 @@ public class JdbcCharacterDao implements CharacterDao{
 
         String sql = "SELECT character.id, character.name, character.race, character.description, character.char_class, " +
                 "character.strength, character.dexterity, character.constitution, character.intelligence, character.wisdom, " +
-                "character.charisma, character.monster_id, character.user_id, character.flagged_inappropriate, character.active FROM character WHERE character.id = ?";
+                "character.charisma, character.monster_id, character.user_id, character.flagged_inappropriate, character.active, character.image_id FROM character WHERE character.id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
 
         if(results.next()){
@@ -72,16 +75,29 @@ public class JdbcCharacterDao implements CharacterDao{
     @Override
     public Character createCharacter(Character character) {
         int[] stats = diceRollStats();
-        String sql = "INSERT INTO character (name, race, description, char_class, strength, dexterity," +
-                " constitution, intelligence, wisdom," +
-                " charisma, monster_id, user_id) Values (?,?,?,?,?,?,?,?,?,?,?,?) RETURNING id;";
 
-        Integer id = jdbcTemplate.queryForObject(sql, Integer.class, character.getName(), character.getRace(), character.getDescription(),
-                character.getCharClass(), stats[0], stats[1], stats[2], stats[3], stats[4], stats[5], character.getMonsterId(),
-                character.getUserId()
-        );
+        if(character.getImage() != null) {
+            String sql = "INSERT INTO character (name, race, description, char_class, strength, dexterity," +
+                    " constitution, intelligence, wisdom," +
+                    " charisma, monster_id, user_id, image_id) Values (?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING id;";
+            Integer id = jdbcTemplate.queryForObject(sql, Integer.class, character.getName(), character.getRace(), character.getDescription(),
+                    character.getCharClass(), stats[0], stats[1], stats[2], stats[3], stats[4], stats[5], character.getMonsterId(),
+                    character.getUserId(), character.getImage().getId()
+            );
+            character.setId(id);
+        } else {
+            String sql = "INSERT INTO character (name, race, description, char_class, strength, dexterity," +
+                    " constitution, intelligence, wisdom," +
+                    " charisma, monster_id, user_id) Values (?,?,?,?,?,?,?,?,?,?,?,?) RETURNING id;";
+            Integer id = jdbcTemplate.queryForObject(sql, Integer.class, character.getName(), character.getRace(), character.getDescription(),
+                    character.getCharClass(), stats[0], stats[1], stats[2], stats[3], stats[4], stats[5], character.getMonsterId(),
+                    character.getUserId()
+            );
+            character.setId(id);
+        }
 
-        character.setId(id);
+
+
 
         return character;
     }
@@ -151,6 +167,11 @@ public class JdbcCharacterDao implements CharacterDao{
         character.setUserId(result.getInt("user_id"));
         character.setFlaggedInappropriate(result.getString("flagged_inappropriate"));
         character.setActive(true);
+        Integer imageId = result.getInt("image_id");
+        if (imageId != null) {
+            character.setImage(imageDao.getImageById(imageId));
+        }
+
         return character;
 
     }
