@@ -67,7 +67,7 @@
 
 
       <div id="cloud-btn" class="cloud">
-      <cloudinary-image-upload />
+      <cloudinary-image-upload v-on:pictureUpload="getPhotoUploadInfo" />
       </div>
 
 
@@ -163,6 +163,7 @@ export default {
           name: "Bard",
         },
       ],
+      photoUploadInfo:{}
     };
   },
 
@@ -219,6 +220,9 @@ export default {
     cancelForm() {
       this.$router.push({name: "character-creator"});
     },
+    getPhotoUploadInfo(event){
+      this.photoUploadInfo = event;
+    }
   },
 };
 </script>
