@@ -6,6 +6,8 @@
     <!-- TODO ********* this error message needs to display correctly? -->
     <!-- <p class="status-message error" v-show="errorMessage != ''">{{errorMessage}}</p> -->
     <form class="homeForm" v-on:submit.prevent="submitForm">
+
+
       <div class="name-group" id="name-box">
         <label for="name">Name</label>
         <input
@@ -67,7 +69,7 @@
 
 
       <div id="cloud-btn" class="cloud">
-      <cloudinary-image-upload />
+      <cloudinary-image-upload v-on:pictureUpload="getPhotoUploadInfo" />
       </div>
 
 
@@ -127,6 +129,7 @@ export default {
   },
   data() {
     return {
+      
       newCharacter: {
         id: -1,
         name: "",
@@ -163,6 +166,7 @@ export default {
           name: "Bard",
         },
       ],
+      photoUploadInfo:{}
     };
   },
 
@@ -218,6 +222,9 @@ export default {
     },
     cancelForm() {
       this.$router.push({name: "character-creator"});
+    },
+    getPhotoUploadInfo(event){
+      this.photoUploadInfo = event;
     },
   },
 };
