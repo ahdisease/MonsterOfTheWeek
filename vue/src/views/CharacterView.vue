@@ -1,17 +1,28 @@
 <template>
   <div class="completed-char">
-    <character-creator v-if="!characterCreated" />
-    <character-view-detailed v-if="characterCreated" />
+    <div role="alert" v-if="showError">
+      {{ errorMessage }}
+    </div>
+    <div v-if="!showError">
+      <character-creator v-if="!characterCreated" />
+      <character-view-detailed v-if="characterCreated" />
+    </div>
   </div>
 </template>
 
 <script>
 import CharacterViewDetailed from "../components/CharacterViewDetailed.vue";
 import CharacterCreator from "./CharacterCreator.vue";
-import CharacterService from "../services/CharacterService.js";
 
 export default {
   name: "character-view",
+
+  data() {
+    return {
+      showError: false,
+      errorMessage: "Sorry, You have been banned.",
+    };
+  },
 
   components: {
     CharacterViewDetailed,
@@ -27,33 +38,35 @@ export default {
       return created;
     },
   },
+
+  methods: {
+    showBanMessage() {
+      if (this.$store.state.user.authorities[0].name === "ROLE_BAN") {
+        this.showError = true;
+      }
+    },
+  },
+
   created() {
-    if (!this.characterCreated) {
-      CharacterService.getCharacterByUsername(
-        this.$store.state.user.username
-      ).then((response) => {
-        if (response.status == 200) {
-          this.$store.commit("SET_USER_CHARACTER", response.data);
-        }
-      });
-    }
+    this.showBanMessage();
   },
 };
 </script>
 
 <style scoped>
 .completed-char {
-  background-color: #3A5268;
+  background-color: #3a5268;
 }
 
 #addHomeform {
   display: grid;
-  grid-template-areas: "title"
-                        "homeForm";
+  grid-template-areas:
+    "title"
+    "homeForm";
   grid-template-columns: 2fr;
   justify-content: center;
   align-items: center;
-  
+
   background: #3a5268;
   margin: auto;
   padding-top: 10px;
@@ -64,15 +77,15 @@ export default {
 
 #title {
   grid-area: title;
-  color: #00E88A;
-  background: #00201E
+  color: #00e88a;
+  background: #00201e;
 }
 
 #title h1 {
   text-align: center;
   font-size: 4em;
-  color: #00E88A;
-  background: #00201E
+  color: #00e88a;
+  background: #00201e;
 }
 
 .homeForm {
@@ -81,7 +94,7 @@ export default {
   margin: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas:  
+  grid-template-areas:
     "race   name-box   class"
     "lcol     picture   rcol"
     "lcol     picture   rcol"
@@ -110,7 +123,7 @@ export default {
   justify-content: center;
   align-content: center;
   text-align: center;
-  color: #00E88A;
+  color: #00e88a;
   font-size: 2rem;
 }
 
@@ -123,7 +136,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #00E88A;
+  color: #00e88a;
   font-size: 2rem;
 }
 
@@ -140,7 +153,6 @@ export default {
   justify-content: center;
   align-content: center;
   height: 20%;
-  
 }
 
 .cloud {
@@ -150,7 +162,6 @@ export default {
 }
 
 #char-pic {
-  
   width: 100%;
   height: auto;
   align-content: center;
@@ -162,7 +173,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #00E88A;
+  color: #00e88a;
   font-size: 2rem;
 }
 
@@ -177,16 +188,14 @@ export default {
   grid-area: lcol;
   justify-content: center;
   align-content: center;
-  background-color: #00201E;
-  
+  background-color: #00201e;
 }
 
 #rcol {
   grid-area: rcol;
   justify-content: stretch;
   align-content: center;
-  background-color: #00201E;
-  
+  background-color: #00201e;
 }
 
 #desc {
@@ -195,15 +204,13 @@ export default {
   text-align: center;
   justify-content: center;
   align-self: center;
-  color: #00E88A;
+  color: #00e88a;
   font-size: 2rem;
-  
 }
 
 #description {
   width: 90%;
   margin-left: 5%;
-  
 }
 
 #buttons {
@@ -223,18 +230,16 @@ select.form-control {
 }
 
 .stats-column {
-  background-color: #00201E;
+  background-color: #00201e;
   border-radius: 3px;
   padding: 0.1em;
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
-  color: #00E88A;
-
+  color: #00e88a;
 }
 
 .stats-box {
   text-align: center;
-
 }
 
 .stats-name {
@@ -258,14 +263,14 @@ button {
 #cloud-btn {
   color: #fff;
   padding: 7px;
-  background-color: #00E88A;
+  background-color: #00e88a;
   border-radius: 6px;
 }
 
 .btn-submit {
   color: #fff;
   padding: 10px 24px;
-  background-color: #00E88A;
+  background-color: #00e88a;
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
@@ -277,18 +282,16 @@ button {
 .btn-submit:hover {
   color: #fff;
   padding: 10px 24px;
-  background-color: #00E88A;
+  background-color: #00e88a;
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 .btn-cancel:hover {
   padding: 10px 24px;
-  background-color: #00E88A;
+  background-color: #00e88a;
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
-
-
 
 @media screen and (max-width: 768px) {
   #addHomeform {
@@ -323,7 +326,5 @@ button {
     width: 60%;
     margin: 0 auto;
   }
-
 }
-
 </style>

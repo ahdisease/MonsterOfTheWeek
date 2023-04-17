@@ -1,11 +1,9 @@
 <template>
   
-    <div class="char-view" v-bind="showBanMessage">
-        <div role="alert" v-if="showError">
-            {{errorMessage}}
-        </div>>
+    <div class="char-view">
+        
     
-    <character-creation-form />
+    <character-creation-form  />
 
     
   </div>
@@ -17,28 +15,12 @@ import CharacterCreationForm from "../components/CharacterCreationForm.vue";
 export default {
   name: "character-creator",
 
-  data() {
-      return {
-          showError: false,
-          errorMessage: 'Sorry, You have been banned.',
-      }
-  },
+  
 
   components: {
     CharacterCreationForm,
   },
-
-  methods: {
-          
-    showBanMessage() {
-          if(this.$store.state.user.role === "ROLE_BAN"){
-              this.showError = true;
-              this.errorMessage;
-          }
-      },
-  }
-
-};
+}
 </script>
 
 <style scoped>
