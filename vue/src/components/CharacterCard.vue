@@ -6,6 +6,7 @@
       v-show="showDetails"
       v-on:click="turnCharacterCard"
     >
+    
       <div id="char-name">{{ character.name }}</div>
       <div class="race"><strong>Race:</strong> {{ character.race }}</div>
       <div class="class"><strong>Class:</strong> {{ character.charClass }}</div>

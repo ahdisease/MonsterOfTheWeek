@@ -1,33 +1,17 @@
 
 <template>
-  <AdvancedImage v-bind:cldImg="myImg" />
+  <img v-bind:src="url" />
 </template>
 
 <script>
-import { AdvancedImage } from '@cloudinary/vue'
-import { Cloudinary } from '@cloudinary/url-gen'
-
-
 export default {
-  components: {
-    AdvancedImage
-  },
+
   data() {
     return {
-      cloud: {},
-      myImg: {}
+      url: 'https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/characters/tolbixi7uxskvstyof0o.jpg'
     }
   },
-  created() {
-    this.cloud = new Cloudinary({
-      cloud: {
-        cloudName: 'c19-lima-monster-of-the-week',
-        apiKey: '965275756759159'
-      }
-    })
-
-    this.myImg = this.cloud.image('sample')
-  }
+  
 }
 </script>
 
