@@ -99,6 +99,43 @@ const router = new Router({
         requiresAuth: true
       }
     },
+    // get winning party
+    // {
+    //   path: "/top-vote",
+    //   name: "top-vote",
+    //   component: ,
+    //   meta: {
+    //     requiresAuth: true
+    //   }
+    // },
+    // DELETE Characters - 201, 403, 404 ?
+    // {
+    //   path: "/characters/{id}",
+    //   name: "delete",
+    //   component: ,
+    //   meta: {
+    //     requiresAuth: true
+    //   }
+    // },
+    // MOD route to ban users
+    // {
+    //   path:"/moderator/ban/{id}",
+    //   name: "ban-users",
+    //   component: ,
+    //   meta: {
+    //     requiresAuth: true
+    //   }
+    // },
+    // MOD ROUTE TO REVIEW FLAGGED CONTENT
+    // {
+    //   path: "/moderator/review/{id}",
+    //   name: "review-flagged",
+    //   component: ,
+    //   meta: {
+    //     requiresAuth: true
+    //   }
+    // }
+
   ]
 })
 
