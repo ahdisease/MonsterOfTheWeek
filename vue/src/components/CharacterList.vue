@@ -10,7 +10,7 @@
       <div class="current-party" v-if="!checkUserParty">
         <div
           v-bind:key="character.id3"
-          v-for="character in filteredPartyList"
+          v-for="character in party"
           @dblclick.prevent="removePartyMember(character)"
           style="
             -webkit-user-select: none;
@@ -425,7 +425,8 @@ export default {
       }
     },
     removePartyMember(character) {
-      this.party.remove(character);
+      // this.filterPartyObject
+      this.party.remove(character).at();
     },
     generateCharacterList() {
       CharacterService.getAllCharacters(new Date().toJSON().slice(0, 10)).then(
@@ -461,16 +462,16 @@ export default {
   },
 
   computed: {
-    filterPartyObject(){
-      let filteredPartyList = this.checkUserParty
-      if (this.filterParty.characterOne != '') {
-        filteredPartyList = filteredPartyList.filterParty(
-          character => character.id === this.filterParty
-        );
-      }
-
-      return filteredPartyList;
-    },
+    // filterPartyObject(){
+    //   let filteredPartyList = this.checkUserParty
+    //   if (this.filterParty.characterOne != '') {
+    //     filteredPartyList = filteredPartyList.filterParty(
+    //       character => character.characterOne === this.filterParty.characterOne
+    //     );
+    //   }
+// 
+    //   return filteredPartyList;
+    // },
     checkUserParty(){
       let created = (Object.keys(this.$store.state.userParty).length != 0);
         return created;

@@ -46,28 +46,31 @@ export default {
 </script>
 
 <style scoped>
-/* body { */
-/* display: grid; */
-/* background: #096660; */
-/* grid-template-areas:
-    "home"
-    "monster-space"
-    "versus"
-    "party-space"
-    "winner-space"; */
-/* margin: 0;
-  padding: 0; */
-/* grid-template-rows: 1fr 1fr 4fr 4fr 1fr; */
-/* } */
+
 .home {
+ display: grid;
+ background: #096660;
+ grid-template-areas:
+    "intro intro intro"
+    "monster-space versus party-space"
+    "monster-space versus party-space"
+    "winner-space winner-space winner-space"; 
+ margin: 0;
+ padding: 0;
+ height: 100%;
+ width: auto;
+ grid-template-rows: .2fr 1fr .5fr;
+  justify-content: center;
+  align-items: center;
   background-color: #3a5268;
   grid-area: home;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
-  align-items: center;
+  justify-content: space-between; 
+  align-items: center; */
 }
 #intro {
+  grid-area: intro;
   text-align: center;
   font-weight: 500;
   padding: 10px 20px;
@@ -101,20 +104,26 @@ export default {
 #main-battle {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  height: 100%;
+  width: auto;
 }
 .monster-space {
   /* flex: 50%; */
-  /* grid-area: monster-space; */
+  grid-area: monster-space;
   border-radius: 6px;
   /* background-color: #00201e; */
   margin: 10px;
 }
 .versus {
   /* align-self: center; */
-  /* grid-area: versus; */
+  grid-area: versus;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
   /* font-size: 3rem; */
   text-align: center;
+  padding: 5%;
   /*color: #00e88a;
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
@@ -123,6 +132,8 @@ export default {
 .versus h1 {
   font-size: 5em;
   text-align: center;
+  justify-self: center;
+  align-self: center;
   color: #007f5f;
   -webkit-text-stroke-width: 4px;
   -webkit-text-stroke-color: #00e88a;
@@ -136,7 +147,10 @@ export default {
   margin: 0 10px;
   /* added this because it was empty */
   /* background-color: rgb(243, 200, 176); */
-  /* grid-area: party-space; */
+  grid-area: party-space;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
   /* flex: 40%; */
   /* justify-self: flex-end; */
   /* flex-shrink: 1; */
@@ -147,7 +161,7 @@ export default {
   width: 100%;
   margin: 10px 0;
   padding: 15px;
-  /* grid-area: winner-space; */
+  grid-area: winner-space;
 }
 @media screen and (max-width: 1000px) {
   #main-battle {
