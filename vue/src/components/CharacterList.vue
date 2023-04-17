@@ -5,10 +5,12 @@
     </div>
 
     <div class="party-container">
-      <div class="current-party">
+      <div id="party-comp" v-if="checkUserParty"><party-component /></div>
+      
+      <div class="current-party" v-if="!checkUserParty">
         <div
           v-bind:key="character.id3"
-          v-for="character in party"
+          v-for="character in filteredPartyList"
           @dblclick.prevent="removePartyMember(character)"
           style="
             -webkit-user-select: none;
@@ -22,12 +24,18 @@
       </div>
     </div>
 
-    <div class="button-container">
+    <div class="button-container" v-if="!checkUserParty">
       <div class="buttons">
-        <button class="btn btn-submit" v-on:click="submitForm">Submit</button>
+        <button class="btn btn-submit" v-on:click.prevent="submitForm">Submit</button>
         <button class="btn btn-cancel" type="cancel" v-on:click="cancelForm">
           Cancel
         </button>
+      </div>
+    </div>
+
+    <div class="update-button-container" v-if="checkUserParty">
+      <div class="buttons">
+        <button class="btn btn-update" v-on:click.prevent="updateParty">Update</button>
       </div>
     </div>
 
@@ -58,7 +66,7 @@
       </div>
 
       <div id="clear-filters" v-on:click="clearFilters">
-        <b-btn>Reset Filters</b-btn>
+        <b-button id="reset-button">Reset Filters</b-button>
       </div>
     
       <div class="att-group" id="charClass">
@@ -315,12 +323,14 @@
 import CharacterCard from "./CharacterCard.vue";
 import CharacterService from "../services/CharacterService.js";
 import DnDApiService from "../services/DndApiService.js";
+import PartyComponent from './PartyComponent.vue';
 
 export default {
   name: "character-list",
 
   components: {
     CharacterCard,
+    PartyComponent,
   },
 
   data() {
@@ -331,7 +341,7 @@ export default {
         race: "",
         class: "",
       },
-
+      showPartyComp: false,
       currentCharacters: [],
       newPartyMember: {},
       party: [],
@@ -347,6 +357,12 @@ export default {
         wisdom: "",
         charisma: "",
         flaggedInappropriate: "",
+      },
+      filterParty: {
+        characterOne: "",
+        characterTwo: '',
+        characterThree: '',
+        characterFour:'',
       },
 
       modalShow: false,
@@ -364,9 +380,17 @@ export default {
     DnDApiService.getAllClasses().then((response) => {
       this.dropdownClass = response.data.results;
     });
+   
+      
+    
+
+
   },
 
   methods: {
+    updateParty(){
+      this.$store.state.userParty = {};
+    },
     submitForm() {
       let submitParty = this.party.map((character) => {
         return character.id;
@@ -382,6 +406,8 @@ export default {
         .then((response) => {
           if (response.status === 201) {
             this.modalShow = true;
+            this.showPartyComp = true;
+            this.$store.commit('SET_USER_PARTY', this.party);
             // this.$router.push({ name: "home" });
           }
         })
@@ -399,7 +425,7 @@ export default {
       }
     },
     removePartyMember(character) {
-      this.party.pop(character);
+      this.party.remove(character);
     },
     generateCharacterList() {
       CharacterService.getAllCharacters(new Date().toJSON().slice(0, 10)).then(
@@ -435,6 +461,22 @@ export default {
   },
 
   computed: {
+    filterPartyObject(){
+      let filteredPartyList = this.checkUserParty
+      if (this.filterParty.characterOne != '') {
+        filteredPartyList = filteredPartyList.filterParty(
+          character => character.id === this.filterParty
+        );
+      }
+
+      return filteredPartyList;
+    },
+    checkUserParty(){
+      let created = (Object.keys(this.$store.state.userParty).length != 0);
+        return created;
+    
+    },
+     
     filteredList() {
       let filteredCharacters = this.currentCharacters;
       // console.log(filteredCharacters)
@@ -550,6 +592,7 @@ h2 {
 .race-class-group {
   display: flex;
   justify-content: space-around;
+  align-items:center;
   margin: 0 auto;
   /* gap: 7rem; */
 }
@@ -595,11 +638,20 @@ h2 {
   font-size: 16px;
 }
 
-/* 
+
 #clear-filters {
-  background-color: lightgreen;
-  color: black;
-} */
+  height: auto;
+}
+    
+#reset-button    {
+  color: #00E88A;
+  background-color: #00201E;
+  border: none;
+}
+#reset-button:hover {
+  color: #00201E;
+  background-color: #00E88A;
+}
 
 .btn-submit {
   background-color: lightgreen;
