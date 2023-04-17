@@ -3,15 +3,14 @@
     <div id="ban-message" role="alert" v-if="showError">
       {{ errorMessage }}
     </div>
-    <div v-if="!showError"></div>
-    
-    <div id="intro">
+
+    <div id="intro" v-if="!showError">
       <p>
         View Your Party or create one with four (4) Characters. You are able to
         make one Party per week.
       </p>
     </div>
-    <character-list></character-list>
+    <character-list v-if="!showError"></character-list>
   </div>
 </template>
 
