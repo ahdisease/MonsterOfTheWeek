@@ -34,6 +34,7 @@
 import MonsterSplash from "../components/MonsterSplash.vue";
 import PartyComponent from "../components/PartyComponent.vue";
 import PartyWinner from "../components/PartyWinner.vue";
+import CharacterService from '../services/CharacterService';
 
 export default {
   name: "home",
@@ -42,7 +43,19 @@ export default {
     PartyComponent,
     PartyWinner,
   },
-};
+
+  created() {
+//check for SET_VIEW_CHARAC in the future
+    CharacterService.getCharacterByUsername(
+      this.$store.state.user.username
+    ).then((response) => {
+      if (response.status == 200) {
+        this.$store.commit("SET_USER_CHARACTER", response.data),
+        this.$store.commit("SET_USER_PARTY", response.data)
+      }
+    })
+  }
+}
 </script>
 
 <style scoped>
