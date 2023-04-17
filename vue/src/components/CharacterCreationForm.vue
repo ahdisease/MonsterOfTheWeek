@@ -71,13 +71,13 @@
       </div>
 
 
-      <!-- <div id="picture">
-        <img
+      <div id="picture">
+        <!-- <img
           src="https://cdna.artstation.com/p/assets/images/images/010/077/400/large/maja-weber-sun-wukong-colour.jpg?1522433552"
           class="char-pic"
           id="char-pic"
-        />
-      </div> -->
+        /> -->
+      </div>
 
       <div class="stats-column" id="rcol">
         <div class="stats-box">
