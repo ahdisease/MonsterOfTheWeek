@@ -1,12 +1,13 @@
 <template>
-  <div class="char-view">
+  
+    <div class="char-view" v-bind="showBanMessage">
+        <div role="alert" v-if="showError">
+            {{errorMessage}}
+        </div>>
+    
     <character-creation-form />
 
-    <div>
-        <!-- <div class="ban-message" v-show="errorMessage != ''">
-            {{errorMessage}}
-        </div> -->
-    </div>
+    
   </div>
 </template>
 
@@ -19,6 +20,7 @@ export default {
   data() {
       return {
           showError: false,
+          errorMessage: 'Sorry, You have been banned.',
       }
   },
 
@@ -27,11 +29,13 @@ export default {
   },
 
   methods: {
-    //   showBanMessage() {
-    //       if(this.$store.state.user.role === "ROLE_BAN"){
-    //           this.showError = !this.showError
-    //       }
-    //   },
+          
+    showBanMessage() {
+          if(this.$store.state.user.role === "ROLE_BAN"){
+              this.showError = true;
+              this.errorMessage;
+          }
+      },
   }
 
 };
