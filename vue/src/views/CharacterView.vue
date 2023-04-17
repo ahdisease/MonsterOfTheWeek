@@ -1,9 +1,10 @@
 <template>
   <div class="completed-char">
-    <div role="alert" v-if="showError">
+    <div id="ban-message" role="alert" v-if="showError">
       {{ errorMessage }}
     </div>
     <div v-if="!showError">
+      
       <character-creator v-if="!characterCreated" />
       <character-view-detailed v-if="characterCreated" />
     </div>
@@ -86,6 +87,16 @@ export default {
   font-size: 4em;
   color: #00e88a;
   background: #00201e;
+}
+
+#ban-message {
+  height: 100%;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  color: #00e88a;
+  background: #00201e;
+
 }
 
 .homeForm {
