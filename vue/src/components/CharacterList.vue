@@ -1,13 +1,14 @@
 <template>
   <div>
-    <div id="party-name">
-      <h2>Your Party</h2>
-    </div>
+    
 
     <div class="party-container">
       <div id="party-comp" v-if="checkUserParty"><party-component /></div>
-      
+
       <div class="current-party" v-if="!checkUserParty">
+        <div id="party-name">
+      <h1>Your Party</h1>
+    </div>
         <div
           v-bind:key="character.id3"
           v-for="character in party"
@@ -24,26 +25,32 @@
       </div>
     </div>
 
-    <div class="button-container" v-if="!checkUserParty">
-      <div class="buttons">
-        <button class="btn btn-submit" v-on:click.prevent="submitForm">Submit</button>
-        <button class="btn btn-cancel" type="cancel" v-on:click="cancelForm">
-          Cancel
-        </button>
+    <div id="submit-cancel-update">
+      <div class="button-container" v-if="!checkUserParty">
+        <div class="buttons">
+          <button class="btn btn-submit" v-on:click.prevent="submitForm">
+            Submit
+          </button>
+          <button class="btn btn-cancel" type="cancel" v-on:click="cancelForm">
+            Cancel
+          </button>
+        </div>
       </div>
-    </div>
 
-    <div class="update-button-container" v-if="checkUserParty">
-      <div class="buttons">
-        <button class="btn btn-update" v-on:click.prevent="updateParty">Update</button>
+      <div class="update-button-container" v-if="checkUserParty">
+        <div class="buttons">
+          <button class="btn btn-update" v-on:click.prevent="updateParty">
+            Update
+          </button>
+        </div>
       </div>
     </div>
 
     <div>
       <b-modal v-model="modalShow" hide-footer>
-      <div class="d-block text-center">
-        <h3>Your party has been created!</h3>
-      </div>
+        <div class="d-block text-center">
+          <h3>Your party has been created!</h3>
+        </div>
       </b-modal>
     </div>
 
@@ -68,7 +75,7 @@
       <div id="clear-filters" v-on:click="clearFilters">
         <b-button id="reset-button">Reset Filters</b-button>
       </div>
-    
+
       <div class="att-group" id="charClass">
         <label class="label" for="charClass">Class</label>
         <select
@@ -323,7 +330,7 @@
 import CharacterCard from "./CharacterCard.vue";
 import CharacterService from "../services/CharacterService.js";
 import DnDApiService from "../services/DndApiService.js";
-import PartyComponent from './PartyComponent.vue';
+import PartyComponent from "./PartyComponent.vue";
 
 export default {
   name: "character-list",
@@ -360,9 +367,9 @@ export default {
       },
       filterParty: {
         characterOne: "",
-        characterTwo: '',
-        characterThree: '',
-        characterFour:'',
+        characterTwo: "",
+        characterThree: "",
+        characterFour: "",
       },
 
       modalShow: false,
@@ -380,15 +387,10 @@ export default {
     DnDApiService.getAllClasses().then((response) => {
       this.dropdownClass = response.data.results;
     });
-   
-      
-    
-
-
   },
 
   methods: {
-    updateParty(){
+    updateParty() {
       this.$store.state.userParty = {};
     },
     submitForm() {
@@ -407,7 +409,7 @@ export default {
           if (response.status === 201) {
             this.modalShow = true;
             this.showPartyComp = true;
-            this.$store.commit('SET_USER_PARTY', this.party);
+            this.$store.commit("SET_USER_PARTY", this.party);
             // this.$router.push({ name: "home" });
           }
         })
@@ -425,8 +427,9 @@ export default {
       }
     },
     removePartyMember(character) {
-      // this.filterPartyObject
-      this.party.remove(character).at();
+      let indexNumber = this.party.indexOf(character);
+      this.party.splice(indexNumber, 1);
+      // indexOf() to find index of character in party; remove element of party at that index;
     },
     generateCharacterList() {
       CharacterService.getAllCharacters(new Date().toJSON().slice(0, 10)).then(
@@ -469,15 +472,14 @@ export default {
     //       character => character.characterOne === this.filterParty.characterOne
     //     );
     //   }
-// 
+    //
     //   return filteredPartyList;
     // },
-    checkUserParty(){
-      let created = (Object.keys(this.$store.state.userParty).length != 0);
-        return created;
-    
+    checkUserParty() {
+      let created = Object.keys(this.$store.state.userParty).length != 0;
+      return created;
     },
-     
+
     filteredList() {
       let filteredCharacters = this.currentCharacters;
       // console.log(filteredCharacters)
@@ -561,22 +563,32 @@ export default {
 </script>
 
 <style scoped>
-#party-name{
+#party-name {
   text-align: center;
   margin: 0 auto;
+  width: 100%;
+  /* align-self: flex-start; */
+
 }
 
-h2 {
-  color: #00E88A;
+h1 {
+  color: #00e88a;
+  font-size: 3em;
+}
+
+#party-comp {
+  width: 100%;
 }
 
 .party-container {
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex; */
+  /* flex-wrap: wrap; */
   min-height: 310px;
-  background-color: #00201E;
+  background-color: #00201e;
   border: 5px outset goldenrod;
   border-radius: 6px;
+  width: 60%;
+  margin: 0 auto;
 }
 
 .current-party {
@@ -593,19 +605,20 @@ h2 {
 .race-class-group {
   display: flex;
   justify-content: space-around;
-  align-items:center;
-  margin: 0 auto;
+  align-items: center;
+  margin: 30px auto 0 auto;
   /* gap: 7rem; */
 }
 .label {
   font-weight: 700;
-  color: #00E88A;
+  color: #00e88a;
 }
 
 .form-control {
   text-align: center;
   background-color: rgb(169, 252, 169);
   color: black;
+  width: 120px;
 }
 .form-control option {
   text-align: left;
@@ -639,19 +652,24 @@ h2 {
   font-size: 16px;
 }
 
-
 #clear-filters {
   height: auto;
 }
-    
-#reset-button    {
-  color: #00E88A;
-  background-color: #00201E;
+
+#reset-button {
+  color: #00e88a;
+  background-color: #00201e;
   border: none;
 }
 #reset-button:hover {
-  color: #00201E;
-  background-color: #00E88A;
+  color: #00201e;
+  background-color: #00e88a;
+}
+
+#submit-cancel-update {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .btn-submit {
@@ -672,12 +690,21 @@ h2 {
   border: 1px solid black;
 }
 
+.btn-update {
+  background-color: lightgreen;
+}
+
+.btn-update:hover {
+  background-color: lightgreen;
+  border: 1px solid black;
+}
+
 #instruction {
   margin: 0 auto;
   width: 90%;
   text-align: center;
   color: #00e88a;
-  background-color: #00201E;
+  background-color: #00201e;
   border: 5px outset goldenrod;
   border-radius: 6px;
   margin-bottom: 20px;
@@ -705,10 +732,6 @@ h2 {
   }
   .att-group {
     margin: 5px;
-  }
-  #instruction {
-    margin: 0 auto;
-    width: 50%;
   }
 }
 </style>
