@@ -230,11 +230,23 @@ body {
 } 
 
 #addHomeform {
+  display: grid;
+  grid-template-areas: "title"
+                        "homeForm";
+  grid-template-columns: 2fr;
+  justify-content: center;
+  align-items: center;
+  
   background: #3a5268;
-  margin: 10% auto 5% auto;
+  margin: auto;
+  padding-top: 10px;
   width: 90%;
   background-color: #607f9b;
   /* padding: 1% 2%; */
+}
+
+#title {
+  grid-area: title;
 }
 
 #title h1 {
@@ -245,11 +257,9 @@ body {
 }
 
 .homeForm {
+  grid-area: homeForm;
   width: 100%;
   margin: 0;
-  /* TODO ******* THE GRID IS STILL OFF CENTER */
-  /* padding: 10px; */
-
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas:  
