@@ -1,36 +1,28 @@
 <template>
   <div>
-    <button v-on:click.prevent="showUploadWidget">Upload Files</button>
+    <button v-on:click.prevent="showUploadWidget" v-if="!details">Upload Files</button>
+    <img v-bind:src="details.secure_url" v-if="details">
   </div>
 </template>
 
 <script>
 export default {
   name: "cloudinary-image-upload",
+  data() {
+    return {
+      details: ''
+    }
+  },
   methods: {
-    openUploadModal() {
-      window.cloudinary.createUploadWidget(
-        {
-          cloud_name: "c19-lima-monster-of-the-week",
-          api_key: 965275756759159,
-          upload_preset: "hoigav4j",
-        },
-        (error, result) => {
-          if (!error && result && result.event === "success") {
-            console.log("Done uploading..: ", result.info);
-          }
-        }
-      );
-    },
     showUploadWidget() {
       return window.cloudinary.openUploadWidget(
         {
           cloud_name: "c19-lima-monster-of-the-week",
           api_key: 965275756759159,
-          upload_preset: "hoigav4j",
+          upload_preset: "unsigned_user",
           sources: ["local", "url"],
           showAdvancedOptions: false,
-          cropping: true,
+          cropping: false,
           multiple: false,
           defaultSource: "local",
           styles: {
@@ -60,26 +52,19 @@ export default {
         },
         (err, info) => {
           if (!err) {
+            
+            if (info.event == 'success') {
+              
+              this.details = info.info;
+              this.$emit('pictureUpload',this.details);
+            }
             console.log("Upload Widget event - ", info);
           }
         }
       );
     },
-    // created() {
-    //   const cloudinary = Document.createElement("script");
-    //   cloudinary.setAttribute(
-    //     "src",
-    //     "https://widget.cloudinary.com/v2.0/global/all.js"
-    //   );
-    //   cloudinary.setAttribute("type", "text/javascript");
-    //   event.currentTarget.paretnElement.appendChild(cloudinary);
-    // },
   },
 };
 </script>
 
-<style scoped>
-iframe {
-  display: relative;
-}
-</style>
+
