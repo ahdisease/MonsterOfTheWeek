@@ -9,7 +9,7 @@
       <div id="char-name">{{ character.name }}</div>
       <div class="race"><strong>Race:</strong> {{ character.race }}</div>
       <div class="class"><strong>Class:</strong> {{ character.charClass }}</div>
-      <div id="description">{{ character.description }}</div>
+      <div id="description" class="overflow-auto">{{ character.description }}</div>
     </div>
     <div
       class="character-card-back"
@@ -311,9 +311,18 @@ export default {
 }
 #description {
   grid-area: description;
+  width: 162px;
+  height: 130px;
   /* align-self: flex-start; */
   font-style: italic;
   font-size: 0.9rem;
+  overflow: auto;
+  
+  -webkit-mask-image: linear-gradient(180deg, #000 88%, transparent);
+}
+
+#description::-webkit-scrollbar {
+  display:none;
 }
 
 
