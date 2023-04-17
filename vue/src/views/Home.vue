@@ -21,7 +21,7 @@
       </div>
       <div class="versus"><h1>VS</h1></div>
       <div class="party-space">
-        <party-component />
+         <party-component v-if="!banContent" /><!-- // ban here  -->
       </div>
     </div>
     <div id="winner-space">
@@ -38,13 +38,31 @@ import CharacterService from '../services/CharacterService';
 
 export default {
   name: "home",
+
+  data () {
+    return {
+      banContent: false,
+    }
+  },
+  
   components: {
     MonsterSplash,
     PartyComponent,
     PartyWinner,
   },
 
+  methods: {
+    hideContent() {
+      if (this.$store.state.user.authorities[0].name === "ROLE_BAN") {
+        this.banContent = true;
+      }
+    },
+  },
+
   created() {
+    this.hideContent();
+
+
 //check for SET_VIEW_CHARAC in the future
     CharacterService.getCharacterByUsername(
       this.$store.state.user.username
