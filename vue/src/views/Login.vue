@@ -2,13 +2,13 @@
   <div id="login">
     <form @submit.prevent="login">
       <h1>Please Sign In</h1>
-      <div role="alert" v-if="invalidCredentials">
+      <div role="alert" class= "alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
-      <div role="alert" v-if="this.$route.query.registration">
+      <div role="alert" class= "alert" v-if="this.$route.query.registration">
         Thank you for registering, please sign in.
       </div>
-      <div class="form-input-group username">
+      <div class="form-input-group">
         <label for="username">Username</label>
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
@@ -62,8 +62,19 @@ export default {
 </script>
 
 <style scoped>
+#login{
+ background-color: #3a5268;
+ height: 100%;
+ padding-bottom: 356px;
+}
+
+.alert {
+  color: #00E88A;
+}
+
 h1 {
   margin: 30px auto;
+  color: #00E88A;
 }
 
 form {
@@ -73,6 +84,7 @@ form {
 
 .form-input-group {
   margin: 0 auto 1rem;
+  color: #00E88A;
 }
 
 .password {
@@ -81,6 +93,16 @@ form {
 
 .sign-in-btn {
   margin: 10px auto;
+  background-color: lightgreen;
+  border-radius: 3px;
+  border: none;
+  text-align: center;
+  font-size: 16px;
+}
+
+.sign-in-btn:hover {
+  background-color: lightgreen;
+  border: 3px solid black;
 }
 
 label {

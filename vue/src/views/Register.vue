@@ -5,7 +5,7 @@
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <div class="form-input-group username">
+      <div class="form-input-group">
         <label for="username">Username</label>
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
@@ -13,7 +13,7 @@
         <label for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
-      <div class="form-input-group confirm">
+      <div class="form-input-group">
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
@@ -75,8 +75,15 @@ export default {
 
 <style scoped>
 
+#register {
+ background-color: #3a5268;
+ height: 100%;
+ padding-bottom: 356px;
+}
+
 h1 {
-  margin: 30px auto;
+  padding-top: 30px;
+  color: #00E88A;
 }
 
 .form {
@@ -86,18 +93,29 @@ h1 {
 
 .form-input-group {
   margin-bottom: 1rem;
+  color: #00E88A;
 }
 
-.username {
+#username {
   margin-right: 4px;
 }
 
-.confirm {
+#confirmPassword {
   margin-right: 60px;
 }
 
 .create-btn {
   margin: 10px auto;
+  background-color: lightgreen;
+  border-radius: 3px;
+  border: none;
+  text-align: center;
+  font-size: 16px;
+}
+
+.create-btn:hover {
+  background-color: lightgreen;
+  border: 3px solid black;
 }
 
 label {

@@ -1,7 +1,7 @@
 <template>
-  <div class="">
+  <div class="party-view">
     <div id="intro">
-      <h1>Party</h1>
+      <!-- <h1>Party</h1> -->
       <p>
         View Your Party or create one with four (4) Characters. You are able to make one Party per week.
       </p>
@@ -22,6 +22,14 @@ export default {
 </script>
 
 <style scoped>
+.party-view{
+  background-color: #3a5268;
+}
+
+#intro > p {
+  color: #00e88a;
+}
+
 h1 {
   text-align: center;
 }

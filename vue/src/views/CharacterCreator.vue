@@ -19,7 +19,7 @@ export default {
 
 <style scoped>
 .char-view {
-    background: #3a5268;
+    background-color: #3a5268;
 }
 
 </style>

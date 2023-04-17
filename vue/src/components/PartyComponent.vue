@@ -72,7 +72,7 @@ export default {
 
 <style scoped>
 #wrapper {
-  background-color: #00201e;
+  background-color: #00201E;
   width: 400px;
   border-radius: 6px;
   padding-bottom: 10px;

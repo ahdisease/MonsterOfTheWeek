@@ -57,7 +57,7 @@
         </select>
       </div>
 
-      <div id="clear-filters" class="buttons" v-on:click="clearFilters">
+      <div id="clear-filters" v-on:click="clearFilters">
         <b-btn>Reset Filters</b-btn>
       </div>
     
@@ -522,12 +522,17 @@ export default {
   text-align: center;
   margin: 0 auto;
 }
+
+h2 {
+  color: #00E88A;
+}
+
 .party-container {
   display: flex;
   flex-wrap: wrap;
   min-height: 310px;
-  background-color: black;
-  border: 5px outset gold;
+  background-color: #00201E;
+  border: 5px outset goldenrod;
   border-radius: 6px;
 }
 
@@ -550,10 +555,13 @@ export default {
 }
 .label {
   font-weight: 700;
+  color: #00E88A;
 }
 
 .form-control {
   text-align: center;
+  background-color: rgb(169, 252, 169);
+  color: black;
 }
 .form-control option {
   text-align: left;
@@ -587,6 +595,12 @@ export default {
   font-size: 16px;
 }
 
+/* 
+#clear-filters {
+  background-color: lightgreen;
+  color: black;
+} */
+
 .btn-submit {
   background-color: lightgreen;
 }
@@ -597,21 +611,23 @@ export default {
 }
 
 .btn-cancel {
-  background-color: lightpink;
+  background-color: lightseagreen;
 }
 
 .btn-cancel:hover {
-  background-color: lightpink;
+  background-color: lightseagreen;
   border: 1px solid black;
 }
 
-.unselectable {
-  background-color: gray;
-}
 #instruction {
   margin: 0 auto;
-  width: 70%;
+  width: 90%;
   text-align: center;
+  color: #00e88a;
+  background-color: #00201E;
+  border: 5px outset goldenrod;
+  border-radius: 6px;
+  margin-bottom: 20px;
 }
 
 @media screen and (max-width: 1000px) {
