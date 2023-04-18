@@ -237,7 +237,7 @@ name: "character-view-detailed",
 
 
 .stats-column {
-  background-color: bisque;
+  background-color: #00201e;
   border-radius: 3px;
   padding: 0.1em;
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
@@ -255,7 +255,7 @@ name: "character-view-detailed",
 
 .stats-value {
   font-size: 2em;
-  background-color: rgb(252, 247, 240);
+background-color: #00201e;
   width: 50%;
   margin: 0 auto;
   border-radius: 6px;

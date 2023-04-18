@@ -59,55 +59,36 @@ export default {
   background-color: #3a5268;
 }
 
-#addHomeform {
-  display: grid;
-  grid-template-areas:
-    "title"
-    "homeForm";
-  grid-template-columns: 2fr;
-  justify-content: center;
-  align-items: center;
 
-  background: #3a5268;
-  margin: auto;
-  padding-top: 10px;
+#addHomeform {
+  margin: 100px auto 0 auto;
   width: 90%;
-  background-color: #607f9b;
+  background-color: lightgray;
   /* padding: 1% 2%; */
 }
 
-#title {
-  grid-area: title;
-  color: #00e88a;
-  background: #00201e;
-}
-
+/* #title {
+ grid-area: h1; 
+} */
 #title h1 {
   text-align: center;
   font-size: 4em;
-  color: #00e88a;
-  background: #00201e;
-}
-
-#ban-message {
-  height: 100%;
-  text-align: center;
-  font-size: 50px;
-  font-weight: bold;
-  color: #00e88a;
-  background: #00201e;
-
+  
 }
 
 .homeForm {
-  grid-area: homeForm;
   width: 100%;
-  margin: 0;
+  /* TODO ******* THE GRID IS STILL OFF CENTER */
+  /* padding: 10px; */
+  margin: 0 auto;
+  margin-left: 0px;
+  margin-right: 0px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas:
-    "race   name-box   class"
-    "lcol     picture   rcol"
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-areas:  
+    /* "title    title     title" */
+    ".        name-box      ."
+    "race     picture   class"
     "lcol     picture   rcol"
     "desc     desc      desc"
     ".        buttons   .";
@@ -117,24 +98,22 @@ export default {
 }
 
 .form-control {
-  width: auto;
-  height: auto;
+  width: 90%;
+  height: 30px;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-
-  /* border: 1px solid #ced4da; */
+  color: #495057;
+  border: 1px solid #ced4da;
   border-radius: 0.25rem;
 }
 
 #name-box {
   margin: 10px auto;
   grid-area: name-box;
-  justify-content: center;
-  align-content: center;
   text-align: center;
-  color: #00e88a;
+  color: #38b412;
   font-size: 2rem;
 }
 
@@ -147,34 +126,21 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #00e88a;
+  color: #38b412;
   font-size: 2rem;
 }
 
-#race-selection {
-  width: 150px;
-  margin: 5px auto;
-  height: 40px;
-
-  /* this is the dropdown area for race */
-}
 
 #picture {
   grid-area: picture;
-  justify-content: center;
-  align-content: center;
-  height: 20%;
-}
-
-.cloud {
-  grid-area: cloud;
-  justify-self: center;
-  align-self: center;
 }
 
 #char-pic {
+  background-color: #3a5268;
   width: 100%;
+  /* max-width: 100%; */
   height: auto;
+  margin: 50px 0 0 0;
   align-content: center;
   justify-content: center;
 }
@@ -184,28 +150,18 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #00e88a;
+  color: #38b412;
   font-size: 2rem;
 }
 
-#class-selection {
-  width: 150px;
-  margin: 3px auto;
-  height: 40px;
-  /* this is the drop down for class */
-}
 
 #lcol {
   grid-area: lcol;
-  justify-content: center;
-  align-content: center;
   background-color: #00201e;
 }
 
 #rcol {
   grid-area: rcol;
-  justify-content: stretch;
-  align-content: center;
   background-color: #00201e;
 }
 
@@ -213,15 +169,9 @@ export default {
   grid-area: desc;
   margin: 10px 0;
   text-align: center;
-  justify-content: center;
-  align-self: center;
-  color: #00e88a;
+  color: #38b412;
   font-size: 2rem;
-}
-
-#description {
-  width: 90%;
-  margin-left: 5%;
+  
 }
 
 #buttons {
@@ -229,16 +179,6 @@ export default {
   margin: auto;
 }
 
-textarea.form-control {
-  height: 75px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-select.form-control {
-  width: 20%;
-  display: inline-block;
-  margin: 10px 20px 10px 10px;
-}
 
 .stats-column {
   background-color: #00201e;
@@ -246,7 +186,6 @@ select.form-control {
   padding: 0.1em;
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
-  color: #00e88a;
 }
 
 .stats-box {
@@ -260,7 +199,7 @@ select.form-control {
 
 .stats-value {
   font-size: 2em;
-  background-color: rgb(252, 247, 240);
+  background-color: #00201e;
   width: 50%;
   margin: 0 auto;
   border-radius: 6px;
@@ -271,17 +210,10 @@ button {
   margin: 0 10px 0 0;
 }
 
-#cloud-btn {
-  color: #fff;
-  padding: 7px;
-  background-color: #00e88a;
-  border-radius: 6px;
-}
-
 .btn-submit {
   color: #fff;
   padding: 10px 24px;
-  background-color: #00e88a;
+  background-color: #38b412;
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
@@ -293,15 +225,24 @@ button {
 .btn-submit:hover {
   color: #fff;
   padding: 10px 24px;
-  background-color: #00e88a;
+  background-color: #65f307;
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 .btn-cancel:hover {
   padding: 10px 24px;
-  background-color: #00e88a;
+  background-color: #65f307;
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.character-details {
+    color: black
+}
+
+.description-box {
+    color: black;
+    font-size: .5em;
 }
 
 @media screen and (max-width: 768px) {
