@@ -74,18 +74,24 @@ public class JdbcCharacterDao implements CharacterDao{
 
     @Override
     public Character createCharacter(Character character) {
+        //calculate character stats randomly between 3 and 18
         int[] stats = diceRollStats();
 
         if(character.getImage() != null) {
+            //add image to database
+            CharacterImage savedImage = imageDao.addImage(character.getImage().getUrl());
+
+            //add character to database
             String sql = "INSERT INTO character (name, race, description, char_class, strength, dexterity," +
                     " constitution, intelligence, wisdom," +
                     " charisma, monster_id, user_id, image_id) Values (?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING id;";
             Integer id = jdbcTemplate.queryForObject(sql, Integer.class, character.getName(), character.getRace(), character.getDescription(),
                     character.getCharClass(), stats[0], stats[1], stats[2], stats[3], stats[4], stats[5], character.getMonsterId(),
-                    character.getUserId(), character.getImage().getId()
+                    character.getUserId(), savedImage.getId()
             );
             character.setId(id);
         } else {
+            //add character to database
             String sql = "INSERT INTO character (name, race, description, char_class, strength, dexterity," +
                     " constitution, intelligence, wisdom," +
                     " charisma, monster_id, user_id) Values (?,?,?,?,?,?,?,?,?,?,?,?) RETURNING id;";

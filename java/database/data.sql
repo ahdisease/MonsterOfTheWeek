@@ -50,20 +50,20 @@ INSERT INTO character (name, char_class, race, description, strength, dexterity,
 	
 	
 	
-INSERT INTO party (character_1, character_2, character_3, character_4) VALUES (1,2,3,4); --id 1 monster 3
-INSERT INTO party (character_1, character_2, character_3, character_4) VALUES (2,4,5,7); --id 2 monster 3
-INSERT INTO party (character_1, character_2, character_3, character_4) VALUES (3,4,5,7); --id 3 monster 3
-INSERT INTO party (character_1, character_2, character_3, character_4) VALUES (10,11,12,13); --id 4 monster 5
+INSERT INTO party (character_1, character_2, character_3, character_4) VALUES (1,2,3,4); --id 1 monster 4
+INSERT INTO party (character_1, character_2, character_3, character_4) VALUES (2,4,5,7); --id 2 monster 4
+INSERT INTO party (character_1, character_2, character_3, character_4) VALUES (3,4,5,7); --id 3 monster 4
+INSERT INTO party (character_1, character_2, character_3, character_4) VALUES (10,11,12,13); --id 4 monster 3
 
 
 
-INSERT INTO users_party (user_id,party_id) VALUES (4,1); --monster 3
-INSERT INTO users_party (user_id,party_id) VALUES (5,2); --monster 3
-INSERT INTO users_party (user_id,party_id) VALUES (6,1); --monster 3
-INSERT INTO users_party (user_id,party_id) VALUES (7,3); --monster 3
-INSERT INTO users_party (user_id,party_id) VALUES (8,3); --monster 3
-INSERT INTO users_party (user_id,party_id) VALUES (9,1); --monster 3
-INSERT INTO users_party (user_id,party_id) VALUES (1,4); --monster 5
+INSERT INTO users_party (user_id,party_id) VALUES (4,1); --monster 4
+INSERT INTO users_party (user_id,party_id) VALUES (5,2); --monster 4
+INSERT INTO users_party (user_id,party_id) VALUES (6,1); --monster 4
+INSERT INTO users_party (user_id,party_id) VALUES (7,3); --monster 4
+INSERT INTO users_party (user_id,party_id) VALUES (8,3); --monster 4
+INSERT INTO users_party (user_id,party_id) VALUES (9,1); --monster 4
+INSERT INTO users_party (user_id,party_id) VALUES (1,4); --monster 3
 
 
 COMMIT TRANSACTION;

@@ -42,7 +42,8 @@
 
       <div id="picture">
         <img
-          src="https://cdna.artstation.com/p/assets/images/images/010/077/400/large/maja-weber-sun-wukong-colour.jpg?1522433552"
+          
+          v-bind:src="character.image.url"
           class="char-pic"
           id="char-pic"
         />

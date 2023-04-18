@@ -146,6 +146,10 @@ export default {
 
         monsterId: 1,
         userId: 1,
+        image: 
+          {
+            url: '',
+          }
       },
       dropdownRace: [
         {
@@ -202,6 +206,10 @@ export default {
         
         monsterId: 1,
         userId: 1,
+        image: 
+          {
+            url: '',
+          }
       };
       this.setMonsterId();
     },
@@ -224,7 +232,7 @@ export default {
       this.$router.push({name: "character-creator"});
     },
     getPhotoUploadInfo(event){
-      this.photoUploadInfo = event;
+      this.newCharacter.image.url = event.url;
     },
   },
 };

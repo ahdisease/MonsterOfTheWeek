@@ -75,13 +75,16 @@
           id="flag"
           v-on:click.prevent="markFlagged"
           v-bind:class="isFlagged"
-          v-if="isFlaggable"
+          v-if="isFlaggable && character.flaggedInappropriate != 'flagged'"
         >
           Flag
-        </b-button>
-        <div id="checkmark" v-if="approved">Approved</div>
+        </b-button>      
+        <b-button id="approved-btn" v-if="confirmModeratorPermissions"
+         v-on:click.prevent="markApproved">Approve?</b-button>
+
+        <div id="checkmark" v-bind:class="isApproved"  
+        v-if="approved && confirmModeratorPermissions">Approved</div>
       </div>
-      <b-button id="approved-btn" v-if="confirmModeratorPermissions" v-on:click.prevent="markApproved">Approved</b-button>
       <button
         class="delete"
         v-on:click.prevent="deleteCharacterMod"
@@ -105,6 +108,7 @@ export default {
     return {
       showDetails: true,
       approved: false,
+
     };
   },
   computed: {
@@ -115,8 +119,9 @@ export default {
       return "";
     },
     isApproved() {
-      if (this.character.flaggedInappropriate == "flagged") {
-        return "is-flagged";
+      if (this.character.flaggedInappropriate == "reviewed") {
+      
+       return "is-reviewed";
       }
         return "";
     },
@@ -142,9 +147,12 @@ export default {
         this.$emit("newFlag");
       });
     },
-    markedApproved() {
+    markApproved() {
+      console.log("Hello there")
       ModService.markedApproved(this.character.id).then (() => {
-        this.$emit("newFlag")
+              console.log("Hello HI")
+
+        this.$emit("newFlag");
       })
       
     },
@@ -297,7 +305,14 @@ export default {
   padding: 2px;
 }
 #checkmark {
+  background: black;
+  height: 100px;
+  
   /* \F26E */
+}
+#checkmark.is-reviewed {
+  height: 100px;
+  background-color: blue;
 }
 #flag:hover {
   background-color: rgb(252, 10, 10);
@@ -316,6 +331,7 @@ export default {
   border-radius: 50%;
   padding: 0;
 }
+
 .card img {
   width: 35%;
   height: auto;
