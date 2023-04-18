@@ -1,5 +1,7 @@
 <template>
   <div class="card">
+    <img id="char-image" v-show="imageIsApproved && cardSide !=3" v-bind:src="imageUrl" v-bind:alt="'Image of' + character.name" />
+    <img id="char-image-display" v-show="imageIsApproved && cardSide ==3" v-bind:src="imageUrl" v-bind:alt="'Image of' + character.name" />
     <div
       class="character-card-front"
       v-bind:key="character.id123"
@@ -74,12 +76,13 @@
       v-show="cardSide == 3"
       v-on:click="turnCharacterCard"
     >
-      <div id="char-name">{{ character.name }}</div>
+      <!-- <div id="char-name">{{ character.name }}</div>
       <div class="race"><strong>Race:</strong> {{ character.race }}</div>
       <div class="class"><strong>Class:</strong> {{ character.charClass }}</div>
       <img id="char-image" v-show="imageIsApproved" v-bind:src="imageUrl" v-bind:alt="'Image of' + character.name" />
-      <div v-show="!imageIsApproved">Users did not supply an image or it hasn't been approved.</div>
+      <div v-show="!imageIsApproved">Users did not supply an image or it hasn't been approved.</div> -->
     </div>
+    
     <div id="button-group">
       <div id="flag-check">
         <b-button
@@ -173,8 +176,12 @@ export default {
   },
   methods: {
     turnCharacterCard() {
-      if (this.cardSide >= 3) {
-        this.cardSide = 1;
+      if (this.cardSide >= 2) {
+        if (this.imageIsApproved && this.cardSide < 3) {
+          this.cardSide += 1;
+        } else {
+          this.cardSide = 1;
+        }
       } else {
         this.cardSide += 1;
       }
@@ -214,12 +221,13 @@ export default {
   height: 280px;
   width: 190px;
   margin: 2px;
-  background-color: #00e88a;
-  color: black;
+  background-color: #00201e;
+  color: goldenrod;
   padding: 10px;
   /* Add shadows to create the "card" effect */
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
   border: 4px double #007f5f;
+  z-index: 1;
 }
 
 .character-card-front {
@@ -381,7 +389,8 @@ export default {
 }
 #description {
   grid-area: description;
-  width: 162px;
+  margin: 15px 0 0 0 ;
+  width: 147px;
   height: 130px;
   /* align-self: flex-start; */
   font-style: italic;
@@ -395,9 +404,33 @@ export default {
   display: none;
 }
 #char-image {
-  width: 100px;
-  max-height: 150px;
-  margin: auto 25%;
-  border-radius: 5px;
+  opacity:30%;
+  position:absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+
+  width: 100%;
+  height: 100%;
+
+  
+  border-radius: 2px;
+}
+#char-image-display {
+  opacity:90%;
+  color: #99999918;
+  background-color: transparent;
+  position:absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+
+  width: 100%;
+  height: 100%;
+
+  
+  border-radius: 2px;
 }
 </style>
