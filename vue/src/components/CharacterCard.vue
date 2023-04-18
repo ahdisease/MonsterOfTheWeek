@@ -243,7 +243,7 @@ export default {
   padding: 10px;
   /* Add shadows to create the "card" effect */
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
-  border: 4px double #007f5f;
+  border: 4px double goldenrod;
   z-index: 1;
 }
 
