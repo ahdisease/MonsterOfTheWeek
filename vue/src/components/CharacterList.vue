@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="whole-page">
     <div class="party-container">
       <div class="current-party">
         <div id="party-name">
@@ -645,11 +645,23 @@ export default {
 </script>
 
 <style scoped>
+
+#whole-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.character-list {
+  display:flex;
+  justify-content: space-evenly;
+  align-content: space-between;
+  flex-wrap: wrap;
+}
+
 #party-name {
   text-align: center;
   margin: 0 auto;
   width: 100%;
-  /* align-self: flex-start; */
 }
 
 h1 {
@@ -684,11 +696,7 @@ h1 {
   flex-direction: row;
   flex-wrap: wrap;
 }
-.character-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
+
 .race-class-group {
   display: flex;
   justify-content: space-around;
