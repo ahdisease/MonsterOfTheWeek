@@ -197,6 +197,8 @@ export default {
           } else {
             this.cardSide = 1;
           }
+        } else {
+          this.cardSide = 1;
         }
       } else {
         this.cardSide += 1;
