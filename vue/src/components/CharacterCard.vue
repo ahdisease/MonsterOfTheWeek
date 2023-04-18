@@ -1,7 +1,17 @@
 <template>
   <div class="card">
-    <img id="char-image" v-show="imageIsApproved && cardSide !=3" v-bind:src="imageUrl" v-bind:alt="'Image of' + character.name" />
-    <img id="char-image-display" v-show="imageIsApproved && cardSide ==3" v-bind:src="imageUrl" v-bind:alt="'Image of' + character.name" />
+    <img
+      id="char-image"
+      v-show="imageIsApproved && cardSide != 3"
+      v-bind:src="imageUrl"
+      v-bind:alt="'Image of' + character.name"
+    />
+    <img
+      id="char-image-display"
+      v-show="imageIsApproved && cardSide == 3"
+      v-bind:src="imageUrl"
+      v-bind:alt="'Image of' + character.name"
+    />
     <div
       class="character-card-front"
       v-bind:key="character.id123"
@@ -82,7 +92,7 @@
       <img id="char-image" v-show="imageIsApproved" v-bind:src="imageUrl" v-bind:alt="'Image of' + character.name" />
       <div v-show="!imageIsApproved">Users did not supply an image or it hasn't been approved.</div> -->
     </div>
-    
+
     <div id="button-group">
       <div id="flag-check">
         <b-button
@@ -172,15 +182,21 @@ export default {
         return this.character.image.approved == true;
       }
       return false;
-    }
+    },
   },
   methods: {
     turnCharacterCard() {
       if (this.cardSide >= 2) {
-        if (this.imageIsApproved && this.cardSide < 3) {
-          this.cardSide += 1;
-        } else {
-          this.cardSide = 1;
+        if (this.imageIsApproved) {
+          if (
+            this.character.image.url !=
+            "https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681825649/Default_mypuwg.jpg"
+             && this.cardSide < 3
+          ) {
+            this.cardSide += 1;
+          } else {
+            this.cardSide = 1;
+          }
         }
       } else {
         this.cardSide += 1;
@@ -389,7 +405,7 @@ export default {
 }
 #description {
   grid-area: description;
-  margin: 15px 0 0 0 ;
+  margin: 15px 0 0 0;
   width: 147px;
   height: 130px;
   /* align-self: flex-start; */
@@ -404,33 +420,29 @@ export default {
   display: none;
 }
 #char-image {
-  opacity:30%;
-  position:absolute;
+  opacity: 30%;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
 
-
   width: 100%;
   height: 100%;
 
-  
   border-radius: 2px;
 }
 #char-image-display {
-  opacity:90%;
+  opacity: 90%;
   color: #99999918;
   background-color: transparent;
-  position:absolute;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
 
-
   width: 100%;
   height: 100%;
 
-  
   border-radius: 2px;
 }
 </style>
