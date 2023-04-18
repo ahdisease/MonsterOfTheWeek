@@ -96,7 +96,6 @@
     <div id="button-group">
       <div id="flag-check">
         <b-button
-          variant="danger"
           id="flag"
           v-on:click.prevent="markFlagged"
           v-bind:class="isFlagged"
@@ -237,7 +236,7 @@ export default {
 .card {
   height: 280px;
   width: 190px;
-  margin: 2px;
+  margin: 10px;
   background-color: #00201e;
   color: goldenrod;
   padding: 10px;
@@ -360,12 +359,14 @@ export default {
 #flag {
   /* background-color: rgba(0, 0, 0); */
   border: 1px solid black;
-  padding: 2px;
+  padding: 1px 2px;
+  background-color: rgb(173, 42, 42);
+  font-size: 0.8em;
+
 }
 #checkmark {
   background: black;
   height: 100px;
-
   /* \F26E */
 }
 #checkmark.is-reviewed {
@@ -406,8 +407,8 @@ export default {
 }
 #description {
   grid-area: description;
-  margin: 15px 0 0 0;
-  width: 147px;
+  margin: 30px 0 0 0;
+  width: 160px;
   height: 130px;
   /* align-self: flex-start; */
   font-style: italic;
