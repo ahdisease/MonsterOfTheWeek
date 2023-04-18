@@ -1,7 +1,9 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.CharacterImageDao;
 import com.techelevator.dao.ModeratorDao;
 import com.techelevator.dao.UserDao;
+import com.techelevator.model.CharacterImage;
 import com.techelevator.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,6 +24,8 @@ public class ModeratorController {
     private ModeratorDao modDao;
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private CharacterImageDao imageDao;
 
 
     //moderator services
@@ -54,6 +58,20 @@ public class ModeratorController {
     @RequestMapping(path = "/moderator/users/", method = RequestMethod.GET)
     public List<User> getAllUsers() {
         return userDao.findAll();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/moderator/images/", method = RequestMethod.GET)
+    public List<CharacterImage> getUnapprovedImages() {
+        return imageDao.getUnapprovedImages();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/moderator/images/{id}", method = RequestMethod.PUT)
+    public void approveImage(@PathVariable int id) {
+        if(!imageDao.approveImage(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
     }
 
 

@@ -10,7 +10,15 @@ export default {
     },
     banUserById(id) {
         return axios.put(`/moderator/ban/${id}`);
-    }
+    },
+    getUnapprovedImages() {
+        return axios.get(`/moderator/images/`);
+    },
+    approveImageById(id) {
+        return axios.put(`/moderator/images/${id}`);
+    },
+
+    
 
 
 }
