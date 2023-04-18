@@ -30,7 +30,7 @@
         </div>
       </div>
 
-      <div class="button-container" v-if="checkUserParty">
+      <div class="button-container" v-if="!checkUserParty">
         <div class="buttons">
           <button
             class="btn btn-submit"
@@ -45,7 +45,7 @@
         </div>
       </div>
     </div>
-    <!--  This is the on succesful submit modal -->
+    <!--  This is the on successful submit modal -->
     <div>
       <b-modal v-model="modalShow" hide-footer>
         <div class="d-block text-center">
@@ -338,7 +338,6 @@
 <script>
 import CharacterCard from "./CharacterCard.vue";
 import CharacterService from "../services/CharacterService.js";
-import DnDApiService from "../services/DndApiService.js";
 
 export default {
   name: "character-list",
@@ -388,12 +387,6 @@ export default {
     this.generateCharacterList();
     //  console.log(this.currentCharacters)
 
-    DnDApiService.getAllRaces().then((response) => {
-      this.dropdownRace = response.data.results;
-    });
-    DnDApiService.getAllClasses().then((response) => {
-      this.dropdownClass = response.data.results;
-    });
     CharacterService.getPartyByUsername(this.$store.state.user.username).then(
       (response) => {
         if (response.data) {
@@ -556,9 +549,11 @@ export default {
     //   return filteredPartyList;
     // },
     checkUserParty() {
+       
+      // This is the old method that doesn't really work *******
       let created = Object.keys(this.$store.state.userParty).length != 0;
-      console.log(this.userParty);
-//this.$store.state.user.username
+      console.log(this.$store.state.userParty);
+      console.log(created);
       return created;
     },
 
@@ -653,7 +648,7 @@ export default {
 
 .character-list {
   display:flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-content: space-between;
   flex-wrap: wrap;
 }
@@ -702,7 +697,7 @@ h1 {
   justify-content: space-around;
   align-items: center;
   margin: 30px auto 0 auto;
-  /* gap: 7rem; */
+  gap: 7rem;
 }
 .label {
   font-weight: 700;
