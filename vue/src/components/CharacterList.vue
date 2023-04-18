@@ -5,7 +5,7 @@
         <div id="party-name">
           <h1>Your Party</h1>
         </div>
-        <div
+        <div id="party-cards"
           v-bind:key="character.id3"
           v-for="character in party"
           @dblclick.prevent="removePartyMember(character)"
@@ -490,9 +490,21 @@ export default {
       this.party = [];
     },
     addPartyMember(character) {
-      if (this.party.length < 4 && !this.party.includes(character)) {
-        this.party.push(character);
-      }
+      if (this.party.length < 4) {
+        let partyDoesNotContain = true;
+        this.party.forEach(partyMember => {
+          
+          if(partyMember.id == character.id){
+            partyDoesNotContain = false;
+
+           
+
+          }
+        }); if (partyDoesNotContain == true) {
+           this.party.push(character);
+
+        }
+      } 
     },
     removePartyMember(character) {
       let indexNumber = this.party.indexOf(character);
@@ -650,13 +662,14 @@ h1 {
 }
 
 .party-container {
-  /* display: flex; */
-  /* flex-wrap: wrap; */
+  display: flex; 
+  flex-wrap: wrap;
+  flex-direction: column;
   min-height: 310px;
   background-color: #00201e;
   border: 5px outset goldenrod;
   border-radius: 6px;
-  width: 920px;
+  width: 80%;
   margin: 0 auto;
 }
 
@@ -665,6 +678,11 @@ h1 {
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin: auto;
+}
+#party-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 .character-list {
   display: flex;
@@ -780,6 +798,9 @@ h1 {
 }
 
 @media screen and (max-width: 1000px) {
+  .party-container{
+    width: 100%;
+  }
   #raceClassDropdown {
     padding: 15px;
     display: flex;
