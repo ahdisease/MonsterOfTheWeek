@@ -27,6 +27,8 @@ public class JdbcCharacterDao implements CharacterDao{
     private JdbcTemplate jdbcTemplate;
     private CharacterImageDao imageDao;
 
+    int DEFALUT_IMAGE_ID = 1;
+
     public JdbcCharacterDao (JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate =  jdbcTemplate;
         imageDao = new JdbcCharacterImageDao(jdbcTemplate);
@@ -77,33 +79,33 @@ public class JdbcCharacterDao implements CharacterDao{
         //calculate character stats randomly between 3 and 18
         int[] stats = diceRollStats();
 
+        //prepare sql insertion for character
+        String sql = "INSERT INTO character (name, race, description, char_class, strength, dexterity," +
+                " constitution, intelligence, wisdom," +
+                " charisma, monster_id, user_id, image_id) Values (?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING id;";
+
         if(character.getImage() != null) {
             //add image to database
             CharacterImage savedImage = imageDao.addImage(character.getImage().getUrl());
 
             //add character to database
-            String sql = "INSERT INTO character (name, race, description, char_class, strength, dexterity," +
-                    " constitution, intelligence, wisdom," +
-                    " charisma, monster_id, user_id, image_id) Values (?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING id;";
             Integer id = jdbcTemplate.queryForObject(sql, Integer.class, character.getName(), character.getRace(), character.getDescription(),
                     character.getCharClass(), stats[0], stats[1], stats[2], stats[3], stats[4], stats[5], character.getMonsterId(),
                     character.getUserId(), savedImage.getId()
             );
             character.setId(id);
         } else {
+            //add default image to character
+            CharacterImage defaultImage = imageDao.getImageById(DEFALUT_IMAGE_ID);
+            character.setImage(defaultImage);
+
             //add character to database
-            String sql = "INSERT INTO character (name, race, description, char_class, strength, dexterity," +
-                    " constitution, intelligence, wisdom," +
-                    " charisma, monster_id, user_id) Values (?,?,?,?,?,?,?,?,?,?,?,?) RETURNING id;";
             Integer id = jdbcTemplate.queryForObject(sql, Integer.class, character.getName(), character.getRace(), character.getDescription(),
                     character.getCharClass(), stats[0], stats[1], stats[2], stats[3], stats[4], stats[5], character.getMonsterId(),
-                    character.getUserId()
+                    character.getUserId(), defaultImage.getId()
             );
             character.setId(id);
         }
-
-
-
 
         return character;
     }

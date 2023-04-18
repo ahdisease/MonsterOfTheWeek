@@ -1,5 +1,4 @@
 BEGIN TRANSACTION;
-
 DROP TABLE IF EXISTS users_party;
 DROP TABLE IF EXISTS party;
 DROP TABLE IF EXISTS character;
@@ -53,7 +52,7 @@ CREATE TABLE character(
 	user_id int not null,
 	flagged_inappropriate varchar(15) DEFAULT 'not_flagged' NOT NULL,
 	active boolean DEFAULT true NOT NULL,
-	image_id int,
+	image_id int DEFAULT 1,
 
 	constraint pk_character primary key (id),
 	constraint fk_character_monster foreign key (monster_id) references monster (id),
@@ -112,7 +111,7 @@ INSERT INTO users (username,password_hash,role) VALUES ('user6','user6','ROLE_US
 INSERT INTO users (username,password_hash,role) VALUES ('user7','user7','ROLE_USER');--id = 7
 INSERT INTO users (username,password_hash,role) VALUES ('user8','user8','ROLE_USER');--id = 8
 
-INSERT INTO image (url, approved) VALUES ('fakeurl1',true);
+INSERT INTO image (url, approved) VALUES ('fakeurl1',true); --id = 1 (default image)
 INSERT INTO image (url, approved) VALUES ('fakeurl2',true);
 INSERT INTO image (url) VALUES ('fakeurl3');
 INSERT INTO image (url) VALUES ('fakeurl4');
