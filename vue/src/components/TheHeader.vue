@@ -1,6 +1,6 @@
 <template>
   <div id="title-block">
-    <h2>Monster of the Week MotW</h2>
+    <h2><router-link class="nav-options" v-bind:to="{ name: 'home' }">Monster of the Week MotW</router-link></h2>
     <nav id="nav">
       <router-link class="nav-options" v-bind:to="{ name: 'home' }">Home</router-link>
       <router-link class="nav-options" v-bind:to="{ name: 'character-view' }">Character</router-link>
@@ -24,17 +24,26 @@ export default {
 #title-block {
   background-color: #00201E;
   margin-top: 0;
-  width: 100%;
+  /* width: 100%; */
   border: 8px ridge #3A5268;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
 }
 h2 {
-  font-size: 2.5em;
+  font-size: 2em;
   text-align: center;
   color: #00E88A;
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
   padding: 10px 0 0 0;
   text-shadow: 2px 2px 6px rgb(54, 2, 2);
+  margin: 0 auto;
+  flex: 50%;
+}
+h2 a{
+  text-decoration: none;
 }
 
 nav {
@@ -43,6 +52,8 @@ nav {
    padding: 5px 20px;
    color: whitesmoke;
    margin: 0 auto;
+   flex: 50%;
+
 }
 
 
@@ -66,7 +77,10 @@ nav a:hover {
 
 
 
-@media screen and (max-width:430px) {
+@media screen and (max-width:768px) {
+  h2 {
+  font-size: 1.5em;
+}
 
 nav {
    /* background-color: rgb(218, 124, 36); */

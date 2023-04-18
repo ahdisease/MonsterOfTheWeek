@@ -100,7 +100,8 @@
           id="flag"
           v-on:click.prevent="markFlagged"
           v-bind:class="isFlagged"
-          v-if="isFlaggable && character.flaggedInappropriate != 'flagged'"
+          v-if="isFlaggable && character.flaggedInappropriate != 'flagged'
+           && character.flaggedInappropriate != 'reviewed'"
         >
           Flag
         </b-button>
