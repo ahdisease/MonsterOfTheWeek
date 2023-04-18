@@ -1,10 +1,14 @@
 <template>
   <div id="title-block">
+              
+
     <h2>
+      <img id="motw-logo" src="https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681840313/LogoMotW_dyafdk.png" alt="MotW Logo">
       <router-link class="nav-options" v-bind:to="{ name: 'home' }"
-        >Monster of the Week MotW</router-link
+        >Monster of the Week </router-link
       >
     </h2>
+
     <nav id="nav">
       <router-link class="nav-options" v-bind:to="{ name: 'home' }"
         >Home</router-link
@@ -109,6 +113,12 @@ nav a:hover {
   transition: 0.3s;
 }
 
+#motw-logo {
+   width: 60px ;
+   margin: 0 0 15px 0;
+   /* text-shadow: 2px 2px 6px rgb(54, 2, 2); */
+  }
+
 @media screen and (max-width: 768px) {
   h2 {
     font-size: 1.5em;
@@ -129,5 +139,7 @@ nav a:hover {
     padding: 1px 12px;
     margin: 0 auto;
   }
+
+  
 }
 </style>
