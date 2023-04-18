@@ -10,6 +10,7 @@ import PartyCreator from '../views/PartyCreator.vue'
 import CharacterView from '../views/CharacterView.vue'
 import PartyRankings from '../views/PartyRankings.vue'
 import CharacterCard from '../components/CharacterCard.vue'
+import ModView from '../views/ModView.vue'
 
 
 Vue.use(Router)
@@ -95,6 +96,14 @@ const router = new Router({
       path: "/flag/characters/{id}",
       name: "flag-characters",
       component: CharacterCard,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/moderator/',
+      name: 'moderator',
+      component: ModView,
       meta: {
         requiresAuth: true
       }
