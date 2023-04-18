@@ -43,7 +43,7 @@
       <div id="picture">
         <img
           
-          v-bind:src="character.image.url"
+          v-bind:src="imageUrl"
           class="char-pic"
           id="char-pic"
         />
@@ -104,6 +104,14 @@ name: "character-view-detailed",
         });
     },
   },
+  computed: {
+    imageUrl() {
+      if(this.character.image) {
+        return this.character.image.url
+      }
+      return '';
+    }
+  }
 };
 
 </script>
