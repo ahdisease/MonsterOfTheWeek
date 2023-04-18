@@ -3,7 +3,7 @@
     <div
       class="character-card-front"
       v-bind:key="character.id123"
-      v-show="showDetails"
+      v-show="cardSide == 1"
       v-on:click="turnCharacterCard"
     >
       <div id="char-name">{{ character.name }}</div>
@@ -16,7 +16,7 @@
     <div
       class="character-card-back"
       v-bind:key="character.id124"
-      v-show="!showDetails"
+      v-show="cardSide == 2"
       v-on:click="turnCharacterCard"
     >
       <div id="char-name">{{ character.name }}</div>
@@ -68,6 +68,18 @@
         </div>
       </div>
     </div>
+    <div
+      class="character-card-front"
+      v-bind:key="character.id123"
+      v-show="cardSide == 3"
+      v-on:click="turnCharacterCard"
+    >
+      <div id="char-name">{{ character.name }}</div>
+      <div class="race"><strong>Race:</strong> {{ character.race }}</div>
+      <div class="class"><strong>Class:</strong> {{ character.charClass }}</div>
+      <img id="char-image" v-show="imageIsApproved" v-bind:src="imageUrl" v-bind:alt="'Image of' + character.name" />
+      <div v-show="!imageIsApproved">Users did not supply an image or it hasn't been approved.</div>
+    </div>
     <div id="button-group">
       <div id="flag-check">
         <b-button
@@ -78,12 +90,21 @@
           v-if="isFlaggable && character.flaggedInappropriate != 'flagged'"
         >
           Flag
-        </b-button>      
-        <b-button id="approved-btn" v-if="confirmModeratorPermissions"
-         v-on:click.prevent="markApproved">Approve?</b-button>
+        </b-button>
+        <b-button
+          id="approved-btn"
+          v-if="confirmModeratorPermissions"
+          v-on:click.prevent="markApproved"
+          >Approve?</b-button
+        >
 
-        <div id="checkmark" v-bind:class="isApproved"  
-        v-if="approved && confirmModeratorPermissions">Approved</div>
+        <div
+          id="checkmark"
+          v-bind:class="isApproved"
+          v-if="approved && confirmModeratorPermissions"
+        >
+          Approved
+        </div>
       </div>
       <button
         class="delete"
@@ -98,7 +119,7 @@
 
 <script>
 import CharacterService from "../services/CharacterService.js";
-import ModService from "../services/ModService.js"
+import ModService from "../services/ModService.js";
 
 export default {
   name: "character-card",
@@ -108,7 +129,7 @@ export default {
     return {
       showDetails: true,
       approved: false,
-
+      cardSide: 1,
     };
   },
   computed: {
@@ -120,12 +141,11 @@ export default {
     },
     isApproved() {
       if (this.character.flaggedInappropriate == "reviewed") {
-      
-       return "is-reviewed";
+        return "is-reviewed";
       }
-        return "";
+      return "";
     },
-    
+
     confirmModeratorPermissions() {
       let allowed = false;
 
@@ -137,10 +157,27 @@ export default {
 
       return allowed;
     },
+
+    imageUrl() {
+      if (this.character.image) {
+        return this.character.image.url;
+      }
+      return "";
+    },
+    imageIsApproved() {
+      if (this.imageUrl) {
+        return this.character.image.approved == true;
+      }
+      return false;
+    }
   },
   methods: {
     turnCharacterCard() {
-      this.showDetails = !this.showDetails;
+      if (this.cardSide >= 3) {
+        this.cardSide = 1;
+      } else {
+        this.cardSide += 1;
+      }
     },
     markFlagged() {
       CharacterService.flaggedInappropriate(this.character.id).then(() => {
@@ -148,11 +185,9 @@ export default {
       });
     },
     markApproved() {
-      ModService.markedApproved(this.character.id).then (() => {
-
+      ModService.markedApproved(this.character.id).then(() => {
         this.$emit("newFlag");
-      })
-      
+      });
     },
     deleteCharacterMod() {
       CharacterService.deleteCharacterMod(this.character.id).then(() => {
@@ -305,7 +340,7 @@ export default {
 #checkmark {
   background: black;
   height: 100px;
-  
+
   /* \F26E */
 }
 #checkmark.is-reviewed {
@@ -358,5 +393,11 @@ export default {
 
 #description::-webkit-scrollbar {
   display: none;
+}
+#char-image {
+  width: 100px;
+  max-height: 150px;
+  margin: auto 25%;
+  border-radius: 5px;
 }
 </style>
