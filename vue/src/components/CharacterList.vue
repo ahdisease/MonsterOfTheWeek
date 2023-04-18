@@ -3,15 +3,14 @@
     
 
     <div class="party-container">
-      <div id="party-comp" v-if="checkUserParty"><party-component /></div>
 
-      <div class="current-party" v-if="!checkUserParty">
+      <div class="current-party" >
         <div id="party-name">
       <h1>Your Party</h1>
     </div>
         <div
           v-bind:key="character.id3"
-          v-for="character in party"
+          v-for="character in currentParty"
           @dblclick.prevent="removePartyMember(character)"
           style="
             -webkit-user-select: none;
@@ -231,6 +230,7 @@
           <option value>Any</option>
           <option value="flagged">Flagged Content</option>
           <option value="not_flagged">Unflagged Content</option>
+          <option value="reviewed">Reviewed Content</option>
         </select>
       </div>
     </div>
@@ -330,14 +330,12 @@
 import CharacterCard from "./CharacterCard.vue";
 import CharacterService from "../services/CharacterService.js";
 import DnDApiService from "../services/DndApiService.js";
-import PartyComponent from "./PartyComponent.vue";
 
 export default {
   name: "character-list",
 
   components: {
     CharacterCard,
-    PartyComponent,
   },
 
   data() {
@@ -352,7 +350,7 @@ export default {
       currentCharacters: [],
       newPartyMember: {},
       party: [],
-
+      currentParty: [],
       checked: true,
       filter: {
         race: "",
@@ -387,6 +385,35 @@ export default {
     DnDApiService.getAllClasses().then((response) => {
       this.dropdownClass = response.data.results;
     });
+    CharacterService.getPartyByUsername(this.$store.state.user.username).then(
+      (response) => {
+        
+        if (response.data) {
+          
+          const partyObject = response.data;
+          CharacterService.getCharacterById(partyObject.characterOne).then(
+            (response) => {
+              this.currentParty.push(response.data);
+            }
+          );
+          CharacterService.getCharacterById(partyObject.characterTwo).then(
+            (response) => {
+              this.currentParty.push(response.data);
+            }
+          );
+          CharacterService.getCharacterById(partyObject.characterThree).then(
+            (response) => {
+              this.currentParty.push(response.data);
+            }
+          );
+          CharacterService.getCharacterById(partyObject.characterFour).then(
+            (response) => {
+              this.currentParty.push(response.data);
+            }
+          );
+        }
+      }
+    );
     // this.checkUserParty();
     // console.log(this.created)
   },
@@ -405,7 +432,10 @@ export default {
         characterThree: submitParty[2],
         characterFour: submitParty[3],
       };
+      // if(this.checkUserParty){
 
+      // }
+      // else {
       CharacterService.addNewParty(submitPartyObject)
         .then((response) => {
           if (response.status === 201) {
@@ -419,6 +449,7 @@ export default {
         .catch((error) => {
           this.handleErrorResponse(error);
         });
+        // }
     },
     cancelForm() {
       this.party = [];
@@ -478,9 +509,7 @@ export default {
     //   return filteredPartyList;
     // },
     checkUserParty() {
-      console.log("hello")
       let created = Object.keys(this.$store.state.userParty).length != 0;
-      console.log(created)
 
       return created;
     },
