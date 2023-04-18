@@ -1,16 +1,13 @@
 <template>
   <div>
-    
-
     <div class="party-container">
-
-      <div class="current-party" >
+      <div class="current-party">
         <div id="party-name">
-      <h1>Your Party</h1>
-    </div>
+          <h1>Your Party</h1>
+        </div>
         <div
           v-bind:key="character.id3"
-          v-for="character in currentParty"
+          v-for="character in party"
           @dblclick.prevent="removePartyMember(character)"
           style="
             -webkit-user-select: none;
@@ -25,17 +22,6 @@
     </div>
 
     <div id="submit-cancel-update">
-      <div class="button-container" v-if="!checkUserParty">
-        <div class="buttons">
-          <button class="btn btn-submit" v-on:click.prevent="submitForm">
-            Submit
-          </button>
-          <button class="btn btn-cancel" type="cancel" v-on:click="cancelForm">
-            Cancel
-          </button>
-        </div>
-      </div>
-
       <div class="update-button-container" v-if="checkUserParty">
         <div class="buttons">
           <button class="btn btn-update" v-on:click.prevent="updateParty">
@@ -43,12 +29,35 @@
           </button>
         </div>
       </div>
-    </div>
 
+      <div class="button-container" v-if="checkUserParty">
+        <div class="buttons">
+          <button
+            class="btn btn-submit"
+            
+            v-on:click.prevent="submitForm"
+          >
+            Submit
+          </button>
+          <button class="btn btn-cancel" type="cancel" v-on:click="cancelForm">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+    <!--  This is the on succesful submit modal -->
     <div>
       <b-modal v-model="modalShow" hide-footer>
         <div class="d-block text-center">
           <h3>Your party has been created!</h3>
+        </div>
+      </b-modal>
+    </div>
+    <!-- This is the on successful update modal -->
+    <div>
+      <b-modal v-model="modalUpdate" hide-footer>
+        <div class="d-block text-center">
+          <h3>Your party has been updated!</h3>
         </div>
       </b-modal>
     </div>
@@ -369,7 +378,7 @@ export default {
         characterThree: "",
         characterFour: "",
       },
-
+      modalUpdate: false,
       modalShow: false,
     };
   },
@@ -387,28 +396,27 @@ export default {
     });
     CharacterService.getPartyByUsername(this.$store.state.user.username).then(
       (response) => {
-        
         if (response.data) {
-          
           const partyObject = response.data;
           CharacterService.getCharacterById(partyObject.characterOne).then(
             (response) => {
-              this.currentParty.push(response.data);
+              this.party.push(response.data);
             }
           );
           CharacterService.getCharacterById(partyObject.characterTwo).then(
             (response) => {
-              this.currentParty.push(response.data);
+              this.party.push(response.data);
             }
           );
           CharacterService.getCharacterById(partyObject.characterThree).then(
             (response) => {
-              this.currentParty.push(response.data);
+              this.party.push(response.data);
             }
           );
           CharacterService.getCharacterById(partyObject.characterFour).then(
             (response) => {
-              this.currentParty.push(response.data);
+              this.party.push(response.data);
+              console.log(this.party)
             }
           );
         }
@@ -420,7 +428,34 @@ export default {
 
   methods: {
     updateParty() {
-      this.$store.state.userParty = {};
+      let submitParty = this.party.map((character) => {
+        return character.id;
+      });
+      let submitPartyObject = {
+        characterOne: submitParty[0],
+        characterTwo: submitParty[1],
+        characterThree: submitParty[2],
+        characterFour: submitParty[3],
+      };
+      // if(this.checkUserParty){
+
+      // }
+      // else {
+      CharacterService.updateParty(submitPartyObject)
+        .then((response) => {
+          if (response.status === 200) {
+            this.modalUpdate = true;
+            this.showPartyComp = true;
+            this.$store.commit("SET_USER_PARTY", this.party);
+            // this.$router.push({ name: "home" });
+          }
+        })
+        // TODO ********* THIS ERROR needs work
+        .catch((error) => {
+          this.handleErrorResponse(error);
+        });
+      // }
+      //  this.$store.state.userParty = {};
     },
     submitForm() {
       let submitParty = this.party.map((character) => {
@@ -449,7 +484,7 @@ export default {
         .catch((error) => {
           this.handleErrorResponse(error);
         });
-        // }
+      // }
     },
     cancelForm() {
       this.party = [];
@@ -510,7 +545,8 @@ export default {
     // },
     checkUserParty() {
       let created = Object.keys(this.$store.state.userParty).length != 0;
-
+      console.log(this.userParty);
+//this.$store.state.user.username
       return created;
     },
 
@@ -602,7 +638,6 @@ export default {
   margin: 0 auto;
   width: 100%;
   /* align-self: flex-start; */
-
 }
 
 h1 {
