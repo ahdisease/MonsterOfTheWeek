@@ -54,6 +54,12 @@ export default {
   background-color: #00201E;
 }
 
+img {
+  height: 280px;
+  width: 190px;
+  object-fit: fill;
+}
+
 #approve-btn{
   background-color: lightgreen;
 
