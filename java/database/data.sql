@@ -16,23 +16,29 @@ INSERT INTO monster (name_index, start_date, end_date) VALUES ('aboleth','2023-0
 INSERT INTO monster (name_index, start_date, end_date) VALUES ('adult-black-dragon','2023-04-16','2023-04-22'); --id 4
 INSERT INTO monster (name_index, start_date, end_date) VALUES ('adult-black-dragon','2023-04-02','2023-04-08'); --id 5
 
+INSERT INTO image (url,approved) VALUES ('https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681825649/Default_mypuwg.jpg',true); --id 1
+INSERT INTO image (url,approved) VALUES ('https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681779003/characters/mmdfce3kthsbclqflhwe.webp',true); --id 2 Jet
+INSERT INTO image (url,approved) VALUES ('https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681781030/characters/lfkashsnp01mkiqlrwte.webp',true); --id 3 Ba
+INSERT INTO image (url,approved) VALUES ('https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681846837/characters/Dragonborn_vn12k7.webp',true); --id 4 Keen
+INSERT INTO image (url) VALUES ('https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681696814/characters/jplasiut6zad0ri9h4v9.jpg'); --id 5 Fig
+INSERT INTO image (url) VALUES ('https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681847442/characters/torbjorn_bnliyb.jpg'); --id 6 Toblerone
 
-INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
-	VALUES ('Jet', 'Fighter', 'Elf', 'Swims and fights', 18,17,15,12,13,14, 4,1); --id 1
-INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
-	VALUES ('Ba', 'Wizard', 'Dwarf', 'Tamed a basalisk once', 14,18,16,15,12,13, 4,2); --id 2
+INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, image_id)
+	VALUES ('Jet', 'Fighter', 'Elf', 'Swims and fights', 18,17,15,12,13,14, 4,1, 2); --id 1
+INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, image_id)
+	VALUES ('Ba', 'Wizard', 'Dwarf', 'Tamed a basalisk once', 14,18,16,15,12,13, 4,2, 3); --id 2
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
 	VALUES ('Lyfet', 'Rouge', 'Elf', 'Do not trust him', 13,14,18,16,15,12, 4,3); --id 3
-INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
-	VALUES ('Keen', 'Fighter', 'Dragon Born', 'Friendly but scary', 12,13,14,18,16,15, 4,4); --id 4
+INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, image_id)
+	VALUES ('Keen', 'Fighter', 'Dragon Born', 'Friendly but scary', 12,13,14,18,16,15, 4,4, 4); --id 4
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
 	VALUES ('Teg', 'Fighter', 'Elf', 'Floats', 15,12,13,14,18,16, 4,5); --id 5
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
 	VALUES ('Zic', 'Fighter', 'Dwarf', 'Unicorn Blood', 16,15,12,13,14,18, 4,6); --id 6
-INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
-	VALUES ('Fig', 'Fighter', 'Elf', 'Loves eating', 10,10,10,10,10,10, 4,7); --id 7
-INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
-	VALUES ('Toblerone', 'Rogue', 'Dwarf', 'Builds machines to fight for him', 10,10,10,10,10,10, 4,8); --id 8
+INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, image_id)
+	VALUES ('Fig', 'Fighter', 'Gnome', 'Loves eating', 10,10,10,10,10,10, 4,7, 5); --id 7
+INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, image_id)
+	VALUES ('Toblerone', 'Rogue', 'Dwarf', 'Builds machines to fight for him', 10,10,10,10,10,10, 4,8, 6); --id 8
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
 	VALUES ('Reinhardt', 'Monk', 'Elf', 'He stuns people.', 10,10,10,10,10,10, 4,9); --id 9
 	INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
