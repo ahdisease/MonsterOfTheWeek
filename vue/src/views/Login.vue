@@ -70,6 +70,7 @@ export default {
 
 .alert {
   color: #00E88A;
+  text-align: center;
 }
 
 h1 {
