@@ -148,9 +148,7 @@ export default {
       });
     },
     markApproved() {
-      console.log("Hello there")
       ModService.markedApproved(this.character.id).then (() => {
-              console.log("Hello HI")
 
         this.$emit("newFlag");
       })
