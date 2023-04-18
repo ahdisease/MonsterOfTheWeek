@@ -39,9 +39,10 @@ public class JdbcCharacterDaoTests extends BaseDaoTests {
 
 
     @Test
-    public void retrieve_character_list_returns_correct_number_of_characters_for_date() {
+    public void retrieve_character_list_returns_correct_number_of_characters_for_date_and_username() {
 
         Assert.assertEquals(1, jdbcCharacterDao.getAllCharacters(USER_1.getUsername(), LocalDate.parse("2020-01-02")).size());
+        Assert.assertEquals(1, jdbcCharacterDao.getAllCharacters(USER_2.getUsername(), LocalDate.parse("2020-01-02")).size());
         Assert.assertEquals(0, jdbcCharacterDao.getAllCharacters(null, LocalDate.parse("2019-12-31")).size());
         Assert.assertEquals(8, jdbcCharacterDao.getAllCharacters(null, LocalDate.parse("2020-01-01")).size());
         Assert.assertEquals(8, jdbcCharacterDao.getAllCharacters(null, LocalDate.parse("2020-01-07")).size());
@@ -58,6 +59,7 @@ public class JdbcCharacterDaoTests extends BaseDaoTests {
         character_details_should_match(CHAR_12, characterList.get(3));
     }
 
+
     @Test
     public void get_character_by_id() {
 
@@ -71,32 +73,45 @@ public class JdbcCharacterDaoTests extends BaseDaoTests {
 
     @Test
     public void create_character() {
+        //arrange
         Character character = generateCharacter(-1, "name", "race", "description", "Rogue", 2, 5, 0);
+        Character character2 = generateCharacter(-1, "name", "race", "description", "Rogue", 2, 5, 0);
+        CharacterImage image = new CharacterImage();
+        image.setUrl("fakeurl1");
+        character2.setImage(image);
 
+        //act
         Character newCharacter = jdbcCharacterDao.createCharacter(character);
+        Character newCharacter2 = jdbcCharacterDao.createCharacter(character2);
 
         Assert.assertNotNull(newCharacter);
+        Assert.assertNotNull(newCharacter2);
 
         int newId = newCharacter.getId();
+        int newId2 = newCharacter2.getId();
 
-        Assert.assertEquals(newId, character.getId());
+        character_details_should_match(character, newCharacter);
+        Assert.assertNotNull("default image should be assigned",newCharacter.getImage());
+        Assert.assertEquals("default image should have id 1",1,newCharacter.getImage().getId());
+        character_details_should_match(character2, newCharacter2);
+        Assert.assertEquals(character2.getImage().getId(),newCharacter2.getImage().getId());
     }
     //todo test flag function
 
     private void character_details_should_match(Character expected, Character actualCharacter) {
-        Assert.assertEquals(expected.getId(), actualCharacter.getId());
-        Assert.assertEquals(expected.getName(), actualCharacter.getName());
-        Assert.assertEquals(expected.getCharClass(), actualCharacter.getCharClass());
-        Assert.assertEquals(expected.getRace(), actualCharacter.getRace());
-        Assert.assertEquals(expected.getDescription(), actualCharacter.getDescription());
-        Assert.assertEquals(expected.getStrength(), actualCharacter.getStrength());
-        Assert.assertEquals(expected.getDexterity(), actualCharacter.getDexterity());
-        Assert.assertEquals(expected.getConstitution(), actualCharacter.getConstitution());
-        Assert.assertEquals(expected.getIntelligence(), actualCharacter.getIntelligence());
-        Assert.assertEquals(expected.getWisdom(), actualCharacter.getWisdom());
-        Assert.assertEquals(expected.getCharisma(), actualCharacter.getCharisma());
-        Assert.assertEquals(expected.getMonsterId(), actualCharacter.getMonsterId());
-        Assert.assertEquals(expected.getUserId(), actualCharacter.getUserId());
+        Assert.assertEquals("Characters should match: id",expected.getId(), actualCharacter.getId());
+        Assert.assertEquals("Characters should match: name",expected.getName(), actualCharacter.getName());
+        Assert.assertEquals("Characters should match: class",expected.getCharClass(), actualCharacter.getCharClass());
+        Assert.assertEquals("Characters should match: race",expected.getRace(), actualCharacter.getRace());
+        Assert.assertEquals("Characters should match: description",expected.getDescription(), actualCharacter.getDescription());
+        Assert.assertEquals("Characters should match: strength",expected.getStrength(), actualCharacter.getStrength());
+        Assert.assertEquals("Characters should match: dexterity",expected.getDexterity(), actualCharacter.getDexterity());
+        Assert.assertEquals("Characters should match: constitution",expected.getConstitution(), actualCharacter.getConstitution());
+        Assert.assertEquals("Characters should match: intelligence",expected.getIntelligence(), actualCharacter.getIntelligence());
+        Assert.assertEquals("Characters should match: wisdom",expected.getWisdom(), actualCharacter.getWisdom());
+        Assert.assertEquals("Characters should match: charisma",expected.getCharisma(), actualCharacter.getCharisma());
+        Assert.assertEquals("Characters should match: monster id",expected.getMonsterId(), actualCharacter.getMonsterId());
+        Assert.assertEquals("Characters should match: user id",expected.getUserId(), actualCharacter.getUserId());
 
     }
 
