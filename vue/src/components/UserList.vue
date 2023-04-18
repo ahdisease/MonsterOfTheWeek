@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="user-table">
     <div class="divTable userTable">
       <div class="divTableHeading">
         <div class="divTableRow">
@@ -13,7 +13,7 @@
           <div class="divTableCell">{{ user.username }}</div>
           <div class="divTableCell">{{ user.authorities[0].name }}</div>
           <div class="divTableCell">
-              <button v-show="user.authorities[0].name!='ROLE_BAN'"
+              <button id="ban-btn" v-show="user.authorities[0].name!='ROLE_BAN'"
               v-on:click.prevent="banUser(user.id)">Ban User</button>
           </div>
         </div>
@@ -50,9 +50,15 @@ export default {
 </script>
 
 <style scoped>
+#user-table{
+  background-color: #00201e;
+}
+#ban-btn{ 
+  background-color: lightgreen;
+}
 div.userTable {
-  border: 1px solid #1c6ea4;
-  background-color: #eeeeee;
+  border: 1px solid goldenrod;
+  background-color: #7a9bb9;
   width: 90%;
   text-align: left;
   margin: 0 auto;
@@ -60,7 +66,7 @@ div.userTable {
 }
 .divTable.userTable .divTableCell,
 .divTable.userTable .divTableHead {
-  border: 1px solid #aaaaaa;
+  border: 1px solid goldenrod;
   padding: 3px 2px;
 }
 .divTable.userTable .divTableBody .divTableCell {
@@ -79,13 +85,13 @@ div.userTable {
     #1c6ea4 100%
   );
   background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1c6ea4 100%);
-  border-bottom: 2px solid #444444;
+  border-bottom: 2px solid goldenrod;
 }
 .divTable.userTable .divTableHeading .divTableHead {
   font-size: 15px;
   font-weight: bold;
-  color: #ffffff;
-  border-left: 2px solid #d0e4f5;
+  color: #00E88A;
+  border-left: 2px solid goldenrod;
 }
 .divTable.userTable .divTableHeading .divTableHead:first-child {
   border-left: none;
