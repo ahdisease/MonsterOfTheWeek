@@ -33,8 +33,11 @@ export default {
     },
     
     flaggedInappropriate(id) {
-        return axios.put(`/flag/characters/${id}`)
+        return axios.put(`/flag/characters/${id}`);
 
+    },
+    updateParty (party) {
+        return axios.put(`/party`, party);
     },
 
     deleteCharacterMod(id) {
