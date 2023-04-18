@@ -440,6 +440,7 @@ select.form-control {
   width: 50%;
   margin: 0 auto;
   border-radius: 6px;
+  color: goldenrod;
 }
 
 button {
@@ -475,7 +476,7 @@ button {
 }
 .btn-cancel:hover {
   padding: 10px 24px;
-  background-color: #00E88A;
+  background-color: goldenrod;
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
