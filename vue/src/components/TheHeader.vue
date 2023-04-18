@@ -1,5 +1,6 @@
 <template>
   <div id="title-block">
+    <!-- <link rel="preload" as="font" href="FletcherGothic-pwy.ttf" type="font/ttf" crossorigin="anonymous"> -->
               
 
     <h2>
@@ -62,6 +63,11 @@ export default {
 </script>
 
 <style scoped>
+/* @font-face {
+    font-family: FletcherGothic;
+    src: url(FletcherGothic-pwy.ttf);
+} */
+
 #title-block {
   background-color: #00201e;
   margin-top: 0;
@@ -73,6 +79,7 @@ export default {
   align-items: baseline;
 }
 h2 {
+  font-family: FletcherGothic, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 2em;
   text-align: center;
   color: #00e88a;
