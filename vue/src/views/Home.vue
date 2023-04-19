@@ -119,13 +119,15 @@ export default {
   background-color: #3a5268;
 }
 #home-timer {
-  border: 3px solid goldenrod;
-  background: #00201E;
+  border: 2px solid #00201e;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+  background-color: #506579;
   margin: 10px auto;
   margin-left: 62%;
   text-align: center;
   padding: 10px;
-
+  width: 23%;
+  border-radius: 20px;
 }
 #intro {
   grid-area: intro;
