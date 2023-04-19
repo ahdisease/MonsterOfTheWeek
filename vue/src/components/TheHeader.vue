@@ -129,6 +129,18 @@ nav {
 }
 
 nav a {
+  box-shadow: inset 0 0 0 0 #00e88a;
+  color: #15b771;
+  margin: 0 -.25rem;
+  padding: 0 .25rem;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+nav a:hover {
+  box-shadow: inset 100px 0 0 0 #15b771;
+  color: white;
+}
+
+/* nav a {
   color: whitesmoke;
   text-decoration: none;
   font-size: 1.1em;
@@ -137,7 +149,7 @@ nav a:hover {
   color: #00e88a;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-}
+} */
 
 #motw-logo {
   width: 60px;

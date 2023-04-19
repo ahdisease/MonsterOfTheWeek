@@ -48,10 +48,47 @@ export default {};
 .cta {
 margin: 0 auto;
 }
-.nav-options {
+/* .nav-options {
   text-decoration: none;
   color: #00e88a;
   
+} */
+
+.nav-options {
+  background-image: linear-gradient(
+    to right,
+    #00e88a,
+    #00e88a 50%,
+    white 50%
+  );
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  padding: 5px 0;
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-options:before {
+  content: '';
+  background: #00e88a;
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-options:hover {
+ background-position: 0;
+}
+
+.nav-options:hover::before {
+  width:100%;
 }
 
 
