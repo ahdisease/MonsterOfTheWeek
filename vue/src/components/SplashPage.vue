@@ -57,6 +57,7 @@ export default {};
 
 h1 {
   font-size: 4em;
+  text-align: center;
   /* background-color: #ffffff15; */
 }
 #main-splash p{
@@ -176,19 +177,19 @@ h1 {
 
 @media screen and (max-width: 1000px) {
   h1 {
-    font-size: 3.5em;
+    font-size: 3em;
   }
 
   #main-splash {
     width: 90%;
     padding: 5px;
-    text-align: center;
+    text-align: top;
   }
   #bg-image {
     background-image: url("https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681910644/SCAG_iPad_Wallpaper_ivrrtn.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 450px;
+    min-height: 600px;
     background-position-x: center;
     background-position-y: top;
   }
