@@ -6,7 +6,7 @@
         <h2>
           <img
             id="motw-logo"
-            src="https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681840313/LogoMotW_dyafdk.png"
+            src="https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681929227/LogoMotW_kjroas.png"
             alt="MotW Logo"
           />
           <router-link class="nav-options" v-bind:to="{ name: 'home' }"
@@ -85,18 +85,20 @@ export default {
     src: url(FletcherGothic-pwy.ttf);
 } */
 
+/* herein */
+
 #title-block {
-  z-index: 2;
+  z-index: 3;
   background-color: #00201e;
 
   /* width: 100%; */
   border: 8px ridge #3a5268;
   display: flex;
+  height: 100px;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: baseline;
   position: fixed;
 }
 
@@ -104,14 +106,12 @@ h2 {
   font-family: FletcherGothic, "Franklin Gothic Medium", "Arial Narrow", Arial,
     sans-serif;
   font-size: 2em;
-  text-align: center;
   color: #00e88a;
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
-  padding: 10px 0 0 0;
+  padding: 8px 0 0 0;
   text-shadow: 2px 2px 6px rgb(54, 2, 2);
-  margin: 0 auto;
-  flex: 50%;
+  margin: auto 0 auto 15px;
 }
 h2 a {
   text-decoration: none;
@@ -120,16 +120,15 @@ h2 a {
 nav {
   /* background-color: rgb(218, 124, 36); */
   text-align: center;
-  padding: 5px 20px;
   color: whitesmoke;
-  margin: 0 auto;
+  margin: auto;
   flex: 50%;
 }
 
 .nav-options {
   font-size: 1.2em;
-  margin: 15px 20px;
-  color: #15b771;
+  margin: auto 15px;
+  color: #00e88a;
 }
 
 nav a {
@@ -189,12 +188,24 @@ nav a:hover {
   display: none;
 }
 
+@media screen and (max-width: 950px) {
+  h2 {
+    font-size: 1.5em;
+  }
+
+  .nav-options {
+  font-size: 1.2em;
+  margin: auto 10px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   h2 {
     font-size: 1em;
   }
 
   #title-block {
+  height: 75px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
