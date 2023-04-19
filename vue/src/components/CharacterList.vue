@@ -2,9 +2,6 @@
   <div id="whole-page">
     <div class="party-container">
       <div class="current-party">
-        <div id="party-name">
-          <h1>Your Party</h1>
-        </div>
         <div id="party-cards"
           v-bind:key="character.id3"
           v-for="character in party"
@@ -19,6 +16,11 @@
           <character-card v-bind:character="character"></character-card>
         </div>
       </div>
+    </div>
+    <div id="intro" v-if="!showError">
+      <p>
+        This is your party viewer. Add 4 characters from the list below, then click Submit to create your party.
+      </p>
     </div>
 
     <div id="submit-cancel-update">
@@ -653,17 +655,6 @@ export default {
   flex-wrap: wrap;
 }
 
-#party-name {
-  text-align: center;
-  margin: 0 auto;
-  width: 100%;
-}
-
-h1 {
-  color: #00e88a;
-  font-size: 3em;
-}
-
 #party-comp {
   width: 100%;
 }
@@ -676,7 +667,7 @@ h1 {
   background-color: #00201e;
   border: 5px outset goldenrod;
   border-radius: 6px;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   position: sticky;
   top: 100px;
@@ -693,6 +684,11 @@ h1 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+#intro > p {
+  color: #00e88a;
+  text-align: center;
 }
 
 .race-class-group {
@@ -793,15 +789,14 @@ h1 {
 }
 
 #instruction {
-  margin: 0 auto;
+  margin: 1.5em auto;
+  padding-top: 15px;
   width: 90%;
   text-align: center;
   color: #00e88a;
   background-color: #00201e;
   border: 5px outset goldenrod;
   border-radius: 6px;
-  margin-bottom: 20px;
-
 }
 
 @media screen and (max-width: 1000px) {
