@@ -62,8 +62,6 @@ body {
 
 #addHomeForm {
   background-color: #3a5268;
-  margin: 0;
-    padding: 0;
 }
 
 .completed-char {

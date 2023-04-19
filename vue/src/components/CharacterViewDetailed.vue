@@ -1,7 +1,7 @@
 <template>
   <div id="addHomeform">
     <div id="title">
-      <h1>This Week's Character</h1>
+      <h1>Your Character of the Week</h1>
     </div>
     <form class="homeForm">
       <div class="name-group" id="name-box">
@@ -129,9 +129,7 @@ name: "character-view-detailed",
   
   background: #3a5268;
   margin: auto;
-  padding-top: 10px;
-  /* width: 90%; */
-  /* height: 100%; */
+  /* padding-top: 10px; */
   background-color: #607f9b;
   padding-bottom: 37px;
   
@@ -143,9 +141,10 @@ name: "character-view-detailed",
 
 #title h1 {
   text-align: center;
-  font-size: 4em;
+  font-size: 3em;
   color: #00E88A;
-  background: #00201E
+  background: #00201E;
+  padding: 20px 0;
 }
 
 .character-details {
@@ -163,7 +162,7 @@ name: "character-view-detailed",
     "lcol     picture   rcol"
     "lcol     picture   rcol"
     "desc     desc      desc"
-    ".        buttons   .";
+    "footer   footer    footer";
   gap: 10px;
   justify-content: center;
   align-content: center;

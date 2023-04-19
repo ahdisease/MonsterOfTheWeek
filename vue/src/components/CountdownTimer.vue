@@ -1,5 +1,6 @@
 <template>
-  <aside>
+  <aside id="timer">
+      <div><p class="text">The battle begins in </p></div>
       <div class="timer">{{days}}</div>
       :
       <div class="timer">{{hours}}</div>
@@ -8,9 +9,12 @@
       :
       <div class="timer">{{seconds}}</div>
   </aside>
+
+
 </template>
 
 <script>
+
 export default {
     data() {
         return {
@@ -65,8 +69,45 @@ export default {
 @font-face{
  font-family:'Orbitron';
 }
-    .timer {
-        display: inline-block;
-        font-family: 'Orbitron';
-    }
+
+#timer{
+    display: block;
+    justify-content: center;
+    width: 20%;
+    height: auto;
+    background-color: #00201e;
+    margin: 0 auto;
+}
+.timer {
+    display: inline-block;
+    font-family: 'Orbitron';
+    background: #00201e;
+    color:lightgreen;
+    font-weight: bold;
+}
+.text{
+    text-align: center;
+    font-weight: bold;
+    color: lightgreen;
+    font-size: 30px;
+}
+    
+    /* background-image: linear-gradient(
+    to right,
+    #462523 0,
+    #cb9b51 22%,
+    #f6e27a 45%,
+    #f6f2c0 50%,
+    #f6e27a 55%,
+    #cb9b51 78%,
+    #462523 100%
+  );
+  color:transparent;
+   -webkit-background-clip:text;
+   font-size: 30px;
+   text-align: center;
+
+} */
+
+
 </style>
