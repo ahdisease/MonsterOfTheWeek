@@ -35,6 +35,10 @@ export default {};
 
 }
 
+h1 {
+  font-size: 4em;
+}
+
 #main-splash {
   width: 70%;
   margin: 0 auto;
@@ -92,7 +96,17 @@ margin: 0 auto;
 }
 
 @media screen and (max-width: 1000px) {
+  h1 {
+  font-size: 3em;
+  }
+
+  #main-splash{
+    width: 90%;
+    padding: 5px;
+  }
   #wrapper {
+    background-position-x: center;
+    background-position-y:top;
     background-image: url("https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681910644/SCAG_iPad_Wallpaper_ivrrtn.jpg");
   }  
 }

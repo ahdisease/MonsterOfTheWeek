@@ -23,10 +23,11 @@ export default {
 <style >
 #spacer {
   height: 100px;
+  background-color: #3a5268;
 }
 
 body {
-  background: #3a5268;
+  background-color: #3a5268;
   font-size: 14px;
 }
 

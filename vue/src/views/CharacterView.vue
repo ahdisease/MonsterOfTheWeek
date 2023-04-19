@@ -5,7 +5,7 @@
     </div>
     <div v-if="!showError">
       
-      <character-creator v-if="!characterCreated" />
+      <character-creation-form v-if="!characterCreated" />
       <character-view-detailed v-if="characterCreated" />
     </div>
   </div>
@@ -13,7 +13,7 @@
 
 <script>
 import CharacterViewDetailed from "../components/CharacterViewDetailed.vue";
-import CharacterCreator from "./CharacterCreator.vue";
+import CharacterCreationForm from "../components/CharacterCreationForm.vue";
 
 export default {
   name: "character-view",
@@ -27,7 +27,7 @@ export default {
 
   components: {
     CharacterViewDetailed,
-    CharacterCreator,
+    CharacterCreationForm,
   },
   computed: {
     characterCreated() {
