@@ -91,6 +91,12 @@ margin: 0 auto;
   width:100%;
 }
 
+@media screen and (max-width: 1000px) {
+  #wrapper {
+    background-image: url("https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681910644/SCAG_iPad_Wallpaper_ivrrtn.jpg");
+  }  
+}
+
 
 
 

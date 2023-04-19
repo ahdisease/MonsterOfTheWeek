@@ -180,8 +180,13 @@ nav a:hover {
 #motw-logo {
   width: 60px;
   margin: 0 0 15px 0;
-  /* text-shadow: 2px 2px 6px rgb(54, 2, 2); */
 }
+#motw-logo:hover {
+  box-shadow: 4px 4px 4px #00e88a, -4px -4px 4px #00e88a,
+              -4px 4px 4px #00e88a, 4px -4px 4px #00e88a;
+  border-radius: 50%;
+}
+
 
 @media screen and (max-width: 768px) {
   h2 {
