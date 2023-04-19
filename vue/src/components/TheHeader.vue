@@ -2,7 +2,7 @@
   <div>
     <div id="title-block">
       <!-- <link rel="preload" as="font" href="FletcherGothic-pwy.ttf" type="font/ttf" crossorigin="anonymous"> -->
-      <div>
+      
         <h2>
           <img
             id="motw-logo"
@@ -54,7 +54,7 @@
             </b-nav-item-dropdown>
           </b-nav>
         </div>
-      </div>
+      
     </div>
   </div>
 </template>
@@ -93,15 +93,11 @@ export default {
   border: 8px ridge #3a5268;
   display: flex;
   width: 100%;
-
-  position: fixed;
-}
-
-#title-block > div {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: baseline;
+  position: fixed;
 }
 
 h2 {
@@ -198,10 +194,10 @@ nav a:hover {
     font-size: 1em;
   }
 
-  #title-block > div {
+  #title-block {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: baseline;
 }
 
@@ -211,29 +207,31 @@ nav a:hover {
 }
 
   nav {
-    /* background-color: rgb(218, 124, 36); */
     text-align: center;
     padding: 1px 10px;
     color: whitesmoke;
     width: 100%;
     display: none;
     flex-direction: row;
-    /* visibility: hidden; */
   }
 
   #drop-nav {
-    display: flex;
-    flex-direction: column;
-    width: 20px;
-    background-color: #00e88a;
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px 0 rgba(153,153,153,0.35);
     padding: 0;
-    /* color: white; */
-  }
+    margin: 0 auto;
+    text-align: center;
+    padding-right: 10px;
+    }
 
   #my-nav-dropdown {
-    width: 20px;
+    width: 100%;
     background-color: #00e88a;
-    padding: 0;
+    padding: 1px 2px;
+    list-style: none;
+    color: white;
+    text-decoration: none;
   }
 
   .nav-options {
