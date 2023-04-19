@@ -24,6 +24,8 @@ INSERT INTO image (url) VALUES ('https://res.cloudinary.com/c19-lima-monster-of-
 INSERT INTO image (url) VALUES ('https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681847442/characters/torbjorn_bnliyb.jpg'); --id 6 Toblerone
 INSERT INTO image (url,approved) VALUES ('https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681910809/Ben_zgfgwe.jpg', true); --id 7 Bee
 INSERT INTO image (url,approved) VALUES ('https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681912552/milhouse_xfmss1.png', true); --id 8 Mil
+INSERT INTO image (url,approved) VALUES ('https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681917309/katara_gwix87.jpg', true); --id 9 Kay
+INSERT INTO image (url,approved) VALUES ('https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681920065/Wizzard_c8yhku.webp', true); --id 10 Al
 
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, image_id)
 	VALUES ('Jet', 'Fighter', 'Elf',
@@ -51,14 +53,14 @@ INSERT INTO character (name, char_class, race, description, strength, dexterity,
 	VALUES ('Reinhardt', 'Monk', 'Elf',
 	'A knight reaching the end of a very long life. While still committed to protecting the royal family, he has begun to spend time working with the citizens of the Moonsong Kingdom to ensure those without power are not forgotten.',
 	10,10,10,10,10,10, 4,9); --id 9
-INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
-	VALUES ('Kay', 'Monk', 'Human', 'She punches people.', 10,10,10,10,10,10, 3,9); --id 10
+INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, image_id)
+	VALUES ('Kay', 'Monk', 'Human', 'She punches people.', 10,10,10,10,10,10, 3,9, 9); --id 10
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, image_id)
 	VALUES ('Mil', 'Barbarian', 'Elf', 'He yells at people.', 10,10,10,10,10,10, 3,5, 8); --id 11
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, image_id)
 	VALUES ('Bee', 'Fighter', 'Dwarf', 'He stabs people.', 10,10,10,10,10,10, 3,3, 7); --id 12
-INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
-	VALUES ('Al', 'Wizard', 'Dragon Born', 'He curses people.', 10,10,10,10,10,10, 3,2); --id 13
+INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, image_id)
+	VALUES ('Al', 'Wizard', 'Dragon Born', 'He curses people.', 10,10,10,10,10,10, 3,2, 10); --id 13
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, flagged_inappropriate, active)
 	VALUES ('Tim', 'Wizard', 'Human', 'He does magic against people.', 10,10,10,10,10,10, 4,7, 'not_flagged', true); --id 14
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, flagged_inappropriate, active)
