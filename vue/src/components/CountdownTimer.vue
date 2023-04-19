@@ -1,13 +1,24 @@
 <template>
   <aside id="timer">
       <div><p class="text">The battle begins in </p></div>
-      <div class="timer">{{days}}</div>
+      <div class="timer">
+          <span>{{days}}</span>
+          <span> :</span>
+          <span> {{hours}}</span>
+          <span> : </span>
+          <span> {{minutes}}</span>
+          <span> : </span>
+          <span> {{seconds}}</span>
+
+          </div>
+      <!-- <div class="timer">{{days}}</div>
       :
       <div class="timer">{{hours}}</div>
       :
       <div class="timer">{{minutes}}</div>
       :
-      <div class="timer">{{seconds}}</div>
+      <div class="timer">{{seconds}}</div> -->
+      <p id="DMD">D | H | M | S </p>
   </aside>
 
 
@@ -66,30 +77,35 @@ export default {
 </script>
 
 <style scoped>
-@font-face{
+/* @font-face{
  font-family:'Orbitron';
-}
+} */
 
-#timer{
-    display: block;
-    justify-content: center;
+#timer {
     width: 20%;
     height: auto;
-    background-color: #00201e;
     margin: 0 auto;
+    color: lightgreen;
 }
 .timer {
-    display: inline-block;
+    display: inline-flex;
+    /* justify-content: center; */
     font-family: 'Orbitron';
-    background: #00201e;
-    color:lightgreen;
+    background: lightgreen;
+    color: #00201e;
     font-weight: bold;
+    width: 45%;
+    
 }
 .text{
     text-align: center;
     font-weight: bold;
     color: lightgreen;
     font-size: 30px;
+}
+
+#DMD {
+    color: lightgreen;
 }
     
     /* background-image: linear-gradient(
