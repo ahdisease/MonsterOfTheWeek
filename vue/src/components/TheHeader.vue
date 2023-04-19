@@ -218,20 +218,22 @@ nav a:hover {
   #drop-nav {
     display: block;
     border-radius: 4px;
-    box-shadow: 0 1px 2px 0 rgba(153,153,153,0.35);
-    padding: 0;
-    margin: 0 auto;
+    margin: auto 10px;
     text-align: center;
-    padding-right: 10px;
     }
 
   #my-nav-dropdown {
     width: 100%;
-    background-color: #00e88a;
+    background-color: goldenrod;
     padding: 1px 2px;
+    border-radius: 10px;
     list-style: none;
-    color: white;
+    color: #3a5268;
     text-decoration: none;
+  }
+
+  #my-nav-dropdown:hover {
+    background-color: rgb(243, 176, 8);
   }
 
   .nav-options {
