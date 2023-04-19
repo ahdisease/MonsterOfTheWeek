@@ -52,6 +52,7 @@ export default {
 <style scoped>
 #image-table {
   background-color: #5e7386;
+  margin: 10px 0;
 }
 
 img {
