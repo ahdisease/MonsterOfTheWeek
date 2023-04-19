@@ -805,9 +805,11 @@ export default {
   border-radius: 6px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 768px) {
   .party-container{
     width: 100%;
+    position: relative;
+    margin-top: 75px;
   }
   #raceClassDropdown {
     padding: 15px;
