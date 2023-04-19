@@ -55,7 +55,7 @@ public class JdbcCharacterImageDao implements CharacterImageDao{
     public List<CharacterImage> getUnapprovedImages() {
         List<CharacterImage> images = new ArrayList<>();
 
-        String sql = "SELECT id, url, approved FROM image where approved = false;";
+        String sql = "SELECT id, url, approved FROM image where approved = false ORDER BY id DESC;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
 
         while(result.next()) {

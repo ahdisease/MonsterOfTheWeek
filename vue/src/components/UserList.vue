@@ -52,6 +52,8 @@ export default {
 <style scoped>
 #user-table{
   background-color: #5e7386;
+  margin: 10px 14%;
+  padding: 10px;
 }
 #ban-btn{ 
   background-color: lightgray;
@@ -93,6 +95,7 @@ div.userTable {
   background: linear-gradient(to bottom, #00201e 0%, #01423e 66%, #017069 100%);
 }
 .divTable.userTable .divTableHeading .divTableHead {
+  padding-left: 10px;
   font-size: 18px;
   font-weight: bold;
   color: goldenrod;
@@ -119,7 +122,7 @@ div.userTable {
   display: inline-block;
   background: #1c6ea4;
   color: #ffffff;
-  padding: 2px 8px;
+  
   border-radius: 5px;
 }
 .userTable.outerTableFooter {
@@ -153,7 +156,32 @@ div.userTable {
 }
 .divTableCell{
   font-weight: bold;
-  /* color: lightgreen; */
+
   font-size: 50px;
+  height:45px;
+  
+}
+button {
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  padding: 3px 3px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color:goldenrod ;
+ 
+ margin: 5px;
+
+}
+
+button.before {
+
+
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+ 
 }
 </style>
