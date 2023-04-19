@@ -12,7 +12,8 @@ CREATE TABLE image (
     url varchar(500) NOT NULL,
     approved boolean DEFAULT false NOT NULL,
 	
-	CONSTRAINT PK_image PRIMARY KEY (id)
+	CONSTRAINT PK_image PRIMARY KEY (id),
+	CONSTRAINT ck_not_blank CHECK  ((url<>N''))
 );
 
 CREATE TABLE users (

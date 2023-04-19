@@ -509,10 +509,9 @@ button {
     text-align: center;
     font-size: 3em;
   }
-  #picture {
-    margin: 0 auto;
-  }
-  #picture img {
+ 
+  #cloudinary-image-upload {
+    max-width: 60vw;
     width: 60%;
     margin: 0 auto;
   }
