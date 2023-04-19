@@ -251,10 +251,9 @@ body {
   grid-template-columns: 2fr;
   justify-content: center;
   align-items: center;
-  
+  padding-bottom: 10%;
   background: #3a5268;
   margin: auto;
-  padding-top: 10px;
   width: 90%;
   background-color: #607f9b;
   /* padding: 1% 2%; */
@@ -488,7 +487,6 @@ button {
   #addHomeform {
     margin: 0 auto;
     width: 95%;
-    background-color: lightgray;
     padding: 1% 2%;
   }
 
@@ -500,11 +498,17 @@ button {
     grid-template-areas:
       "name-box name-box"
       "race class"
-      "picture picture"
       "lcol rcol"
+      "cloud cloud"
       "desc desc"
       "buttons buttons";
     gap: 2px;
+
+    
+    /* "lcol     cloud   rcol"
+    "lcol     cloud   rcol"
+    "desc     desc      desc"
+    ".        buttons   ."; */
   }
   #title h1 {
     text-align: center;
