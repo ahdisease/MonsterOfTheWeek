@@ -16,13 +16,19 @@
         >
       </b-btn>
     </p> -->
+
+    
+    <countdown-timer id="home-timer"/>
     <div id="main-battle">
       <div class="monster-space">
         <monster-splash />
       </div>
       <div class="versus"><h1>VS</h1></div>
+      
       <div class="party-space">
-         <party-component v-if="!banContent" /><!-- // ban here  -->
+      
+         <party-component v-if="!banContent" />
+         
       </div>
     </div>
     <div id="winner-space">
@@ -37,6 +43,7 @@ import PartyComponent from "../components/PartyComponent.vue";
 import PartyWinner from "../components/PartyWinner.vue";
 import SplashPage from '../components/SplashPage.vue';
 import CharacterService from '../services/CharacterService';
+import CountdownTimer from '../components/CountdownTimer.vue';
 
 export default {
   name: "home",
@@ -52,6 +59,7 @@ export default {
     PartyComponent,
     PartyWinner,
     SplashPage,
+    CountdownTimer,
   },
 
   methods: {
@@ -109,6 +117,15 @@ export default {
   justify-content: space-between; 
   align-items: center;
   background-color: #3a5268;
+}
+#home-timer {
+  border: 3px solid goldenrod;
+  background: #00201E;
+  margin: 10px auto;
+  margin-left: 62%;
+  text-align: center;
+  padding: 10px;
+
 }
 #intro {
   grid-area: intro;
