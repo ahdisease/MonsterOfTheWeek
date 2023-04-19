@@ -504,11 +504,6 @@ button {
       "buttons buttons";
     gap: 2px;
 
-    
-    /* "lcol     cloud   rcol"
-    "lcol     cloud   rcol"
-    "desc     desc      desc"
-    ".        buttons   ."; */
   }
   #title h1 {
     text-align: center;
