@@ -61,4 +61,13 @@ export default {
     padding: 0;
 }
 
+#ban-message {
+  height: 100%;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  color: #00e88a;
+  background: #00201e;
+}
+
 </style>

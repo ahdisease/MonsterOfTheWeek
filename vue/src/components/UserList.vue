@@ -51,14 +51,13 @@ export default {
 
 <style scoped>
 #user-table{
-  background-color: #00201e;
+  background-color: #5e7386;
 }
 #ban-btn{ 
-  background-color: lightgreen;
+  background-color: lightgray;
 }
 div.userTable {
-  border: 1px solid goldenrod;
-  background-color: #7a9bb9;
+  background-color: #00201e;
   width: 90%;
   text-align: left;
   margin: 0 auto;
@@ -66,32 +65,37 @@ div.userTable {
 }
 .divTable.userTable .divTableCell,
 .divTable.userTable .divTableHead {
-  border: 1px solid goldenrod;
   padding: 3px 2px;
 }
 .divTable.userTable .divTableBody .divTableCell {
   font-size: 13px;
+  padding-left: 10px;
+  
 }
 .divTable.userTable .divTableRow:nth-child(even) {
-  background: #d0e4f5;
+  background: #3a5268;
+  color: #00e88a;
 }
+
+.divTable.userTable .divTableRow:nth-child(odd) {
+  color:lightgreen;
+}
+
 .divTable.userTable .divTableHeading {
-  background: #1c6ea4;
-  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1c6ea4 100%);
+  background: #00201e;
+  background: -moz-linear-gradient(top, #017069 0%, #01423e 66%, #00201e 100%) ;
   background: -webkit-linear-gradient(
     top,
-    #5592bb 0%,
-    #327cad 66%,
-    #1c6ea4 100%
+    #017069 0%,
+    #01423e 66%,
+    #00201e 100%
   );
-  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1c6ea4 100%);
-  border-bottom: 2px solid goldenrod;
+  background: linear-gradient(to bottom, #00201e 0%, #01423e 66%, #017069 100%);
 }
 .divTable.userTable .divTableHeading .divTableHead {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: bold;
-  color: #00E88A;
-  border-left: 2px solid goldenrod;
+  color: goldenrod;
 }
 .divTable.userTable .divTableHeading .divTableHead:first-child {
   border-left: none;
@@ -104,7 +108,6 @@ div.userTable {
   background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #d0e4f5 100%);
   
   background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #d0e4f5 100%);
-  border-top: 2px solid #444444;
 }
 .userTable .tableFootStyle {
   font-size: 14px;
@@ -147,5 +150,10 @@ div.userTable {
 }
 .divTableBody {
   display: table-row-group;
+}
+.divTableCell{
+  font-weight: bold;
+  /* color: lightgreen; */
+  font-size: 50px;
 }
 </style>
