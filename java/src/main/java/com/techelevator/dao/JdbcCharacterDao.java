@@ -27,7 +27,8 @@ public class JdbcCharacterDao implements CharacterDao{
     private JdbcTemplate jdbcTemplate;
     private CharacterImageDao imageDao;
 
-    int DEFALUT_IMAGE_ID = 1;
+    private final int DEFALUT_IMAGE_ID = 1;
+    private final String DEFAULT_IMAGE_URL = "https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681825649/Default_mypuwg.jpg";
 
     public JdbcCharacterDao (JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate =  jdbcTemplate;
@@ -85,6 +86,11 @@ public class JdbcCharacterDao implements CharacterDao{
                 " charisma, monster_id, user_id, image_id) Values (?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING id;";
 
         if(character.getImage() != null) {
+            //Add default if url is blank
+            if (character.getImage().getUrl().equals("")) {
+                character.getImage().setUrl(DEFAULT_IMAGE_URL);
+            }
+
             //add image to database
             CharacterImage savedImage = imageDao.addImage(character.getImage().getUrl());
 
@@ -102,7 +108,7 @@ public class JdbcCharacterDao implements CharacterDao{
             //add character to database
             Integer id = jdbcTemplate.queryForObject(sql, Integer.class, character.getName(), character.getRace(), character.getDescription(),
                     character.getCharClass(), stats[0], stats[1], stats[2], stats[3], stats[4], stats[5], character.getMonsterId(),
-                    character.getUserId(), defaultImage.getId()
+                    character.getUserId(), DEFALUT_IMAGE_ID
             );
             character.setId(id);
         }
