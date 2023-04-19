@@ -4,16 +4,16 @@
       <h1>Battle the Monster of the Week!</h1>
       <p></p>
       <h2>Create your very own character to adventure with!</h2>
-      <b-button>Create your character</b-button>
-      <h2>Assemble your party!</h2>
+      <b-button><router-link class="nav-options" v-bind:to="{ name: 'character-view' }"
+          >CREATE YOUR CHARACTER</router-link></b-button>
+      <h2>Join with other characters and form a party to face the monster!</h2>
+      <b-button><router-link class="nav-options" v-bind:to="{ name: 'party' }"
+          >ASSEMBLE YOUR PARTY</router-link></b-button>
       <p>
         The combination of characters that gets picked the most is the winning
         party!
       </p>
-      <p>
-        This needs an image, like the one in the public folder. This is the
-        splash page for any user
-      </p>
+      
     </main>
   </div>
 </template>
@@ -29,12 +29,15 @@ export default {};
 
 }
 .bg-image {
-    background-image: url("");
-
+    background-image: url("https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681865026/SCAG_1920x1080_Wallpaper_cmmsj8.jpg");
+  width: 100%;
 }
 #main-splash {
   width: 80%;
   margin: 0 auto;
+}
+.nav-options {
+  text-decoration: none;
 }
 
 

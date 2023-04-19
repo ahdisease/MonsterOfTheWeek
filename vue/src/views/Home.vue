@@ -71,7 +71,13 @@ export default {
       this.$store.state.user.username
     ).then((response) => {
       if (response.status == 200) {
-        this.$store.commit("SET_USER_CHARACTER", response.data),
+        this.$store.commit("SET_USER_CHARACTER", response.data)
+      }
+    });
+    CharacterService.getPartyByUsername(
+      this.$store.state.user.username
+    ).then((response) => {
+      if (response.status == 200) {
         this.$store.commit("SET_USER_PARTY", response.data)
       }
     })
