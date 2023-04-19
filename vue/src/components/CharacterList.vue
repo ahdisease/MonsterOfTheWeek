@@ -806,11 +806,10 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-  .party-container{
-    width: 100%;
-    position: relative;
-    margin-top: 75px;
-  }
+  .party-container {
+  top: 75px;
+}
+
   #raceClassDropdown {
     padding: 15px;
     display: flex;
@@ -821,6 +820,11 @@ export default {
   .race-class-group {
     width: 80%;
   }
+
+  .buttons {
+    margin-top: 8px;
+  }
+
   #attGroupWrapper {
     /* margin: 15px; */
     padding: 15px;
