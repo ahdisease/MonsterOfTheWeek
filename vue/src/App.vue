@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <the-header />
+    <div id="spacer"></div>
     <router-view />
     <the-footer />
   </div>
@@ -20,6 +21,9 @@ export default {
 </script>
 
 <style >
+#spacer {
+  height: 100px;
+}
 
 body {
   background: #3a5268;

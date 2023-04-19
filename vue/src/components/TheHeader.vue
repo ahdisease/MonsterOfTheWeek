@@ -1,44 +1,52 @@
 <template>
-  <div id="title-block">
-    <!-- <link rel="preload" as="font" href="FletcherGothic-pwy.ttf" type="font/ttf" crossorigin="anonymous"> -->
-              
+  <div>
+    <div id="title-block">
+      <!-- <link rel="preload" as="font" href="FletcherGothic-pwy.ttf" type="font/ttf" crossorigin="anonymous"> -->
+      <div>
+        <h2>
+          <img
+            id="motw-logo"
+            src="https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681840313/LogoMotW_dyafdk.png"
+            alt="MotW Logo"
+          />
+          <router-link class="nav-options" v-bind:to="{ name: 'home' }"
+            >Monster of the Week
+          </router-link>
+        </h2>
 
-    <h2>
-      <img id="motw-logo" src="https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681840313/LogoMotW_dyafdk.png" alt="MotW Logo">
-      <router-link class="nav-options" v-bind:to="{ name: 'home' }"
-        >Monster of the Week </router-link
-      >
-    </h2>
-
-    <nav id="nav">
-      <router-link class="nav-options" v-bind:to="{ name: 'home' }"
-        >Home</router-link
-      >
-      <router-link class="nav-options" v-bind:to="{ name: 'character-view' }"
-        >Character</router-link
-      >
-      <router-link class="nav-options" v-bind:to="{ name: 'party' }"
-        >Party</router-link
-      >
-      <router-link
-        class="nav-options"
-        v-bind:to="{ name: 'moderator' }"
-        v-if="confirmModeratorPermissions"
-        >Moderation</router-link
-      >
-      <router-link
-        class="nav-options"
-        v-bind:to="{ name: 'login' }"
-        v-if="$store.state.token == ''"
-        >Login</router-link
-      >
-      <router-link
-        class="nav-options"
-        v-bind:to="{ name: 'logout' }"
-        v-if="$store.state.token != ''"
-        >Logout</router-link
-      >
-    </nav>
+        <nav id="nav">
+          <router-link class="nav-options" v-bind:to="{ name: 'home' }"
+            >Home</router-link
+          >
+          <router-link
+            class="nav-options"
+            v-bind:to="{ name: 'character-view' }"
+            >Character</router-link
+          >
+          <router-link class="nav-options" v-bind:to="{ name: 'party' }"
+            >Party</router-link
+          >
+          <router-link
+            class="nav-options"
+            v-bind:to="{ name: 'moderator' }"
+            v-if="confirmModeratorPermissions"
+            >Moderation</router-link
+          >
+          <router-link
+            class="nav-options"
+            v-bind:to="{ name: 'login' }"
+            v-if="$store.state.token == ''"
+            >Login</router-link
+          >
+          <router-link
+            class="nav-options"
+            v-bind:to="{ name: 'logout' }"
+            v-if="$store.state.token != ''"
+            >Logout</router-link
+          >
+        </nav>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -69,17 +77,28 @@ export default {
 } */
 
 #title-block {
+  z-index: 2;
   background-color: #00201e;
-  margin-top: 0;
+
   /* width: 100%; */
   border: 8px ridge #3a5268;
+  display: block;
+  width: 100%;
+
+  position: fixed;
+
+}
+
+#title-block > div {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: baseline;
 }
+
 h2 {
-  font-family: FletcherGothic, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: FletcherGothic, "Franklin Gothic Medium", "Arial Narrow", Arial,
+    sans-serif;
   font-size: 2em;
   text-align: center;
   color: #00e88a;
@@ -121,10 +140,10 @@ nav a:hover {
 }
 
 #motw-logo {
-   width: 60px ;
-   margin: 0 0 15px 0;
-   /* text-shadow: 2px 2px 6px rgb(54, 2, 2); */
-  }
+  width: 60px;
+  margin: 0 0 15px 0;
+  /* text-shadow: 2px 2px 6px rgb(54, 2, 2); */
+}
 
 @media screen and (max-width: 768px) {
   h2 {
@@ -146,7 +165,5 @@ nav a:hover {
     padding: 1px 12px;
     margin: 0 auto;
   }
-
-  
 }
 </style>
