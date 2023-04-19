@@ -17,7 +17,7 @@
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <button type="submit" class="sign-in-btn">Sign in</button>
-      <p>
+      <p id="sign-up">
       <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
   </div>
@@ -112,5 +112,41 @@ label {
 
 p {
   margin: auto;
+}
+#sign-up {
+  background-image: linear-gradient(
+    to right,
+    #00e88a,
+    #00e88a 50%,
+    white 50%
+  );
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  padding: 5px 0;
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+#sign-up:before {
+  content: '';
+  background: #00e88a;
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+#sign-up:hover {
+ background-position: 0;
+}
+
+#sign-up:hover::before {
+  width:100%;
 }
 </style>
