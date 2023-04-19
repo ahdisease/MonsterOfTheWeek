@@ -266,9 +266,10 @@ body {
 
 #title h1 {
   text-align: center;
-  font-size: 4em;
+  font-size: 3em;
   color: #00E88A;
-  background: #00201E
+  background: #00201E;
+  padding: 20px 0;
 }
 
 .homeForm {
