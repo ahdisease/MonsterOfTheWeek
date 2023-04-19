@@ -678,6 +678,9 @@ h1 {
   border-radius: 6px;
   width: 80%;
   margin: 0 auto;
+  position: sticky;
+  top: 100px;
+  z-index: 2;
 }
 
 .current-party {
@@ -798,6 +801,7 @@ h1 {
   border: 5px outset goldenrod;
   border-radius: 6px;
   margin-bottom: 20px;
+
 }
 
 @media screen and (max-width: 1000px) {

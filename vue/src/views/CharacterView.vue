@@ -55,10 +55,28 @@ export default {
 </script>
 
 <style scoped>
-.completed-char {
+
+body {
+  background-color: #3a5268;
+}
+
+#addHomeForm {
   background-color: #3a5268;
   margin: 0;
     padding: 0;
+}
+
+.completed-char {
+  background-color: #3a5268;
+}
+
+#ban-message {
+  height: 100%;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  color: #00e88a;
+  background: #00201e;
 }
 
 </style>
