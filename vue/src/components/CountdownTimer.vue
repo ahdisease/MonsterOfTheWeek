@@ -1,0 +1,72 @@
+<template>
+  <aside>
+      <div class="timer">{{days}}</div>
+      :
+      <div class="timer">{{hours}}</div>
+      :
+      <div class="timer">{{minutes}}</div>
+      :
+      <div class="timer">{{seconds}}</div>
+  </aside>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            days:0,
+            hours:0,
+            minutes:0,
+            seconds:0
+        }
+    },
+
+    methods: {
+        currentTime() {
+            const currentTime = new Date();
+            const cutoffTime = new Date('2023-04-22');
+
+            let countdownSeconds = Number.parseInt(Math.abs(cutoffTime.getTime() - currentTime.getTime())/1000);
+            const timerValues = [86400,3600,60,1];
+            
+            for (let i = 0; i < timerValues.length; i++) {
+                const units = Math.floor(countdownSeconds / timerValues[i]);
+                countdownSeconds = countdownSeconds % timerValues[i];
+                timerValues[i] = units;
+            }
+            
+            this.seconds = timerValues[3].toLocaleString('en-US', {
+    minimumIntegerDigits: 2,
+    useGrouping: false
+  });
+            this.minutes = timerValues[2].toLocaleString('en-US', {
+    minimumIntegerDigits: 2,
+    useGrouping: false
+  });
+            this.hours = timerValues[1].toLocaleString('en-US', {
+    minimumIntegerDigits: 2,
+    useGrouping: false
+  });
+            this.days = timerValues[0].toLocaleString('en-US', {
+    minimumIntegerDigits: 2,
+    useGrouping: false
+  });
+        }
+    },
+
+    created() {
+        this.currentTime();
+        setInterval(this.currentTime, 1000)
+    }
+}
+</script>
+
+<style scoped>
+@font-face{
+ font-family:'Orbitron';
+}
+    .timer {
+        display: inline-block;
+        font-family: 'Orbitron';
+    }
+</style>
