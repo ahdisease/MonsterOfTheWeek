@@ -2,7 +2,7 @@
   <div>
     <div id="title-block">
       <!-- <link rel="preload" as="font" href="FletcherGothic-pwy.ttf" type="font/ttf" crossorigin="anonymous"> -->
-      <div>
+      
         <h2>
           <img
             id="motw-logo"
@@ -15,37 +15,46 @@
         </h2>
 
         <nav id="nav">
-          <router-link class="nav-options" v-bind:to="{ name: 'home' }"
-            >Home</router-link
-          >
-          <router-link
-            class="nav-options"
-            v-bind:to="{ name: 'character-view' }"
-            >Character</router-link
-          >
-          <router-link class="nav-options" v-bind:to="{ name: 'party' }"
-            >Party</router-link
-          >
-          <router-link
-            class="nav-options"
-            v-bind:to="{ name: 'moderator' }"
-            v-if="confirmModeratorPermissions"
-            >Moderation</router-link
-          >
-          <router-link
-            class="nav-options"
-            v-bind:to="{ name: 'login' }"
-            v-if="$store.state.token == ''"
-            >Login</router-link
-          >
-          <router-link
-            class="nav-options"
-            v-bind:to="{ name: 'logout' }"
-            v-if="$store.state.token != ''"
-            >Logout</router-link
-          >
+          <router-link class="nav-options" v-bind:to="{ name: 'home' }">Home</router-link>
+
+          <router-link class="nav-options" v-bind:to="{ name: 'character-view' }">Character</router-link>
+
+          <router-link class="nav-options" v-bind:to="{ name: 'party' }">Party</router-link>
+
+          <router-link class="nav-options" v-bind:to="{ name: 'moderator' }" v-if="confirmModeratorPermissions">Moderation</router-link>
+
+          <router-link class="nav-options" v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login</router-link>
+
+          <router-link class="nav-options" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
         </nav>
-      </div>
+
+        <div id="drop-nav">
+          <b-nav>
+            <b-nav-item-dropdown id="my-nav-dropdown" text="Menu"
+              toggle-class="nav-link-custom"
+              right>
+              <b-dropdown-item>
+                <router-link class="nav-options" v-bind:to="{ name: 'home' }">Home</router-link>
+              </b-dropdown-item>
+              <b-dropdown-item>
+                <router-link class="nav-options" v-bind:to="{ name: 'character-view' }">Character</router-link>
+              </b-dropdown-item>
+              <b-dropdown-item>
+                <router-link class="nav-options" v-bind:to="{ name: 'party' }">Party</router-link>
+                </b-dropdown-item>
+              <b-dropdown-item>
+                <router-link class="nav-options" v-bind:to="{ name: 'moderator' }" v-if="confirmModeratorPermissions">Moderation</router-link>
+              </b-dropdown-item>
+              <b-dropdown-item>
+                 <router-link class="nav-options" v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login</router-link>
+              </b-dropdown-item>
+              <b-dropdown-item>
+                <router-link class="nav-options" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+              </b-dropdown-item>
+            </b-nav-item-dropdown>
+          </b-nav>
+        </div>
+      
     </div>
   </div>
 </template>
@@ -82,18 +91,13 @@ export default {
 
   /* width: 100%; */
   border: 8px ridge #3a5268;
-  display: block;
+  display: flex;
   width: 100%;
-
-  position: fixed;
-
-}
-
-#title-block > div {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: baseline;
+  position: fixed;
 }
 
 h2 {
@@ -129,12 +133,7 @@ nav {
 }
 
 nav a {
-  background-image: linear-gradient(
-    to right,
-    #00e88a,
-    #00e88a 50%,
-    white 50%
-  );
+  background-image: linear-gradient(to right, #00e88a, #00e88a 50%, white 50%);
   background-size: 200% 100%;
   background-position: -100%;
   display: inline-block;
@@ -146,7 +145,7 @@ nav a {
 }
 
 nav a:before {
-  content: '';
+  content: "";
   background: #00e88a;
   display: block;
   position: absolute;
@@ -158,13 +157,12 @@ nav a:before {
 }
 
 nav a:hover {
- background-position: 0;
+  background-position: 0;
 }
 
 nav a:hover::before {
-  width:100%;
+  width: 100%;
 }
-
 
 /* nav a {
   color: whitesmoke;
@@ -182,25 +180,58 @@ nav a:hover {
   margin: 0 0 15px 0;
 }
 #motw-logo:hover {
-  box-shadow: 4px 4px 4px #00e88a, -4px -4px 4px #00e88a,
-              -4px 4px 4px #00e88a, 4px -4px 4px #00e88a;
+  box-shadow: 4px 4px 4px #00e88a, -4px -4px 4px #00e88a, -4px 4px 4px #00e88a,
+    4px -4px 4px #00e88a;
   border-radius: 50%;
 }
 
+#drop-nav {
+  display: none;
+}
 
 @media screen and (max-width: 768px) {
   h2 {
-    font-size: 1.5em;
+    font-size: 1em;
   }
 
+  #title-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: baseline;
+}
+
+  #motw-logo {
+  width: 40px;
+  margin: 0 0 15px 0;
+}
+
   nav {
-    /* background-color: rgb(218, 124, 36); */
     text-align: center;
     padding: 1px 10px;
     color: whitesmoke;
     width: 100%;
-    display: flex;
+    display: none;
     flex-direction: row;
+  }
+
+  #drop-nav {
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px 0 rgba(153,153,153,0.35);
+    padding: 0;
+    margin: 0 auto;
+    text-align: center;
+    padding-right: 10px;
+    }
+
+  #my-nav-dropdown {
+    width: 100%;
+    background-color: #00e88a;
+    padding: 1px 2px;
+    list-style: none;
+    color: white;
+    text-decoration: none;
   }
 
   .nav-options {
