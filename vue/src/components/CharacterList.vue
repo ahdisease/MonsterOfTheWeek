@@ -16,12 +16,17 @@
           <character-card v-bind:character="character"></character-card>
         </div>
       </div>
-    </div>
-    <div id="intro" v-if="!showError">
+      <div id="intro" v-if="!showError">
       <p>
         This is your party viewer. Add 4 characters from the list below, then click Submit to create your party.
       </p>
     </div>
+    </div>
+    <!-- <div id="intro" v-if="!showError">
+      <p>
+        This is your party viewer. Add 4 characters from the list below, then click Submit to create your party.
+      </p>
+    </div> -->
 
     <div id="submit-cancel-update">
       <div class="update-button-container" v-if="checkUserParty">
@@ -663,7 +668,7 @@ export default {
   display: flex; 
   flex-wrap: wrap;
   flex-direction: column;
-  min-height: 310px;
+  min-height: 350px;
   background-color: #00201e;
   border: 5px outset goldenrod;
   border-radius: 6px;
@@ -689,6 +694,7 @@ export default {
 #intro > p {
   color: #00e88a;
   text-align: center;
+  margin-bottom: 5px;
 }
 
 .race-class-group {
