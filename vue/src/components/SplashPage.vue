@@ -27,9 +27,9 @@ export default {};
   background-color: #3a5268;
   width: 100%;
   background-image: url("https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681865026/SCAG_1920x1080_Wallpaper_cmmsj8.jpg");
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
-  min-height: 725px;
+  min-height: 700px;
   background-position-x: center;
   background-position-y:top;
 
@@ -89,6 +89,12 @@ margin: 0 auto;
 
 .nav-options:hover::before {
   width:100%;
+}
+
+@media screen and (max-width: 1000px) {
+  #wrapper {
+    background-image: url("https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681910644/SCAG_iPad_Wallpaper_ivrrtn.jpg");
+  }  
 }
 
 

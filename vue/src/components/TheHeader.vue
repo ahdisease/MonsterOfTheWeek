@@ -129,16 +129,42 @@ nav {
 }
 
 nav a {
-  box-shadow: inset 0 0 0 0 #00e88a;
-  color: #15b771;
-  margin: 0 -.25rem;
-  padding: 0 .25rem;
-  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+  background-image: linear-gradient(
+    to right,
+    #00e88a,
+    #00e88a 50%,
+    white 50%
+  );
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  padding: 5px 0;
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-in-out;
 }
+
+nav a:before {
+  content: '';
+  background: #00e88a;
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
 nav a:hover {
-  box-shadow: inset 100px 0 0 0 #15b771;
-  color: white;
+ background-position: 0;
 }
+
+nav a:hover::before {
+  width:100%;
+}
+
 
 /* nav a {
   color: whitesmoke;
@@ -154,8 +180,13 @@ nav a:hover {
 #motw-logo {
   width: 60px;
   margin: 0 0 15px 0;
-  /* text-shadow: 2px 2px 6px rgb(54, 2, 2); */
 }
+#motw-logo:hover {
+  box-shadow: 4px 4px 4px #00e88a, -4px -4px 4px #00e88a,
+              -4px 4px 4px #00e88a, 4px -4px 4px #00e88a;
+  border-radius: 50%;
+}
+
 
 @media screen and (max-width: 768px) {
   h2 {
