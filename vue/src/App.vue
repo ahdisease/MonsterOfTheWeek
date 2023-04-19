@@ -31,4 +31,10 @@ body {
   font-size: 14px;
 }
 
+@media screen and (max-width: 768px) {
+  #spacer {
+  height: 65px;
+  }
+}
+
 </style>
