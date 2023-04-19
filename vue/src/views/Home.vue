@@ -1,6 +1,7 @@
 <template>
-  <div class="home">
-    <p id="intro">
+  <div id="home">
+    <splash-page />
+    <!-- <p id="intro">
       Welcome to Monster of the Week, where you pick your party to battle
       against a monster every week. Start by
       <b-btn class="callToAction">
@@ -14,7 +15,7 @@
           >Forming a Party</router-link
         >
       </b-btn>
-    </p>
+    </p> -->
     <div id="main-battle">
       <div class="monster-space">
         <monster-splash />
@@ -34,6 +35,7 @@
 import MonsterSplash from "../components/MonsterSplash.vue";
 import PartyComponent from "../components/PartyComponent.vue";
 import PartyWinner from "../components/PartyWinner.vue";
+import SplashPage from '../components/SplashPage.vue';
 import CharacterService from '../services/CharacterService';
 
 export default {
@@ -49,6 +51,7 @@ export default {
     MonsterSplash,
     PartyComponent,
     PartyWinner,
+    SplashPage,
   },
 
   methods: {
@@ -78,7 +81,7 @@ export default {
 
 <style scoped>
 
-.home {
+#home {
  /* display: grid;
  background: #096660;
  grid-template-areas:
