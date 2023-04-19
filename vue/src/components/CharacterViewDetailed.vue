@@ -130,8 +130,8 @@ name: "character-view-detailed",
   background: #3a5268;
   margin: auto;
   padding-top: 10px;
-  width: 90%;
-  height: 100%;
+  /* width: 90%; */
+  /* height: 100%; */
   background-color: #607f9b;
   padding-bottom: 37px;
   
@@ -146,8 +146,10 @@ name: "character-view-detailed",
   font-size: 4em;
   color: #00E88A;
   background: #00201E
-  
+}
 
+.character-details {
+  margin: -10px;
 }
 
 .homeForm {
@@ -192,6 +194,10 @@ name: "character-view-detailed",
 
 #name-text {
   color: white;
+}
+
+.race-class-group {
+  margin-bottom: 20px;
 }
 
 #race-class {
@@ -370,7 +376,6 @@ button {
   #addHomeform {
     margin: 0 auto;
     width: 95%;
-    background-color: lightgray;
     padding: 1% 2%;
   }
 
@@ -382,8 +387,8 @@ button {
     grid-template-areas:
       "name-box name-box"
       "race class"
-      "picture picture"
       "lcol rcol"
+      "picture picture"
       "desc desc"
       "buttons buttons";
     gap: 2px;
@@ -392,12 +397,22 @@ button {
     text-align: center;
     font-size: 3em;
   }
-  #picture {
-    margin: 0 auto;
+
+  #rcol {
+    margin-left: -1px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
-  #picture img {
-    width: 60%;
-    margin: 0 auto;
+
+  #lcol {
+    margin-right: -1px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
   }
+
+  .stats-column {  
+  box-shadow: none;
+}
+ 
 }
 </style>
