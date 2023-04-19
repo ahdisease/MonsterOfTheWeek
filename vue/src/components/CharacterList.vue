@@ -651,7 +651,6 @@ export default {
 #whole-page {
   display: flex;
   flex-direction: column;
-  margin-top: 100px;
 }
 
 .character-list {
