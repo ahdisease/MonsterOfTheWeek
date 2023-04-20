@@ -138,6 +138,9 @@ h3 {
   max-width: 512px;
   height: 512px;
 }
+.monster-card-front:hover{
+  cursor: pointer;
+}
 .monster-card-back {
   width: 100%;
   border-radius: 10px;
@@ -149,9 +152,9 @@ h3 {
   max-width: 512px;
   height: 512px;
 }
-/* .monster-card-back{
-  min-height: 500px;
-} */
+.monster-card-back:hover{
+  cursor: pointer;
+}
 
 .monster-card-back h3 {
   padding: 10px;

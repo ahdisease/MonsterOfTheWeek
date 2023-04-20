@@ -401,6 +401,7 @@ export default {
 .card:hover {
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.9);
   border: 4px double #03ad83;
+  cursor: pointer;
 }
 #char-name {
   margin-top: 10px 0 5px 0;
