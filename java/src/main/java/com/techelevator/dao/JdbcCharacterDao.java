@@ -85,12 +85,7 @@ public class JdbcCharacterDao implements CharacterDao{
                 " constitution, intelligence, wisdom," +
                 " charisma, monster_id, user_id, image_id) Values (?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING id;";
 
-        if(character.getImage() != null) {
-            //Add default if url is blank
-            if (character.getImage().getUrl().equals("")) {
-                character.getImage().setUrl(DEFAULT_IMAGE_URL);
-            }
-
+        if(character.getImage() != null && !character.getImage().getUrl().isBlank()) {
             //add image to database
             CharacterImage savedImage = imageDao.addImage(character.getImage().getUrl());
 
