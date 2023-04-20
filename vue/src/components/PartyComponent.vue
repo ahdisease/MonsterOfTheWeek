@@ -76,7 +76,8 @@ export default {
   width:550px;
   border-radius: 6px;
   padding-bottom: 10px;
-  border: 4px solid  #00201E;
+  border: 4px solid #00201E;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
 }
 #partyName {
     background-color: #00201E;
