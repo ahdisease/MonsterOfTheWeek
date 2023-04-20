@@ -404,7 +404,6 @@ body {
   transition: all 0.2s;
   margin: 0 auto;
   height: 15vh;
-  resize: none; /* removes resize button function */
   outline: none; /* removes auto blue glow around text box */
   overflow: auto; /* hides scrollbar until needed */
   /* background: url(photos/fight-on.png) center center no-repeat; /* This ruins default border */
@@ -413,6 +412,10 @@ body {
 
 #description:hover {
   cursor: pointer;
+}
+
+#description::-webkit-scrollbar {
+  display: none;
 }
 
 #description:focus {
