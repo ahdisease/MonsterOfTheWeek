@@ -99,8 +99,11 @@
           id="flag"
           v-on:click.prevent="markFlagged"
           v-bind:class="isFlagged"
-          v-if="isFlaggable && character.flaggedInappropriate != 'flagged'
-           && character.flaggedInappropriate != 'reviewed'"
+          v-if="
+            isFlaggable &&
+            character.flaggedInappropriate != 'flagged' &&
+            character.flaggedInappropriate != 'reviewed'
+          "
         >
           Flag
         </b-button>
@@ -161,12 +164,13 @@ export default {
 
     confirmModeratorPermissions() {
       let allowed = false;
-
-      this.$store.state.user.authorities.forEach((authority) => {
-        if (authority.name === "ROLE_MOD") {
-          allowed = this.character.flaggedInappropriate === "flagged";
-        }
-      });
+      if (Object.keys(this.$store.state.user).length != 0) {
+        this.$store.state.user.authorities.forEach((authority) => {
+          if (authority.name === "ROLE_MOD") {
+            allowed = this.character.flaggedInappropriate === "flagged";
+          }
+        });
+      }
 
       return allowed;
     },
@@ -190,8 +194,8 @@ export default {
         if (this.imageIsApproved) {
           if (
             this.character.image.url !=
-            "https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681825649/Default_mypuwg.jpg"
-             && this.cardSide < 3
+              "https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681825649/Default_mypuwg.jpg" &&
+            this.cardSide < 3
           ) {
             this.cardSide += 1;
           } else {
@@ -246,6 +250,7 @@ export default {
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
   border: 4px double goldenrod;
   z-index: 1;
+  user-select: none;
 }
 
 .character-card-front {
@@ -364,7 +369,6 @@ export default {
   padding: 1px 2px;
   background-color: rgb(173, 42, 42);
   font-size: 0.8em;
-
 }
 #checkmark {
   background: black;

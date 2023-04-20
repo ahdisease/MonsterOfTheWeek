@@ -137,6 +137,7 @@ h3 {
   align-items: center;
   max-width: 512px;
   height: 512px;
+  user-select: none;
 }
 .monster-card-front:hover{
   cursor: pointer;
@@ -151,6 +152,7 @@ h3 {
   align-items: center;
   max-width: 512px;
   height: 512px;
+  user-select: none;
 }
 .monster-card-back:hover{
   cursor: pointer;
