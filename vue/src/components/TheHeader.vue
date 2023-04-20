@@ -4,13 +4,13 @@
       <!-- <link rel="preload" as="font" href="FletcherGothic-pwy.ttf" type="font/ttf" crossorigin="anonymous"> -->
       
         <h2>
-          <img
+          
+          <router-link class="nav-options" v-bind:to="{ name: 'home' }"
+            ><img
             id="motw-logo"
             src="https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681929227/LogoMotW_kjroas.png"
             alt="MotW Logo"
-          />
-          <router-link class="nav-options" v-bind:to="{ name: 'home' }"
-            >Monster of the Week
+          />Monster of the Week
           </router-link>
         </h2>
 
@@ -104,7 +104,7 @@ export default {
 
 h2 {
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: 2em;
+  font-size: 1.75em;
   color: #00e88a;
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
@@ -176,7 +176,7 @@ nav a:hover {
 
 #motw-logo {
   width: 60px;
-  margin: 0 0 15px 0;
+  margin: 0 10px 15px 0;
 }
 #motw-logo:hover {
   box-shadow: 4px 4px 4px #00e88a, -4px -4px 4px #00e88a, -4px 4px 4px #00e88a,
@@ -190,7 +190,7 @@ nav a:hover {
 
 @media screen and (max-width: 950px) {
   h2 {
-    font-size: 1.5em;
+    font-size: 1.3em;
   }
 
   .nav-options {

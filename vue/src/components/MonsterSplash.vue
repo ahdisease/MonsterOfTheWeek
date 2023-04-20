@@ -107,6 +107,8 @@ h3 {
 #container {
 border-radius: 6px;
  background-color:  #00201E;
+ border: 4px solid #00201E;
+ box-shadow: 4px 4px 8px rgba(0,0,0,0.4);
 }
 /* main {
   margin: 5%;
@@ -118,16 +120,28 @@ border-radius: 6px;
   
 }
 
-.monster-card-front,
-.monster-card-back {
+.monster-card-front{
   width: 100%;
-  height: auto;
+  /* height: auto; */
   border-radius: 10px;
   background-color: #00201e;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 512px;
+  height: 512px;
+}
+.monster-card-back {
+  width: 100%;
+  border-radius: 10px;
+  background-color: #00201e;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 512px;
+  height: 512px;
 }
 /* .monster-card-back{
   min-height: 500px;
@@ -147,8 +161,9 @@ border-radius: 6px;
 .all-stats {
   display: flex;
   flex-wrap: wrap;
-  padding: 10px;
-  gap: 10px;
+  width: 70%;
+  padding: 20px;
+  gap: 20px;
   /* justify-content:space-around; */
   align-content: space-around;
   color: #00e88a;
@@ -160,16 +175,18 @@ border-radius: 6px;
 }
 
 .stats-name {
-  font-size: 1em;
+  font-size: 1.1em;
   font-weight: 500;
 }
 
 .stats-value {
-  font-size: 1em;
-  background-color: #3a5268;
+  font-size: 1.1em;
+  background-color: #FFFFFF;
   width: 50%;
   margin: 0 auto;
   border-radius: 6px;
+  padding: 10px;
+  color: black;
 }
 
 .monster-card-front img {
