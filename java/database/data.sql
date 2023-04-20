@@ -9,6 +9,7 @@ INSERT INTO users (username,password_hash,role) VALUES ('DobbyTheElf','$2a$08$Uk
 INSERT INTO users (username,password_hash,role) VALUES ('BoatyMcBoatface','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER'); --id 7
 INSERT INTO users (username,password_hash,role) VALUES ('juggerN0T','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER'); --id 8
 INSERT INTO users (username,password_hash,role) VALUES ('four_letter_word','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER'); --id 9
+INSERT INTO users (username,password_hash,role) VALUES ('Aragorn','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER'); --id 9
 
 INSERT INTO monster (name_index, start_date, end_date) VALUES ('monster','2020-01-01','2020-01-07'); --id 1
 INSERT INTO monster (name_index, start_date, end_date) VALUES ('monstar','2020-01-08','2020-01-14'); --id 2
