@@ -9,7 +9,7 @@ INSERT INTO users (username,password_hash,role) VALUES ('DobbyTheElf','$2a$08$Uk
 INSERT INTO users (username,password_hash,role) VALUES ('BoatyMcBoatface','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER'); --id 7
 INSERT INTO users (username,password_hash,role) VALUES ('juggerN0T','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER'); --id 8
 INSERT INTO users (username,password_hash,role) VALUES ('four_letter_word','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER'); --id 9
-INSERT INTO users (username,password_hash,role) VALUES ('Aragorn','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER'); --id 9
+INSERT INTO users (username,password_hash,role) VALUES ('Aragorn','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_MOD'); --id 9
 
 INSERT INTO monster (name_index, start_date, end_date) VALUES ('monster','2020-01-01','2020-01-07'); --id 1
 INSERT INTO monster (name_index, start_date, end_date) VALUES ('monstar','2020-01-08','2020-01-14'); --id 2
@@ -28,10 +28,10 @@ INSERT INTO image (url,approved) VALUES ('https://res.cloudinary.com/c19-lima-mo
 INSERT INTO image (url,approved) VALUES ('https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681917309/katara_gwix87.jpg', true); --id 9 Kay
 INSERT INTO image (url,approved) VALUES ('https://res.cloudinary.com/c19-lima-monster-of-the-week/image/upload/v1681920065/Wizzard_c8yhku.webp', true); --id 10 Al
 
-INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, image_id)
+INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, flagged_inappropriate, image_id)
 	VALUES ('Jet', 'Fighter', 'Elf',
 	'Learned the magic of ocean creatures and utilizes that power in his fighting style. Grew up working for his fathers criminal organization, drawing in merchant ships with Siren collaborators and salvaging the goods from the ensuing wreckage. He hass been recovering from a bad personality ever since.',
-	 18,17,15,12,13,14, 4,1, 2); --id 1
+	 18,17,15,12,13,14, 4,1, 'flagged', 2); --id 1
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, image_id)
 	VALUES ('Ba', 'Wizard', 'Dwarf', 'Eats rocks. Tamed a basalisk to make more rocks to eat.', 14,18,16,15,12,13, 4,2, 3); --id 2
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id)
@@ -62,10 +62,10 @@ INSERT INTO character (name, char_class, race, description, strength, dexterity,
 	VALUES ('Bee', 'Fighter', 'Dwarf', 'He stabs people.', 10,10,10,10,10,10, 3,3, 7); --id 12
 INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, image_id)
 	VALUES ('Al', 'Wizard', 'Dragon Born', 'He curses people.', 10,10,10,10,10,10, 3,2, 10); --id 13
-INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, flagged_inappropriate, active)
-	VALUES ('Tim', 'Wizard', 'Human', 'He does magic against people.', 10,10,10,10,10,10, 4,7, 'not_flagged', true); --id 14
-INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, flagged_inappropriate, active)
-	VALUES ('George', 'Bard', 'Halfling', 'His music is awful.', 10,10,10,10,10,10, 3,1, 'flagged', false); --id 15
+INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, flagged_inappropriate)
+	VALUES ('Tim', 'Wizard', 'Human', 'He does magic against people.', 10,10,10,10,10,10, 4,7, 'flagged'); --id 14
+INSERT INTO character (name, char_class, race, description, strength, dexterity, constitution, intelligence, wisdom, charisma, monster_id, user_id, flagged_inappropriate)
+	VALUES ('George', 'Bard', 'Halfling', 'His music is awful.', 10,10,10,10,10,10, 3,1, 'flagged'); --id 15
 	
 	
 	
@@ -82,6 +82,7 @@ INSERT INTO users_party (user_id,party_id) VALUES (6,1); --monster 4
 INSERT INTO users_party (user_id,party_id) VALUES (7,3); --monster 4
 INSERT INTO users_party (user_id,party_id) VALUES (8,3); --monster 4
 INSERT INTO users_party (user_id,party_id) VALUES (9,1); --monster 4
+INSERT INTO users_party (user_id,party_id) VALUES (3,1); --monster 4
 INSERT INTO users_party (user_id,party_id) VALUES (1,4); --monster 3
 
 
