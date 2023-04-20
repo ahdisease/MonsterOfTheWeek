@@ -99,12 +99,14 @@
 
       <div id="desc">
         <label for="description">Description</label>
-        <input
+        <div>
+        <textarea placeholder="Fight On..."
           id="description"
           type="textarea"
-          class="form-control"
+          class="text-area"
           v-model="newCharacter.description"
         />
+        </div>
       </div>
       <div class="buttons" id="buttons">
         <button class="btn btn-submit">Submit</button>
@@ -393,9 +395,32 @@ body {
 }
 
 #description {
-  width: 90%;
-  margin-left: 5%;
-  
+  border-radius: 10px;
+  border: 2px solid transparent;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.4;
+  width: 80%;
+  transition: all 0.2s;
+  margin: 0 auto;
+  height: 15vh;
+  resize: none; /* removes resize button function */
+  outline: none; /* removes auto blue glow around text box */
+  overflow: auto; /* hides scrollbar until needed */
+  /* background: url(photos/fight-on.png) center center no-repeat; /* This ruins default border */
+  /* border: 1px solid #888;  */
+}
+
+#description:hover {
+  cursor: pointer;
+}
+
+#description:focus {
+  cursor: text;
+  color: #00201E;
+  border-color: goldenrod;
+  box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 #buttons {
