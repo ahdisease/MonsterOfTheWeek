@@ -2,7 +2,8 @@
   <div id="whole-page">
     <div class="party-container">
       <div class="current-party">
-        <div id="party-cards"
+        <div
+          id="party-cards"
           v-bind:key="character.id3"
           v-for="character in party"
           @dblclick.prevent="removePartyMember(character)"
@@ -17,10 +18,17 @@
         </div>
       </div>
       <div id="intro" v-if="!showError">
-      <p>
-        This is your party viewer. Add 4 characters from the list below, then click Submit to create your party.
-      </p>
+        <p id="party-text">
+          This is your party viewer. Add 4 characters from the list below, then
+          click Submit to create your party.
+        </p>
+      </div>
     </div>
+    <div id="short-party-text">
+      <p>
+        This is your party viewer. Add 4 characters from the list below, then
+        click Submit to create your party.
+      </p>
     </div>
     <!-- <div id="intro" v-if="!showError">
       <p>
@@ -39,11 +47,7 @@
 
       <div class="button-container" v-if="!checkUserParty">
         <div class="buttons">
-          <button
-            class="btn btn-submit"
-            
-            v-on:click.prevent="submitForm"
-          >
+          <button class="btn btn-submit" v-on:click.prevent="submitForm">
             Submit
           </button>
           <button class="btn btn-cancel" type="cancel" v-on:click="cancelForm">
@@ -416,7 +420,7 @@ export default {
           CharacterService.getCharacterById(partyObject.characterFour).then(
             (response) => {
               this.party.push(response.data);
-              console.log(this.party)
+              console.log(this.party);
             }
           );
         }
@@ -492,19 +496,15 @@ export default {
     addPartyMember(character) {
       if (this.party.length < 4) {
         let partyDoesNotContain = true;
-        this.party.forEach(partyMember => {
-          
-          if(partyMember.id == character.id){
+        this.party.forEach((partyMember) => {
+          if (partyMember.id == character.id) {
             partyDoesNotContain = false;
-
-           
-
           }
-        }); if (partyDoesNotContain == true) {
-           this.party.push(character);
-
+        });
+        if (partyDoesNotContain == true) {
+          this.party.push(character);
         }
-      } 
+      }
     },
     removePartyMember(character) {
       let indexNumber = this.party.indexOf(character);
@@ -556,7 +556,6 @@ export default {
     //   return filteredPartyList;
     // },
     checkUserParty() {
-       
       // This is the old method that doesn't really work *******
       let created = Object.keys(this.$store.state.userParty).length != 0;
       console.log(this.$store.state.userParty);
@@ -647,14 +646,13 @@ export default {
 </script>
 
 <style scoped>
-
 #whole-page {
   display: flex;
   flex-direction: column;
 }
 
 .character-list {
-  display:flex;
+  display: flex;
   justify-content: center;
   align-content: space-between;
   flex-wrap: wrap;
@@ -665,7 +663,7 @@ export default {
 }
 
 .party-container {
-  display: flex; 
+  display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   min-height: 350px;
@@ -805,11 +803,11 @@ export default {
   border-radius: 6px;
 }
 
-@media screen and (max-width: 768px) {
-  .party-container {
-  top: 75px;
+#short-party-text {
+  display: none;
 }
 
+@media screen and (max-width: 768px) {
   #raceClassDropdown {
     padding: 15px;
     display: flex;
@@ -836,6 +834,24 @@ export default {
   }
   .att-group {
     margin: 5px;
+  }
+}
+
+@media screen and (max-height: 750px) {
+  .party-container {
+    top: 75px;
+    margin: 3px auto;
+    min-height: 305px;
+  }
+
+  #party-text {
+    display: none;
+  }
+  #short-party-text {
+    display: block;
+    color: #00e88a;
+    text-align: center;
+    margin: 5px auto;
   }
 }
 </style>

@@ -449,4 +449,10 @@ export default {
 
   border-radius: 2px;
 }
+
+@media screen and (max-height: 768px) {
+  .card {
+    margin: 3px;
+  }
+}
 </style>

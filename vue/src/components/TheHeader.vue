@@ -231,26 +231,23 @@ nav a:hover {
     border-radius: 4px;
     margin: auto 10px;
     text-align: center;
+    
     }
 
   #my-nav-dropdown {
     width: 100%;
-    background-color: goldenrod;
+    background-color: #00e88a;
     padding: 1px 2px;
     border-radius: 10px;
     list-style: none;
-    color: #3a5268;
     text-decoration: none;
-  }
-
-  #my-nav-dropdown:hover {
-    background-color: rgb(243, 176, 8);
   }
 
   .nav-options {
     font-size: 1.2em;
     padding: 1px 12px;
     margin: 0 auto;
+    
   }
 }
 </style>
