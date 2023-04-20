@@ -163,6 +163,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  align-items:flex-start;
   height: auto;
   width: 100%;
 }
@@ -171,7 +172,7 @@ export default {
   grid-area: monster-space;
   border-radius: 6px;
   /* background-color: #00201e; */
-  margin: 10px;
+  margin: 0 10px;
 }
 .versus {
   /* align-self: center; */
