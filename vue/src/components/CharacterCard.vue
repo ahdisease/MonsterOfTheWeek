@@ -250,6 +250,7 @@ export default {
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
   border: 4px double goldenrod;
   z-index: 1;
+  user-select: none;
 }
 
 .character-card-front {
