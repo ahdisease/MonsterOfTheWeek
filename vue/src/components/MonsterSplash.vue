@@ -208,16 +208,36 @@ h3 {
   border-radius: 10px;
 }
 
-/* 
-@media screen and (max-width: 1000px) {
-  
 
-  .stats-name {
-  font-size: .9em;
-  font-weight: 500;
+@media screen and (max-width: 1200px) {
+  
+.all-stats {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 90%;
+  padding: 10px 5px;
+  gap: 10px;
+  /* justify-content:space-around; */
+  align-content: space-around;
+  color: #00e88a;
+}
+.stats-value {
+  font-size: 1.1em;
+  /* background-color: #FFFFFF; */
+  background-color: lightgray;
+
+  margin: 0 auto;
+  border-radius: 6px;
+  padding: 10px;
+  color: black;
+}
+.stats-box {
+  text-align: center;
+
+  flex: 40%;
 }
 
 
-
-} */
+} 
 </style>
