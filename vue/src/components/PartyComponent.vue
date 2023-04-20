@@ -71,13 +71,16 @@ export default {
 </script>
 
 <style scoped>
-/* #wrapper {
-  background-color: #00201E;
-  width: 400px;
+#wrapper {
+  background-color: #506579;
+  width:550px;
   border-radius: 6px;
   padding-bottom: 10px;
-} */
+  border: 4px solid  #00201E;
+}
 #partyName {
+    background-color: #00201E;
+
   font-size: 3em;
   text-align: center;
   color: #00e88a;
