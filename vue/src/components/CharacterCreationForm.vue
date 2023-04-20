@@ -484,14 +484,11 @@ button {
   color: #fff;
   padding: 10px 24px;
   background-color: #00E88A;
-  box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
-    0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 .btn-cancel {
   color: #fff;
   padding: 10px 24px;
-  box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
-    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  background-color: goldenrod;
 }
 .btn-submit:hover {
   color: #fff;
