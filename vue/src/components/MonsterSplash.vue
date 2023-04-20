@@ -1,65 +1,72 @@
 <template>
   <main>
     <div>
-    <!-- The code below this works **** -->
-    <div id="container">
-      <h1 id="monsterName">{{ monster.name }}</h1>
+      <!-- The code below this works **** -->
+      <div id="container">
+        <h1 id="monsterName">{{ monster.name }}</h1>
 
-      <div
-        class="monster-card-front"
-        v-show="!showDetails"
-        v-on:click="turnMonsterCard"
-      >
-        <img
-          v-bind:src="'https://www.dnd5eapi.co' + monster.image"
-          alt="image of monster"
-        />
-      </div>
-      <!-- The code above this works ***** -->
+        <div
+          class="monster-card-front"
+          v-show="!showDetails"
+          v-on:click="turnMonsterCard"
+        >
+          <img
+            v-bind:src="'https://www.dnd5eapi.co' + monster.image"
+            alt="image of monster"
+          />
+        </div>
+        <!-- The code above this works ***** -->
 
-      <!-- Below this is what works -->
-      <div
-        class="monster-card-back"
-        v-show="showDetails"
-        v-on:click="turnMonsterCard"
-      >
-        <!-- <h3>{{ monster.name }}</h3> -->
-        <div class="hit-points">HP: {{ monster.hit_points }}</div>
-        <div class="all-stats">
-          <div class="stats-box">
-            <div class="stats-name">STRENGTH</div>
-            <div class="stats-value" id="str-value">{{ monster.strength }}</div>
-          </div>
-          <div class="stats-box">
-            <div class="stats-name">DEXTERITY</div>
-            <div class="stats-value" id="dex-value">
-              {{ monster.dexterity }}
+        <!-- Below this is what works -->
+        <div
+          class="monster-card-back"
+          v-show="showDetails"
+          v-on:click="turnMonsterCard"
+        >
+          <!-- <h3>{{ monster.name }}</h3> -->
+          <div class="hit-points">HP: {{ monster.hit_points }}</div>
+          <div class="all-stats">
+            <div class="stats-box">
+              <div class="stats-name">Strength</div>
+              <div class="stats-value" id="str-value">
+                {{ monster.strength }}
+              </div>
             </div>
-          </div>
-          <div class="stats-box">
-            <div class="stats-name">CONSTITUTION</div>
-            <div class="stats-value" id="con-value">
-              {{ monster.constitution }}
+            <div class="stats-box">
+              <div class="stats-name">Intelligence</div>
+              <div class="stats-value" id="int-value">
+                {{ monster.intelligence }}
+              </div>
             </div>
-          </div>
-          <div class="stats-box">
-            <div class="stats-name">INTELLIGENCE</div>
-            <div class="stats-value" id="int-value">
-              {{ monster.intelligence }}
+
+            <div class="stats-box">
+              <div class="stats-name">Dexterity</div>
+              <div class="stats-value" id="dex-value">
+                {{ monster.dexterity }}
+              </div>
             </div>
-          </div>
-          <div class="stats-box">
-            <div class="stats-name">WISDOM</div>
-            <div class="stats-value" id="wis-value">{{ monster.wisdom }}</div>
-          </div>
-          <div class="stats-box">
-            <div class="stats-name">CHARISMA</div>
-            <div class="stats-value" id="cha-value">{{ monster.charisma }}</div>
+            <div class="stats-box">
+              <div class="stats-name">Wisdom</div>
+              <div class="stats-value" id="wis-value">{{ monster.wisdom }}</div>
+            </div>
+
+            <div class="stats-box">
+              <div class="stats-name">Constitution</div>
+              <div class="stats-value" id="con-value">
+                {{ monster.constitution }}
+              </div>
+            </div>
+
+            <div class="stats-box">
+              <div class="stats-name">Charisma</div>
+              <div class="stats-value" id="cha-value">
+                {{ monster.charisma }}
+              </div>
+            </div>
           </div>
         </div>
+        <!-- This is the end of the div that works *** -->
       </div>
-      <!-- This is the end of the div that works *** -->
-    </div>
     </div>
   </main>
 </template>
@@ -105,10 +112,10 @@ h3 {
   text-align: center;
 }
 #container {
-border-radius: 6px;
- background-color:  #00201E;
- border: 4px solid #00201E;
- box-shadow: 4px 4px 8px rgba(0,0,0,0.4);
+  border-radius: 6px;
+  background-color: #00201e;
+  border: 4px solid #00201e;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
 }
 /* main {
   margin: 5%;
@@ -117,10 +124,9 @@ border-radius: 6px;
   font-size: 3em;
   text-align: center;
   color: #00e88a;
-  
 }
 
-.monster-card-front{
+.monster-card-front {
   width: 100%;
   /* height: auto; */
   border-radius: 10px;
@@ -138,7 +144,7 @@ border-radius: 6px;
   background-color: #00201e;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   max-width: 512px;
   height: 512px;
@@ -153,8 +159,9 @@ border-radius: 6px;
 }
 .hit-points {
   font-weight: bold;
-  font-size: 1.25em;
+  font-size: 1.6em;
   color: #00e88a;
+  margin-top: 50px;
 
   /* padding: 5px; */
 }
@@ -162,7 +169,7 @@ border-radius: 6px;
   display: flex;
   flex-wrap: wrap;
   width: 70%;
-  padding: 20px;
+  padding: 30px 20px;
   gap: 20px;
   /* justify-content:space-around; */
   align-content: space-around;
@@ -171,17 +178,20 @@ border-radius: 6px;
 
 .stats-box {
   text-align: center;
+
   flex: 30%;
 }
 
 .stats-name {
-  font-size: 1.1em;
+  font-size: 1.4em;
   font-weight: 500;
 }
 
 .stats-value {
-  font-size: 1.1em;
-  background-color: #FFFFFF;
+  font-size: 1.4em;
+  /* background-color: #FFFFFF; */
+  background-color: lightgray;
+
   width: 50%;
   margin: 0 auto;
   border-radius: 6px;

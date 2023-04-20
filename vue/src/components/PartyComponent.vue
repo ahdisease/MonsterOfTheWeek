@@ -116,7 +116,7 @@ export default {
 
 @media screen and (max-width: 768px) {
   #wrapper {
-    width: 400px;
+    /* width: 400px; */
   }
 }
 </style>
