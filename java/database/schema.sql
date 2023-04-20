@@ -93,10 +93,10 @@ CREATE TABLE users_party (
 	constraint fk_users_party_party foreign key (party_id) references party (id)
 );
 
-CREATE UNIQUE INDEX ON party (
-greatest(character_1,character_2,character_3,character_4),
-least(character_4,character_3,character_2,character_1)
- );
+--CREATE UNIQUE INDEX ON party (
+--greatest(character_1,character_2,character_3,character_4),
+--least(character_4,character_3,character_2,character_1)
+-- );
 
 
 
