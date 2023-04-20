@@ -83,19 +83,22 @@ export default {
 
 #timer {
     margin: 0 auto;
+
 }
 .timer {
-    display: inline-flex;
+    display: flex;
+    justify-content: center;
     font-family: 'Orbitron';
     background-color: #00201e;
     color: lightgreen;
     /* font-weight: bold; */
-    width: 100%;
+    width: 75%;
     height: auto;
     font-size: 40px;
     border: 4px double goldenrod;
+    border-radius: 20px;
     padding-left: 5px;
-    
+    margin: 0 auto;
 }
 
 .text{
@@ -108,6 +111,7 @@ export default {
 #DHMS {
     color: lightgreen;
     font-weight: bold;
+    text-align: center;
 }
     
     /* background-image: linear-gradient(

@@ -108,7 +108,7 @@
           <option value="Paladin">Paladin</option>
           <option value="Ranger">Ranger</option>
           <option value="Rogue">Rogue</option>
-          <option value="Sorceror">Sorceror</option>
+          <option value="Sorcerer">Sorcerer</option>
           <option value="Warlock">Warlock</option>
           <option value="Wizard">Wizard</option>
         </select>
@@ -582,7 +582,7 @@ export default {
           (character) => character.strength >= this.filter.strength
         );
       }
-      if (this.filter.constitution != "") {
+      if (this.filter.dexterity != "") {
         filteredCharacters = filteredCharacters.filter(
           (character) => character.dexterity >= this.filter.dexterity
         );
