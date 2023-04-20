@@ -111,8 +111,7 @@ h2 {
   padding: 8px 0 0 0;
   text-shadow: 2px 2px 6px rgb(54, 2, 2);
   margin: auto 0 auto 15px;
-  text-decoration: underline;
-  text-decoration-color: goldenrod;
+  
 }
 h2 a {
   text-decoration: none;
