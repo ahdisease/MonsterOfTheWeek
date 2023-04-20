@@ -103,8 +103,7 @@ export default {
 }
 
 h2 {
-  font-family: FletcherGothic, "Franklin Gothic Medium", "Arial Narrow", Arial,
-    sans-serif;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 2em;
   color: #00e88a;
   -webkit-text-stroke-width: 0.5px;

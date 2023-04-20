@@ -123,10 +123,8 @@ export default {
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
   background-color: #506579;
   margin: 10px auto;
-  margin-left: 62%;
-  text-align: center;
   padding: 10px;
-  width: 23%;
+  width: 50%;
   border-radius: 20px;
 }
 #intro {
@@ -244,5 +242,9 @@ export default {
     /* width: 75%; */
     margin: 10px 0;
   }
+
+#home-timer {
+  width: 100%;
+}
 }
 </style>

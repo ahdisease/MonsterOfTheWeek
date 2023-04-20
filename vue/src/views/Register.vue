@@ -18,7 +18,9 @@
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
       <button type="submit" class="create-btn">Create Account</button>
-      <p><router-link :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+      <div>
+      <p id="login-link"><router-link :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+      </div>
     </form>
   </div>
 </template>
@@ -120,5 +122,42 @@ h1 {
 
 label {
   margin-right: 0.5rem;
+}
+
+#login-link {
+  background-image: linear-gradient(
+    to right,
+    #00e88a,
+    #00e88a 50%,
+    white 50%
+  );
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  padding: 5px 0;
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+#login-link:before {
+  content: '';
+  background: #00e88a;
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+#login-link:hover {
+ background-position: 0;
+}
+
+#login-link:hover::before {
+  width:100%;
 }
 </style>
