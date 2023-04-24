@@ -423,6 +423,7 @@ export default {
   overflow: auto;
 
   -webkit-mask-image: linear-gradient(180deg, #000 88%, transparent);
+  scrollbar-width: none;
 }
 
 #description::-webkit-scrollbar {
