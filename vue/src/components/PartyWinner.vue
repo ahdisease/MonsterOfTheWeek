@@ -40,7 +40,11 @@ export default {
   // change hard coded date
 
   created() {
-    CharacterService.getWinningParty("2023-04-09").then((response) => {
+    let lastWeek = new Date();  //date object instantiates to today
+    lastWeek.setDate(lastWeek.getDate()-7);
+
+    CharacterService.getWinningParty(lastWeek.toJSON().slice(0, 10)).then((response) => {
+      
       if (response.data) {
         const partyObject = response.data;
         CharacterService.getCharacterById(partyObject.characterOne).then(

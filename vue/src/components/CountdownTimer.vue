@@ -1,75 +1,84 @@
 <template>
-  <aside id="timer">
-      <div><p class="text">The Battle begins in: </p></div>
-      <div class="timer">
-          <span>{{days}}</span>
-          <span> :</span>
-          <span> {{hours}}</span>
-          <span> : </span>
-          <span> {{minutes}}</span>
-          <span> : </span>
-          <span> {{seconds}}</span>
+    <aside id="timer">
+        <div>
+            <p class="text">The Battle begins in: </p>
+        </div>
+        <div class="timer">
+            <span>{{ days }}</span>
+            <span> :</span>
+            <span> {{ hours }}</span>
+            <span> : </span>
+            <span> {{ minutes }}</span>
+            <span> : </span>
+            <span> {{ seconds }}</span>
 
-          </div>
-      <!-- <div class="timer">{{days}}</div>
+        </div>
+        <!-- <div class="timer">{{days}}</div>
       :
       <div class="timer">{{hours}}</div>
       :
       <div class="timer">{{minutes}}</div>
       :
       <div class="timer">{{seconds}}</div> -->
-      <p id="DHMS">Days | Hours | Minutes | Seconds </p>
-  </aside>
-
-
+        <p id="DHMS">Days | Hours | Minutes | Seconds </p>
+    </aside>
 </template>
 
 <script>
-
+import MonsterService from '../services/MonsterService';
 export default {
     data() {
         return {
-            days:0,
-            hours:0,
-            minutes:0,
-            seconds:0
+            days: 0,
+            hours: 0,
+            minutes: 0,
+            seconds: 0,
+            endDate: new Date()
         }
+
     },
 
     methods: {
         currentTime() {
             const currentTime = new Date();
-            const cutoffTime = new Date('2023-04-22');
 
-            let countdownSeconds = Number.parseInt(Math.abs(cutoffTime.getTime() - currentTime.getTime())/1000);
-            const timerValues = [86400,3600,60,1];
-            
+            const cutoffTime = new Date(this.endDate);
+
+            let countdownSeconds = Number.parseInt(Math.abs(cutoffTime.getTime() - currentTime.getTime()) / 1000);
+            const timerValues = [86400, 3600, 60, 1];
+
             for (let i = 0; i < timerValues.length; i++) {
                 const units = Math.floor(countdownSeconds / timerValues[i]);
                 countdownSeconds = countdownSeconds % timerValues[i];
                 timerValues[i] = units;
             }
-            
+
             this.seconds = timerValues[3].toLocaleString('en-US', {
-    minimumIntegerDigits: 2,
-    useGrouping: false
-  });
+                minimumIntegerDigits: 2,
+                useGrouping: false
+            });
             this.minutes = timerValues[2].toLocaleString('en-US', {
-    minimumIntegerDigits: 2,
-    useGrouping: false
-  });
+                minimumIntegerDigits: 2,
+                useGrouping: false
+            });
             this.hours = timerValues[1].toLocaleString('en-US', {
-    minimumIntegerDigits: 2,
-    useGrouping: false
-  });
+                minimumIntegerDigits: 2,
+                useGrouping: false
+            });
             this.days = timerValues[0].toLocaleString('en-US', {
-    minimumIntegerDigits: 2,
-    useGrouping: false
-  });
+                minimumIntegerDigits: 2,
+                useGrouping: false
+            });
         }
     },
 
     created() {
+        MonsterService.getCurrentMonster().then((response) => {
+            if (response.data) {
+                this.endDate = response.data.endDate;
+            }
+        });
+
         this.currentTime();
         setInterval(this.currentTime, 1000)
     }
@@ -85,6 +94,7 @@ export default {
     margin: 0 auto;
 
 }
+
 .timer {
     display: flex;
     justify-content: center;
@@ -101,7 +111,7 @@ export default {
     margin: 0 auto;
 }
 
-.text{
+.text {
     text-align: center;
     font-weight: bold;
     color: lightgreen;
@@ -113,8 +123,8 @@ export default {
     font-weight: bold;
     text-align: center;
 }
-    
-    /* background-image: linear-gradient(
+
+/* background-image: linear-gradient(
     to right,
     #462523 0,
     #cb9b51 22%,
@@ -130,6 +140,4 @@ export default {
    text-align: center;
 
 } */
-
-
 </style>
