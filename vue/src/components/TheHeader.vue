@@ -129,6 +129,9 @@ nav {
   font-size: 1.2em;
   margin: auto 15px;
   color: #00e88a;
+  
+  /* hide anchor underline for firefox */
+  text-decoration: none;
 }
 
 nav a {

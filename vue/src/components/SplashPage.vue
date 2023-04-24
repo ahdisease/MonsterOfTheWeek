@@ -119,6 +119,9 @@ h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: all 0.2s ease-in-out;
+
+  /* hide anchor underline for firefox */
+  text-decoration: none;
 }
 
 .nav-options:before {
