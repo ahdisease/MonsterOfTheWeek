@@ -10,26 +10,13 @@
 
       <div class="name-group" id="name-box">
         <label for="name">Name</label>
-        <input
-          id="name"
-          type="text"
-          class="form-control"
-          v-model="newCharacter.name"
-        />
+        <input id="name" type="text" class="form-control" v-model="newCharacter.name" />
       </div>
 
-     <div class="race-class-group" id="race">
+      <div class="race-class-group" id="race">
         <label for="race">Race</label>
-        <select
-          id="race-selection"
-          class="form-control"
-          v-model="newCharacter.race"
-        >
-          <option
-            v-for="race in dropdownRace"
-            v-bind:key="race.id"
-            v-bind:value="race.name"
-          >
+        <select id="race-selection" class="form-control" v-model="newCharacter.race" v-on:change="getRaceDetails">
+          <option v-for="race in dropdownRace" v-bind:key="race.id" v-bind:value="race.name">
             {{ race.name }}
           </option>
         </select>
@@ -37,19 +24,22 @@
 
       <div class="race-class-group" id="class">
         <label for="charClass">Class</label>
-        <select
-          id="class-selection"
-          class="form-control"
-          v-model="newCharacter.charClass"
-        >
-          <option
-            v-for="charClass in dropdownClass"
-            v-bind:key="charClass.id"
-            v-bind:value="charClass.name"
-          >
+        <select id="class-selection" class="form-control" v-model="newCharacter.charClass" v-on:change="getClassDetails">
+          <option v-for="charClass in dropdownClass" v-bind:key="charClass.id" v-bind:value="charClass.name">
             {{ charClass.name }}
           </option>
         </select>
+        <div id="class-desc">
+
+          <div id="class-description">
+            <label for="class-description">Class Proficiencies</label>
+            <ul>
+              <li v-for="proficiency in classDetails.proficiencies" v-bind:key="proficiency.index">
+                {{ proficiency.name }}
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <div class="stats-column" id="lcol">
@@ -69,7 +59,7 @@
 
 
       <div id="cloud-btn" class="cloud">
-      <cloudinary-image-upload v-on:pictureUpload="getPhotoUploadInfo" />
+        <cloudinary-image-upload v-on:pictureUpload="getPhotoUploadInfo" />
       </div>
 
 
@@ -100,14 +90,11 @@
       <div id="desc">
         <label for="description">Description</label>
         <div>
-        <textarea placeholder="Fight On..."
-          id="description"
-          type="textarea"
-          class="text-area"
-          v-model="newCharacter.description"
-        />
+          <textarea placeholder="Fight On..." id="description" type="textarea" class="text-area"
+            v-model="newCharacter.description" />
         </div>
       </div>
+
       <div class="buttons" id="buttons">
         <button class="btn btn-submit">Submit</button>
         <button class="btn btn-cancel" type="cancel" v-on:click="cancelForm">
@@ -120,6 +107,7 @@
 
 <script>
 import CharacterService from "../services/CharacterService.js";
+import DndApiService from "../services/DndApiService.js";
 import DnDApiService from "../services/DndApiService.js";
 import MonsterService from "../services/MonsterService.js";
 import CloudinaryImageUpload from "./CloudinaryImageUpload.vue"
@@ -131,7 +119,7 @@ export default {
   },
   data() {
     return {
-      
+
       newCharacter: {
         id: -1,
         name: "",
@@ -148,31 +136,24 @@ export default {
 
         monsterId: 1,
         userId: 1,
-        image: 
-          {
-            url: '',
-          }
+        image:
+        {
+          url: '',
+        }
       },
       dropdownRace: [
         {
-          name: "Dwarf",
-        },
-        {
-          name: "Elf",
-        },
-        {
-          name: "Halfling",
-        },
+          name: "",
+        }
       ],
       dropdownClass: [
         {
-          name: "Barbarian",
-        },
-        {
-          name: "Bard",
+          name: "",
         },
       ],
-      photoUploadInfo:{}
+      raceDetails: '',
+      classDetails: '',
+      photoUploadInfo: {},
     };
   },
 
@@ -188,9 +169,9 @@ export default {
   methods: {
     setMonsterId() {
       MonsterService.getMonsterByDate(new Date().toJSON().slice(0, 10))
-      .then(response => {
-        this.newCharacter.monsterId = response.data.id;
-      });
+        .then(response => {
+          this.newCharacter.monsterId = response.data.id;
+        });
     },
     resetCharacter() {
       this.newCharacter = {
@@ -205,13 +186,13 @@ export default {
         intelligence: 3,
         wisdom: 3,
         charisma: 3,
-        
+
         monsterId: 1,
         userId: 1,
-        image: 
-          {
-            url: '',
-          }
+        image:
+        {
+          url: '',
+        }
       };
       this.setMonsterId();
     },
@@ -231,25 +212,64 @@ export default {
         });
     },
     cancelForm() {
-      this.$router.push({name: "character-creator"});
+      this.$router.push({ name: "character-creator" });
     },
-    getPhotoUploadInfo(event){
+    getPhotoUploadInfo(event) {
       this.newCharacter.image.url = event.url;
     },
+    getRaceDetails() {
+      if (this.dropdownRace.length > 1 && this.newCharacter.race) {
+        DndApiService.getRaceDetails(this.currentRace[0].url)
+          .then(response => {
+            this.raceDetails = response.data;
+          });
+      } else {
+        this.raceDetails = '';
+      }
+    },
+    getClassDetails() {
+      if (this.dropdownClass.length > 1 && this.newCharacter.charClass) {
+        DndApiService.getClassDetails(this.currentClass[0].url)
+          .then(response => {
+            this.classDetails = response.data;
+          });
+      } else {
+        this.classDetails = '';
+      }
+    },
   },
+  computed: {
+    currentRace() {
+      if (this.dropdownRace.length > 1 && this.newCharacter.race) {
+        return this.dropdownRace.filter(race => {
+          return race.name == this.newCharacter.race;
+        })
+      } else {
+        return '';
+      }
+    },
+    currentClass() {
+      if (this.dropdownClass.length > 1 && this.newCharacter.charClass) {
+        return this.dropdownClass.filter(charClass => {
+          return charClass.name == this.newCharacter.charClass;
+        })
+      } else {
+        return '';
+      }
+    }
+  }
 };
 </script>
 
 <style scoped>
-
 body {
   background: #3a5268;
-} 
+}
 
 #addHomeform {
   display: grid;
   grid-template-areas: "title"
-                        "homeForm";
+    "homeForm";
   grid-template-columns: 2fr;
   justify-content: center;
   align-items: center;
@@ -279,7 +299,7 @@ body {
   margin: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas:  
+  grid-template-areas:
     "race   name-box   class"
     "lcol     cloud   rcol"
     "lcol     cloud   rcol"
@@ -346,7 +366,7 @@ body {
 }
 
 #char-pic {
-  
+
   width: 100%;
   height: auto;
   align-content: center;
@@ -358,8 +378,38 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+}
+
+#class label {
   color: #00E88A;
   font-size: 2rem;
+  text-decoration: none;
+}
+
+#class-description {
+  height: 176px;
+  background-color: #3a526885;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+#class ul {
+  font-size: 1rem;
+  color: goldenrod;
+  height: 120px;
+  padding: 5px 0;
+
+  overflow: auto;
+  scrollbar-width:thin;
+
+
+}
+
+#class-description > label {
+  font-size: 1.5rem;
+  text-decoration: underline;
+  text-align: left;
 }
 
 #class-selection {
@@ -373,14 +423,14 @@ body {
   grid-area: lcol;
   justify-content: center;
   align-content: center;
-  
+
 }
 
 #rcol {
   grid-area: rcol;
   justify-content: stretch;
   align-content: center;
-  
+
 }
 
 #desc {
@@ -391,7 +441,7 @@ body {
   align-self: center;
   color: #00E88A;
   font-size: 2rem;
-  
+
 }
 
 #description {
@@ -404,8 +454,10 @@ body {
   transition: all 0.2s;
   margin: 0 auto;
   height: 15vh;
-  outline: none; /* removes auto blue glow around text box */
-  overflow: auto; /* hides scrollbar until needed */
+  outline: none;
+  /* removes auto blue glow around text box */
+  overflow: auto;
+  /* hides scrollbar until needed */
   /* background: url(photos/fight-on.png) center center no-repeat; /* This ruins default border */
   /* border: 1px solid #888;  */
 }
@@ -434,6 +486,8 @@ body {
 textarea.form-control {
   height: 75px;
   font-family: Arial, Helvetica, sans-serif;
+  
+  background-color: rgb(255, 239, 216);
 }
 
 select.form-control {
@@ -449,7 +503,7 @@ select.form-control {
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
   color: #00E88A;
-
+  background: #3a526885;
 }
 
 .stats-box {
@@ -464,7 +518,7 @@ select.form-control {
 
 .stats-value {
   font-size: 2em;
-  background-color: rgb(252, 247, 240);
+  background-color: rgb(255, 239, 216);
   width: 50%;
   margin: 0 auto;
   border-radius: 6px;
@@ -488,11 +542,13 @@ button {
   padding: 10px 24px;
   background-color: #00E88A;
 }
+
 .btn-cancel {
   color: #fff;
   padding: 10px 24px;
   background-color: goldenrod;
 }
+
 .btn-submit:hover {
   color: #fff;
   padding: 10px 24px;
@@ -500,6 +556,7 @@ button {
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
+
 .btn-cancel:hover {
   padding: 10px 24px;
   color: #fff;
@@ -507,6 +564,7 @@ button {
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
+
 
 
 
@@ -532,11 +590,12 @@ button {
     gap: 2px;
 
   }
+
   #title h1 {
     text-align: center;
     font-size: 3em;
   }
- 
+
   #cloudinary-image-upload {
     max-width: 60vw;
     width: 60%;

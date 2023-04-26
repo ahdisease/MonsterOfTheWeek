@@ -16,6 +16,14 @@ export default {
 
     getAllClasses() {
         return axios.get('https://www.dnd5eapi.co/api/classes')
+    },
+
+    getRaceDetails(urlPath) {
+        return axios.get(`https://www.dnd5eapi.co${urlPath}`)
+    },
+
+    getClassDetails(urlPath) {
+        return axios.get(`https://www.dnd5eapi.co${urlPath}`)
     }
 
 }
