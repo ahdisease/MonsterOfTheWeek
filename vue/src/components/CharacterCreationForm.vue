@@ -8,38 +8,37 @@
     <form class="homeForm" v-on:submit.prevent="submitForm">
 
 
-      <div class="name-group" id="name-box">
+      <div class="name-group stats-column" id="name-box">
         <label for="name">Name</label>
         <input id="name" type="text" class="form-control" v-model="newCharacter.name" />
       </div>
 
-      <div class="race-class-group" id="race">
+      <div class="race-class-group stats-column" id="race">
         <label for="race">Race</label>
         <select id="race-selection" class="form-control" v-model="newCharacter.race" v-on:change="getRaceDetails">
           <option v-for="race in dropdownRace" v-bind:key="race.id" v-bind:value="race.name">
             {{ race.name }}
           </option>
         </select>
+        <select id="subrace-selection" class="form-control" v-if="raceDetails">
+          <option v-for="subrace in raceDetails.subraces" v-bind:key="subrace.id">
+            {{ subrace.name }}
+          </option>
+        </select>
       </div>
 
-      <div class="race-class-group" id="class">
+      <div class="race-class-group stats-column" id="class">
         <label for="charClass">Class</label>
         <select id="class-selection" class="form-control" v-model="newCharacter.charClass" v-on:change="getClassDetails">
           <option v-for="charClass in dropdownClass" v-bind:key="charClass.id" v-bind:value="charClass.name">
             {{ charClass.name }}
           </option>
         </select>
-        <div id="class-desc">
-
-          <div id="class-description">
-            <label for="class-description">Class Proficiencies</label>
-            <ul>
-              <li v-for="proficiency in classDetails.proficiencies" v-bind:key="proficiency.index">
-                {{ proficiency.name }}
-              </li>
-            </ul>
-          </div>
-        </div>
+        <select id="subclass-selection" class="form-control" v-if="classDetails">
+          <option v-for="subclass in classDetails.subclasses" v-bind:key="subclass.id">
+            {{ subclass.name }}
+          </option>
+        </select>
       </div>
 
       <div class="stats-column" id="lcol">
@@ -101,7 +100,40 @@
           Cancel
         </button>
       </div>
+
+
     </form>
+
+    <div id="details">
+      <div id="race-desc">
+
+        <div id="race-description" class="details-boxes" v-if="raceDetails">
+          <label for="class-description">Race Description</label>
+          <ul>
+            <li>
+              <h3>Size</h3> 
+              <p>{{ raceDetails.size }}</p>
+            </li>
+            <li>
+              <h3>Age</h3> 
+              <p>{{ raceDetails.age }}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="class-desc" class="details-boxes" v-if="classDetails">
+        <div id="class-description">
+          <label for="class-description">Class Proficiencies</label>
+          <ul>
+            <li v-for="proficiency in classDetails.proficiencies" v-bind:key="proficiency.index">
+              {{ proficiency.name }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </template>
 
@@ -353,6 +385,14 @@ body {
   /* this is the dropdown area for race */
 }
 
+#subrace-selection {
+  width: 150px;
+  margin: 5px auto;
+  height: 40px;
+
+  /* this is the dropdown area for race */
+}
+
 /* #picture {
   grid-area: picture;
   justify-content: center;
@@ -387,36 +427,75 @@ body {
   text-decoration: none;
 }
 
-#class-description {
-  height: 176px;
-  background-color: #3a526885;
+#details {
+  color: #00E88A;
+  text-align: center;
+  margin: 1.5rem 1rem;
+
   border-radius: 3px;
-  padding: 5px;
+  padding: 1em 0;
+  box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.03);
+  background: #3a526885;
+
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
-#class ul {
+.details-boxes {
+  font-size: 1.5rem;
+  color: #00E88A;
+  text-align: center;
+  height: 206px;
+  width: 400px;
+  border-radius: 3px;
+  padding: 0.5em;
+  box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.03);
+  background: #607f9b;
+}
+
+.details-boxes ul {
+  text-align: left;
   font-size: 1rem;
   color: goldenrod;
-  height: 120px;
+  height: 150px;
   padding: 5px 0;
 
   overflow: auto;
-  scrollbar-width:thin;
-
-
+  scrollbar-width: thin;
 }
 
-#class-description > label {
-  font-size: 1.5rem;
+.details-boxes h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
   text-decoration: underline;
-  text-align: left;
+  margin-top: .1rem;
+}
+.details-boxes p {
+  margin: 0;
 }
 
 #class-selection {
   width: 150px;
   margin: 3px auto;
   height: 40px;
-  /* this is the drop down for class */
+}
+
+#subclass-selection {
+  width: 150px;
+  margin: 3px auto;
+  height: 40px;
+}
+
+.form-control {
+  background-color: rgb(255, 239, 216) ;
+}
+
+.form-control:hover {
+  box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.04);
 }
 
 #lcol {
@@ -441,7 +520,7 @@ body {
   align-self: center;
   color: #00E88A;
   font-size: 2rem;
-
+  
 }
 
 #description {
@@ -460,10 +539,19 @@ body {
   /* hides scrollbar until needed */
   /* background: url(photos/fight-on.png) center center no-repeat; /* This ruins default border */
   /* border: 1px solid #888;  */
+  background-color: rgb(255, 239, 216) ;
 }
 
 #description:hover {
   cursor: pointer;
+  box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.04);
+}
+
+.form-control:focus {
+  background-color:  rgb(255, 239, 216);
+  box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 #description::-webkit-scrollbar {
@@ -486,7 +574,7 @@ body {
 textarea.form-control {
   height: 75px;
   font-family: Arial, Helvetica, sans-serif;
-  
+
   background-color: rgb(255, 239, 216);
 }
 
@@ -497,7 +585,7 @@ select.form-control {
 }
 
 .stats-column {
-  background-color: #00201E;
+  margin: 0 1rem;
   border-radius: 3px;
   padding: 0.1em;
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
@@ -533,8 +621,11 @@ button {
 #cloud-btn {
   color: #fff;
   padding: 7px;
-  background-color: #00E88A;
-  border-radius: 6px;
+  border-radius: 3px;
+
+  box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.15),
+    0 17px 50px 0 rgba(0, 0, 0, 0.08);
+  background: #3a526885;
 }
 
 .btn-submit {
@@ -554,13 +645,23 @@ button {
   padding: 10px 24px;
   background-color: #00E88A;
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
-    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    0 17px 50px 0 rgba(0, 0, 0, 0.09);
 }
 
 .btn-cancel:hover {
   padding: 10px 24px;
   color: #fff;
   background-color: goldenrod;
+  box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.09);
+}
+
+.btn-cancel:active {
+  box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn-submit:active {
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }

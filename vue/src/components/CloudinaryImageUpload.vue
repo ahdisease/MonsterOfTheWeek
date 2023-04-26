@@ -67,6 +67,9 @@ export default {
 };
 </script>
 <style scoped>
+button {
+  background-color:rgb(255, 239, 216)
+}
 img {
 
     width: 100%;
