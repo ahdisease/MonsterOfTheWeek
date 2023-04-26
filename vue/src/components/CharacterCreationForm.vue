@@ -86,7 +86,7 @@
       </div>
       <!-- </div> -->
 
-      <div id="desc">
+      <div id="desc" class="stats-column">
         <label for="description">Description</label>
         <div>
           <textarea placeholder="Fight On..." id="description" type="textarea" class="text-area"
@@ -104,11 +104,11 @@
 
     </form>
 
-    <div id="details">
+    <div id="details" v-if="raceDetails||classDetails">
       <div id="race-desc">
 
         <div id="race-description" class="details-boxes" v-if="raceDetails">
-          <label for="class-description">Race Description</label>
+          <label for="class-description">Race Details</label>
           <ul>
             <li>
               <h3>Size</h3> 
@@ -427,8 +427,13 @@ body {
   text-decoration: none;
 }
 
+#details label {
+  text-transform: uppercase;
+  
+  font-weight: bolder;
+}
+
 #details {
-  color: #00E88A;
   text-align: center;
   margin: 1.5rem 1rem;
 
@@ -445,7 +450,7 @@ body {
 
 .details-boxes {
   font-size: 1.5rem;
-  color: #00E88A;
+
   text-align: center;
   height: 206px;
   width: 400px;
@@ -453,16 +458,21 @@ body {
   padding: 0.5em;
   box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.03);
-  background: #607f9b;
+  background: rgb(255, 239, 216);
+
+  border-radius: 10px;
+  border: 2px solid transparent;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.4;
 }
 
 .details-boxes ul {
   text-align: left;
   font-size: 1rem;
-  color: goldenrod;
   height: 150px;
   padding: 5px 0;
-
+  color:#00201E;
   overflow: auto;
   scrollbar-width: thin;
 }
@@ -514,7 +524,7 @@ body {
 
 #desc {
   grid-area: desc;
-  margin: 10px 0;
+  margin: 10px 1rem;
   text-align: center;
   justify-content: center;
   align-self: center;
