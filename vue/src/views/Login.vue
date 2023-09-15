@@ -103,7 +103,6 @@ form {
 
 .sign-in-btn:hover {
   background-color: lightgreen;
-  margin: 7px auto;
   border: 3px solid black;
 }
 
@@ -129,13 +128,6 @@ p {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: all 0.3s ease-in-out;
-
-  
-}
-
-#sign-up a {
-  /* hide anchor underline for firefox */
-  text-decoration: none;
 }
 
 #sign-up:before {

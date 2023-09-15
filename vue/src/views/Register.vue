@@ -117,7 +117,6 @@ h1 {
 
 .create-btn:hover {
   background-color: lightgreen;
-  margin: 7px auto;
   border: 3px solid black;
 }
 
@@ -142,11 +141,6 @@ label {
   transition: all 0.3s ease-in-out;
 }
 
-#login-link a {
-  /* hide anchor underline for firefox */
-  text-decoration: none;
-}
- 
 #login-link:before {
   content: '';
   background: #00e88a;
